@@ -43,4 +43,18 @@ features/
 - Centralize HTTP client configuration.
 - Use typed responses.
 
-#
+# Frontend Context
+
+## Key Screens
+1. **Inventory Dashboard** — current fridge contents, expiry warnings
+2. **Add Item** — manual ingredient entry form
+3. **Camera Scan** — fridge photo upload/capture (V2)
+4. **Recipe Feed** — suggested recipes, filterable
+5. **Recipe Detail** — ingredients, steps, serving adjuster
+6. **Profile / Preferences** — dietary, cuisine, equipment settings
+
+## UX Constraints
+- Fully responsive: mobile-first, desktop-compatible
+- Expiry warnings should be visually distinct (color/icon)
+- Recipe suggestion load must feel fast — optimistic UI preferred
+- Camera flow must work on mobile browsers (not just native)

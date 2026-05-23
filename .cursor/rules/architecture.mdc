@@ -44,3 +44,15 @@ Features/Todos/CreateTodo/
 - Avoid fat controllers.
 - Prefer immutable DTOs.
 - Use async everywhere.
+
+# Architecture Overview
+
+## Feature Modules (Vertical Slices)
+- **Inventory** — CRUD for user fridge items, expiry tracking
+- **Recipes** — suggestion engine, filtering, scaling
+- **Recognition** — image upload, ingredient detection (V2)
+- **Profile** — preferences, restrictions, equipment
+- **Sessions** — recipe acceptance + inventory deduction
+
+## Feature Priority
+1. Inventory → 2. Recipes → 3. Image Recognition

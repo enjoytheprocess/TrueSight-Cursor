@@ -1,0 +1,23 @@
+# Product: FridgeWise (or your app name)
+
+## Problem
+Users don't know what's in their fridge. Perishables expire before they're used,
+costing money and creating waste.
+
+## Solution
+Users log their fridge inventory. The app recommends recipes based on what they have.
+
+## Versions
+- V1: Manual inventory input + recipe suggestions
+- V2: Camera-based fridge scanning (image recognition)
+
+## Target User
+Anyone with a fridge. No cooking expertise assumed.
+
+## Core User Flow
+1. User adds inventory (manually or via photo)
+2. App surfaces recipe suggestions from available ingredients
+3. User accepts a recipe → inventory is deducted automatically
+
+## Design Constraint
+Must be fully usable on both mobile and desktop.
