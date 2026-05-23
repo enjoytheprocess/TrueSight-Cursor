@@ -1,0 +1,27 @@
+# Testing Standards
+
+## Backend
+
+- Use xUnit.
+- Use FluentAssertions.
+
+## Integration Tests
+
+- Test endpoints end-to-end.
+- Use test containers when possible.
+
+## Architecture Tests
+
+Validate:
+- No feature coupling
+- Proper dependency direction
+- CQRS separation
+
+## Frontend
+
+- Use Vitest.
+- Use React Testing Library.
+
+## Naming
+
+MethodName_State_ExpectedBehavior

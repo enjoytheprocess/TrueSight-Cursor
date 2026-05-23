@@ -1,0 +1,25 @@
+# Database Rules
+
+## Database
+
+- Use SQLite for local development.
+- Use Entity Framework Core migrations.
+
+## Naming
+
+- Tables use singular names.
+- Primary keys use Id.
+
+## Migrations
+
+- Never modify old migrations.
+- Create new migrations for schema changes.
+
+## Seed Data
+
+- Seed data must be idempotent.
+
+## Relationships
+
+- Explicitly configure relationships.
+- Avoid cascade delete unless required.

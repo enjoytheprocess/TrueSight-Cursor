@@ -1,0 +1,40 @@
+# Backend Standards
+
+## Language
+
+- Use C# 13 and .NET 9.
+- Enable nullable reference types.
+- Use implicit usings.
+
+## Entity Framework
+
+- Use EF Core with SQLite.
+- All DB access goes through DbContext.
+- Use migrations.
+
+## Naming
+
+- Commands end with Command.
+- Queries end with Query.
+- Handlers end with Handler.
+- Validators end with Validator.
+
+## Validation
+
+- Use FluentValidation.
+- Validate all commands and queries.
+
+## Error Handling
+
+- Use global exception middleware.
+- Return ProblemDetails responses.
+
+## Logging
+
+- Use structured logging.
+- Never use Console.WriteLine.
+
+## Async
+
+- Use async/await everywhere.
+- Avoid blocking calls.

@@ -1,0 +1,46 @@
+# Frontend Standards
+
+## Stack
+
+- React
+- TypeScript
+- Vite
+- React Router
+- TanStack Query
+
+## Architecture
+
+Use feature-based frontend architecture.
+
+## Feature Structure
+
+features/
+  todos/
+    api/
+    components/
+    hooks/
+    pages/
+    types/
+
+## State Management
+
+- Prefer server state with TanStack Query.
+- Avoid global state unless necessary.
+
+## Components
+
+- Keep components small.
+- Prefer composition over inheritance.
+- Separate smart and dumb components.
+
+## Styling
+
+- Use TailwindCSS.
+- Avoid inline styles.
+
+## API Calls
+
+- Centralize HTTP client configuration.
+- Use typed responses.
+
+#

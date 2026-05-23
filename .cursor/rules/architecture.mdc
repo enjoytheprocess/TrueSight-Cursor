@@ -1,0 +1,46 @@
+# Architecture Rules
+
+## General Principles
+
+- Use Vertical Slice Architecture.
+- Organize by feature, not technical layer.
+- Each feature owns:
+  - Commands
+  - Queries
+  - Validators
+  - Handlers
+  - DTOs
+  - Endpoints
+
+## CQRS
+
+- Commands modify state.
+- Queries never modify state.
+- Use MediatR for dispatching.
+
+## Dependency Rules
+
+- Features must not directly depend on other features.
+- Shared abstractions go into Shared project.
+- Infrastructure implementations stay in Infrastructure.
+
+## Endpoint Rules
+
+- Use minimal APIs.
+- One endpoint file per feature action.
+
+## Feature Folder Example
+
+Features/Todos/CreateTodo/
+    Command.cs
+    Validator.cs
+    Handler.cs
+    Endpoint.cs
+    Response.cs
+
+## Clean Code
+
+- Keep handlers small.
+- Avoid fat controllers.
+- Prefer immutable DTOs.
+- Use async everywhere.
