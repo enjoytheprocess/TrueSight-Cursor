@@ -16,7 +16,7 @@ Cursor loads **`.cursor/rules/awp.mdc`** (`alwaysApply: true`) so every agent se
 ## Default read order
 
 1. Active task: `.awp-workspace/2-build/WORK_QUEUE.yaml` (+ `TASK_READINESS.yaml`).
-2. Task `spec_link` under `docs/` (feature spec or `docs/README.md`).
+2. Task `spec_link` under `docs/` (e.g. `docs/product/project-brief.md`, `docs/design/features/`).
 3. `backend/AGENTS.md` when implementing.
 
 ## Commands

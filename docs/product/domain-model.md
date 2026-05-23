@@ -23,6 +23,8 @@ Junction between Recipe and IngredientCatalog (quantity, unit, optional flag)
 - cooking ability (beginner / intermediate / advanced)
 - available kitchen equipment
 
+*(Planned domain shape — promote from [ideation](ideation.md) IDEA-003 / IDEA-004 before V1 build depends on it.)*
+
 ### RecipeSession
 When a user accepts a recipe — triggers inventory deduction
 - selected recipe, serving multiplier, timestamp

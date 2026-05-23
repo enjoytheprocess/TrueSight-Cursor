@@ -19,7 +19,7 @@ _Active tasks. Move completed tasks (WORK_QUEUE status: done) to `archive/TASK_R
 
 **Blocking unknowns:** none
 
-**Spec:** `docs/README.md`  
+**Spec:** `docs/product/project-brief.md`  
 **QRs:**   
 **Decisions:** 
 

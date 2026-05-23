@@ -20,7 +20,7 @@ tasks:
     feature_id: none
     title: "Configure workspace and connect project components"
     component: backend
-    spec_link: "docs/README.md"
+    spec_link: "docs/product/project-brief.md"
     advisor_status: not_required
     advisor_track: none
     quality_requirements: []

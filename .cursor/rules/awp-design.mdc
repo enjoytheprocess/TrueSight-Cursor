@@ -13,8 +13,9 @@ alwaysApply: false
 ## Read order
 
 1. `4-sync/DESIGN_INPUTS.yaml` — open items first
-2. `docs/product/` + task `spec_link` in `docs/design/features/`
-3. `TASK_READINESS.yaml`, `FEATURE_REGISTRY.yaml`, `DESIGN_STATES.yaml`, `ROADMAP.yaml`
+2. `docs/product/` (roadmap = committed; `ideation.md` = wishlist) + task `spec_link` in `docs/design/features/`
+3. `0-ideation/IDEATION_BACKLOG.yaml` when exploring or promoting ideas
+4. `TASK_READINESS.yaml`, `FEATURE_REGISTRY.yaml`, `DESIGN_STATES.yaml`, `ROADMAP.yaml`
 
 ## Rules
 

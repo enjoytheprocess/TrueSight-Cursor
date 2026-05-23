@@ -37,8 +37,8 @@ Seeded by `make init`.
 
 ## Links
 - Design docs index: docs/README.md
+- Project brief: docs/product/project-brief.md
 - Product roadmap: docs/product/roadmap.md
-- Project brief: .awp-workspace/1-design/PROJECT_BRIEF.md
 - AWP roadmap: .awp-workspace/1-design/ROADMAP.md
 - Work queue: .awp-workspace/2-build/WORK_QUEUE.md
 - Design docs:

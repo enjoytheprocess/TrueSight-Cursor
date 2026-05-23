@@ -1,16 +1,21 @@
-# Feature Roadmap
+# Product roadmap (committed)
+
+Phases the team has committed to deliver. Exploratory ideas live in [ideation.md](ideation.md) and [`.awp-workspace/0-ideation/`](../.awp-workspace/0-ideation/).
 
 ## Phase 1 — Core (V1)
-1. Inventory management (manual input)
-2. Recipe suggestions based on current inventory
-3. Inventory deduction on recipe acceptance
 
-## Phase 2 — Smart Input (V2)
-4. Image recognition (fridge photo → auto-populate inventory)
+| # | Capability | Notes |
+|---|------------|--------|
+| 1 | Inventory management (manual input) | CRUD, quantity, expiry |
+| 2 | Recipe suggestions from current inventory | Match available ingredients |
+| 3 | Inventory deduction on recipe acceptance | `RecipeSession` flow |
 
-## Wishlist / Future
-- Serving size selector (how many people)
-- Cuisine type preferences + discovery mode
-- Dietary restrictions (vegan, gluten-free, allergies, etc.)
-- Cooking ability level + available kitchen equipment
-- Store recommendations (distance, price comparison)
+## Phase 2 — Smart input (V2)
+
+| # | Capability | Notes |
+|---|------------|--------|
+| 4 | Image recognition | Fridge photo → auto-populate inventory |
+
+## Not on this roadmap
+
+Wishlist and “nice to have” items are **ideation** — see [ideation.md](ideation.md). Promote to this roadmap only after an explicit decision (update AWP `ROADMAP.yaml` and registers).

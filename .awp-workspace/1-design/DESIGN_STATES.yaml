@@ -24,7 +24,7 @@
 # Only "ready" features may have tasks promoted to ready_for_build.
 #
 # linked_idea:    ID of the ideation entry linked to this feature, or "none"
-# decision_links: repo-relative paths to decision docs in 1-design/decisions/ that shaped this feature
+# decision_links: repo-relative paths to ADRs in docs/design/decisions/ that shaped this feature
 
 schema_version: 4
 

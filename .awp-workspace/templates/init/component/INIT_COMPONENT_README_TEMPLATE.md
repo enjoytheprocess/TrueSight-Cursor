@@ -36,7 +36,7 @@ Seeded by `make init`.
 - `EXAMPLE_ENV`:
 
 ## Links
-- Project brief: __WORKSPACE_LINK_PREFIX__/1-design/PROJECT_BRIEF.md
+- Project brief: docs/product/project-brief.md
 - Milestone / roadmap: __WORKSPACE_LINK_PREFIX__/1-design/ROADMAP.md
 - Related tasks: __WORKSPACE_LINK_PREFIX__/2-build/WORK_QUEUE.md
 - Design docs:

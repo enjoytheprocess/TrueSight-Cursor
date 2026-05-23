@@ -8,10 +8,11 @@ AWP **execution registers** (queue, readiness, traceability) live in [`.awp-work
 
 | Path | Purpose |
 |------|---------|
-| [`product/`](product/) | Product vision, domain model, user stories, roadmap |
-| [`design/features/`](design/features/) | Per-feature design specs (linked from `WORK_QUEUE.spec_link`) |
-| [`design/decisions/`](design/decisions/) | ADRs — link from `decision_links` in registers |
-| [`templates/`](templates/) | Copy-paste scaffolds for specs and ADRs |
+| [`product/`](product/) | [Project brief](product/project-brief.md), roadmap, ideation, domain model, stories |
+| [`ideation/`](ideation/) | Stage 0 guide (workflow before design commitment) |
+| [`design/`](design/) | Stage 1 guide, [features/](design/features/), [decisions/](design/decisions/) |
+| [`templates/`](templates/) | Scaffolds (brief, idea, feature spec, ADR) |
+| [`.awp-workspace/`](../.awp-workspace/) | **Registers only** (YAML) — stages 0–4 execution state |
 
 ## Workflow
 
@@ -21,8 +22,9 @@ AWP **execution registers** (queue, readiness, traceability) live in [`.awp-work
 
 ## Quick links
 
-- [Product roadmap](product/roadmap.md)
-- [Domain model](product/domain-model.md)
-- [User stories](product/user-stories.md)
-- [AWP project brief](../.awp-workspace/1-design/PROJECT_BRIEF.md)
+- [Project brief](product/project-brief.md)
+- [Product index](product/README.md)
+- [Stage 0 — Ideation](ideation/README.md) · [Ideation backlog](product/ideation.md)
+- [Stage 1 — Design](design/README.md)
+- [AWP registers](../.awp-workspace/) (YAML; `.md` views generated)
 - [Work queue](../.awp-workspace/2-build/WORK_QUEUE.md)

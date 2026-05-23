@@ -1,0 +1,15 @@
+# Copy into .awp-workspace/0-ideation/IDEATION_BACKLOG.yaml under ideas:
+# Human narrative: docs/product/ideation.md
+
+- id: IDEA-000
+  title: "Idea title"
+  status: open
+  date: "YYYY-MM-DD"
+  components: [backend]
+  summary: "One paragraph describing the idea and the problem it addresses."
+  discussion: |
+    - (record key points in docs/product/ideation.md and here)
+  outcome:
+    decision: none
+    reason: ""
+    promotion_target: ""
