@@ -42,9 +42,12 @@ is_allowed() {
 
   [[ "$path" == .awp-workspace/* ]] && return 0
   [[ "$path" == backend/* ]] && return 0
+  [[ "$path" == docs/* ]] && return 0
+  [[ "$path" == .cursor/* ]] && return 0
+  [[ "$path" == scripts/* ]] && return 0
 
   case "$path" in
-    README.md|AGENTS.md|cursor.md|Makefile|.gitignore|upgrade-notes.md|template-release.yaml)
+    README.md|AGENTS.md|cursor.md|Makefile|.gitignore|.cursorignore|upgrade-notes.md|template-release.yaml)
       return 0
       ;;
     docs/*|examples/*|0-ideation/*|1-design/*|2-build/*|3-verify/*|4-sync/*|templates/*)

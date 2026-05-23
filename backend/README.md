@@ -36,9 +36,11 @@ Seeded by `make init`.
 - `EXAMPLE_ENV`:
 
 ## Links
+- Design docs index: docs/README.md
+- Product roadmap: docs/product/roadmap.md
 - Project brief: .awp-workspace/1-design/PROJECT_BRIEF.md
-- Milestone / roadmap: .awp-workspace/1-design/ROADMAP.md
-- Related tasks: .awp-workspace/2-build/WORK_QUEUE.md
+- AWP roadmap: .awp-workspace/1-design/ROADMAP.md
+- Work queue: .awp-workspace/2-build/WORK_QUEUE.md
 - Design docs:
 - ADRs:
 

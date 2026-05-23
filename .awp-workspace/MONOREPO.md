@@ -4,7 +4,8 @@ This directory is the **AWP planning workspace**. Product code lives outside it.
 
 | Path | Role |
 |------|------|
-| `.awp-workspace/` | Registers, workflow docs, `make` targets |
+| `docs/` | **Design documentation** (specs, ADRs, product) — use `@docs/` in Cursor |
+| `.awp-workspace/` | AWP registers, workflow docs, `make` targets |
 | `backend/` | Primary service component (`COMPONENT_NAME=backend`) |
 
 Configuration: `workspace-layout.yaml` in this directory.

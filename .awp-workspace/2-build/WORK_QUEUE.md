@@ -13,7 +13,7 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 | --- | --- | --- | --- | --- | --- | --- |
 | none | backend | P1 | build | `todo` | sequential | none |
 
-**Spec:** `1-design/PROJECT_BRIEF.md`  
+**Spec:** `docs/README.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** —  
 **Owner:** unassigned · **Lock:** none · **Target:** TBD  
 **Build deps:** none · **Design deps:** none  

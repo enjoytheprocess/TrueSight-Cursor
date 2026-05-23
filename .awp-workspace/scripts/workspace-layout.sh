@@ -11,14 +11,17 @@ if [[ -f "$_layout_file" ]] && command -v yq &>/dev/null; then
   COMPONENT_NAME="${COMPONENT_NAME:-$(yq -r '.component.name // "backend"' "$_layout_file")}"
   COMPONENT_REL="${COMPONENT_REL:-$(yq -r '.component.path // "backend"' "$_layout_file")}"
   WORKSPACE_LINK_PREFIX="${WORKSPACE_LINK_PREFIX:-$(yq -r '.workspace_link_prefix // ".awp-workspace"' "$_layout_file")}"
+  DESIGN_DOCS_ROOT="${DESIGN_DOCS_ROOT:-$(yq -r '.design_docs_root // "docs"' "$_layout_file")}"
 else
   COMPONENT_NAME="${COMPONENT_NAME:-backend}"
   COMPONENT_REL="${COMPONENT_REL:-backend}"
   WORKSPACE_LINK_PREFIX="${WORKSPACE_LINK_PREFIX:-.awp-workspace}"
+  DESIGN_DOCS_ROOT="${DESIGN_DOCS_ROOT:-docs}"
 fi
 
 COMPONENT_ROOT="$MONOREPO_ROOT/$COMPONENT_REL"
-export WORKSPACE_ROOT MONOREPO_ROOT COMPONENT_NAME COMPONENT_REL COMPONENT_ROOT WORKSPACE_LINK_PREFIX
+DESIGN_DOCS_PATH="$MONOREPO_ROOT/$DESIGN_DOCS_ROOT"
+export WORKSPACE_ROOT MONOREPO_ROOT COMPONENT_NAME COMPONENT_REL COMPONENT_ROOT WORKSPACE_LINK_PREFIX DESIGN_DOCS_ROOT DESIGN_DOCS_PATH
 
 resolve_repo_path() {
   local rel="$1"

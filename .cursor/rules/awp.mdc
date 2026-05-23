@@ -1,0 +1,28 @@
+---
+description: AWP router — planning registers + docs/ design documentation
+alwaysApply: true
+---
+
+# AWP + Cursor (router)
+
+- **Design docs (human-accessible):** `docs/` — use `@docs/` in prompts. Specs, ADRs, product vision.
+- **Execution registers:** `.awp-workspace/*.yaml` — queue, readiness, traceability. Edit YAML only; hooks run `make awp-render`.
+
+Full contract: `.awp-workspace/AGENTS.md`. Phase rules: `awp-design.mdc`, `awp-build.mdc`, `awp-verify.mdc`.
+
+## Session start
+
+1. Read `.awp-workspace/2-build/WORK_QUEUE.yaml` + matching `1-design/TASK_READINESS.yaml`
+2. Read task `spec_link` under `docs/` (not only PROJECT_BRIEF)
+3. For backend code: `backend/AGENTS.md`
+
+## Commands
+
+```bash
+make awp-render
+make awp-docs-check
+make awp-workflow-status
+make awp-install-hooks   # git pre-commit
+```
+
+Hooks in `.cursor/hooks.json` auto-render after register YAML edits.

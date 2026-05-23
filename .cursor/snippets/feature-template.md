@@ -1,5 +1,7 @@
 # Feature Slice Template
 
+Create the durable design spec at `docs/design/features/FEAT-[name].md` using `docs/templates/FEATURE_SPEC_TEMPLATE.md`, then admit via `.cursor/snippets/awp-admit-task.md`.
+
 ## Feature: [Name]
 **Module:** Inventory | Recipes | Recognition | Profile | Sessions
 

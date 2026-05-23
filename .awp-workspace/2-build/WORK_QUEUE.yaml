@@ -11,7 +11,7 @@
 # advisor_status:        not_required | pending | complete
 # advisor_track:  none | security | experiment | incident | data_migration | api_contract
 # quality_requirements: list of QR IDs from QUALITY_REQUIREMENTS.yaml that apply to this task
-# decision_links:      repo-relative paths to decision docs in 1-design/decisions/ that shaped this task
+# decision_links:      repo-relative paths to ADRs in docs/design/decisions/ that shaped this task
 
 schema_version: 5
 
@@ -20,7 +20,7 @@ tasks:
     feature_id: none
     title: "Configure workspace and connect project components"
     component: backend
-    spec_link: "1-design/PROJECT_BRIEF.md"
+    spec_link: "docs/README.md"
     advisor_status: not_required
     advisor_track: none
     quality_requirements: []

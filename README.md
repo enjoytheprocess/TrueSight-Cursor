@@ -4,13 +4,14 @@ Full-stack application (ASP.NET Core backend, React frontend). See `cursor.md` f
 
 ## AI workspace (AWP)
 
-Planning registers and workflow live in [`.awp-workspace/`](.awp-workspace/). The backend service component is [`backend/`](backend/).
+**Design documentation** lives in [`docs/`](docs/) (`@docs/` in Cursor). **AWP registers** (queue, readiness, traceability) live in [`.awp-workspace/`](.awp-workspace/). Code: [`backend/`](backend/).
 
 ```bash
-# From repo root (requires make, or run targets under .awp-workspace/)
-make awp-init          # re-seed workspace (use FORCE=1 in .awp-workspace if needed)
 make awp-render
 make awp-docs-check
+make awp-install-hooks
 ```
 
-Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`.awp-workspace/AGENTS.md`](.awp-workspace/AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md).
+Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`docs/README.md`](docs/README.md), [`.awp-workspace/AGENTS.md`](.awp-workspace/AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md).
+
+**Cursor:** [`.cursor/rules/awp.mdc`](.cursor/rules/awp.mdc), phase rules (`awp-design`, `awp-build`, `awp-verify`), [hooks](.cursor/hooks.json).

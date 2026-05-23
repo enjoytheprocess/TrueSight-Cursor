@@ -15,6 +15,10 @@ AI runtime contract for this initialized single-component workspace.
 - **Verify**: "Is the current task resolved satisfactorily?" — task scope, implementation quality
 - **Sync**: "Does what was built fit what the design says?" — design scope, alignment
 
+## Design documentation
+
+Human-accessible specs and ADRs live in **`docs/`** at the repo root (`docs/product/`, `docs/design/features/`, `docs/design/decisions/`). Use `spec_link` and `decision_links` pointing to paths under `docs/`. Registers here track execution state only.
+
 ## Default read order
 Read from `.md` table views; edit the `.yaml` source files.
 
@@ -32,7 +36,7 @@ Registers with terminal statuses use a split-YAML pattern: `REGISTER.yaml` holds
 3. Read the `AGENTS.md` and linked specs for the component named by the task.
 4. Open optional registers only when the task uses them:
    - `1-design/QUALITY_REQUIREMENTS.yaml` — when in use: read all `sustained` entries at build start; open for tasks with `quality_requirements` entries in TASK_READINESS to verify each linked `per_task` or `milestone` QR
-   - `1-design/decisions/` — when the task or feature has `decision_links` entries
+   - `docs/design/decisions/` — when the task or feature has `decision_links` entries
    - `2-build/TASK_DEPENDENCIES.yaml` — when dependency tracking is in use
    - `2-build/LOCKS.yaml` — when running in parallel mode
    - `2-build/TEMP_MEASURES.yaml` — when the task touches an active temporary exception
@@ -74,4 +78,5 @@ When evidence is ready, move the task to `awaiting_human_review`. The human uses
 
 ## Agent-specific setup
 - Run `make install-tools` once after `make init` if `yq` is not already available — it is required by `make docs-check` and `make render`.
+- **Cursor:** `.cursor/rules/awp.mdc` (router) + `awp-design` / `awp-build` / `awp-verify` phase rules; `.cursor/hooks.json` runs `make awp-render` after register YAML edits; snippets `awp-admit-task`, `awp-gap-deviation`, `awp-verify-handoff`. Design docs: `docs/` (`@docs/`).
 - If you are a Claude Code agent: copy `templates/agents/claude/CLAUDE_TEMPLATE.md` → `CLAUDE.md` and `templates/agents/claude/settings_TEMPLATE.json` → `.claude/settings.json` once after `make init` if not already done. The settings file includes a Stop hook that runs `make render` automatically. See `docs/core/operations.md` for details.

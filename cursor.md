@@ -10,6 +10,15 @@ This repository contains a full-stack application using:
 
 Detailed implementation rules are located in `.cursor/rules`.
 
-AI workspace protocol (AWP) planning registers live in `.awp-workspace/`. See root `AGENTS.md` and `.awp-workspace/AGENTS.md` for workflow read order.
+## Documentation & AWP
+
+- **Design docs:** `docs/` — use `@docs/` for product, feature specs, and ADRs.
+- **Registers:** `.awp-workspace/` — queue, readiness, traceability (YAML canonical).
+- **Cursor:** `.cursor/rules/awp.mdc` + phase rules; hooks auto-run `make awp-render` after register edits.
+
+```bash
+make awp-render      # after editing .yaml registers
+make awp-docs-check  # before handoff
+```
 
 Always follow repository conventions before generating code.
