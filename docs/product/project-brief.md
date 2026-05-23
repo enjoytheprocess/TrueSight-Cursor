@@ -88,9 +88,11 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 | Domain model | [domain-model.md](domain-model.md) |
 | User stories | [user-stories.md](user-stories.md) |
 | Use cases & scenarios | [use-cases.md](use-cases.md) |
+| Open questions | [open-questions.md](open-questions.md) |
 | Architecture overview | [../architecture/overview.md](../architecture/overview.md) |
 | Vertical slices | [../architecture/vertical-slices.md](../architecture/vertical-slices.md) |
 | UI principles | [../design/ui-principles.md](../design/ui-principles.md) |
+| Advisor policy | [../design/advisor-policy.md](../design/advisor-policy.md) |
 | Design stage guide | [../design/README.md](../design/README.md) |
 | Feature specs | [../design/features/](../design/features/) |
 | ADRs | [../design/decisions/](../design/decisions/) |

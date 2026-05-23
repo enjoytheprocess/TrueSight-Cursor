@@ -9,6 +9,7 @@ Design intent, maturity tracking, and delivery sequencing. **Durable prose** liv
 | Project brief | [../product/project-brief.md](../product/project-brief.md) |
 | Feature specs | [features/](features/) |
 | UI principles | [ui-principles.md](ui-principles.md) |
+| Advisor policy | [advisor-policy.md](advisor-policy.md) — `security` + `api_contract` tracks |
 | ADRs | [decisions/](decisions/) |
 | Templates | [../templates/](../templates/) |
 
@@ -26,7 +27,7 @@ Generated `.md` table views: run `make awp-render` from repo root.
 ## Optional
 
 - `QUALITY_REQUIREMENTS.yaml` — cross-cutting NFRs when enabled
-- Specialist reviews under `.awp-workspace/3-verify/` when an advisor track applies
+- Specialist reviews: [SECURITY_REVIEWS.md](../../.awp-workspace/3-verify/SECURITY_REVIEWS.md), [API_CONTRACT_REVIEWS.md](../../.awp-workspace/3-verify/API_CONTRACT_REVIEWS.md) — see [advisor-policy.md](advisor-policy.md)
 
 ## Workflow
 

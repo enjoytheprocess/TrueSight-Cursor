@@ -61,6 +61,13 @@ After approval, add/update rows in:
 
 `spec_link` for build tasks → this file path.
 
+## Advisor tracks
+
+At build admission (see [advisor-policy.md](../advisor-policy.md)):
+
+- Accept / deduct implementation → `security`
+- Document session API → `api_contract` (if separate task)
+
 ## Decisions
 
 - Depends on manual inventory (`FEAT-INV-001`) and recipe identity from `FEAT-REC-001`.

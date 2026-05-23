@@ -8,6 +8,7 @@
 | [domain-model.md](domain-model.md) | Entities and relationships |
 | [user-stories.md](user-stories.md) | Stories by phase (committed vs ideation) |
 | [use-cases.md](use-cases.md) | Market, food waste, low-energy cooking scenarios |
+| [open-questions.md](open-questions.md) | **Unresolved** stack and design decisions (track until ADR/spec) |
 | [Architecture overview](../architecture/overview.md) | System context, diagrams, V1/V2 flows |
 | [Vertical slices](../architecture/vertical-slices.md) | API slice map and conventions |
 | [UI principles](../design/ui-principles.md) | Inventory/recipe presentation (images, expiry, macros) |

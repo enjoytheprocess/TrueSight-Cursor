@@ -78,6 +78,12 @@ After approval, add/update rows in:
 
 `spec_link` for build tasks → this file path.
 
+## Advisor tracks
+
+At build admission (see [advisor-policy.md](../advisor-policy.md)):
+
+- Provider integration + suggestions endpoint → `security` (API keys server-side) and/or split `api_contract` for DTO contract
+
 ## Decisions
 
 - [ADR-20260523-02](../decisions/ADR-20260523-02-recipe-provider-adapter.md) — recipe provider adapter.

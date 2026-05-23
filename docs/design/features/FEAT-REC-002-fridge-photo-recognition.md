@@ -69,6 +69,13 @@ After approval, add/update rows in:
 
 `spec_link` for build tasks → this file path.
 
+## Advisor tracks
+
+At build admission (see [advisor-policy.md](../advisor-policy.md)):
+
+- Upload, vision, confirmation → `security` (files, retention, keys)
+- Recognition API contract → `api_contract` when endpoints are defined
+
 ## Decisions
 
 - [ADR-20260523-03](../decisions/ADR-20260523-03-v2-vision-boundary.md) — vision boundary and human confirmation.

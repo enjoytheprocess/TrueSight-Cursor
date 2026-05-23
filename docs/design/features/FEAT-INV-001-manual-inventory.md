@@ -68,6 +68,13 @@ After approval, add/update rows in:
 
 `spec_link` for build tasks → this file path.
 
+## Advisor tracks
+
+At build admission (see [advisor-policy.md](../advisor-policy.md)):
+
+- Implement CRUD → `security` (per-user isolation, validation)
+- Document/publish inventory API → `api_contract`
+
 ## Decisions
 
 - Delivery: [ADR-20260523-01](../decisions/ADR-20260523-01-delivery-model-pwa-web.md) — client can be PWA-style web; inventory rules live on server.

@@ -13,9 +13,11 @@ Seeded by `make init`.
 
 ## Interfaces and contracts
 - Upstream dependencies: fill in when known
-- Downstream consumers: fill in when known
+- Downstream consumers: mobile-first web client (`frontend/` when added)
+- **Advisor tracks (project):** `security` + `api_contract` — see [docs/design/advisor-policy.md](../docs/design/advisor-policy.md)
 - Key interfaces *(annotate each with `stable | beta | internal` — changing a `stable` interface requires `advisor_track: api_contract`)*:
-  - example: `POST /api/resource` — stable
+  - V1 endpoints: default **`beta`** until post-demo; list paths here as they ship
+  - example: `GET /api/inventory` — beta
 
 ## Setup
 ```bash
