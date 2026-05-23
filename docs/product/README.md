@@ -7,6 +7,7 @@
 | [ideation.md](ideation.md) | **Exploratory** ideas (wishlist, not scheduled) |
 | [domain-model.md](domain-model.md) | Entities and relationships |
 | [user-stories.md](user-stories.md) | Stories by phase (committed vs ideation) |
+| [Architecture overview](../architecture/overview.md) | System context, diagrams, V1/V2 flows |
 
 **AWP ideation register (canonical state):** [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](../.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml) — keep in sync when ideas change status.
 

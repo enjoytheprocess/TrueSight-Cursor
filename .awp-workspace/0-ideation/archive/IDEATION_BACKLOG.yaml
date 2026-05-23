@@ -5,4 +5,16 @@
 
 schema_version: 1
 
-ideas: []
+ideas:
+  - id: IDEA-010
+    title: "Firebase-first stack (alternative)"
+    status: parked
+    date: "2026-05-23"
+    components: [backend]
+    summary: "Alternate architecture (Next.js, Firebase Auth, Firestore, Storage, Cloud Functions) — not committed."
+    discussion: |
+      - Parked reference only; ASP.NET Core + SQLite remains authoritative per project brief
+    outcome:
+      decision: parked
+      reason: "Committed stack stays ASP.NET; capture alternative for future reconsideration."
+      promotion_target: ""

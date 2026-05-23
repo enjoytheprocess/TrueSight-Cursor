@@ -47,6 +47,8 @@ Features/Todos/CreateTodo/
 
 # Architecture Overview
 
+System context for TrueSight lives in **`docs/architecture/overview.md`** (diagrams, V1/V2 flows, integrations). CQRS rules here apply to the ASP.NET Core API.
+
 ## Feature Modules (Vertical Slices)
 - **Inventory** — CRUD for user fridge items, expiry tracking
 - **Recipes** — suggestion engine, filtering, scaling

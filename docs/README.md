@@ -9,6 +9,7 @@ AWP **execution registers** (queue, readiness, traceability) live in [`.awp-work
 | Path | Purpose |
 |------|---------|
 | [`product/`](product/) | [Project brief](product/project-brief.md), roadmap, ideation, domain model, stories |
+| [`architecture/`](architecture/) | [System overview](architecture/overview.md) — diagrams, flows, integration boundaries |
 | [`ideation/`](ideation/) | Stage 0 guide (workflow before design commitment) |
 | [`design/`](design/) | Stage 1 guide, [features/](design/features/), [decisions/](design/decisions/) |
 | [`templates/`](templates/) | Scaffolds (brief, idea, feature spec, ADR) |
@@ -23,6 +24,7 @@ AWP **execution registers** (queue, readiness, traceability) live in [`.awp-work
 ## Quick links
 
 - [Project brief](product/project-brief.md)
+- [Architecture overview](architecture/overview.md)
 - [Product index](product/README.md)
 - [Stage 0 — Ideation](ideation/README.md) · [Ideation backlog](product/ideation.md)
 - [Stage 1 — Design](design/README.md)

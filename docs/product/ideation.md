@@ -18,6 +18,10 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 | IDEA-004 | Cooking skill level & kitchen equipment | Profile | open |
 | IDEA-005 | Store recommendations (distance, price) | Commerce | open |
 | IDEA-006 | Expiry proximity warnings | Inventory | open |
+| IDEA-007 | Charity / food-bank persona | Personas | open |
+| IDEA-008 | Receipt photo → inventory list | Smart input | open |
+| IDEA-009 | PWA install + offline shell | Platform | open |
+| IDEA-010 | Firebase-first stack (alternative) | Architecture | parked |
 
 ---
 
@@ -90,6 +94,68 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 - Could be a small V1 add-on or post-V1; not listed on committed roadmap yet.
 
 **Outcome:** —
+
+---
+
+## Personas
+
+### IDEA-007: Charity / food-bank persona
+
+**Status:** open  
+**Summary:** Extend the product narrative and future flows for donation kitchens, food banks, and shared fridges — tracking perishables for beneficiaries, not only household users.
+
+**Discussion**
+
+- Motivates the problem space in [project-brief.md](project-brief.md); no charity-specific features on V1/V2 roadmap.
+- Promotion would need multi-user/org model, permissions, and compliance review.
+
+**Outcome:** —
+
+---
+
+## Smart input
+
+### IDEA-008: Receipt photo → inventory list
+
+**Status:** open  
+**Summary:** Photograph a grocery receipt; vision/OCR returns item names, quantities, optional images, and suggested expiration dates for user review before adding to inventory.
+
+**Discussion**
+
+- Related domain shapes: `ReceiptScan`, `DetectedLineItem` in [domain-model.md](domain-model.md).
+- Distinct from V2 fridge photo (FEAT-REC-002); may share vision infrastructure if both ship.
+
+**Outcome:** —
+
+---
+
+## Platform
+
+### IDEA-009: PWA install + offline shell
+
+**Status:** open  
+**Summary:** Web app manifest, service worker, and offline-friendly shell so users can install on home screen and tolerate brief connectivity loss for read-only inventory.
+
+**Discussion**
+
+- Aligns with mobile-first delivery in project brief; depends on frontend slice existing.
+- Scope offline data carefully (stale inventory vs recipes).
+
+**Outcome:** —
+
+---
+
+### IDEA-010: Firebase-first stack (alternative)
+
+**Status:** parked  
+**Summary:** Alternate architecture using Next.js, Firebase Auth, Firestore, Storage, Cloud Functions, and Vercel/Firebase App Hosting — captured for reference, not the committed stack.
+
+**Discussion**
+
+- Committed stack remains ASP.NET Core + SQLite + React (see project brief).
+- Useful if team revisits hosting or BaaS trade-offs.
+
+**Outcome:** Parked — documented only; no ADR promotion.
 
 ---
 

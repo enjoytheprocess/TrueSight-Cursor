@@ -8,11 +8,24 @@
 schema_version: 2
 
 capabilities:
-  - id: __CAPABILITY_ID__
+  - id: CAP-V1-CORE
     target_window: TBD
-    objective: "Complete workspace initialization for TrueSight"
-    feature_ids: []
+    objective: "V1 — manual inventory, recipe suggestions, deduction on recipe acceptance"
+    feature_ids:
+      - FEAT-INV-001
+      - FEAT-REC-001
+      - FEAT-SES-001
     depends_on: none
     status: active
     owner: unassigned
-    notes: "seeded by make init; replace with your first real capability after kickoff"
+    notes: "Committed Phase 1; see docs/product/roadmap.md"
+
+  - id: CAP-V2-VISION
+    target_window: TBD
+    objective: "V2 — fridge photo → vision → user confirm → inventory"
+    feature_ids:
+      - FEAT-REC-002
+    depends_on: CAP-V1-CORE
+    status: planned
+    owner: unassigned
+    notes: "See docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md"

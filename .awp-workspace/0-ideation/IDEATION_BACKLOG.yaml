@@ -85,3 +85,42 @@ ideas:
       decision: none
       reason: ""
       promotion_target: ""
+
+  - id: IDEA-007
+    title: "Charity / food-bank persona"
+    status: open
+    date: "2026-05-23"
+    components: [backend]
+    summary: "Persona for donation kitchens and shared-fridge inventory tracking (not MVP scope)."
+    discussion: |
+      - See docs/product/ideation.md#idea-007-charity--food-bank-persona
+    outcome:
+      decision: none
+      reason: ""
+      promotion_target: ""
+
+  - id: IDEA-008
+    title: "Receipt photo to inventory list"
+    status: open
+    date: "2026-05-23"
+    components: [backend]
+    summary: "OCR or vision on receipt photos to suggest inventory line items before user confirms."
+    discussion: |
+      - See docs/product/ideation.md#idea-008-receipt-photo--inventory-list
+    outcome:
+      decision: none
+      reason: ""
+      promotion_target: ""
+
+  - id: IDEA-009
+    title: "PWA install and offline shell"
+    status: open
+    date: "2026-05-23"
+    components: [backend]
+    summary: "Web app manifest, service worker, and limited offline UX for installation and resilience."
+    discussion: |
+      - See docs/product/ideation.md#idea-009-pwa-install--offline-shell
+    outcome:
+      decision: none
+      reason: ""
+      promotion_target: ""

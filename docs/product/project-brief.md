@@ -8,14 +8,46 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 
 ## Problem
 
-- Problem statement: Users do not know what is in their fridge; perishables expire before use, wasting money and food.
-- Target user: Anyone with a fridge; no cooking expertise assumed.
+- **Problem statement:** Users do not remember everything in their fridge. Perishables expire before use, wasting money and food — the cost of not knowing is high for perishable inventory.
+- **Personal use:** Households lose food and money when items spoil unnoticed.
+- **Charity / food-bank angle:** Shared or donation kitchens face the same perishability risk at scale. Charity-specific flows are **not** in MVP scope; see [ideation.md](ideation.md) (IDEA-007).
+- **Target user:** Anyone with a fridge; no cooking expertise assumed.
 
 ## Solution
 
-- Users log fridge inventory (manual in V1; photo recognition in V2).
+- Users log what they have in the app (manual in V1; fridge photo in V2).
 - The app recommends recipes from available ingredients.
 - Accepting a recipe deducts inventory automatically.
+
+## Priorities
+
+| Priority | Input method | Phase |
+|----------|--------------|-------|
+| P1 | Manual inventory entry | V1 |
+| P2 | Photograph the fridge | V2 |
+
+**Development order:** Inventory → recipe suggestions → image recognition (see [roadmap.md](roadmap.md)).
+
+## Primary user journey
+
+**V1**
+
+1. Add or view inventory (manual).
+2. Browse recipe suggestions matched to current stock.
+3. Accept a recipe → ingredients deducted from inventory.
+
+**V2 shortcut**
+
+1. Take a fridge photo on the web client.
+2. Review and confirm detected items → save to inventory.
+3. Browse recipes → accept → deduct (same as V1).
+
+## Delivery model
+
+- **Mobile-first responsive web** with PWA-style enhancements (installable where supported, app-like layout on phone).
+- **Not** a native mobile app for MVP — shareable URL, single codebase for phone and desktop.
+- Camera access via standard web APIs (`getUserMedia`, or `<input type="file" accept="image/*" capture="environment">` for rear camera on many devices).
+- Fully usable on mobile and desktop (non-functional requirement).
 
 ## Repository mode
 
@@ -25,9 +57,15 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 
 ## Scope
 
-- In scope: V1 — manual inventory, recipe suggestions, inventory deduction on recipe acceptance.
-- Out of scope: V2 image recognition until Phase 2 (see [roadmap.md](roadmap.md)).
-- Non-goals: Duplicating register state in `docs/`; scheduling wishlist items without promoting them from [ideation.md](ideation.md).
+- **In scope (V1):** Manual inventory CRUD, recipe suggestions from inventory, inventory deduction on recipe acceptance.
+- **In scope (V2):** Fridge photo → detection → user confirmation → inventory (see [roadmap.md](roadmap.md)).
+- **Out of scope for MVP:** Native apps; charity/org-specific product flows (ideation only); receipt scanning (ideation IDEA-008).
+- **Non-goals:** Duplicating register state in `docs/`; scheduling wishlist items without promoting them from [ideation.md](ideation.md).
+
+## Integrations (plug-and-play)
+
+- **Recipe data:** Abstract behind a provider adapter — Spoonacular, Edamam, or custom catalog via configuration (see [ADR-20260523-02-recipe-provider-adapter.md](../design/decisions/ADR-20260523-02-recipe-provider-adapter.md)).
+- **V2 vision:** Pluggable recognition service behind the API (see [ADR-20260523-03-v2-vision-boundary.md](../design/decisions/ADR-20260523-03-v2-vision-boundary.md)).
 
 ## Success signals
 
@@ -36,9 +74,9 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 
 ## Constraints
 
-- Tech: ASP.NET Core (.NET 9), EF Core + SQLite, React + TypeScript frontend.
-- UX: Fully usable on mobile and desktop.
-- Architecture: Vertical slices + CQRS (see `.cursor/rules/architecture.mdc` and `docs/architecture/`).
+- **Tech:** ASP.NET Core (.NET 9), EF Core + SQLite, React + TypeScript frontend.
+- **UX:** Mobile-first responsive web; PWA-capable; desktop parity.
+- **Architecture:** Layered client-server; vertical slices + CQRS on the API (see [../architecture/overview.md](../architecture/overview.md) and `.cursor/rules/architecture.mdc`).
 
 ## Documentation map
 
@@ -49,6 +87,7 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 | Ideation | [ideation.md](ideation.md) |
 | Domain model | [domain-model.md](domain-model.md) |
 | User stories | [user-stories.md](user-stories.md) |
+| Architecture overview | [../architecture/overview.md](../architecture/overview.md) |
 | Design stage guide | [../design/README.md](../design/README.md) |
 | Feature specs | [../design/features/](../design/features/) |
 | ADRs | [../design/decisions/](../design/decisions/) |
@@ -74,4 +113,5 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 ## Notes
 
 - New ideas → [ideation.md](ideation.md) + `IDEATION_BACKLOG.yaml`; promoted ideas join [roadmap.md](roadmap.md) and `ROADMAP.yaml`.
+- Alternate stack notes (Firebase / Next.js) captured in ideation IDEA-010 — not the committed stack.
 - Risks: build without updated traceability or specs in `docs/design/features/`.

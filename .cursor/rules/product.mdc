@@ -5,22 +5,33 @@ alwaysApply: true
 
 # Product (FridgeWise / TrueSight)
 
-Canonical product docs: **`docs/product/`** (`@docs/product/roadmap.md`, `domain-model.md`, `user-stories.md`).
+Canonical product docs: **`docs/product/`** (`@docs/product/roadmap.md`, `domain-model.md`, `user-stories.md`, `project-brief.md`).
 
 When roadmap or scope changes, update `docs/product/` first, then `.awp-workspace/1-design/ROADMAP.yaml` and related registers.
 
 ## Problem
 
-Users don't know what's in their fridge. Perishables expire before they're used.
+Users don't remember everything in their fridge. Perishables expire before use — the cost of not knowing is high. Personal waste is the primary MVP focus; charity/food-bank use cases are ideation only (IDEA-007).
 
 ## Solution
 
 Log inventory → recipe suggestions from available ingredients → deduct inventory on recipe acceptance.
 
+## Priorities
+
+1. Manual inventory input (V1)
+2. Fridge photo recognition (V2)
+
+**Development order:** Inventory → recipe suggestions → image recognition.
+
 ## Versions
 
-- V1: Manual inventory + recipe suggestions
-- V2: Camera-based fridge scanning
+- V1: Manual inventory + recipe suggestions + deduction on accept
+- V2: Fridge photo → detect → user confirms → inventory
+
+## Delivery
+
+Mobile-first responsive web (PWA-capable). Not a native app for MVP. Target: anyone with a fridge.
 
 ## Design constraint
 
