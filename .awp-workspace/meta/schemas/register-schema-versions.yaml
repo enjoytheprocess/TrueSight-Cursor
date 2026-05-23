@@ -1,0 +1,58 @@
+# Canonical register schema versions.
+# Each entry declares the schema_version a live register must be at for the
+# current template release. When a release adds, removes, or renames fields in
+# a register, bump its version here and add a schema_change block to
+# upgrade-notes.md describing the migration.
+#
+# Sideload agents: after applying schema_change migrations, verify that each
+# register's schema_version matches the expected value below.
+
+registers:
+  - file: "1-design/FEATURE_REGISTRY.yaml"
+    schema_version: 1
+  - file: "1-design/DESIGN_STATES.yaml"
+    schema_version: 4
+  - file: "1-design/archive/DESIGN_STATES.yaml"
+    schema_version: 4
+  - file: "1-design/TASK_READINESS.yaml"
+    schema_version: 3
+  - file: "1-design/archive/TASK_READINESS.yaml"
+    schema_version: 3
+  - file: "1-design/QUALITY_REQUIREMENTS.yaml"
+    schema_version: 1
+  - file: "1-design/archive/QUALITY_REQUIREMENTS.yaml"
+    schema_version: 1
+  - file: "0-ideation/IDEATION_BACKLOG.yaml"
+    schema_version: 1
+  - file: "0-ideation/archive/IDEATION_BACKLOG.yaml"
+    schema_version: 1
+  - file: "2-build/TEMP_MEASURES.yaml"
+    schema_version: 1
+  - file: "2-build/archive/TEMP_MEASURES.yaml"
+    schema_version: 1
+  - file: "1-design/ROADMAP.yaml"
+    schema_version: 2
+  - file: "1-design/archive/ROADMAP.yaml"
+    schema_version: 2
+  - file: "2-build/WORK_QUEUE.yaml"
+    schema_version: 5
+  - file: "2-build/archive/WORK_QUEUE.yaml"
+    schema_version: 5
+  - file: "3-verify/TRACEABILITY_MATRIX.yaml"
+    schema_version: 1
+  - file: "3-verify/FEEDBACK_MATRIX.yaml"
+    schema_version: 2
+  - file: "3-verify/archive/FEEDBACK_MATRIX.yaml"
+    schema_version: 2
+  - file: "3-verify/GAPS_AND_DEVIATIONS.yaml"
+    schema_version: 1
+  - file: "3-verify/archive/GAPS_AND_DEVIATIONS.yaml"
+    schema_version: 1
+  - file: "4-sync/DESIGN_INPUTS.yaml"
+    schema_version: 1
+  - file: "4-sync/archive/DESIGN_INPUTS.yaml"
+    schema_version: 1
+  - file: "4-sync/RELEASE_QUEUE.yaml"
+    schema_version: 2
+  - file: "4-sync/archive/RELEASE_QUEUE.yaml"
+    schema_version: 2

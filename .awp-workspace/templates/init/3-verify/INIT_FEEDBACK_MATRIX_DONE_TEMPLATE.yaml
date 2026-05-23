@@ -1,0 +1,11 @@
+# Human Feedback Matrix — Done. Resolved entries moved here from FEEDBACK_MATRIX.yaml.
+# Move an entry here when its status reaches resolved_in_loop or resolved.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# type: observation | issue | pass | regression
+# severity: low | medium | high
+# status: resolved_in_loop | resolved
+
+schema_version: 2
+
+entries: []

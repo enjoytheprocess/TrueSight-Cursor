@@ -1,0 +1,8 @@
+version: 1
+components:
+  - name: __COMPONENT_NAME__
+    repo: git@example.com/org/__COMPONENT_NAME__.git
+    path: components/__COMPONENT_NAME__
+    ref: HEAD
+    type: service
+    verify_command: "npm test"

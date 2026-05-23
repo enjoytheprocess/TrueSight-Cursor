@@ -1,0 +1,23 @@
+---
+description: Build phase — backend implementation tied to WORK_QUEUE
+globs: backend/**
+alwaysApply: false
+---
+
+# AWP Build (backend)
+
+Before coding:
+
+1. Read active row in `.awp-workspace/2-build/WORK_QUEUE.yaml` — status, `spec_link`, `feature_id`
+2. Read matching `1-design/TASK_READINESS.yaml` — must be `ready_for_build`
+3. Read **design spec** at `spec_link` (path under `docs/`)
+4. Read `DESIGN_STATES.yaml` + `3-verify/TRACEABILITY_MATRIX.yaml` for the feature
+
+## Discipline
+
+- Only implement `ready_for_build` tasks
+- `todo` → `in_progress` when starting; `in_progress` → `awaiting_human_review` when done (not `accepted`/`done` without human)
+- Log gaps in `3-verify/GAPS_AND_DEVIATIONS.yaml`
+- `make awp-docs-check` before handoff
+
+Architecture: `.cursor/rules/architecture.mdc` + `.cursor/rules/backend.mdc`

@@ -1,0 +1,68 @@
+# Task Readiness Register — design admission and IRG scoring.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# readiness:    needs_detail | ready_for_build
+# advisor_status: not_required | pending | complete
+#
+# IRG dimensions (each 0-2):
+#   S: Scope and outcome clarity
+#   A: Acceptance criteria      — must be 2 for ready_for_build
+#   I: Interfaces and contracts — must be 2 for ready_for_build
+#   R: Dependencies and risks
+#   V: Verification plan
+# Total must be >= 8/10 with A=2 and I=2 to reach ready_for_build.
+
+schema_version: 1
+
+tasks:
+  - id: SETUP-001
+    feature_id: none
+    title: "Configure workspace and connect project components"
+    component: api
+    spec_link: "1-design/PROJECT_BRIEF.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 2
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    notes: "completed; workspace connected to components/api"
+
+  - id: TASK-001
+    feature_id: FEAT-001
+    title: "Implement snippet create and retrieve endpoints"
+    component: api
+    spec_link: "1-design/PROJECT_BRIEF.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 1
+      V: 2
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    notes: "storage: SQLite; POST + GET shapes confirmed; R:1 accepted — no external deps"
+
+  - id: TASK-002
+    feature_id: FEAT-002
+    title: "Implement snippet deletion endpoint"
+    component: api
+    spec_link: "1-design/PROJECT_BRIEF.md"
+    irg:
+      S: 2
+      A: 1
+      I: 1
+      R: 1
+      V: 1
+    blocking_unknowns: "soft-delete vs hard-delete not decided; cascade behaviour for shared snippets unclear"
+    readiness: needs_detail
+    advisor_track: none
+    advisor_status: not_required
+    notes: "blocked on deletion semantics — A and I cannot reach 2 until decision is made"

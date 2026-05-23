@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Workspace pre-commit hook — runs docs-check before every commit.
+# Install with: make install-hooks
+# Remove with:  rm .git/hooks/pre-commit
+
+set -euo pipefail
+
+make docs-check

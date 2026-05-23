@@ -1,0 +1,28 @@
+# Feature Traceability Matrix — spec/code/test linkage and drift state.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# drift_status: aligned | review_needed | drift_detected
+
+schema_version: 1
+
+features:
+  - id: FEAT-001
+    spec_link: "1-design/PROJECT_BRIEF.md"
+    task_ids: [TASK-001]
+    code_links: [components/api/src]
+    test_links: [components/api/tests]
+    last_synced: "2026-04-10"
+    drift_status: aligned
+    owner: Dev Team
+    notes: ""
+
+  - id: FEAT-002
+    spec_link: "1-design/PROJECT_BRIEF.md"
+    task_ids: [TASK-002]
+    code_links: []
+    test_links: []
+    last_synced: ""
+    drift_status: review_needed
+    owner: Dev Team
+    notes: "design in progress; code and test links to be added when build starts"

@@ -1,0 +1,10 @@
+# Design States — completed features.
+# Entries with design_state: complete are moved here from DESIGN_STATES.yaml during Sync
+# once all tasks for the feature are in done/WORK_QUEUE and no open DESIGN_INPUTS
+# reference this feature_id.
+# This file is historical record only — not part of the active read path.
+# Run make render to regenerate done/DESIGN_STATES.md after editing.
+
+schema_version: 4
+
+features: []

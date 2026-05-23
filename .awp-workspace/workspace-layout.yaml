@@ -1,0 +1,8 @@
+# Monorepo layout: planning registers live here; product code lives at repo root.
+version: 1
+monorepo_root: ..
+component:
+  name: backend
+  path: backend
+workspace_link_prefix: .awp-workspace
+design_docs_root: docs

@@ -1,0 +1,14 @@
+---
+description: Verify phase — evidence, feedback, gaps
+globs: .awp-workspace/3-verify/**
+alwaysApply: false
+---
+
+# AWP Verify
+
+Read: `WORK_QUEUE.yaml`, `TRACEABILITY_MATRIX.yaml`, `FEEDBACK_MATRIX.yaml`, `GAPS_AND_DEVIATIONS.yaml`, `3-verify/acceptance-gate.md`.
+
+- Confirm implementation matches **spec** at task `spec_link` under `docs/`
+- Open FM issues → stage matching `GAPS_AND_DEVIATIONS` entries
+- When ready: `awaiting_human_review` (human runs acceptance gate)
+- Resolved gaps → `3-verify/archive/`; design follow-ups → `4-sync/DESIGN_INPUTS.yaml`

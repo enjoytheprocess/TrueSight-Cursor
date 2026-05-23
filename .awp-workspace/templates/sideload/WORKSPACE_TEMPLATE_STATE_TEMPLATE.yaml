@@ -1,0 +1,37 @@
+schema_version: 1
+
+template:
+  source_name: workspace-template
+  source_repo: REPLACE_WITH_TEMPLATE_REPO_URL
+  adopted_version: REPLACE_WITH_CURRENT_VERSION
+  sideloaded_version: none
+  release_metadata_file: template-release.yaml
+  release_notes_file: upgrade-notes.md
+
+sideload:
+  inbox_dir: .workspace-template-inbox
+  last_sideloaded_on: YYYY-MM-DD
+  pending_upgrade: false
+
+adoption:
+  mode: generated_new_repo
+  last_reviewed_on: YYYY-MM-DD
+  local_agent: REPLACE_WITH_AGENT_NAME
+
+local_policy:
+  preserve_local_paths:
+    - README.md
+    - components/**
+    - workspace.manifest.yaml
+  adapt_in_place_paths:
+    - 1-design/**
+    - 2-build/**
+    - 3-verify/**
+
+known_deviations:
+  - path: none
+    reason: replace with project-specific deviation when needed
+    approved_by: unassigned
+
+notes:
+  - Replace placeholders before first use.

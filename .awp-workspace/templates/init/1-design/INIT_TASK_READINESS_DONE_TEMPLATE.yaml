@@ -1,0 +1,10 @@
+# Task Readiness — completed entries.
+# Rows are moved here from TASK_READINESS.yaml when the corresponding task is
+# moved to done/WORK_QUEUE during Sync. Preserves the design admission record
+# (IRG scores, quality_requirements, decision_links) for retrospectives.
+# This file is historical record only — not part of the active read path.
+# Run make render to regenerate done/TASK_READINESS.md after editing.
+
+schema_version: 3
+
+tasks: []

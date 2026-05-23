@@ -1,0 +1,21 @@
+# Feature Traceability Matrix — spec/code/test linkage and current alignment state.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# drift_status: aligned | review_needed | drift_detected
+#   Gate signal for the current alignment state of this feature's code against its spec.
+#   drift_detected blocks active tasks; accepted/done tasks require aligned.
+#
+#   Pairing rule (convention, not enforced by checks):
+#   - Setting drift_detected must be accompanied by a GAPS_AND_DEVIATIONS entry for this feature.
+#   - Resetting to aligned requires that entry to be resolved_in_loop or promoted_to_sync first.
+#   - Specific incidents live in GAPS_AND_DEVIATIONS.yaml; drift_status is the gate signal derived from them.
+#
+# Reference conventions:
+#   Direct-use / single-repo:  repo-relative local paths  (e.g. components/api/src)
+#   Sibling checkout:          relative paths              (e.g. ../api/src)
+#   Federated / sideloaded:    explicit external refs      (e.g. repo:api@HEAD:src)
+
+schema_version: 1
+
+features: []  # add features as traceability is established

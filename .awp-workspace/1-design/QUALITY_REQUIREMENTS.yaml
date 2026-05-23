@@ -1,0 +1,24 @@
+# Quality Requirements Register — cross-cutting and nonfunctional requirements.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# enforcement:  sustained | per_task | milestone
+#   sustained  — permanent standard; applies to all tasks implicitly; never globally satisfied;
+#                link in TASK_READINESS is not needed — agents check the full sustained list at build start
+#   per_task   — applies each time a task of the relevant type occurs;
+#                link via quality_requirements in 1-design/TASK_READINESS.yaml
+#   milestone  — must be satisfied before a specific event or deployment gate;
+#                link via quality_requirements in TASK_READINESS for the milestone task
+#
+# disposition (active file): active | deferred
+# disposition (done file):   satisfied | superseded | dropped
+#
+# Terminal dispositions move to QUALITY_REQUIREMENTS_DONE.yaml: satisfied | superseded | dropped
+# Non-terminal stay here:                                        active | deferred
+#
+# Deferred requirements stay in the active file — they still need follow-up.
+# Record the linked TMP-* or follow-up task ID in the notes field.
+
+schema_version: 1
+
+requirements: []  # add quality requirements as they are identified during Design

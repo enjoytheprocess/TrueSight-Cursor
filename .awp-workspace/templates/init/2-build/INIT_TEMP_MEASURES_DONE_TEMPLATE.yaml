@@ -1,0 +1,8 @@
+# Temporary Measures — closed entries.
+# Entries with status closed are moved here from TEMP_MEASURES.yaml during Sync.
+# This file is historical record only — not part of the active read path.
+# Run make render to regenerate done/TEMP_MEASURES.md after editing.
+
+schema_version: 1
+
+measures: []

@@ -1,0 +1,18 @@
+# Roadmap — capability grouping and sequencing.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# status: planned | active | at_risk | completed | parked
+# Every active feature task must reference a capability here.
+
+schema_version: 2
+
+capabilities:
+  - id: __CAPABILITY_ID__
+    target_window: TBD
+    objective: "Complete workspace initialization for TrueSight"
+    feature_ids: []
+    depends_on: none
+    status: active
+    owner: unassigned
+    notes: "seeded by make init; replace with your first real capability after kickoff"

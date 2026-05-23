@@ -1,0 +1,29 @@
+# Design States Register — feature design maturity.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# design_state: concept | spec_draft | spec_review | ready
+# Only "ready" features may have tasks promoted to ready_for_build.
+
+schema_version: 1
+
+features:
+  - id: FEAT-001
+    linked_idea: none
+    linked_tasks: [TASK-001]
+    components: [api]
+    design_state: ready
+    owner: Dev Team
+    blocking_questions: none
+    last_updated: "2026-04-07"
+    notes: "snippet create and retrieve; storage SQLite; POST + GET shapes confirmed"
+
+  - id: FEAT-002
+    linked_idea: none
+    linked_tasks: [TASK-002]
+    components: [api]
+    design_state: spec_draft
+    owner: Dev Team
+    blocking_questions: "soft-delete vs hard-delete not decided; cascade behaviour for shared snippets unclear"
+    last_updated: "2026-04-10"
+    notes: "deletion endpoint; blocked on semantics decision"

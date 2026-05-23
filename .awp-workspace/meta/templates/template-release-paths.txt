@@ -1,0 +1,19 @@
+# Paths included in the sideload release bundle.
+# Keep this list in sync with template-release.yaml and release packaging expectations.
+
+AGENTS.md
+Makefile
+README.md
+upgrade-notes.md
+template-release.yaml
+workspace.manifest.yaml
+0-ideation
+1-design
+2-build
+3-verify
+4-sync
+components/COMPONENT_REPOS.md
+docs
+meta
+scripts
+templates

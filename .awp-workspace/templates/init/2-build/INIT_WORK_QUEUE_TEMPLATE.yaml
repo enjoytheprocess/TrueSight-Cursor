@@ -1,0 +1,39 @@
+# Work Queue — canonical execution table for admitted tasks.
+# Edit this file directly or ask your agent to update it.
+# Field definitions: docs/core/glossary.md | Workflow rules: docs/core/workflow-reference.md
+#
+# phase:               design | build | verify | sync
+# mode:                sequential | parallel
+# status:              todo | in_progress | blocked | awaiting_human_review | accepted | done | needs_rework
+# build_dependencies:  comma-separated task IDs or "none"
+# design_dependencies: comma-separated task IDs or "none"
+# spec_link:           repo-relative path to the design spec for this task
+# advisor_status:        not_required | pending | complete
+# advisor_track:  none | security | experiment | incident | data_migration | api_contract
+# quality_requirements: list of QR IDs from QUALITY_REQUIREMENTS.yaml that apply to this task
+# decision_links:      repo-relative paths to ADRs in docs/design/decisions/ that shaped this task
+
+schema_version: 5
+
+tasks:
+  - id: __TASK_ID__
+    feature_id: none
+    title: "Configure workspace and connect project components"
+    component: __COMPONENT_NAME__
+    spec_link: "docs/product/project-brief.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links: []
+    priority: P1
+    phase: build
+    capability: none
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: todo
+    build_dependencies: none
+    design_dependencies: none
+    validation: "make docs-check"
+    notes: "seeded by make init; complete this task to finish workspace setup before starting project work"

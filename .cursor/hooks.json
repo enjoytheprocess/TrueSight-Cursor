@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": ".cursor/hooks/awp-after-edit.sh"
+      }
+    ],
+    "stop": [
+      {
+        "command": ".cursor/hooks/awp-stop.sh",
+        "loop_limit": 1
+      }
+    ]
+  }
+}

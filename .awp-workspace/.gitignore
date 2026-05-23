@@ -1,0 +1,5 @@
+# OpenAI Codex CLI bug artifact (WSL side effect)
+.codex
+
+# Template maintainer instructions (local only, not for end users)
+CLAUDE.md

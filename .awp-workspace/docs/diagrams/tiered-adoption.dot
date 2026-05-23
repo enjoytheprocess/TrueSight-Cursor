@@ -1,0 +1,78 @@
+digraph module_tree {
+    rankdir=LR
+    ranksep=1.4
+    nodesep=0.5
+    bgcolor="white"
+
+    node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, margin="0.2,0.15"]
+    edge [color="#555555", arrowsize=0.8]
+
+    // -------------------------------------------------------------------------
+    // Stage nodes
+    // -------------------------------------------------------------------------
+    node [fillcolor="#2C3E50", fontcolor="white"]
+    I  [label="Ideation\n(optional)", style="rounded,filled,dashed"]
+    D  [label="Design"]
+    B  [label="Build"]
+    V  [label="Verify"]
+    S  [label="Sync"]
+
+    // Force stages into the same (leftmost) rank column
+    { rank=same; I; D; B; V; S }
+
+    // Stage flow — constraint=false so ranking is driven by module edges, not these
+    I -> D [style=dashed, constraint=false, color="#999999"]
+    D -> B [constraint=false, color="#999999"]
+    B -> V [constraint=false, color="#999999"]
+    V -> S [constraint=false, color="#999999"]
+
+    // -------------------------------------------------------------------------
+    // Module nodes
+    // -------------------------------------------------------------------------
+    node [fillcolor="#ECF0F1", fontcolor="#2C3E50"]
+    IB       [label="Ideation backlog\n0-ideation/IDEATION_BACKLOG.yaml"]
+    DEC      [label="Decision records\n1-design/decisions/"]
+    TR       [label="Full IRG scoring\n1-design/TASK_READINESS.yaml"]
+    WQ       [label="Task queue\n2-build/WORK_QUEUE.yaml"]
+    TM       [label="Traceability matrix\n3-verify/TRACEABILITY_MATRIX.yaml"]
+    TEMP     [label="Temp measures\n2-build/TEMP_MEASURES.yaml"]
+    TDEP     [label="Task dependencies\n2-build/TASK_DEPENDENCIES.yaml"]
+    LOCKS    [label="Locks\n2-build/LOCKS.yaml"]
+    FM       [label="Feedback matrix\n3-verify/FEEDBACK_MATRIX.yaml"]
+    SIGNOFF  [label="Sign-off\n3-verify/SIGN_OFF.md"]
+    RQ       [label="Release queue\n4-sync/RELEASE_QUEUE.yaml"]
+    HANDOFFS  [label="Handoffs\n4-sync/HANDOFFS.md"]
+    CO        [label="Concurrency overlay\ndocs/optional/concurrency-overlay.md"]
+    CONTRACTS [label="Interface contracts\n1-design/CONTRACTS.yaml"]
+
+    // Modules with multiple prerequisites — distinct color to signal convergence
+    node [fillcolor="#D5E8D4", fontcolor="#2C3E50"]
+    ADVISOR  [label="Specialist advisor tracks\n3-verify/*_REVIEWS.md"]
+    QR       [label="Quality requirements\n1-design/QUALITY_REQUIREMENTS.yaml"]
+
+    // -------------------------------------------------------------------------
+    // Stage -> module edges
+    // -------------------------------------------------------------------------
+    I -> IB
+    D -> DEC
+    D -> TR
+    D -> WQ
+    D -> CONTRACTS
+    B -> TM
+    B -> TEMP
+    B -> TDEP
+    B -> LOCKS
+    V -> FM
+    V -> SIGNOFF
+    S -> RQ
+    S -> HANDOFFS
+
+    // -------------------------------------------------------------------------
+    // Cross-module prerequisites
+    // -------------------------------------------------------------------------
+    TR -> ADVISOR
+    WQ -> ADVISOR
+    TR -> QR
+    WQ -> QR
+    LOCKS -> CO
+}

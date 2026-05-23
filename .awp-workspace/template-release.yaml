@@ -1,0 +1,48 @@
+schema_version: 1
+template_name: workspace-template
+release_version: 2026.05.22
+release_date: 2026-05-22
+release_notes_file: upgrade-notes.md
+bundle_paths_file: meta/templates/template-release-paths.txt
+consumer_state_template: templates/sideload/WORKSPACE_TEMPLATE_STATE_TEMPLATE.yaml
+local_overrides_template: templates/sideload/WORKSPACE_TEMPLATE_LOCAL_OVERRIDES_TEMPLATE.md
+consumer_state_file: .workspace-template-state.yaml
+consumer_inbox_dir: .workspace-template-inbox
+
+adaptation_contract:
+  replace_reference_paths:
+    - docs/philosophy.md
+    - docs/core/**
+    - docs/optional/**
+    - docs/guides/**
+    - docs/diagrams/**
+    - docs/i18n/**
+    - meta/**
+    - templates/**
+    - scripts/check-docs-boundary.sh
+    - scripts/manifest-lib.sh
+    - scripts/manifest-lint.sh
+    - scripts/status-components.sh
+    - scripts/sync-components.sh
+    - scripts/verify-components.sh
+  adapt_in_place_paths:
+    # Files that may contain project-specific content and need careful merging.
+    # Note: .yaml register files are handled by make migrate-plan (schema migrations).
+    # Note: generated .md views (marked <!-- Generated from -->) are handled by make render.
+    # adapt-diff skips both automatically so the diff focuses on prose and scripts only.
+    - AGENTS.md
+    - Makefile
+    - 0-ideation/**
+    - 1-design/**
+    - 2-build/**
+    - 3-verify/**
+    - 4-sync/**
+  preserve_local_paths:
+    - README.md
+    - components/**
+    - workspace.manifest.yaml
+
+consumer_conventions:
+  sideload_inbox_layout: .workspace-template-inbox/<release-version>/
+  adopted_state_file: .workspace-template-state.yaml
+  optional_local_overrides_file: .workspace-template-local-overrides.md

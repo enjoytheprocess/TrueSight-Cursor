@@ -1,0 +1,24 @@
+---
+description: Design phase — docs/ specs and AWP design registers
+globs: docs/**,.awp-workspace/1-design/**,.awp-workspace/4-sync/**,.awp-workspace/0-ideation/**
+alwaysApply: false
+---
+
+# AWP Design
+
+**Authoritative design prose:** `docs/` (`@docs/product/`, `@docs/design/features/`, `@docs/design/decisions/`).
+
+**Execution state:** `.awp-workspace/1-design/`, `4-sync/DESIGN_INPUTS.yaml`.
+
+## Read order
+
+1. `4-sync/DESIGN_INPUTS.yaml` — open items first
+2. `docs/product/` (roadmap = committed; `ideation.md` = wishlist) + task `spec_link` in `docs/design/features/`
+3. `0-ideation/IDEATION_BACKLOG.yaml` when exploring or promoting ideas
+4. `TASK_READINESS.yaml`, `FEATURE_REGISTRY.yaml`, `DESIGN_STATES.yaml`, `ROADMAP.yaml`
+
+## Rules
+
+- New features: create spec in `docs/design/features/` from `docs/templates/FEATURE_SPEC_TEMPLATE.md`, then add register rows.
+- ADRs go in `docs/design/decisions/`; link via `decision_links` (not `.awp-workspace/1-design/decisions/`).
+- Do not admit to build until IRG/readiness gates pass (`.awp-workspace/docs/optional/consistency-gates.md`).

@@ -1,0 +1,39 @@
+# Stage 1 — Design
+
+Design intent, maturity tracking, and delivery sequencing. **Durable prose** lives under `docs/`; **register state** lives in [`.awp-workspace/1-design/`](../../.awp-workspace/1-design/).
+
+## Core documents (docs/)
+
+| Document | Path |
+|----------|------|
+| Project brief | [../product/project-brief.md](../product/project-brief.md) |
+| Feature specs | [features/](features/) |
+| ADRs | [decisions/](decisions/) |
+| Templates | [../templates/](../templates/) |
+
+## Core registers (AWP — edit `.yaml`)
+
+| Register | File |
+|----------|------|
+| Feature identities | `FEATURE_REGISTRY.yaml` |
+| Design maturity | `DESIGN_STATES.yaml` |
+| Build admission (IRG) | `TASK_READINESS.yaml` |
+| Capability sequencing | `ROADMAP.yaml` |
+
+Generated `.md` table views: run `make awp-render` from repo root.
+
+## Optional
+
+- `QUALITY_REQUIREMENTS.yaml` — cross-cutting NFRs when enabled
+- Specialist reviews under `.awp-workspace/3-verify/` when an advisor track applies
+
+## Workflow
+
+1. Address open items in `.awp-workspace/4-sync/DESIGN_INPUTS.yaml`.
+2. Update specs in `docs/design/features/` and product docs as needed.
+3. Add or update rows in `FEATURE_REGISTRY`, `DESIGN_STATES`, `TASK_READINESS`, `ROADMAP`.
+4. Admit build tasks only when readiness gates pass (see `.awp-workspace/docs/optional/consistency-gates.md`).
+
+## ADRs
+
+Create ADRs in [decisions/](decisions/) from [../templates/ADR_TEMPLATE.md](../templates/ADR_TEMPLATE.md). Link via `decision_links` in registers (repo-relative path under `docs/design/decisions/`).
