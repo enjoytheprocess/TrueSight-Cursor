@@ -28,3 +28,6 @@ Instructions for AI agents working in this component repository.
 - If contracts are ambiguous, stop and move task back to `design`.
 - If design changes mid-build, log it and re-run readiness gate.
 - If timing changes, update the shared roadmap in the same change set.
+
+## Model tier
+Routine slice work: **medium**. New API boundaries, auth, or cross-slice refactors: **high**. See repo root `AGENTS.md` § Token and model tier.

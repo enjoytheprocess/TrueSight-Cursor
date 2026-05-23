@@ -8,7 +8,7 @@ alwaysApply: true
 - **Design docs (human-accessible):** `docs/` — use `@docs/` in prompts. Specs, ADRs, product vision.
 - **Execution registers:** `.awp-workspace/*.yaml` — queue, readiness, traceability. Edit YAML only; hooks run `make awp-render`.
 
-Full contract: `.awp-workspace/AGENTS.md`. Phase rules: `awp-design.mdc`, `awp-build.mdc`, `awp-verify.mdc`.
+Full contract: `.awp-workspace/AGENTS.md`. Phase rules: `awp-design.mdc`, `awp-build.mdc`, `awp-verify.mdc`. Token/model tier: repo root `AGENTS.md`.
 
 ## Session start
 
