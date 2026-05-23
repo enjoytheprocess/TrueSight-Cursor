@@ -81,3 +81,5 @@ Image understanding is behind a **VisionService** boundary (OpenAI Vision, Gemin
 ## Code organization (API)
 
 Vertical slices + CQRS per [`.cursor/rules/architecture.mdc`](../../.cursor/rules/architecture.mdc): Inventory, Recipes, Recognition (V2), Profile (future), Sessions.
+
+Full slice map, folder conventions, and how to add a slice: [vertical-slices.md](vertical-slices.md).

@@ -148,14 +148,45 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 ### IDEA-010: Firebase-first stack (alternative)
 
 **Status:** parked  
-**Summary:** Alternate architecture using Next.js, Firebase Auth, Firestore, Storage, Cloud Functions, and Vercel/Firebase App Hosting — captured for reference, not the committed stack.
+**Summary:** Alternate “build fast” stack from early product exploration: **React Native + Expo** (or web) on the client, **Firebase Auth + Firestore + Storage + Cloud Functions** on the backend, **Spoonacular/Edamam** for recipes, **OpenAI/Gemini Vision** for V2 fridge photos. **Not** the committed stack — see [ADR-20260523-01](../design/decisions/ADR-20260523-01-delivery-model-pwa-web.md) (mobile-first **web** + ASP.NET Core API).
+
+**Reference layers (parked)**
+
+| Layer | Alternate | Why it was attractive |
+|-------|-----------|------------------------|
+| Mobile | React Native + Expo + TypeScript | Fast iOS/Android, strong camera story |
+| Backend | Firebase Auth, Firestore, Storage, Cloud Functions | MVP speed, less server ops |
+| Recipes | Spoonacular or Edamam | Ingredient ontology, diets, nutrition |
+| V2 vision | OpenAI Vision or Gemini Vision | Messy fridge photos vs label-only OCR |
+| Helper OCR | Google Cloud Vision | Labels/OCR only — not primary intelligence |
+
+**Reference V1 flow**
+
+1. User adds ingredients manually → Firestore inventory  
+2. Cloud Function calls recipe API → rank by match + expiry  
+3. “Use recipe” subtracts ingredients  
+
+**Reference V2 flow**
+
+1. Photo → Firebase Storage → Cloud Function → vision model → candidate items  
+2. User confirms (confidence per line) → inventory update → better suggestions  
+
+**Reference Firestore shape (conceptual — maps to [domain-model.md](domain-model.md))**
+
+- `users` — profile, dietary prefs, allergies  
+- `inventoryItems` — quantity, unit, expiry, `source: manual | photo`, optional `confidenceScore`  
+- `recipesSaved` — title, ingredients, missing/used, image, provider id  
+- `fridgePhotos` — image URL, status, `detectedItems`  
+
+Committed persistence is **EF Core + SQLite** on the API; entity names differ but the **domain concepts** align.
 
 **Discussion**
 
-- Committed stack remains ASP.NET Core + SQLite + React (see project brief).
-- Useful if team revisits hosting or BaaS trade-offs.
+- Committed stack: ASP.NET Core + EF Core + SQLite + React (PWA-capable web). See [architecture overview](../architecture/overview.md).
+- Biggest product risk called out in exploration: **users maintaining inventory** — V1 must make manual input very fast; V2 reduces friction with photo assist + confirmation.
+- Revisit only if team explicitly reopens hosting/BaaS trade-offs.
 
-**Outcome:** Parked — documented only; no ADR promotion.
+**Outcome:** Parked — documented only; no ADR promotion. Register: `.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml`.
 
 ---
 

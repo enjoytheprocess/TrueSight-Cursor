@@ -8,6 +8,7 @@ Design intent, maturity tracking, and delivery sequencing. **Durable prose** liv
 |----------|------|
 | Project brief | [../product/project-brief.md](../product/project-brief.md) |
 | Feature specs | [features/](features/) |
+| UI principles | [ui-principles.md](ui-principles.md) |
 | ADRs | [decisions/](decisions/) |
 | Templates | [../templates/](../templates/) |
 

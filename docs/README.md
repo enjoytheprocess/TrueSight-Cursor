@@ -9,9 +9,9 @@ AWP **execution registers** (queue, readiness, traceability) live in [`.awp-work
 | Path | Purpose |
 |------|---------|
 | [`product/`](product/) | [Project brief](product/project-brief.md), roadmap, ideation, domain model, stories |
-| [`architecture/`](architecture/) | [System overview](architecture/overview.md) — diagrams, flows, integration boundaries |
+| [`architecture/`](architecture/) | [System overview](architecture/overview.md), [vertical slices](architecture/vertical-slices.md) |
 | [`ideation/`](ideation/) | Stage 0 guide (workflow before design commitment) |
-| [`design/`](design/) | Stage 1 guide, [features/](design/features/), [decisions/](design/decisions/) |
+| [`design/`](design/) | Stage 1 guide, [features/](design/features/), [decisions/](design/decisions/), [UI principles](design/ui-principles.md) |
 | [`templates/`](templates/) | Scaffolds (brief, idea, feature spec, ADR) |
 | [`.awp-workspace/`](../.awp-workspace/) | **Registers only** (YAML) — stages 0–4 execution state |
 

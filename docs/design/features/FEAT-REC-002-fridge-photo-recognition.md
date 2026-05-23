@@ -34,6 +34,8 @@ As a user, I want to photograph my fridge and review suggested items before they
 3. User reviews in UI; client sends confirmation payload.
 4. API materializes inventory changes transactionally.
 
+**Confirmation UX (required):** Present each candidate with confidence (high / medium / low). User toggles lines on/off before save — e.g. accept eggs and milk, reject low-confidence lettuce. See [UI principles](../ui-principles.md).
+
 Privacy: document retention and deletion policy for images (PII/location in EXIF — strip if needed).
 
 ## API / contracts

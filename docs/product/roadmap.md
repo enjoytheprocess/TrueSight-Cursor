@@ -6,6 +6,7 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 
 | # | Capability | Notes |
 |---|------------|--------|
+| 0 | Identity (sign-up / login) | Auth for per-user inventory (mechanism TBD) |
 | 1 | Inventory management (manual input) | CRUD, quantity, expiry; list/view |
 | 2 | Recipe suggestions from current inventory | Match available ingredients via recipe provider adapter |
 | 3 | Inventory deduction on recipe acceptance | `RecipeSession` flow |

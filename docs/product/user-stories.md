@@ -10,6 +10,10 @@ Stories tied to the [committed roadmap](roadmap.md). Exploratory stories live un
 
 ## Phase 1 — Core (V1)
 
+### Identity
+
+- As a user, I can sign up and sign in so my inventory is private to me
+
 ### Inventory
 
 - As a user, I can add an ingredient with quantity and expiry date

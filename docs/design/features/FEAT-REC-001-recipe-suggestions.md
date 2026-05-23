@@ -32,6 +32,22 @@ As a user, I want to see recipes I can make with what I have now, so that I use 
 - Map catalog ingredient names/ids to provider ingredient ids as needed (fuzzy matching or manual mapping — TBD).
 - Handle provider errors with degraded UX (empty list + error code vs partial results — decide at build).
 
+### MVP ranking (simple score, not ML)
+
+Rank suggestions with a transparent heuristic so “use it before it spoils” works without a fancy recommender:
+
+| Signal | Effect on score |
+|--------|-----------------|
+| More ingredients already owned | Higher |
+| Fewer missing ingredients | Higher |
+| Uses items expiring soonest | Higher |
+| Matches diet/allergy preferences | Higher *(when profile ships — until then, ignore or provider-only filters)* |
+| Shorter cooking time | Higher |
+
+**Example:** Stock: chicken (expires tomorrow), spinach (2 days), eggs, cheese → prefer chicken–spinach dishes over recipes that ignore soon-to-expire items.
+
+Weights and tie-breakers are implementation details; document chosen weights in the API or ops notes when built.
+
 ## API / contracts
 
 | Method | Path | Notes |

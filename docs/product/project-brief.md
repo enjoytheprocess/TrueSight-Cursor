@@ -57,7 +57,7 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 
 ## Scope
 
-- **In scope (V1):** Manual inventory CRUD, recipe suggestions from inventory, inventory deduction on recipe acceptance.
+- **In scope (V1):** User sign-up/login (mechanism TBD at build), manual inventory CRUD, recipe suggestions from inventory, inventory deduction on recipe acceptance.
 - **In scope (V2):** Fridge photo → detection → user confirmation → inventory (see [roadmap.md](roadmap.md)).
 - **Out of scope for MVP:** Native apps; charity/org-specific product flows (ideation only); receipt scanning (ideation IDEA-008).
 - **Non-goals:** Duplicating register state in `docs/`; scheduling wishlist items without promoting them from [ideation.md](ideation.md).
@@ -87,7 +87,10 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 | Ideation | [ideation.md](ideation.md) |
 | Domain model | [domain-model.md](domain-model.md) |
 | User stories | [user-stories.md](user-stories.md) |
+| Use cases & scenarios | [use-cases.md](use-cases.md) |
 | Architecture overview | [../architecture/overview.md](../architecture/overview.md) |
+| Vertical slices | [../architecture/vertical-slices.md](../architecture/vertical-slices.md) |
+| UI principles | [../design/ui-principles.md](../design/ui-principles.md) |
 | Design stage guide | [../design/README.md](../design/README.md) |
 | Feature specs | [../design/features/](../design/features/) |
 | ADRs | [../design/decisions/](../design/decisions/) |
