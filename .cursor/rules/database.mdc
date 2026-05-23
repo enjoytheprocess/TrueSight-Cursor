@@ -23,3 +23,18 @@
 
 - Explicitly configure relationships.
 - Avoid cascade delete unless required.
+
+# Database Context
+
+## Key Tables / Collections
+- `ingredient_catalog` — global ingredient reference
+- `inventory_items` — per-user fridge contents (qty, expiry)
+- `recipes` — recipe master list
+- `recipe_ingredients` — recipe ↔ ingredient with quantities
+- `user_profiles` — preferences, restrictions, equipment
+- `recipe_sessions` — accepted recipes, triggers deduction
+
+## Business Rules
+- Inventory quantity can never go below 0 after deduction
+- Expired items are flagged but not auto-removed
+- Recipes can be suggested with partial ingredient matches (configurable threshold)
