@@ -1,0 +1,19 @@
+# Temporary Measures Register — short-term exceptions or tactical decisions that must be removed later.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# status (active file): open | removal_in_progress
+# status (done file):   closed
+#
+# Rules:
+#   - Every temporary measure must have an owner.
+#   - Every temporary measure must define an exit trigger.
+#   - Every temporary measure must define a removal target date or task.
+#   - Close the measure in the same sync cycle where removal lands.
+#   - When status reaches closed, move the entry to 2-build/archive/TEMP_MEASURES.yaml.
+#
+# linked_tasks: list of task IDs that created, depend on, or will remove this measure
+
+schema_version: 1
+
+measures: []  # add entries only when a real temporary measure needs an owner and removal target

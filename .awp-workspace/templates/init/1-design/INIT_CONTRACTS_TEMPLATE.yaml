@@ -1,0 +1,26 @@
+# Interface Contracts — shared boundaries agreed at a design merge.
+# Create this file as 1-design/CONTRACTS.yaml during your first design merge session.
+# Do not create it speculatively — only instantiate when two or more workstreams
+# need to agree on a shared interface.
+# Workflow rules: docs/optional/contracts.md
+#
+# status: draft | agreed | disputed
+# party: who produces or consumes this contract (person name or component name)
+
+schema_version: 1
+
+contracts: []
+# Example entry:
+# - id: CONTRACT-001
+#   description: "Auth token format between auth service and API layer"
+#   status: agreed
+#   agreed_date: "2026-05-22"
+#   producers:
+#     - alice
+#   consumers:
+#     - bob
+#     - carol
+#   details:
+#     method: "JWT in Authorization header (Bearer)"
+#     shape: "{ sub: user_id, exp: unix_timestamp }"
+#   notes: ""

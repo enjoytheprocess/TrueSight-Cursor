@@ -1,0 +1,14 @@
+# Copy this entry into IDEATION_BACKLOG.yaml under the ideas list.
+
+- id: IDEA-000
+  title: "Idea title"
+  status: open
+  date: "YYYY-MM-DD"
+  components: []
+  summary: "One paragraph describing the idea and the problem it addresses."
+  discussion: |
+    - (record key points, questions, and alternatives as the conversation develops)
+  outcome:
+    decision: none
+    reason: ""
+    promotion_target: ""

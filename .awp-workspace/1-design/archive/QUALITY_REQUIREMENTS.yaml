@@ -1,0 +1,8 @@
+# Quality Requirements — resolved entries.
+# Terminal dispositions (satisfied | superseded | dropped) are moved here from QUALITY_REQUIREMENTS.yaml.
+# This file is historical record only — not part of the active read path.
+# Run make render to regenerate QUALITY_REQUIREMENTS_DONE.md after editing.
+
+schema_version: 1
+
+requirements: []

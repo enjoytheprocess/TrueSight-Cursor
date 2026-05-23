@@ -10,4 +10,6 @@ This repository contains a full-stack application using:
 
 Detailed implementation rules are located in `.cursor/rules`.
 
+AI workspace protocol (AWP) planning registers live in `.awp-workspace/`. See root `AGENTS.md` and `.awp-workspace/AGENTS.md` for workflow read order.
+
 Always follow repository conventions before generating code.

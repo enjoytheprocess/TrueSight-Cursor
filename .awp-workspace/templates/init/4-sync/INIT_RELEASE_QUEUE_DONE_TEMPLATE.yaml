@@ -1,0 +1,10 @@
+# Release Queue — Done. Released and abandoned entries moved here from RELEASE_QUEUE.yaml.
+# Move an entry here when its release_state reaches released or abandoned.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# release_type: feature | bugfix | performance | architecture | mixed
+# release_state: released | abandoned
+
+schema_version: 2
+
+entries: []

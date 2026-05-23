@@ -1,0 +1,18 @@
+# Ideation Backlog — shared discussion space before work is committed to design.
+# Edit this file directly or ask your agent to update it.
+# The agent records and organizes discussion notes; humans drive the conversations.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# status (active file): open
+# status (done file):   promoted | parked | dropped
+#
+# When an idea reaches a terminal status, move it to 0-ideation/archive/IDEATION_BACKLOG.yaml.
+#
+# outcome fields (set when status changes from open):
+#   decision:          promoted | parked | dropped
+#   reason:            why this decision was made
+#   promotion_target:  feature ID or design area (promoted entries only)
+
+schema_version: 1
+
+ideas: []  # add entries using 0-ideation/templates/IDEA_ENTRY_TEMPLATE.yaml as the scaffold

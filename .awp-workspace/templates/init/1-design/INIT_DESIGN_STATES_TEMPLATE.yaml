@@ -1,0 +1,31 @@
+# Design States Register — active design triage for features in progress.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# This file tracks design maturity for features currently being designed or built.
+# Feature identity lives in 1-design/FEATURE_REGISTRY.yaml (permanent record).
+# title is denormalized here for readability — keep it in sync with FEATURE_REGISTRY.
+# Add a row here when a feature enters active design; move to
+# 1-design/archive/DESIGN_STATES.yaml during Sync once all feature tasks are in done/WORK_QUEUE
+# and no open DESIGN_INPUTS reference this feature_id.
+#
+# feature_id:   references an id in 1-design/FEATURE_REGISTRY.yaml
+# title:        short human-readable name (denormalized from FEATURE_REGISTRY)
+# design_state: concept | spec_draft | spec_review | ready | needs_redesign | complete
+#   concept       — idea accepted, design not yet started
+#   spec_draft    — design in progress
+#   spec_review   — design written, under review
+#   ready         — design approved; tasks may be admitted to build
+#   needs_redesign — feature has an open entry in 4-sync/DESIGN_INPUTS; address before next build admission.
+#                    Normally set by Sync after triage. Exception: set directly from Build when using the
+#                    fail-quickly path (gaps make continuing dangerous). See docs/core/workflow-reference.md.
+#   complete      — all tasks done, no open DESIGN_INPUTS; move this row to 1-design/archive/DESIGN_STATES.yaml
+#
+# Only "ready" features may have tasks promoted to ready_for_build.
+#
+# linked_idea:    ID of the ideation entry linked to this feature, or "none"
+# decision_links: repo-relative paths to decision docs in 1-design/decisions/ that shaped this feature
+
+schema_version: 4
+
+features: []  # add your first feature when design begins

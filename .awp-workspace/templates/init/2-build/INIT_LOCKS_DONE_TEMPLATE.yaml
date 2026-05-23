@@ -1,0 +1,7 @@
+# Locks — Done. Released locks moved here from LOCKS.yaml.
+# Move an entry here when its status reaches released.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# status: released
+
+locks: []

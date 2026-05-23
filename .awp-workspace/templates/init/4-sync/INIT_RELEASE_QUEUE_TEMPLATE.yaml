@@ -1,0 +1,28 @@
+# Release Queue — deployment release candidates approved for shipping.
+# Written by Sync when completed build work is ready for deployment.
+# Read by workspace-deployment make populate to scope DEPLOYMENT_BRIEF.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# release_type: feature | bugfix | performance | architecture | mixed
+#
+# release_state:
+#   candidate  — approved for deployment; workspace-deployment reads this
+#   released   — deployment has completed; update after deploy is confirmed
+#   abandoned  — candidate withdrawn before deployment
+
+schema_version: 2
+
+entries: []  # add an entry at the end of Sync when work is approved for release
+# Example entry:
+# - id: RC-001
+#   release_version: "v1.0.0"
+#   release_type: feature
+#   release_state: candidate
+#   task_ids: [TASK-001, TASK-002]
+#   capability_ids: [CAP-001]      # empty list [] for non-feature releases (bugfix, perf, arch)
+#   components:
+#     - name: my-service           # matches component name in workspace.manifest.yaml
+#       version: "v1.0.0"          # version label or git tag for this component
+#   created_date: "2026-04-15"
+#   target_date: "2026-04-22"
+#   notes: ""

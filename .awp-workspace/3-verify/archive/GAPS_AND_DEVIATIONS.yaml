@@ -1,0 +1,11 @@
+# Gaps and Deviations — Done. Promoted and resolved entries moved here from GAPS_AND_DEVIATIONS.yaml.
+# Move an entry here when its status reaches promoted_to_sync or resolved_in_loop.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# type: gap | deviation
+# source: agent | human_feedback
+# status: promoted_to_sync | resolved_in_loop
+
+schema_version: 1
+
+entries: []

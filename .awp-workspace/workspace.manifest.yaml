@@ -1,0 +1,25 @@
+# Federated planning-only example manifest.
+# These components are not checked out by default in this template repo.
+# Use `make sync` only after replacing these placeholders with real repositories.
+version: 1
+components:
+  - name: example-api
+    repo: git@example.com/org/example-api.git
+    path: components/example-api
+    ref: 1111111111111111111111111111111111111111
+    type: service
+    verify_command: "npm test"
+
+  - name: example-web
+    repo: git@example.com/org/example-web.git
+    path: components/example-web
+    ref: 2222222222222222222222222222222222222222
+    type: web
+    verify_command: "npm test"
+
+  - name: example-planning-docs
+    repo: git@example.com/org/example-planning-docs.git
+    path: components/example-planning-docs
+    ref: 3333333333333333333333333333333333333333
+    type: docs
+    verify_command: "skip: docs-only"

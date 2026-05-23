@@ -1,0 +1,9 @@
+# Locks — parallel work coordination.
+# Edit this file directly or ask your agent to update it.
+# Only required when more than one agent is editing concurrently.
+#
+# status: active | released
+# Claim a lock before editing shared files. Release immediately after merge/handoff.
+# Record the matching lock id in WORK_QUEUE.yaml while the task is in_progress.
+
+locks: []

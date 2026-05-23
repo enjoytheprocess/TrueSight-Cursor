@@ -1,0 +1,33 @@
+# Task Readiness Register — IRG scoring and build admission.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+#
+# readiness:            needs_detail | ready_for_build
+# advisor_status:         not_required | pending | complete
+#   approved = agent completed the specialist analysis and recorded it in the backing file under 3-verify/
+# irg:                  S/A/I/R/V each 0-2; total >= 8 with A=2 and I=2 to reach ready_for_build
+# quality_requirements: list of QR IDs from QUALITY_REQUIREMENTS.yaml with enforcement per_task or milestone
+#                       that apply to this specific task; sustained QRs apply implicitly to all tasks
+# decision_links:       repo-relative paths to decision docs in 1-design/decisions/ that shaped this task
+
+schema_version: 3
+
+tasks:
+  - id: __TASK_ID__
+    feature_id: none
+    title: "Configure workspace and connect project components"
+    component: __COMPONENT_NAME__
+    spec_link: "1-design/PROJECT_BRIEF.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 1
+      V: 2
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links: []
+    notes: "seeded by make init; mark done when setup is complete — keep this row as the setup record"

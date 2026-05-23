@@ -1,0 +1,8 @@
+# Ideation Backlog — resolved entries.
+# Ideas with terminal status (promoted | parked | dropped) are moved here from IDEATION_BACKLOG.yaml.
+# This file is historical record only — not part of the active read path.
+# Run make render to regenerate done/IDEATION_BACKLOG.md after editing.
+
+schema_version: 1
+
+ideas: []

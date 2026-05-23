@@ -1,0 +1,18 @@
+# Work Queue — Done. Completed tasks moved here from WORK_QUEUE.yaml.
+# Move an entry here when its status reaches done.
+# Field definitions: docs/core/glossary.md | Workflow rules: docs/core/workflow-reference.md
+#
+# phase:               design | build | verify | sync
+# mode:                sequential | parallel
+# status:              done
+# spec_link:           repo-relative path to the design spec for this task
+# advisor_status:        not_required | pending | complete
+# advisor_track:  none | security | experiment | incident | data_migration | api_contract
+# quality_requirements: list of QR IDs from QUALITY_REQUIREMENTS.yaml that apply to this task
+# decision_links:      repo-relative paths to decision docs in 1-design/decisions/ that shaped this task
+# build_dependencies:  comma-separated task IDs or "none"
+# design_dependencies: comma-separated task IDs or "none"
+
+schema_version: 5
+
+tasks: []

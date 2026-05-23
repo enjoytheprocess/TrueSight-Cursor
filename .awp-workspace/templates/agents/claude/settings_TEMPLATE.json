@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "make render 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
