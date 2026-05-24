@@ -15,3 +15,7 @@ make awp-install-hooks
 Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`docs/README.md`](docs/README.md), [`.awp-workspace/AGENTS.md`](.awp-workspace/AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md).
 
 **Cursor:** [`.cursor/rules/awp.mdc`](.cursor/rules/awp.mdc), phase rules (`awp-design`, `awp-build`, `awp-verify`), [hooks](.cursor/hooks.json).
+
+# Running App
+
+dotnet run --project ./backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http

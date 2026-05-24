@@ -11,14 +11,14 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `spec_draft` | unassigned | 2026-05-23 |
+| `ready` | unassigned | 2026-05-23 |
 
-**Linked idea:** none · **Tasks:**   
+**Linked idea:** none · **Tasks:** BUILD-INV-001  
 **Spec:** `docs/design/features/FEAT-INV-001-manual-inventory.md`  
 **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
 **Blocking questions:** none
 
-> V1 — CRUD inventory
+> V1 — CRUD inventory implemented and awaiting human review
 
 ---
 
@@ -26,14 +26,14 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `spec_draft` | unassigned | 2026-05-23 |
+| `ready` | unassigned | 2026-05-23 |
 
-**Linked idea:** none · **Tasks:**   
+**Linked idea:** none · **Tasks:** BUILD-REC-001  
 **Spec:** `docs/design/features/FEAT-REC-001-recipe-suggestions.md`  
 **Decisions:** docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md  
 **Blocking questions:** none
 
-> V1 — RecipeProvider adapter
+> V1 — static RecipeProvider adapter implemented and awaiting human review
 
 ---
 
@@ -41,14 +41,14 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `spec_draft` | unassigned | 2026-05-23 |
+| `ready` | unassigned | 2026-05-23 |
 
-**Linked idea:** none · **Tasks:**   
+**Linked idea:** none · **Tasks:** BUILD-SES-001  
 **Spec:** `docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md`  
 **Decisions:**   
 **Blocking questions:** none
 
-> V1 — RecipeSession + deduction
+> V1 — RecipeSession + deduction implemented and awaiting human review
 
 ---
 
