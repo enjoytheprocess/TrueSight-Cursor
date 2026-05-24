@@ -31,25 +31,38 @@ Seeded by `make init`.
 
 - **.NET 9 SDK** (project targets `net9.0`; see repo root `global.json`)
 
-On WSL or Linux without `dotnet` on PATH:
+**Linux / WSL** without `dotnet` on PATH:
 
 ```bash
 make setup-dotnet   # installs SDK to ~/.dotnet and prints PATH instructions
 ```
 
-Or from repo root after adding `export PATH="$HOME/.dotnet:$PATH"` to your shell profile.
+Or add `export PATH="$HOME/.dotnet:$PATH"` to your shell profile.
+
+**Windows:** install the SDK from [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/9.0) or run `pwsh scripts/setup-dotnet.ps1` to verify it is on PATH.
 
 ## Setup
+
 ```bash
-make setup-dotnet    # once per machine
 dotnet restore backend/MyApp.sln
 cd frontend && npm install
 ```
 
+On WSL/Linux, run `make setup-dotnet` once if `dotnet` is not installed.
+
 ## Run
+
+**Linux / WSL:**
+
 ```bash
 make backend-run
-# or: dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
+```
+
+**Windows (PowerShell):**
+
+```powershell
+pwsh scripts/backend-stop.ps1   # optional — clears port 5158
+dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
 ```
 
 API listens on **http://localhost:5158** (matches Vite proxy in `frontend/vite.config.ts`).
@@ -57,8 +70,11 @@ API listens on **http://localhost:5158** (matches Vite proxy in `frontend/vite.c
 If you see **address already in use**, a previous dev server is still running:
 
 ```bash
-make backend-stop
-make backend-run
+make backend-stop          # Linux / WSL
+```
+
+```powershell
+pwsh scripts/backend-stop.ps1   # Windows
 ```
 
 In another terminal:
@@ -68,10 +84,22 @@ cd frontend && npm run dev
 ```
 
 ## Verify
+
 ```bash
-make backend-build
+dotnet build backend/MyApp.sln
 cd frontend && npm run build
+```
+
+Health check (Linux / WSL / macOS):
+
+```bash
 curl -s http://localhost:5158/api/health
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-RestMethod http://localhost:5158/api/health
 ```
 
 ## Required environment variables

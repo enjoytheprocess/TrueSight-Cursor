@@ -44,9 +44,9 @@ awp-install-tools:
 
 awp-install-hooks:
 	@if [ -f .git/hooks/pre-commit ] && ! grep -q 'awp-pre-commit' .git/hooks/pre-commit 2>/dev/null; then \
-		echo "ERROR: .git/hooks/pre-commit exists. Merge scripts/awp-pre-commit manually or remove the hook first." >&2; \
+		echo "ERROR: .git/hooks/pre-commit exists. Merge scripts/git-pre-commit-hook manually or remove the hook first." >&2; \
 		exit 1; \
 	fi
-	cp scripts/awp-pre-commit .git/hooks/pre-commit
+	cp scripts/git-pre-commit-hook .git/hooks/pre-commit
 	chmod +x .git/hooks/pre-commit
 	@echo "Installed .git/hooks/pre-commit (AWP render + docs-check)."
