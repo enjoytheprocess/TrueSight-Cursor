@@ -190,6 +190,42 @@ h1 {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
+.quantity-field > span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #39453d;
+}
+
+.quantity-stepper {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  gap: 6px;
+  align-items: center;
+}
+
+.quantity-stepper input {
+  text-align: center;
+}
+
+.stepper-button {
+  display: grid;
+  place-items: center;
+  height: 42px;
+  border: 1px solid #cfd7c5;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #162016;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stepper-button:disabled {
+  cursor: not-allowed;
+  color: #9aa396;
+  background: #f3f5ef;
+}
+
 .item-form input,
 .item-form select {
   min-width: 0;
@@ -326,8 +362,12 @@ h1 {
   width: fit-content;
 }
 
-.servings-label input {
-  width: 88px;
+.servings-label .quantity-stepper {
+  width: auto;
+}
+
+.servings-label .quantity-stepper input {
+  width: 56px;
   flex: 0 0 auto;
 }
 

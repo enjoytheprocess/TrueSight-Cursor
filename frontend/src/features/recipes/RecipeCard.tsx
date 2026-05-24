@@ -22,6 +22,13 @@ export function RecipeCard({ recipe, isAccepting, onAccept }: RecipeCardProps) {
     setSelectedServings(Math.max(min, Math.min(max, stepped)));
   };
 
+  const minServings = recipe.servings;
+  const maxServings = recipe.servings * 12;
+
+  const adjustServings = (delta: number) => {
+    changeServings(selectedServings + delta * recipe.servings);
+  };
+
   return (
     <article className="recipe-card">
       <div className="recipe-card-header">
@@ -38,18 +45,39 @@ export function RecipeCard({ recipe, isAccepting, onAccept }: RecipeCardProps) {
         </span>
         <span>{recipe.cuisineType}</span>
       </div>
-      <label className="field-label servings-label" htmlFor={`servings-${recipe.id}`}>
-        Servings
-        <input
-          id={`servings-${recipe.id}`}
-          type="number"
-          min={recipe.servings}
-          max={recipe.servings * 12}
-          step={recipe.servings}
-          value={selectedServings}
-          onChange={(event) => changeServings(Number(event.target.value))}
-        />
-      </label>
+      <div className="field-label servings-label">
+        <span>Servings</span>
+        <div className="quantity-stepper">
+          <button
+            type="button"
+            className="stepper-button"
+            aria-label="Decrease servings"
+            disabled={selectedServings <= minServings}
+            onClick={() => adjustServings(-1)}
+          >
+            −
+          </button>
+          <input
+            id={`servings-${recipe.id}`}
+            aria-label="Servings"
+            type="number"
+            min={minServings}
+            max={maxServings}
+            step={recipe.servings}
+            value={selectedServings}
+            onChange={(event) => changeServings(Number(event.target.value))}
+          />
+          <button
+            type="button"
+            className="stepper-button"
+            aria-label="Increase servings"
+            disabled={selectedServings >= maxServings}
+            onClick={() => adjustServings(1)}
+          >
+            +
+          </button>
+        </div>
+      </div>
       <div className="ingredient-table-wrap">
         <table className="ingredient-table">
           <thead>

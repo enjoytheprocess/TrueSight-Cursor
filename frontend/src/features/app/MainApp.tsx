@@ -60,6 +60,13 @@ export function MainApp() {
     [inventory.data],
   );
 
+  const adjustQuantity = (delta: number) => {
+    setForm((current) => ({
+      ...current,
+      quantity: Math.max(0, Math.round(current.quantity) + delta),
+    }));
+  };
+
   const submitInventory = (event: FormEvent) => {
     event.preventDefault();
     createItem.mutate({
@@ -103,24 +110,44 @@ export function MainApp() {
               />
             </label>
             <div className="field-row quantity-unit-row">
-              <label className="field-label">
-                Quantity
-                <input
-                  type="number"
-                  min="0"
-                  step="1"
-                  inputMode="numeric"
-                  placeholder="1"
-                  value={form.quantity}
-                  onChange={(event) =>
-                    setForm((current) => ({
-                      ...current,
-                      quantity: Math.max(0, Math.round(Number(event.target.value) || 0)),
-                    }))
-                  }
-                  required
-                />
-              </label>
+              <div className="field-label quantity-field">
+                <span>Quantity</span>
+                <div className="quantity-stepper">
+                  <button
+                    type="button"
+                    className="stepper-button"
+                    aria-label="Decrease quantity"
+                    disabled={form.quantity <= 0}
+                    onClick={() => adjustQuantity(-1)}
+                  >
+                    −
+                  </button>
+                  <input
+                    id="inventory-quantity"
+                    aria-label="Quantity"
+                    type="number"
+                    min="0"
+                    step="1"
+                    placeholder="1"
+                    value={form.quantity}
+                    onChange={(event) =>
+                      setForm((current) => ({
+                        ...current,
+                        quantity: Math.max(0, Math.round(Number(event.target.value) || 0)),
+                      }))
+                    }
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="stepper-button"
+                    aria-label="Increase quantity"
+                    onClick={() => adjustQuantity(1)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
               <label className="field-label">
                 Unit
                 <select
