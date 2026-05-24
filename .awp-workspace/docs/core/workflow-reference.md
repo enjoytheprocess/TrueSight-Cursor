@@ -226,7 +226,7 @@ flowchart LR
 - Sync is not optional. Even when all GAPS_AND_DEVIATIONS entries were resolved in-loop, triage must complete.
 
 ## Dependency semantics
-- `Build Dependencies`: downstream work runs only after every listed upstream task is **`accepted`** or **`done`** in `WORK_QUEUE.yaml` (human acceptance gate passed). Implementation may exist earlier on the branch; the queue gate is intentional. See [`docs/design/build-agent-loop.md`](../../../docs/design/build-agent-loop.md).
+- `Build Dependencies`: **implementation** — downstream build may start when upstream is **`awaiting_human_review`**, **`accepted`**, or **`done`** (upstream slice complete). `Design Dependencies`: design refresh required before build. See [`docs/design/build-agent-loop.md`](../../../docs/design/build-agent-loop.md).
 - `Design Dependencies`: downstream work must wait for verified upstream learning and a later design refresh.
 
 Use `2-build/TASK_DEPENDENCIES.md` only when dependency management needs more structure than the queue alone.

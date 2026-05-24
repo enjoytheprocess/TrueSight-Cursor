@@ -67,6 +67,43 @@ public sealed class InventoryEndpointsTests(TrueSightWebApplicationFactory facto
     }
 
     [Fact]
+    public async Task InventoryItem_is_isolated_per_user()
+    {
+        var userA = factory.CreateClient().ForUser($"inventory-user-a-{Guid.NewGuid():N}");
+        var userB = factory.CreateClient().ForUser($"inventory-user-b-{Guid.NewGuid():N}");
+
+        var createResponse = await userA.PostJsonAsync("/api/inventory", new
+        {
+            name = "Milk",
+            quantity = 1m,
+            unit = "l",
+            expiryDate = (string?)null,
+        });
+
+        Assert.Equal(HttpStatusCode.Created, createResponse.StatusCode);
+        var created = await createResponse.ReadJsonAsync<InventoryItemDto>();
+        Assert.NotNull(created);
+
+        Assert.Equal(HttpStatusCode.NotFound, (await userB.GetAsync($"/api/inventory/{created.Id}")).StatusCode);
+
+        Assert.Equal(HttpStatusCode.NotFound, (await userB.PutJsonAsync($"/api/inventory/{created.Id}", new
+        {
+            name = "Stolen Milk",
+            quantity = 9m,
+            unit = "l",
+            expiryDate = (string?)null,
+        })).StatusCode);
+
+        Assert.Equal(HttpStatusCode.NotFound, (await userB.DeleteAsync($"/api/inventory/{created.Id}")).StatusCode);
+
+        var listResponse = await userA.GetAsync("/api/inventory");
+        var items = await listResponse.ReadJsonAsync<List<InventoryItemDto>>();
+        Assert.NotNull(items);
+        Assert.Single(items);
+        Assert.Equal(created.Id, items[0].Id);
+    }
+
+    [Fact]
     public async Task CreateInventoryItem_rejects_unknown_unit()
     {
         var client = factory.CreateClient().ForUser($"inventory-validation-{Guid.NewGuid():N}");

@@ -15,7 +15,7 @@
 **Code links:** backend/TrueSight.Api/Features/Inventory, frontend/src/features/inventory  
 **Test links:** dotnet build backend/MyApp.sln, backend/TrueSight.Api.Tests/InventoryEndpointsTests.cs
 
-> Build admitted 2026-05-24 — BUILD-INV-001 todo (AP-004 in spec)
+> BUILD-INV-001 awaiting_human_review — AP-004 cross-user test added 2026-05-24
 
 ---
 

@@ -11,15 +11,15 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| FEAT-INV-001 | backend | P1 | build | `todo` | sequential | CAP-V1-CORE |
+| FEAT-INV-001 | backend | P1 | build | `awaiting_human_review` | sequential | CAP-V1-CORE |
 
 **Spec:** `docs/design/features/FEAT-INV-001-manual-inventory.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
 **Owner:** unassigned · **Lock:** none · **Target:** TBD  
 **Build deps:** none · **Design deps:** none  
-**Validation:** `Build when admitted — AP-004 cross-user test per spec`
+**Validation:** `Run: dotnet test backend/MyApp.sln — InventoryEndpointsTests (AP-004 added)`
 
-> Admitted 2026-05-24 after OQ triage; no implementation in this pass.
+> Build slice 2026-05-24 — AP-004 InventoryItem_is_isolated_per_user. Awaiting acceptance gate.
 
 ---
 
@@ -51,7 +51,7 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 **Build deps:** BUILD-INV-001 · **Design deps:** none  
 **Validation:** `Build when admitted — DI-007 integration tests per FEAT-REC-001`
 
-> Admitted 2026-05-24; depends BUILD-INV-001 accepted.
+> build_dependencies BUILD-INV-001 (implementation). Start when INV awaiting_human_review+.
 
 ---
 
@@ -67,7 +67,7 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 **Build deps:** BUILD-REC-001 · **Design deps:** none  
 **Validation:** `dotnet test — RecipeSessionEndpointsTests; OQ-039 body shape`
 
-> Queued — after REC; OQ-038 idempotency deferred.
+> build_dependencies BUILD-REC-001 (implementation). Start when REC awaiting_human_review+.
 
 ---
 

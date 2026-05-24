@@ -9,9 +9,9 @@ Authoritative workflow rules also live in [`.awp-workspace/docs/core/workflow-re
 1. **One task per implementation pass** — scope code, tests, and register updates to a single `WORK_QUEUE` row.
 2. **Commit after each task** (when the user wants git history) — one commit per task keeps review and rollback clean. Do not batch unrelated tasks in one commit.
 3. **Do not skip the queue** — only work on tasks with `phase: build` and `readiness: ready_for_build` (check `TASK_READINESS.yaml` at session start; during Build, trust the WORK_QUEUE admission snapshot).
-4. **Respect `build_dependencies`** — a downstream task is not buildable until every listed upstream task is **`accepted`** or **`done`** (implementation merged and human acceptance gate passed). `todo` / `in_progress` / `awaiting_human_review` upstream does **not** unblock dependents.
+4. **Respect `build_dependencies`** (implementation) — a downstream task is buildable when every listed upstream task has **finished its build slice** and is in **`awaiting_human_review`**, **`accepted`**, or **`done`**. The upstream implementation must exist (merged on the branch you are building from); human **`accepted`** is still required on each task before Sync, but dependents do not wait for that.
 
-`design_dependencies` are separate: they require a Design refresh before build, not just code existing.
+`design_dependencies` are separate: they require a Design refresh before build (`design_dependencies` on the WORK_QUEUE row), not merely code on the branch.
 
 ## Loop
 
@@ -40,7 +40,7 @@ A row is **buildable** when all of the following hold:
 | `status` is `todo` or `in_progress` | `WORK_QUEUE.yaml` |
 | Linked feature `design_state` is `ready` | `DESIGN_STATES.yaml` |
 | `readiness` is `ready_for_build` | `TASK_READINESS.yaml` (at admission) |
-| Every `build_dependencies` task has `status` **`accepted`** or **`done`** | `WORK_QUEUE.yaml` |
+| Every `build_dependencies` task has `status` **`awaiting_human_review`**, **`accepted`**, or **`done`** | `WORK_QUEUE.yaml` |
 | If `mode: parallel`, lock claimed when `LOCKS.yaml` in use | `LOCKS.yaml` |
 
 Treat `build_dependencies: none` as satisfied.
@@ -81,15 +81,16 @@ When every remaining `phase: build` task is blocked on dependencies or human rev
 
 ### 6. Dependency refresh pass
 
-After upstream tasks move to **`accepted`** (human acceptance gate), **scan again**. Tasks that were blocked only by `build_dependencies` become buildable — e.g. BUILD-REC-001 after BUILD-INV-001 is accepted.
+After an upstream task reaches **`awaiting_human_review`**, **scan again** — dependents blocked only on `build_dependencies` become buildable (e.g. BUILD-REC-001 once BUILD-INV-001’s slice is in review).
 
-Do not implement dependent tasks early “because the code already exists” unless the user explicitly overrides the queue gate.
+Do not start a dependent while upstream is still `todo` or `in_progress` unless the user explicitly overrides the queue gate.
 
 ## Status path (reminder)
 
 `todo` → `in_progress` → `awaiting_human_review` → **`accepted`** (human) → `done` (after Sync)
 
-Dependent tasks wait for **`accepted`**, not merely `awaiting_human_review`.
+**`build_dependencies`:** satisfied at **`awaiting_human_review`** (implementation ready).  
+**Human acceptance:** each task still needs **`accepted`** before Sync — that is independent of whether the next task can start building.
 
 ## TrueSight V1 — current admitted queue (2026-05-24)
 
@@ -99,8 +100,8 @@ Apply the loop to this project as follows:
 |-------|------|-----------|----------------|
 | 1a | **BUILD-INV-001** | backend | — (`build_dependencies: none`) |
 | 1b | **BUILD-AUTH-001** | frontend | — (parallel with 1a; separate commit) |
-| 2 | **BUILD-REC-001** | backend | BUILD-INV-001 → **`accepted`** |
-| 3 | **BUILD-SES-001** | backend | BUILD-REC-001 → **`accepted`** |
+| 2 | **BUILD-REC-001** | backend | BUILD-INV-001 → **`awaiting_human_review`** or later |
+| 3 | **BUILD-SES-001** | backend | BUILD-REC-001 → **`awaiting_human_review`** or later |
 
 **Not in build loop yet:** **BUILD-CAT-001** — `phase: design`, `readiness: needs_detail` (P3 / TMP-002).
 
