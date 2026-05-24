@@ -21,4 +21,30 @@
 
 schema_version: 1
 
-requirements: []  # add quality requirements as they are identified during Design
+requirements:
+  - id: QR-SEC-001
+    title: "No TMP-001 header identity in Production"
+    enforcement: sustained
+    disposition: active
+    summary: >
+      Production deployments must not rely on client-supplied X-TrueSight-User or demo-user
+      fallback. Real auth (FEAT-AUTH-002) or explicit Production rejection until auth ships.
+    notes: "Added 2026-05-24 security audit. BUILD-SEC-003 enforces interim rejection; BUILD-AUTH-002 closes TMP-001."
+
+  - id: QR-SEC-002
+    title: "CORS allowlist in Production"
+    enforcement: sustained
+    disposition: active
+    summary: >
+      Production API CORS must allow only configured web origin(s). AllowAnyOrigin is
+      Development-only.
+    notes: "BUILD-SEC-003 implements. See FEAT-SEC-001 configuration table."
+
+  - id: QR-SEC-003
+    title: "No high or critical dependency vulnerabilities at merge"
+    enforcement: sustained
+    disposition: active
+    summary: >
+      CI must fail on high/critical npm audit findings (production deps) and vulnerable
+      NuGet packages reported by dotnet list package --vulnerable.
+    notes: "BUILD-SEC-002 implements CI gate."

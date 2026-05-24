@@ -115,6 +115,7 @@ MVP persistence uses **EF Core 9 + SQLite** (`Microsoft.EntityFrameworkCore.Sqli
 | Issue | Symptom | Mitigation |
 |-------|---------|------------|
 | `DateTimeOffset` in `ORDER BY` | `GET /api/recipe-sessions` → 500, `NotSupportedException` | Sort in memory after fetch (`ListRecipeSessions/Handler.cs`). See [FEAT-SES-001](../docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md) and AWP `GD-001`. |
+| `EnsureCreated` + new tables | `GET /api/shopping-list` → 500 on old `truesight.db` | `TrueSightDbInitializer` runs `CREATE TABLE IF NOT EXISTS` for `ShoppingListItems` at startup. See [FEAT-SHP-001](../docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) and AWP `GD-014`. |
 
 If session lists grow large or need server-side paging, add a sortable stored column (e.g. `AcceptedAtUtcTicks`) instead of relying on in-memory sort.
 
@@ -122,7 +123,22 @@ If session lists grow large or need server-side paging, add a sortable stored co
 - `ConnectionStrings__TrueSight`: optional SQLite connection override. Defaults to `Data Source=truesight.db`.
 - `VITE_API_BASE_URL`: optional frontend API base URL. Defaults to Vite proxy `/api` during local dev.
 
-**V1 identity (interim):** Clients send `X-TrueSight-User` (see [ADR-20260524-01](../docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md)). The web client stores a UUID in `localStorage` and sets the header on each request. Missing header defaults to `demo-user` on the API for local convenience only.
+### Production security (BUILD-SEC-001 / FEAT-SEC-001)
+
+Set these when deploying the API outside local Development. Full behavior is implemented in BUILD-SEC-003.
+
+| Variable / config key | Required in Production | Purpose |
+|-----------------------|------------------------|---------|
+| `ASPNETCORE_ENVIRONMENT` | Yes | Must be `Production` to enable hardened defaults |
+| `AllowedHosts` | Yes | Host header allowlist (e.g. `api.example.com`) |
+| `Cors__AllowedOrigins__0` | Yes | Web client origin (e.g. `https://app.example.com`); repeat `__1`, `__2` for more |
+| `RateLimiting__PermitLimit` | Recommended | Max requests per IP per window (default TBD in SEC-003) |
+| `RateLimiting__WindowSeconds` | Recommended | Rate limit window length in seconds |
+| `ConnectionStrings__TrueSight` | Recommended | Persistent SQLite path or future managed DB connection |
+
+**Interim identity (until FEAT-AUTH-002):** In Production, clients must send a non-empty `X-TrueSight-User` header (max 120 chars). Missing header must not fall back to `demo-user`. See [FEAT-SEC-001](../docs/design/features/FEAT-SEC-001-production-security-baseline.md) and sustained QR-SEC-001.
+
+**V1 identity (Development / demo):** Clients send `X-TrueSight-User` (see [ADR-20260524-01](../docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md)). The web client stores a UUID in `localStorage` and sets the header on each request. Missing header defaults to `demo-user` on the API for local convenience only.
 
 **Demo inventory:** On startup, `DemoInventorySeeder` seeds sample ingredients for `demo-user` when that user's inventory is empty (see [FEAT-AUTH-001](../docs/design/features/FEAT-AUTH-001-demo-login-screen.md)).
 
