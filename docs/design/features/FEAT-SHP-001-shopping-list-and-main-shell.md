@@ -1,11 +1,11 @@
 # FEAT-SHP-001: Shopping list and main shell navigation
 
-**Status:** draft  
-**Priority:** P4 (parked — build deferred behind V2 fridge-photo design)  
+**Status:** implemented (awaiting human acceptance)  
+**Priority:** P4 (V1.1)  
 **Module:** Inventory | Recipes | Shell  
 **Related AWP feature_id:** `FEAT-SHP-001`  
 **Linked ideation:** [IDEA-011](../../product/ideation.md#idea-011-shopping-list)  
-**Capability:** `CAP-V1-SHOP` (`parked` in ROADMAP.yaml)
+**Capability:** `CAP-V1-SHOP` (`active` in ROADMAP.yaml)
 
 ## Summary
 
@@ -30,7 +30,7 @@ Replace the crowded V1 two-column dashboard with a **two-tab main shell** (**In 
 |------|----------|
 | **Tabs** | **In Stock** \| **Shopping List** — bottom tab bar (mobile); segmented control or top tabs (desktop) |
 | **Layout** | Single column: tabs → add form → item list → recipe pager. **No** side-by-side inventory/recipe panels |
-| **Header** | Compact; show item count for the **active tab** |
+| **Header** | Compact; **TRUESIGHT V2.1** eyebrow; **tab-specific headline** (inventory vs shopping tagline); full-width item-count bar (`N in stock` / `N to buy`) |
 | **Summary strip** | **Remove** the V1 three-stat row (Expiring / Suggestions / Cooked). Optional: expiring-soon count in In Stock tab heading only |
 
 Default tab on open: **In Stock**.
@@ -44,9 +44,11 @@ Default tab on open: **In Stock**.
 #### Shopping List tab
 
 - **Add:** ingredient name, quantity (stepper), unit — **no expiry field**.
-- **List:** name, quantity, unit; primary action **Move to In Stock**.
-- **Move to In Stock (OQ-056):** merges quantity into inventory (same normalized name + unit rules as inventory create); removes the shopping row. Optional **expiry date** on the row at move time — inline date field revealed when the user focuses **Move to In Stock**; may leave blank (null expiry).
-- **Delete:** secondary icon control removes a line without moving (mistaken entry).
+- **Add:** optional **camera preview** beside **Add** (bundled product-packaging sample image, stub detections, demo labeling) → `POST /api/shopping-list` on save — same review pattern as [FEAT-REC-002](FEAT-REC-002-fridge-photo-recognition.md) mockup; asset `/mockups/shopping-preset.png`.
+- **List:** name, quantity, unit; primary action **move to stock** (green **left-arrow** icon; **check** to confirm).
+- **Move to In Stock (OQ-056):** merges quantity into inventory (same normalized name + unit rules as inventory create); removes the shopping row. Optional **expiry date** on the row at move time — inline date field revealed when the user taps the move icon; may leave blank (null expiry).
+- **Delete:** trash icon beside the move control (8px gap).
+- **Recipe → list:** green **cart** icons per short line; **ALL** control in Amount in stock column header adds all missing lines.
 
 #### Recipe pager (below tabs, both tabs)
 
@@ -118,9 +120,9 @@ Existing inventory and recipe endpoints unchanged.
 - `id`, `userId`, `name`, `normalizedName`, `quantity`, `unit`, `createdAt`
 - Optional: `sourceRecipeId` (audit when added from recipe gap)
 
-Migration: yes — new EF entity + table.
+Migration: yes — `ShoppingListItems` table. Existing SQLite files are patched at startup via `TrueSightDbInitializer` (`CREATE TABLE IF NOT EXISTS`).
 
-Update [domain-model.md](../../product/domain-model.md) when build starts.
+[domain-model.md](../../product/domain-model.md) updated at sync 2026-05-24.
 
 ## UI layout
 
@@ -151,14 +153,15 @@ Dependencies: BUILD-SHP-002/003 depend on BUILD-SHP-001; BUILD-SHP-001 depends o
 
 ## Acceptance criteria
 
-- [ ] Two tabs switch add form and list between In Stock and Shopping List.
-- [ ] In Stock: add (with expiry) and delete; no shopping actions.
-- [ ] Shopping List: add (no expiry), delete, and **Move to In Stock** with optional expiry at move time.
-- [ ] Move merges into inventory and removes the shopping row; duplicate name+unit merges quantities.
-- [ ] Recipe pager shows one suggestion at a time with working prev/next.
-- [ ] Short/missing recipe lines can be added to the shopping list (gap qty, merge on list).
-- [ ] V1 summary stat strip removed from main shell.
-- [ ] Mobile and desktop layouts remain usable.
+- [x] Two tabs switch add form and list between In Stock and Shopping List.
+- [x] In Stock: add (with expiry) and delete; no shopping actions.
+- [x] Shopping List: add (no expiry), delete, and **move to stock** with optional expiry at move time.
+- [x] Move merges into inventory and removes the shopping row; duplicate name+unit merges quantities.
+- [x] Recipe pager shows one suggestion at a time with working prev/next (header arrows + swipe).
+- [x] Short/missing recipe lines can be added to the shopping list (gap qty, merge on list).
+- [x] V1 summary stat strip removed from main shell.
+- [x] Mobile and desktop layouts remain usable.
+- [x] Shopping photo preview mockup (sample packaging image, stub scan, save to shopping list).
 
 ## Open questions (resolved at design)
 

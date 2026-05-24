@@ -165,3 +165,59 @@ entries:
     discovered_in_task: BUILD-AUTH-001
     summary: "Demo-user inventory pre-seeded on API startup"
     resolution_note: "Sync 2026-05-24 → DI-011 incorporated in FEAT-AUTH-001 + backend README."
+
+  - id: GD-013
+    type: deviation
+    feature_id: FEAT-SHP-001
+    source: agent
+    source_ref: ""
+    status: resolved_in_loop
+    discovered_in_task: BUILD-SHP-003
+    severity: low
+    summary: "Shopping list photo-add preview mockup (not in original FEAT-SHP-001 scope)"
+    detail: >
+      Shopping List tab includes camera preview beside Add (preset product packaging image,
+      stub detections, POST /api/shopping-list) mirroring FEAT-REC-002 mockup pattern.
+    resolution_note: "Sync 2026-05-24 → DI-012 incorporated in FEAT-SHP-001 + ui-principles."
+
+  - id: GD-014
+    type: gap
+    feature_id: FEAT-SHP-001
+    source: agent
+    source_ref: ""
+    status: resolved_in_loop
+    discovered_in_task: BUILD-SHP-001
+    severity: medium
+    summary: "Legacy SQLite databases missing ShoppingListItems table (500 on GET)"
+    detail: >
+      EnsureCreated does not alter existing truesight.db files. TrueSightDbInitializer
+      patches schema with CREATE TABLE IF NOT EXISTS at startup.
+    resolution_note: "Sync 2026-05-24 → DI-013 documented in backend README + initializer tests."
+
+  - id: GD-015
+    type: deviation
+    feature_id: FEAT-SHP-001
+    source: agent
+    source_ref: ""
+    status: resolved_in_loop
+    discovered_in_task: BUILD-SHP-002
+    severity: low
+    summary: "Tab-specific shell headlines and TRUESIGHT V2.1 branding"
+    detail: >
+      Header h1 switches per tab (inventory vs shopping taglines); eyebrow TRUESIGHT V2.1;
+      item-count bar shows "N in stock" / "N to buy".
+    resolution_note: "Sync 2026-05-24 → DI-014 incorporated in FEAT-SHP-001."
+
+  - id: GD-016
+    type: deviation
+    feature_id: FEAT-SHP-001
+    source: agent
+    source_ref: ""
+    status: resolved_in_loop
+    discovered_in_task: BUILD-SHP-002
+    severity: low
+    summary: "Move-to-stock and recipe cart actions use green icon buttons"
+    detail: >
+      Move to In Stock is a green left-arrow icon with check confirm; recipe gap lines use
+      cart icons and ALL header control instead of text buttons.
+    resolution_note: "Sync 2026-05-24 → DI-015 incorporated in FEAT-SHP-001 + ui-principles."

@@ -123,22 +123,11 @@ describe('App', () => {
     deleteMock.mockClear();
   });
 
-  it('shows the demo login screen before Enter Demo', () => {
+  it('renders the main app on cold start without a login screen', async () => {
     localStorage.clear();
     renderApp();
 
-    expect(screen.getByRole('button', { name: 'Enter Demo' })).toBeInTheDocument();
-    expect(screen.getByText('Welcome to the Demo')).toBeInTheDocument();
-    expect(screen.queryByText('Fridge inventory that cooks itself down.')).not.toBeInTheDocument();
-  });
-
-  it('enters demo and renders the main app', async () => {
-    localStorage.clear();
-    const user = userEvent.setup();
-    renderApp();
-
-    await user.click(screen.getByRole('button', { name: 'Enter Demo' }));
-
+    expect(screen.queryByRole('button', { name: 'Enter Demo' })).not.toBeInTheDocument();
     expect(await screen.findByText('Fridge inventory that cooks itself down.')).toBeInTheDocument();
   });
 

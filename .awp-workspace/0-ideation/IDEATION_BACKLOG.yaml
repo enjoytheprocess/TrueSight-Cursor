@@ -130,12 +130,12 @@ ideas:
     status: open
     date: "2026-05-24"
     components: [backend, frontend]
-    summary: "P4 parked — spec drafted; build deferred behind V2 fridge-photo mockup."
+    summary: "V1.1 implemented 2026-05-24 — awaiting human acceptance (BUILD-SHP-*)."
     discussion: |
       - See docs/product/ideation.md#idea-011-shopping-list
       - Spec: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
-      - CAP-V1-SHOP status parked in ROADMAP.yaml
+      - CAP-V1-SHOP active; BUILD-SHP-001/002/003 awaiting_human_review
     outcome:
-      decision: none
-      reason: ""
+      decision: promoted
+      reason: "Shipped in v2.1-mockup branch; sync 2026-05-24"
       promotion_target: CAP-V1-SHOP

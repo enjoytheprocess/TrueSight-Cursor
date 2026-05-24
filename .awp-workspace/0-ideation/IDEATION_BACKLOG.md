@@ -130,7 +130,7 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 | --- | --- | --- |
 | `open` | 2026-05-24 | backend, frontend |
 
-**Summary:** P4 parked — spec drafted; build deferred behind V2 fridge-photo mockup.
+**Summary:** V1.1 implemented 2026-05-24 — awaiting human acceptance (BUILD-SHP-*).
 
-**Decision:** `none`  
+**Decision:** `promoted`  
 **Promotion target:** —

@@ -24,11 +24,13 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 - **Native mobile app** (iOS/Android store) — deferred until web MVP proves usage.
 - Charity/org-specific inventory flows — ideation only ([IDEA-007](ideation.md#idea-007-charity--food-bank-persona)).
 
-## Parked / lower priority
+## Phase 1.1 — Shopping list (V1.1) — **implemented 2026-05-24, awaiting acceptance**
 
-| Capability | Priority | Notes |
-|------------|----------|--------|
-| Shopping list + tab shell (`CAP-V1-SHOP`) | P4 | Spec: [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md). **Deferred** behind V2 fridge-photo design/mockup. |
+| # | Capability | Notes |
+|---|------------|--------|
+| 4 | Shopping list + tab shell (`CAP-V1-SHOP`) | In Stock \| Shopping List tabs, recipe pager, move-to-stock, recipe → cart, shopping photo preview mockup — [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) |
+
+## Parked / lower priority
 
 ## Not on this roadmap
 

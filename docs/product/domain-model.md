@@ -33,7 +33,8 @@ A user's planned grocery line — not yet in the fridge.
 - `name`, `normalizedName`, quantity, unit, `createdAt`
 - optional `sourceRecipeId` when added from a recipe gap
 - **Move to In Stock:** merges into `InventoryItem` (same name + unit rules), then row is deleted
-- **Not in V1 core schema** until V1.1 build ships
+
+**Shipped (V1.1, 2026-05-24):** `ShoppingListItems` table; API under `/api/shopping-list`.
 
 ## Integration boundary
 

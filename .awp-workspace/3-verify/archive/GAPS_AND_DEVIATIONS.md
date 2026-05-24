@@ -150,3 +150,51 @@ _Promoted and resolved entries. Open entries are in `GAPS_AND_DEVIATIONS.yaml`._
 **Summary:** Demo-user inventory pre-seeded on API startup
 
 **Resolution:** Sync 2026-05-24 → DI-011 incorporated in FEAT-AUTH-001 + backend README.
+
+---
+
+### GD-013 · `deviation` · `resolved_in_loop`
+
+| Feature | Source | Source Ref | Discovered In |
+| --- | --- | --- | --- |
+| FEAT-SHP-001 | agent |  | BUILD-SHP-003 |
+
+**Summary:** Shopping list photo-add preview mockup (not in original FEAT-SHP-001 scope)
+
+**Resolution:** Sync 2026-05-24 → DI-012 incorporated in FEAT-SHP-001 + ui-principles.
+
+---
+
+### GD-014 · `gap` · `resolved_in_loop`
+
+| Feature | Source | Source Ref | Discovered In |
+| --- | --- | --- | --- |
+| FEAT-SHP-001 | agent |  | BUILD-SHP-001 |
+
+**Summary:** Legacy SQLite databases missing ShoppingListItems table (500 on GET)
+
+**Resolution:** Sync 2026-05-24 → DI-013 documented in backend README + initializer tests.
+
+---
+
+### GD-015 · `deviation` · `resolved_in_loop`
+
+| Feature | Source | Source Ref | Discovered In |
+| --- | --- | --- | --- |
+| FEAT-SHP-001 | agent |  | BUILD-SHP-002 |
+
+**Summary:** Tab-specific shell headlines and TRUESIGHT V2.1 branding
+
+**Resolution:** Sync 2026-05-24 → DI-014 incorporated in FEAT-SHP-001.
+
+---
+
+### GD-016 · `deviation` · `resolved_in_loop`
+
+| Feature | Source | Source Ref | Discovered In |
+| --- | --- | --- | --- |
+| FEAT-SHP-001 | agent |  | BUILD-SHP-002 |
+
+**Summary:** Move-to-stock and recipe cart actions use green icon buttons
+
+**Resolution:** Sync 2026-05-24 → DI-015 incorporated in FEAT-SHP-001 + ui-principles.

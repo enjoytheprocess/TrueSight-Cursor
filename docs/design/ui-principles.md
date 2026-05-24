@@ -16,7 +16,8 @@ Per [FEAT-SHP-001](features/FEAT-SHP-001-shopping-list-and-main-shell.md):
 | **Tabs** | **In Stock** \| **Shopping List** |
 | **Layout** | Single column: add form → item list → recipe **pager** (not a side-by-side grid) |
 | **In Stock** | Add includes expiry; rows have **Delete** |
-| **Shopping List** | Add without expiry; rows have **Move to In Stock** (+ optional expiry at move); secondary delete |
+| **Shopping List** | Add without expiry; optional **camera preview** beside Add (sample product image); rows have green **← move** + **check** confirm (+ optional expiry at move) and **delete** icon |
+| **Recipe → list** | Green **cart** icon per short line; **ALL** + cart in Amount in stock header |
 | **Recipes** | One card at a time; previous/next and position indicator |
 
 Do not add a third tab or third panel for recipes.
