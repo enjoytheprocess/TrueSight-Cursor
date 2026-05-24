@@ -19,3 +19,18 @@ Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`docs/README.md`](docs/README.md),
 # Running App
 
 dotnet run --project ./backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
+
+cd frontend
+npm install
+npm run dev
+
+open:
+http://localhost:5173/
+http://localhost:5158/
+
+stop:
+
+Ran pkill -f "TrueSight.Api.dll"
+Ran pkill -f "vite --host 0.0.0.0"
+Ran curl -sS http://localhost:5158/api/health
+Ran curl -sS http://localhost:5173/

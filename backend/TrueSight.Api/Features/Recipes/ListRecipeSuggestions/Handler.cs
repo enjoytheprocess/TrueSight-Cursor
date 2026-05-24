@@ -23,8 +23,11 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
 
         var today = DateOnly.FromDateTime(DateTime.UtcNow);
         var recipes = await provider.GetRecipesAsync(cancellationToken);
+        var allergies = request.Allergies.Select(TextNormalizer.Ingredient).Where(value => value.Length > 0).ToHashSet();
+        var preferredIngredients = request.PreferredIngredients.Select(TextNormalizer.Ingredient).Where(value => value.Length > 0).ToHashSet();
 
         return recipes
+            .Where(recipe => !recipe.Ingredients.Any(ingredient => allergies.Contains(TextNormalizer.Ingredient(ingredient.Name))))
             .Select(recipe =>
             {
                 var required = recipe.Ingredients.Where(ingredient => !ingredient.Optional).ToList();
@@ -39,8 +42,14 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
                 var expiringSoon = recipe.Ingredients.Count(ingredient =>
                     inventoryByName.TryGetValue(TextNormalizer.Ingredient(ingredient.Name), out var items)
                     && items.Any(item => item.ExpiryDate is not null && item.ExpiryDate <= today.AddDays(3)));
+                var preferredMatches = recipe.Ingredients.Count(ingredient =>
+                    preferredIngredients.Contains(TextNormalizer.Ingredient(ingredient.Name)));
 
-                var score = (owned.Count * 12m) - (missing.Count * 18m) + (expiringSoon * 8m) - Math.Min(recipe.EstimatedMinutes, 60) / 10m;
+                var score = (owned.Count * 12m)
+                    - (missing.Count * 18m)
+                    + (expiringSoon * 8m)
+                    + (preferredMatches * 10m)
+                    - Math.Min(recipe.EstimatedMinutes, 60) / 10m;
 
                 return new RecipeSuggestionResponse(
                     recipe.Id,
@@ -63,4 +72,3 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
             .ToList();
     }
 }
-
