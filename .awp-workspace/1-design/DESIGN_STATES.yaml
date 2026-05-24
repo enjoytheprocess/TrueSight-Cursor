@@ -28,4 +28,55 @@
 
 schema_version: 4
 
-features: []  # add your first feature when design begins
+features:
+  - feature_id: FEAT-INV-001
+    title: "Manual inventory"
+    design_state: spec_draft
+    owner: unassigned
+    last_updated: "2026-05-23"
+    linked_idea: none
+    linked_tasks: []
+    primary_design_link: docs/design/features/FEAT-INV-001-manual-inventory.md
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    blocking_questions: none
+    notes: "V1 — CRUD inventory"
+
+  - feature_id: FEAT-REC-001
+    title: "Recipe suggestions from inventory"
+    design_state: spec_draft
+    owner: unassigned
+    last_updated: "2026-05-23"
+    linked_idea: none
+    linked_tasks: []
+    primary_design_link: docs/design/features/FEAT-REC-001-recipe-suggestions.md
+    decision_links:
+      - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
+    blocking_questions: none
+    notes: "V1 — RecipeProvider adapter"
+
+  - feature_id: FEAT-SES-001
+    title: "Recipe acceptance and inventory deduction"
+    design_state: spec_draft
+    owner: unassigned
+    last_updated: "2026-05-23"
+    linked_idea: none
+    linked_tasks: []
+    primary_design_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
+    decision_links: []
+    blocking_questions: none
+    notes: "V1 — RecipeSession + deduction"
+
+  - feature_id: FEAT-REC-002
+    title: "Fridge photo recognition (V2)"
+    design_state: concept
+    owner: unassigned
+    last_updated: "2026-05-23"
+    linked_idea: none
+    linked_tasks: []
+    primary_design_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
+    decision_links:
+      - docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    blocking_questions: none
+    notes: "V2 — vision + human confirm"

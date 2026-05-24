@@ -78,5 +78,5 @@ When evidence is ready, move the task to `awaiting_human_review`. The human uses
 
 ## Agent-specific setup
 - Run `make install-tools` once after `make init` if `yq` is not already available — it is required by `make docs-check` and `make render`.
-- **Cursor:** `.cursor/rules/awp.mdc` (router) + `awp-design` / `awp-build` / `awp-verify` phase rules; `.cursor/hooks.json` runs `make awp-render` after register YAML edits; snippets `awp-admit-task`, `awp-gap-deviation`, `awp-verify-handoff`. Design docs: `docs/` (`@docs/`).
+- **Cursor:** `.cursor/rules/awp.mdc` (router) + `awp-design` / `awp-build` / `awp-verify` phase rules; `.cursor/hooks.json` runs `make awp-render` after register YAML edits; snippets `awp-admit-task`, `awp-gap-deviation`, `awp-verify-handoff`, `git-commit`, `git-pr`. Design docs: `docs/` (`@docs/`). **Token / model tier:** repo root `AGENTS.md` § Token and model tier.
 - If you are a Claude Code agent: copy `templates/agents/claude/CLAUDE_TEMPLATE.md` → `CLAUDE.md` and `templates/agents/claude/settings_TEMPLATE.json` → `.claude/settings.json` once after `make init` if not already done. The settings file includes a Stop hook that runs `make render` automatically. See `docs/core/operations.md` for details.

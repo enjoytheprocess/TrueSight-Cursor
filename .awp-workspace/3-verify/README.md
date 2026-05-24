@@ -15,13 +15,15 @@ The uppercase files below hold the canonical verification state.
 ## Optional artifacts (deployed by `make init` when opted in)
 
 - `SIGN_OFF.md` — formal acceptance audit trail; one entry per accepted task
-- `SECURITY_REVIEWS.md` — agent-maintained security analysis records
+- `SECURITY_REVIEWS.md` — agent-maintained security analysis records (**active** — see [advisor-policy.md](../../docs/design/advisor-policy.md))
+- `API_CONTRACT_REVIEWS.md` — agent-maintained API contract reviews (**active**)
 - `EXPERIMENT_REVIEWS.md` — agent-maintained experiment plans and outcomes
 - `INCIDENT_RESPONSES.md` — agent-maintained incident response records
 
 ## Stage templates (per-entry scaffolds)
 
 - `templates/SECURITY_ANALYSIS_TEMPLATE.md`
+- `templates/API_CONTRACT_REVIEW_TEMPLATE.md`
 - `templates/EXPERIMENT_PLAN_TEMPLATE.md`
 - `templates/INCIDENT_RESPONSE_TEMPLATE.md`
 

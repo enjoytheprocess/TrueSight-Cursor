@@ -18,6 +18,10 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 | IDEA-004 | Cooking skill level & kitchen equipment | Profile | open |
 | IDEA-005 | Store recommendations (distance, price) | Commerce | open |
 | IDEA-006 | Expiry proximity warnings | Inventory | open |
+| IDEA-007 | Charity / food-bank persona | Personas | open |
+| IDEA-008 | Receipt photo → inventory list | Smart input | open |
+| IDEA-009 | PWA install + offline shell | Platform | open |
+| IDEA-010 | Firebase-first stack (alternative) | Architecture | parked |
 
 ---
 
@@ -90,6 +94,99 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 - Could be a small V1 add-on or post-V1; not listed on committed roadmap yet.
 
 **Outcome:** —
+
+---
+
+## Personas
+
+### IDEA-007: Charity / food-bank persona
+
+**Status:** open  
+**Summary:** Extend the product narrative and future flows for donation kitchens, food banks, and shared fridges — tracking perishables for beneficiaries, not only household users.
+
+**Discussion**
+
+- Motivates the problem space in [project-brief.md](project-brief.md); no charity-specific features on V1/V2 roadmap.
+- Promotion would need multi-user/org model, permissions, and compliance review.
+
+**Outcome:** —
+
+---
+
+## Smart input
+
+### IDEA-008: Receipt photo → inventory list
+
+**Status:** open  
+**Summary:** Photograph a grocery receipt; vision/OCR returns item names, quantities, optional images, and suggested expiration dates for user review before adding to inventory.
+
+**Discussion**
+
+- Related domain shapes: `ReceiptScan`, `DetectedLineItem` in [domain-model.md](domain-model.md).
+- Distinct from V2 fridge photo (FEAT-REC-002); may share vision infrastructure if both ship.
+
+**Outcome:** —
+
+---
+
+## Platform
+
+### IDEA-009: PWA install + offline shell
+
+**Status:** open  
+**Summary:** Web app manifest, service worker, and offline-friendly shell so users can install on home screen and tolerate brief connectivity loss for read-only inventory.
+
+**Discussion**
+
+- Aligns with mobile-first delivery in project brief; depends on frontend slice existing.
+- Scope offline data carefully (stale inventory vs recipes).
+
+**Outcome:** —
+
+---
+
+### IDEA-010: Firebase-first stack (alternative)
+
+**Status:** parked  
+**Summary:** Alternate “build fast” stack from early product exploration: **React Native + Expo** (or web) on the client, **Firebase Auth + Firestore + Storage + Cloud Functions** on the backend, **Spoonacular/Edamam** for recipes, **OpenAI/Gemini Vision** for V2 fridge photos. **Not** the committed stack — see [ADR-20260523-01](../design/decisions/ADR-20260523-01-delivery-model-pwa-web.md) (mobile-first **web** + ASP.NET Core API).
+
+**Reference layers (parked)**
+
+| Layer | Alternate | Why it was attractive |
+|-------|-----------|------------------------|
+| Mobile | React Native + Expo + TypeScript | Fast iOS/Android, strong camera story |
+| Backend | Firebase Auth, Firestore, Storage, Cloud Functions | MVP speed, less server ops |
+| Recipes | Spoonacular or Edamam | Ingredient ontology, diets, nutrition |
+| V2 vision | OpenAI Vision or Gemini Vision | Messy fridge photos vs label-only OCR |
+| Helper OCR | Google Cloud Vision | Labels/OCR only — not primary intelligence |
+
+**Reference V1 flow**
+
+1. User adds ingredients manually → Firestore inventory  
+2. Cloud Function calls recipe API → rank by match + expiry  
+3. “Use recipe” subtracts ingredients  
+
+**Reference V2 flow**
+
+1. Photo → Firebase Storage → Cloud Function → vision model → candidate items  
+2. User confirms (confidence per line) → inventory update → better suggestions  
+
+**Reference Firestore shape (conceptual — maps to [domain-model.md](domain-model.md))**
+
+- `users` — profile, dietary prefs, allergies  
+- `inventoryItems` — quantity, unit, expiry, `source: manual | photo`, optional `confidenceScore`  
+- `recipesSaved` — title, ingredients, missing/used, image, provider id  
+- `fridgePhotos` — image URL, status, `detectedItems`  
+
+Committed persistence is **EF Core + SQLite** on the API; entity names differ but the **domain concepts** align.
+
+**Discussion**
+
+- Committed stack: ASP.NET Core + EF Core + SQLite + React (PWA-capable web). See [architecture overview](../architecture/overview.md).
+- Biggest product risk called out in exploration: **users maintaining inventory** — V1 must make manual input very fast; V2 reduces friction with photo assist + confirmation.
+- Revisit only if team explicitly reopens hosting/BaaS trade-offs.
+
+**Outcome:** Parked — documented only; no ADR promotion. Register: `.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml`.
 
 ---
 

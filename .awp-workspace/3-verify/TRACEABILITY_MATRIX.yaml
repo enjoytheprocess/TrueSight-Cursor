@@ -18,4 +18,47 @@
 
 schema_version: 1
 
-features: []  # add features as traceability is established
+features:
+  - id: FEAT-INV-001
+    spec_link: docs/design/features/FEAT-INV-001-manual-inventory.md
+    last_synced: "2026-05-23"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links:
+      - backend/
+    test_links: []
+    notes: "Specs drafted; implementation not started"
+
+  - id: FEAT-REC-001
+    spec_link: docs/design/features/FEAT-REC-001-recipe-suggestions.md
+    last_synced: "2026-05-23"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links:
+      - backend/
+    test_links: []
+    notes: "Specs drafted; implementation not started"
+
+  - id: FEAT-SES-001
+    spec_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
+    last_synced: "2026-05-23"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links:
+      - backend/
+    test_links: []
+    notes: "Specs drafted; implementation not started"
+
+  - id: FEAT-REC-002
+    spec_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
+    last_synced: "2026-05-23"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links:
+      - backend/
+    test_links: []
+    notes: "V2 spec draft; blocked on CAP-V2-VISION admission"

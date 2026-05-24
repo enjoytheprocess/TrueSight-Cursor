@@ -13,4 +13,23 @@
 
 schema_version: 1
 
-features: []  # add your first feature when design begins
+features:
+  - id: FEAT-INV-001
+    title: "Manual inventory"
+    components: [backend]
+    created_on: "2026-05-23"
+
+  - id: FEAT-REC-001
+    title: "Recipe suggestions from inventory"
+    components: [backend]
+    created_on: "2026-05-23"
+
+  - id: FEAT-SES-001
+    title: "Recipe acceptance and inventory deduction"
+    components: [backend]
+    created_on: "2026-05-23"
+
+  - id: FEAT-REC-002
+    title: "Fridge photo recognition (V2)"
+    components: [backend]
+    created_on: "2026-05-23"

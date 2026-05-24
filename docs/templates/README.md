@@ -7,3 +7,4 @@
 | [IDEA_ENTRY_TEMPLATE.yaml](IDEA_ENTRY_TEMPLATE.yaml) | Row in `IDEATION_BACKLOG.yaml` |
 | [FEATURE_SPEC_TEMPLATE.md](FEATURE_SPEC_TEMPLATE.md) | Feature design → `docs/design/features/` |
 | [ADR_TEMPLATE.md](ADR_TEMPLATE.md) | ADR → `docs/design/decisions/` |
+| [OPEN_QUESTION_TEMPLATE.md](OPEN_QUESTION_TEMPLATE.md) | Row in [open-questions.md](../product/open-questions.md) |

@@ -82,3 +82,42 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 **Decision:** `none`  
 **Promotion target:** —
+
+---
+
+### IDEA-007 · **Charity / food-bank persona**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-23 | backend |
+
+**Summary:** Persona for donation kitchens and shared-fridge inventory tracking (not MVP scope).
+
+**Decision:** `none`  
+**Promotion target:** —
+
+---
+
+### IDEA-008 · **Receipt photo to inventory list**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-23 | backend |
+
+**Summary:** OCR or vision on receipt photos to suggest inventory line items before user confirms.
+
+**Decision:** `none`  
+**Promotion target:** —
+
+---
+
+### IDEA-009 · **PWA install and offline shell**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-23 | backend |
+
+**Summary:** Web app manifest, service worker, and limited offline UX for installation and resilience.
+
+**Decision:** `none`  
+**Promotion target:** —
