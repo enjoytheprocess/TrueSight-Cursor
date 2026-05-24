@@ -8,4 +8,23 @@
 
 schema_version: 1
 
-entries: []
+entries:
+  - id: GD-001
+    feature_id: FEAT-SES-001
+    type: deviation
+    summary: "GET /api/recipe-sessions failed — SQLite cannot ORDER BY DateTimeOffset"
+    detail: >
+      ListRecipeSessions translated OrderByDescending(AcceptedAt) to SQL. EF Core 9 SQLite
+      throws NotSupportedException for DateTimeOffset in ORDER BY. This is a provider
+      limitation, not a package version mismatch. Fix: load user sessions then sort in
+      memory; acceptable for V1 per-user session volume.
+    source: verify
+    source_ref: ""
+    discovered_in_task: BUILD-SES-001
+    status: resolved_in_loop
+    severity: medium
+    resolution_note: >
+      Client-side OrderByDescending after ToListAsync in
+      backend/TrueSight.Api/Features/Sessions/ListRecipeSessions/Handler.cs.
+      Documented in docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
+      and backend/README.md.

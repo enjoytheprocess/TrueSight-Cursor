@@ -108,6 +108,16 @@ Windows (PowerShell):
 Invoke-RestMethod http://localhost:5158/api/health
 ```
 
+## SQLite / EF Core notes
+
+MVP persistence uses **EF Core 9 + SQLite** (`Microsoft.EntityFrameworkCore.Sqlite` 9.0.0). SQLite has provider limitations — not bugs caused by wrong package versions.
+
+| Issue | Symptom | Mitigation |
+|-------|---------|------------|
+| `DateTimeOffset` in `ORDER BY` | `GET /api/recipe-sessions` → 500, `NotSupportedException` | Sort in memory after fetch (`ListRecipeSessions/Handler.cs`). See [FEAT-SES-001](../docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md) and AWP `GD-001`. |
+
+If session lists grow large or need server-side paging, add a sortable stored column (e.g. `AcceptedAtUtcTicks`) instead of relying on in-memory sort.
+
 ## Required environment variables
 - `ConnectionStrings__TrueSight`: optional SQLite connection override. Defaults to `Data Source=truesight.db`.
 - `VITE_API_BASE_URL`: optional frontend API base URL. Defaults to Vite proxy `/api` during local dev.

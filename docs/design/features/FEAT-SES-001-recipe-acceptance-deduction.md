@@ -71,3 +71,11 @@ At build admission (see [advisor-policy.md](../advisor-policy.md)):
 ## Decisions
 
 - Depends on manual inventory (`FEAT-INV-001`) and recipe identity from `FEAT-REC-001`.
+
+## Implementation notes (MVP / SQLite)
+
+**Bug (resolved):** `GET /api/recipe-sessions` returned 500 when listing sessions ordered by `AcceptedAt` (`DateTimeOffset`). EF Core 9 + SQLite does **not** translate `ORDER BY` on `DateTimeOffset` — this is a [known provider limitation](https://learn.microsoft.com/en-us/ef/core/providers/sqlite/limitations), not a version mismatch fixable by upgrading packages.
+
+**Mitigation:** `ListRecipeSessions` loads the user's sessions from SQLite, then sorts by `AcceptedAt` in memory before mapping the response. Fine for V1 personal session history; revisit if session volume or server-side paging requires a sortable column (e.g. store `AcceptedAtUtcTicks` as `long`).
+
+**AWP record:** `GD-001` in `.awp-workspace/3-verify/archive/GAPS_AND_DEVIATIONS.yaml` (`resolved_in_loop`).
