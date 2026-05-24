@@ -124,6 +124,8 @@ If session lists grow large or need server-side paging, add a sortable stored co
 
 **V1 identity (interim):** Clients send `X-TrueSight-User` (see [ADR-20260524-01](../docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md)). The web client stores a UUID in `localStorage` and sets the header on each request. Missing header defaults to `demo-user` on the API for local convenience only.
 
+**Demo inventory:** On startup, `DemoInventorySeeder` seeds sample ingredients for `demo-user` when that user's inventory is empty (see [FEAT-AUTH-001](../docs/design/features/FEAT-AUTH-001-demo-login-screen.md)).
+
 ## Links
 - Design docs index: docs/README.md
 - Project brief: docs/product/project-brief.md

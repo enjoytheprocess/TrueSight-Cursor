@@ -119,3 +119,55 @@ items:
     addressed_at: "2026-05-24"
     resolution_note: >
       Required integration tests documented in FEAT-REC-001 test plan (DI-007).
+
+  - id: DI-008
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-INV-001
+    source_ref: GD-011
+    priority: P2
+    summary: "Inventory merge on create and labeled add form"
+    detail: >
+      POST merges same normalized name + unit; quantity/unit row and field labels in UI.
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-INV-001 behavior + backend InventoryConsolidator documented."
+
+  - id: DI-009
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-REC-001
+    source_ref: GD-009
+    priority: P1
+    summary: "Recipe card table UX, adjustable servings, no optional ingredients"
+    detail: >
+      Ingredient table, red short rows, servings control; all lines required for canCook.
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-REC-001 + ui-principles updated; optional removed from API."
+
+  - id: DI-010
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SES-001
+    source_ref: GD-010
+    priority: P1
+    summary: "Deduct all recipe ingredients on accept"
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-SES-001 + OQ-037 aligned with implementation."
+
+  - id: DI-011
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-AUTH-001
+    source_ref: GD-012
+    priority: P2
+    summary: "Demo inventory seeder for demo-user"
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-AUTH-001 + backend README document DemoInventorySeeder."

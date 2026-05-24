@@ -28,9 +28,9 @@ As a user, when I choose to cook a suggested recipe, I want my inventory updated
 
 ## Behavior
 
-- Validate user has sufficient quantity for required (non-optional) ingredients; return validation errors if not.
+- Validate user has sufficient quantity for **all** recipe ingredients; return validation errors if not.
 - **UI alignment:** [FEAT-REC-001](FEAT-REC-001-recipe-suggestions.md) disables **Cook and deduct** when stock is insufficient (`canCook === false`); this endpoint must still enforce the same rules so API clients cannot bypass the gate.
-- **Optional ingredients (OQ-037):** **Not deducted in V1.** Handler processes **required** (`optional: false`) lines only; optional lines on provider data are ignored for deduct (same rule as `canCook` in [FEAT-REC-001](FEAT-REC-001-recipe-suggestions.md)).
+- **Ingredient model (OQ-037):** V1 has **no optional ingredients**. Handler deducts **every** recipe line when stock suffices (same rule as `canCook` in [FEAT-REC-001](FEAT-REC-001-recipe-suggestions.md)).
 - **Idempotency (OQ-038):** **Deferred for V1.** Reported “double deduct” was recipe card UX (required qty per serving); see [FEAT-REC-001](FEAT-REC-001-recipe-suggestions.md). Client loading guard optional; no server idempotency key for V1.
 
 **Deferred (not V1):** unit conversion ([OQ-041](../../product/open-questions.md)); partial adherence ([OQ-042](../../product/open-questions.md)).

@@ -125,3 +125,43 @@ entries:
     status: promoted_to_sync
     severity: medium
     resolution_note: "Sync 2026-05-24 fast-track → DI-007"
+
+  - id: GD-009
+    type: deviation
+    feature_id: FEAT-REC-001
+    source: human_feedback
+    source_ref: FM-004,FM-005,FM-006
+    status: promoted_to_sync
+    discovered_in_task: BUILD-REC-001
+    summary: "V1 recipe UX and ingredient model differ from FEAT-REC-001 spec"
+    resolution_note: "Sync 2026-05-24 → DI-009 incorporated in FEAT-REC-001 + ui-principles."
+
+  - id: GD-010
+    type: deviation
+    feature_id: FEAT-SES-001
+    source: human_feedback
+    source_ref: FM-004
+    status: promoted_to_sync
+    discovered_in_task: BUILD-SES-001
+    summary: "Accept/deduct applies to all recipe ingredients (no optional skip)"
+    resolution_note: "Sync 2026-05-24 → DI-010 incorporated in FEAT-SES-001 + OQ-037."
+
+  - id: GD-011
+    type: deviation
+    feature_id: FEAT-INV-001
+    source: human_feedback
+    source_ref: FM-002,FM-007
+    status: promoted_to_sync
+    discovered_in_task: BUILD-INV-001
+    summary: "Inventory merge and add-form UX beyond original spec"
+    resolution_note: "Sync 2026-05-24 → DI-008 incorporated in FEAT-INV-001."
+
+  - id: GD-012
+    type: deviation
+    feature_id: FEAT-AUTH-001
+    source: human_feedback
+    source_ref: FM-003
+    status: promoted_to_sync
+    discovered_in_task: BUILD-AUTH-001
+    summary: "Demo-user inventory pre-seeded on API startup"
+    resolution_note: "Sync 2026-05-24 → DI-011 incorporated in FEAT-AUTH-001 + backend README."

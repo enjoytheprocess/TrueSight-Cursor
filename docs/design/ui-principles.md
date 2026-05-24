@@ -24,11 +24,11 @@ Avoid clutter: name, quantity, and expiry are primary; secondary metadata collap
 | Element | Requirement |
 |---------|-------------|
 | **Image** | Recipe hero image from provider when available |
-| **Match** | Per ingredient: **required amount** vs **in stock** (same unit), e.g. `need 2 count · have 4 count` — not name-only chips |
-| **Servings** | Show recipe serving count so required amounts are interpretable |
-| **Ready / cook** | **Ready** and **Cook and deduct** only when required ingredients are sufficient for default servings ([FEAT-REC-001](features/FEAT-REC-001-recipe-suggestions.md)) |
+| **Servings** | Adjustable control above ingredient table; required amounts scale with selection |
+| **Ingredient table** | Columns: Ingredient, Required amount, Amount in stock; short rows in red |
+| **Ready / cook** | **Ready** and **Cook and deduct** only when **all** ingredients are sufficient for current servings ([FEAT-REC-001](features/FEAT-REC-001-recipe-suggestions.md)) |
 | **Time** | Estimated cook time visible for “tired” use case |
-| **Macros** | Show nutrition/macros when the recipe provider supplies them (optional row; hide if unavailable) |
+| **Macros** | Show nutrition/macros when the recipe provider supplies them (hide if unavailable) |
 
 Primary action: **Cook and deduct** → acceptance/deduction ([FEAT-SES-001](features/FEAT-SES-001-recipe-acceptance-deduction.md)). Disabled when stock is insufficient; server re-validates on POST.
 

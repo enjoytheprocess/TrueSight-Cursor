@@ -19,7 +19,7 @@ As a user, I want to see recipes I can make with what I have now, **including ho
 - Query endpoint(s) that consume current inventory and return a list of suggested recipes.
 - Integration with **one** configured `RecipeProvider` implementation (Spoonacular, Edamam, or stub for dev).
 - **Per-ingredient match lines** on each suggestion: required amount vs in-stock amount (same unit), for the recipe’s default serving count.
-- **`canCook` (or equivalent) flag** per recipe: `true` only when every **required** ingredient has sufficient in-stock quantity for default servings (see [Cook gate](#cook-gate)).
+- **`canCook` (or equivalent) flag** per recipe: `true` only when **every** ingredient has sufficient in-stock quantity for the selected serving scale (see [Cook gate](#cook-gate)).
 - Recipe card UI (see [Recipe card UX](#recipe-card-ux)) and [ui-principles.md](../ui-principles.md).
 
 ### Out of scope
@@ -41,36 +41,32 @@ As a user, I want to see recipes I can make with what I have now, **including ho
 
 **Cook and deduct** (primary action on the recipe card) is **enabled** only when:
 
-1. `canCook === true` from the suggestions API for that recipe at **default servings** (V1 UI sends `servingMultiplier: 1` on accept), and  
+1. `canCook === true` from the suggestions API for that recipe at the **current servings** selection (client computes from inventory + multiplier), and  
 2. No accept request is already in flight (client loading state).
 
-`canCook` is `false` when any **required** (`optional: false`) ingredient has `inStockQuantity < requiredQuantity` (after applying default servings). Optional ingredients do **not** block `canCook`.
+`canCook` is `false` when **any** ingredient has `inStockQuantity < requiredQuantity` (scaled by serving multiplier). V1 has **no optional ingredients** — every recipe line counts ([OQ-037](../../product/open-questions.md)).
 
 The accept endpoint (`FEAT-SES-001`) **re-validates** quantities server-side; the UI gate is for trust and clarity, not the only enforcement.
 
 ### Recipe card UX
 
-Each recipe suggestion card must show, for every ingredient the recipe uses (required and optional):
+Each recipe suggestion card shows:
 
-| Display | Meaning |
-|---------|---------|
-| **Required** | Amount + unit from the recipe for default servings (e.g. `2 count` eggs). |
-| **In stock** | Aggregated matching inventory for that name + unit (e.g. `4 count`). |
-| **Status** | Sufficient / short / missing (name not in inventory). |
+| Element | Requirement |
+|---------|-------------|
+| **Servings** | Adjustable number input (left-aligned, same row as label) **above** the ingredient table; required amounts scale before accept |
+| **Ingredient table** | Columns: Ingredient, Required amount, Amount in stock |
+| **Short rows** | Under-stocked lines styled in red; no aggregate “N missing” chip |
+| **Ready badge** | Shown only when `canCook === true` for the current servings selection |
+
+Do **not** show only ingredient name chips without quantities.
 
 **Examples**
 
-- Vegetable Omelette: `eggs — need 2 count · have 4 count` → sufficient; **Cook and deduct** enabled.  
-- Same recipe with `1 count` eggs in stock: `need 2 count · have 1 count` → short; **Cook and deduct** disabled.  
-- Ingredient absent: `need 2 count · have 0` or “not in fridge” → missing; disabled.
+- Vegetable Omelette with all lines sufficient → **Ready**; **Cook and deduct** enabled.  
+- Any line short or missing → that row in red; **Cook and deduct** disabled.
 
-Do **not** show only ingredient name chips without quantities (prior UI gap: “eggs” with no `2` misled users into expecting a 1-egg deduct).
-
-Badge **Ready** means `canCook === true` (all required lines sufficient), not merely “ingredient name exists in inventory.”
-
-Show **servings** for the recipe (e.g. “Serves 1”) so required amounts are interpretable.
-
-Optional ingredients: list with required vs in-stock; label as optional; do not block cook when short or missing.
+Serving multiplier sent on accept: `servingMultiplier = selectedServings / recipe.servings` (integer 1–12).
 
 ### Deferred concerns
 
@@ -128,7 +124,6 @@ Extend the suggestion DTO beyond name-only chips. Minimal shape:
       "name": "eggs",
       "requiredQuantity": 2,
       "unit": "count",
-      "optional": false,
       "inStockQuantity": 4,
       "status": "sufficient"
     },
@@ -136,7 +131,6 @@ Extend the suggestion DTO beyond name-only chips. Minimal shape:
       "name": "spinach",
       "requiredQuantity": 60,
       "unit": "g",
-      "optional": true,
       "inStockQuantity": 0,
       "status": "missing"
     }
@@ -144,9 +138,9 @@ Extend the suggestion DTO beyond name-only chips. Minimal shape:
 }
 ```
 
-**`status` values:** `sufficient` | `short` | `missing` (required line with zero matching stock).
+**`status` values:** `sufficient` | `short` | `missing` (zero matching stock).
 
-**`canCook`:** `true` iff every line with `optional: false` has `status === sufficient`.
+**`canCook`:** `true` iff **every** ingredient line has `status === sufficient` at the scaled serving count.
 
 Existing fields (`score`, `cuisineType`, `description`, etc.) may remain; replace or deprecate string-only `usesIngredients` / `missingIngredients` in favor of `ingredients[]` when build implements this spec.
 
@@ -159,7 +153,7 @@ Existing fields (`score`, `cuisineType`, `description`, etc.) may remain; replac
 ## Acceptance criteria
 
 - [x] Suggestions include per-ingredient **required** vs **in stock** quantities (same unit).
-- [x] `canCook` reflects sufficient stock for all required ingredients at default servings.
+- [x] `canCook` reflects sufficient stock for **all** ingredients at the selected servings scale.
 - [x] Recipe card enables **Cook and deduct** only when `canCook` is true (plus client loading guard).
 - [x] **Ready** badge aligned with `canCook`, not name-only presence.
 - [x] Suggestions endpoint returns normalized recipe DTOs from configured provider.

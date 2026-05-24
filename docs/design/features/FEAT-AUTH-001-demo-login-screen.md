@@ -40,6 +40,7 @@ As a visitor, I want a clear entry point that looks like a login screen but lets
 2. **Enter Demo:** User taps **Enter Demo** → `enterDemoUser()` → redirect/render main app.
 3. **Disabled login form:** Visible below **Enter Demo**; all inputs and auth actions use `disabled` (and appropriate `aria-disabled` where needed). Helper copy (OQ-045): **“Welcome to the Demo”** above or immediately beside the disabled form.
 4. **Return visits:** If a user id exists in `localStorage`, skip the login screen and show the main app (including prior demo-user sessions).
+5. **Demo inventory:** On API startup, `DemoInventorySeeder` pre-seeds `demo-user` with representative stock when that user's inventory is empty (so Enter Demo can exercise recipes immediately).
 
 ## UI layout (wireframe)
 

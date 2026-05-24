@@ -31,8 +31,7 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
                     .Select(ingredient => MapIngredientLine(ingredient, inventoryByName))
                     .ToList();
 
-                var required = ingredientLines.Where(line => !line.Optional).ToList();
-                var missing = required
+                var missing = ingredientLines
                     .Where(line => line.Status != "sufficient")
                     .Select(line => line.Name)
                     .ToList();
@@ -45,7 +44,7 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
                     && items.Any(item => item.ExpiryDate is not null && item.ExpiryDate <= today.AddDays(3)));
 
                 var score = (owned.Count * 12m) - (missing.Count * 18m) + (expiringSoon * 8m) - Math.Min(recipe.EstimatedMinutes, 60) / 10m;
-                var canCook = required.Count > 0 && required.All(line => line.Status == "sufficient");
+                var canCook = ingredientLines.Count > 0 && ingredientLines.All(line => line.Status == "sufficient");
 
                 return new RecipeSuggestionResponse(
                     recipe.Id,
@@ -84,19 +83,16 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
                 .Sum(item => item.Quantity);
         }
 
-        var status = ingredient.Optional
-            ? inStockQuantity > 0 ? "sufficient" : "missing"
-            : inStockQuantity >= ingredient.Quantity
-                ? "sufficient"
-                : inStockQuantity > 0
-                    ? "short"
-                    : "missing";
+        var status = inStockQuantity >= ingredient.Quantity
+            ? "sufficient"
+            : inStockQuantity > 0
+                ? "short"
+                : "missing";
 
         return new RecipeIngredientLineResponse(
             ingredient.Name,
             ingredient.Quantity,
             ingredient.Unit,
-            ingredient.Optional,
             inStockQuantity,
             status);
     }

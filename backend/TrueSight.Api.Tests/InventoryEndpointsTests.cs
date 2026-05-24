@@ -119,6 +119,44 @@ public sealed class InventoryEndpointsTests(TrueSightWebApplicationFactory facto
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 
+    [Fact]
+    public async Task CreateInventoryItem_merges_same_name_and_unit()
+    {
+        var client = factory.CreateClient().ForUser($"inventory-merge-{Guid.NewGuid():N}");
+
+        var firstResponse = await client.PostJsonAsync("/api/inventory", new
+        {
+            name = "Eggs",
+            quantity = 2m,
+            unit = "count",
+            expiryDate = "2026-06-10",
+        });
+
+        Assert.Equal(HttpStatusCode.Created, firstResponse.StatusCode);
+        var first = await firstResponse.ReadJsonAsync<InventoryItemDto>();
+        Assert.NotNull(first);
+
+        var secondResponse = await client.PostJsonAsync("/api/inventory", new
+        {
+            name = "eggs",
+            quantity = 3m,
+            unit = "count",
+            expiryDate = "2026-06-01",
+        });
+
+        Assert.Equal(HttpStatusCode.Created, secondResponse.StatusCode);
+        var merged = await secondResponse.ReadJsonAsync<InventoryItemDto>();
+        Assert.NotNull(merged);
+        Assert.Equal(first.Id, merged.Id);
+        Assert.Equal(5m, merged.Quantity);
+        Assert.Equal(DateOnly.Parse("2026-06-01"), merged.ExpiryDate);
+
+        var listResponse = await client.GetAsync("/api/inventory");
+        var items = await listResponse.ReadJsonAsync<List<InventoryItemDto>>();
+        Assert.NotNull(items);
+        Assert.Single(items);
+    }
+
     private sealed record InventoryItemDto(
         Guid Id,
         string Name,

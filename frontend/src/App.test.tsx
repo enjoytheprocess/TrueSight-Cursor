@@ -34,7 +34,6 @@ const suggestions: RecipeSuggestion[] = [
         name: 'eggs',
         requiredQuantity: 2,
         unit: 'count',
-        optional: false,
         inStockQuantity: 4,
         status: 'sufficient',
       },
@@ -60,7 +59,6 @@ const suggestions: RecipeSuggestion[] = [
         name: 'chicken',
         requiredQuantity: 300,
         unit: 'g',
-        optional: false,
         inStockQuantity: 0,
         status: 'missing',
       },
@@ -150,7 +148,8 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: 'Vegetable Omelette' })).toBeInTheDocument();
     expect(screen.getByText('1 items')).toBeInTheDocument();
     expect(screen.getByText('Ready')).toBeInTheDocument();
-    expect(screen.getByText('2 missing')).toBeInTheDocument();
+    expect(screen.queryByText(/\d+ missing/)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('columnheader', { name: 'Required amount' }).length).toBeGreaterThan(0);
   });
 
   it('submits a new inventory item', async () => {
@@ -168,13 +167,13 @@ describe('App', () => {
     renderApp();
     await screen.findByRole('heading', { name: 'Eggs' });
 
-    const nameInput = screen.getAllByLabelText('Ingredient name')[0];
+    const nameInput = screen.getByLabelText('Ingredient');
     await user.clear(nameInput);
     await user.type(nameInput, 'Milk');
-    await user.clear(screen.getAllByLabelText('Quantity')[0]);
-    await user.type(screen.getAllByLabelText('Quantity')[0], '1');
-    await user.selectOptions(screen.getAllByLabelText('Unit')[0], 'l');
-    await user.click(screen.getAllByRole('button', { name: 'Add' })[0]);
+    await user.clear(screen.getByLabelText('Quantity'));
+    await user.type(screen.getByLabelText('Quantity'), '1');
+    await user.selectOptions(screen.getByLabelText('Unit'), 'l');
+    await user.click(screen.getByRole('button', { name: 'Add' }));
 
     await waitFor(() => {
       expect(postMock).toHaveBeenCalledWith('/api/inventory', {

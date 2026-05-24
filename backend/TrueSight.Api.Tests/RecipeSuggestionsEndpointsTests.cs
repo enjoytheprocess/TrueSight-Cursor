@@ -18,6 +18,9 @@ public sealed class RecipeSuggestionsEndpointsTests(TrueSightWebApplicationFacto
             unit = "count",
             expiryDate = (string?)null,
         });
+        await client.PostJsonAsync("/api/inventory", new { name = "Spinach", quantity = 60m, unit = "g", expiryDate = (string?)null });
+        await client.PostJsonAsync("/api/inventory", new { name = "Cheese", quantity = 30m, unit = "g", expiryDate = (string?)null });
+        await client.PostJsonAsync("/api/inventory", new { name = "Tomato", quantity = 1m, unit = "count", expiryDate = (string?)null });
 
         var response = await client.GetAsync("/api/recipes/suggestions");
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);

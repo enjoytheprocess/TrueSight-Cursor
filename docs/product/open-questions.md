@@ -99,7 +99,7 @@ These are **decided in docs**; do not re-litigate here unless changing an ADR.
 | OQ-011 | Web-first MVP; native RN not on V1 roadmap | [ADR-20260523-01](../design/decisions/ADR-20260523-01-delivery-model-pwa-web.md) | 2026-05-24 |
 | OQ-014 | TanStack Query for server state | `frontend/package.json` | 2026-05-24 |
 | OQ-016 | `frontend/` at repo root | repo layout | 2026-05-24 |
-| OQ-037 | V1 has no optional ingredients — deduct **required lines only**; ignore optional flag on provider data | [FEAT-SES-001](../design/features/FEAT-SES-001-recipe-acceptance-deduction.md), [FEAT-REC-001](../design/features/FEAT-REC-001-recipe-suggestions.md) | 2026-05-24 |
+| OQ-037 | V1 has **no optional ingredients** — every recipe line is required for `canCook` and deduct | [FEAT-SES-001](../design/features/FEAT-SES-001-recipe-acceptance-deduction.md), [FEAT-REC-001](../design/features/FEAT-REC-001-recipe-suggestions.md) | 2026-05-24 |
 | OQ-039 | `{ recipeId, servingMultiplier? }` — multiplier optional, defaults to **1**, **integer only** (no decimals); no line overrides | [FEAT-SES-001](../design/features/FEAT-SES-001-recipe-acceptance-deduction.md) | 2026-05-24 |
 | OQ-045 | Helper copy: **“Welcome to the Demo”** (above or near disabled login form) | [FEAT-AUTH-001](../design/features/FEAT-AUTH-001-demo-login-screen.md) | 2026-05-24 |
 | OQ-046 | Full login mock: email/password + disabled sign-up/forgot links + disabled OAuth buttons (Google, Facebook, etc.); **Enter Demo** remains the only enabled action | [FEAT-AUTH-001](../design/features/FEAT-AUTH-001-demo-login-screen.md) | 2026-05-24 |

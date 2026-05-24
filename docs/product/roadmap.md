@@ -2,14 +2,14 @@
 
 Phases the team has committed to deliver. Exploratory ideas live in [ideation.md](ideation.md) and [`.awp-workspace/0-ideation/`](../.awp-workspace/0-ideation/).
 
-## Phase 1 — Core (V1)
+## Phase 1 — Core (V1) — **delivered 2026-05-24**
 
 | # | Capability | Notes |
 |---|------------|--------|
-| 0 | Identity (demo entry) | **V1:** demo login screen + `X-TrueSight-User` header ([ADR-20260524-01](../design/decisions/ADR-20260524-01-v1-interim-identity-header.md), [FEAT-AUTH-001](../design/features/FEAT-AUTH-001-demo-login-screen.md)); real sign-up/login follow-on |
-| 1 | Inventory management (manual input) | CRUD, quantity, expiry; list/view |
-| 2 | Recipe suggestions from current inventory | Match available ingredients via recipe provider adapter |
-| 3 | Inventory deduction on recipe acceptance | `RecipeSession` flow |
+| 0 | Identity (demo entry) | Demo login + `X-TrueSight-User`; demo inventory seed |
+| 1 | Inventory management (manual input) | CRUD, merge on create, quantity, expiry |
+| 2 | Recipe suggestions from current inventory | Ingredient table, servings, canCook |
+| 3 | Inventory deduction on recipe acceptance | `RecipeSession` flow; all ingredients deducted |
 
 **Delivery:** Mobile-first responsive web (PWA-capable). See [architecture overview](../architecture/overview.md).
 

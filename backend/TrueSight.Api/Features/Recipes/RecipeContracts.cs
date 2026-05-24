@@ -1,12 +1,11 @@
 namespace TrueSight.Api.Features.Recipes;
 
-public sealed record RecipeIngredientDto(string Name, decimal Quantity, string Unit, bool Optional);
+public sealed record RecipeIngredientDto(string Name, decimal Quantity, string Unit);
 
 public sealed record RecipeIngredientLineResponse(
     string Name,
     decimal RequiredQuantity,
     string Unit,
-    bool Optional,
     decimal InStockQuantity,
     string Status);
 
@@ -37,4 +36,3 @@ public sealed record RecipeSuggestionResponse(
     decimal Score,
     IReadOnlyList<string> UsesIngredients,
     IReadOnlyList<string> MissingIngredients);
-

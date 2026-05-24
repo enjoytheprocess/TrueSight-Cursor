@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using TrueSight.Api.Features.Recipes;
 using TrueSight.Api.Infrastructure;
 using TrueSight.Api.Infrastructure.Data;
 using TrueSight.Api.Infrastructure.Recipes;
@@ -26,38 +27,14 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
         var deductions = new List<(InventoryItem Item, string IngredientName, decimal Quantity, string Unit)>();
         var insufficient = new List<string>();
 
-        foreach (var ingredient in recipe.Ingredients.Where(ingredient => !ingredient.Optional))
+        foreach (var ingredient in recipe.Ingredients)
         {
-            var normalizedName = TextNormalizer.Ingredient(ingredient.Name);
-            var requiredQuantity = ingredient.Quantity * request.ServingMultiplier;
-
-            if (!inventoryByName.TryGetValue(normalizedName, out var matchingItems))
-            {
-                insufficient.Add($"{ingredient.Name}: need {requiredQuantity:0.##} {ingredient.Unit}, have 0");
-                continue;
-            }
-
-            var sameUnitItems = matchingItems.Where(item => item.Unit == ingredient.Unit).ToList();
-            var availableQuantity = sameUnitItems.Sum(item => item.Quantity);
-
-            if (availableQuantity < requiredQuantity)
-            {
-                insufficient.Add($"{ingredient.Name}: need {requiredQuantity:0.##} {ingredient.Unit}, have {availableQuantity:0.##}");
-                continue;
-            }
-
-            var remaining = requiredQuantity;
-            foreach (var item in sameUnitItems)
-            {
-                if (remaining <= 0)
-                {
-                    break;
-                }
-
-                var quantity = Math.Min(item.Quantity, remaining);
-                deductions.Add((item, ingredient.Name, quantity, ingredient.Unit));
-                remaining -= quantity;
-            }
+            PlanDeduction(
+                ingredient,
+                request.ServingMultiplier,
+                inventoryByName,
+                deductions,
+                insufficient);
         }
 
         if (insufficient.Count > 0)
@@ -101,5 +78,54 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
             session.AcceptedAt,
             session.Lines.Select(line => new RecipeSessionLineResponse(line.IngredientName, line.QuantityDeducted, line.Unit)).ToList());
     }
-}
 
+    private static void PlanDeduction(
+        RecipeIngredientDto ingredient,
+        int servingMultiplier,
+        IReadOnlyDictionary<string, List<InventoryItem>> inventoryByName,
+        List<(InventoryItem Item, string IngredientName, decimal Quantity, string Unit)> deductions,
+        List<string> insufficient)
+    {
+        var normalizedName = TextNormalizer.Ingredient(ingredient.Name);
+        var requiredQuantity = ingredient.Quantity * servingMultiplier;
+
+        if (!inventoryByName.TryGetValue(normalizedName, out var matchingItems))
+        {
+            insufficient.Add($"{ingredient.Name}: need {requiredQuantity:0.##} {ingredient.Unit}, have 0");
+            return;
+        }
+
+        var sameUnitItems = matchingItems.Where(item => item.Unit == ingredient.Unit).ToList();
+        var availableQuantity = sameUnitItems.Sum(item => item.Quantity);
+
+        if (availableQuantity < requiredQuantity)
+        {
+            insufficient.Add($"{ingredient.Name}: need {requiredQuantity:0.##} {ingredient.Unit}, have {availableQuantity:0.##}");
+            return;
+        }
+
+        ApplyDeductions(sameUnitItems, requiredQuantity, ingredient.Name, ingredient.Unit, deductions);
+    }
+
+    private static void ApplyDeductions(
+        IReadOnlyList<InventoryItem> sameUnitItems,
+        decimal quantityToDeduct,
+        string ingredientName,
+        string unit,
+        List<(InventoryItem Item, string IngredientName, decimal Quantity, string Unit)> deductions)
+    {
+        var remaining = quantityToDeduct;
+
+        foreach (var item in sameUnitItems)
+        {
+            if (remaining <= 0)
+            {
+                break;
+            }
+
+            var quantity = Math.Min(item.Quantity, remaining);
+            deductions.Add((item, ingredientName, quantity, unit));
+            remaining -= quantity;
+        }
+    }
+}

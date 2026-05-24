@@ -1,9 +1,10 @@
 import { FormEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Check, Clock, Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2 } from 'lucide-react';
 import { api } from '../../api/client';
 import { formatDate, formatQuantity, isExpiringSoon } from '../inventory/formatting';
 import { InventoryInput, InventoryItem } from '../inventory/types';
+import { RecipeCard } from '../recipes/RecipeCard';
 import { RecipeSession, RecipeSuggestion } from '../recipes/types';
 
 const units = ['count', 'g', 'kg', 'ml', 'l', 'oz', 'lb', 'cup', 'tbsp', 'tsp'];
@@ -49,7 +50,8 @@ export function MainApp() {
   });
 
   const acceptRecipe = useMutation({
-    mutationFn: (recipeId: string) => api.post<RecipeSession>('/api/recipe-sessions', { recipeId, servingMultiplier: 1 }),
+    mutationFn: ({ recipeId, servingMultiplier }: { recipeId: string; servingMultiplier: number }) =>
+      api.post<RecipeSession>('/api/recipe-sessions', { recipeId, servingMultiplier }),
     onSuccess: invalidateV1,
   });
 
@@ -63,7 +65,7 @@ export function MainApp() {
     createItem.mutate({
       ...form,
       name: form.name.trim(),
-      quantity: Number(form.quantity),
+      quantity: Math.round(form.quantity),
       expiryDate: form.expiryDate || null,
     });
   };
@@ -91,38 +93,55 @@ export function MainApp() {
           </div>
 
           <form className="item-form" onSubmit={submitInventory}>
-            <input
-              aria-label="Ingredient name"
-              placeholder="Ingredient"
-              value={form.name}
-              onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
-              required
-            />
-            <input
-              aria-label="Quantity"
-              type="number"
-              min="0"
-              step="0.01"
-              value={form.quantity}
-              onChange={(event) => setForm((current) => ({ ...current, quantity: Number(event.target.value) }))}
-              required
-            />
-            <select
-              aria-label="Unit"
-              value={form.unit}
-              onChange={(event) => setForm((current) => ({ ...current, unit: event.target.value }))}
-            >
-              {units.map((unit) => (
-                <option key={unit}>{unit}</option>
-              ))}
-            </select>
-            <input
-              aria-label="Expiry date"
-              type="date"
-              value={form.expiryDate ?? ''}
-              onChange={(event) => setForm((current) => ({ ...current, expiryDate: event.target.value || null }))}
-            />
-            <button className="primary-action" type="submit" disabled={createItem.isLoading}>
+            <label className="field-label field-full">
+              Ingredient
+              <input
+                placeholder="e.g. milk"
+                value={form.name}
+                onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
+                required
+              />
+            </label>
+            <div className="field-row quantity-unit-row">
+              <label className="field-label">
+                Quantity
+                <input
+                  type="number"
+                  min="0"
+                  step="1"
+                  inputMode="numeric"
+                  placeholder="1"
+                  value={form.quantity}
+                  onChange={(event) =>
+                    setForm((current) => ({
+                      ...current,
+                      quantity: Math.max(0, Math.round(Number(event.target.value) || 0)),
+                    }))
+                  }
+                  required
+                />
+              </label>
+              <label className="field-label">
+                Unit
+                <select
+                  value={form.unit}
+                  onChange={(event) => setForm((current) => ({ ...current, unit: event.target.value }))}
+                >
+                  {units.map((unit) => (
+                    <option key={unit}>{unit}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <label className="field-label field-full">
+              Expiry date
+              <input
+                type="date"
+                value={form.expiryDate ?? ''}
+                onChange={(event) => setForm((current) => ({ ...current, expiryDate: event.target.value || null }))}
+              />
+            </label>
+            <button className="primary-action field-full" type="submit" disabled={createItem.isLoading}>
               <Plus size={18} />
               Add
             </button>
@@ -153,45 +172,12 @@ export function MainApp() {
           </div>
           <div className="recipe-list">
             {suggestions.data?.map((recipe) => (
-              <article className="recipe-card" key={recipe.id}>
-                <div className="recipe-card-header">
-                  <div>
-                    <h3>{recipe.name}</h3>
-                    <p>{recipe.description}</p>
-                  </div>
-                  <span className={recipe.canCook ? 'match-badge ready' : 'match-badge'}>
-                    {recipe.canCook ? 'Ready' : `${recipe.missingIngredientCount} missing`}
-                  </span>
-                </div>
-                <div className="recipe-meta">
-                  <span>
-                    <Clock size={16} />
-                    {recipe.estimatedMinutes} min
-                  </span>
-                  <span>Serves {recipe.servings}</span>
-                  <span>{recipe.cuisineType}</span>
-                </div>
-                <ul className="ingredient-lines">
-                  {recipe.ingredients.map((line) => (
-                    <li key={`${recipe.id}-${line.name}`}>
-                      <strong>{line.name}</strong>
-                      {line.optional ? ' (optional)' : ''}
-                      {' — need '}
-                      {line.requiredQuantity} {line.unit}
-                      {' · have '}
-                      {line.inStockQuantity} {line.unit}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className="cook-action"
-                  disabled={acceptRecipe.isLoading || !recipe.canCook}
-                  onClick={() => acceptRecipe.mutate(recipe.id)}
-                >
-                  <Check size={18} />
-                  Cook and deduct
-                </button>
-              </article>
+              <RecipeCard
+                key={recipe.id}
+                recipe={recipe}
+                isAccepting={acceptRecipe.isLoading}
+                onAccept={(recipeId, servingMultiplier) => acceptRecipe.mutate({ recipeId, servingMultiplier })}
+              />
             ))}
           </div>
         </section>

@@ -102,3 +102,51 @@ _Promoted and resolved entries. Open entries are in `GAPS_AND_DEVIATIONS.yaml`._
 **Summary:** No automated tests for recipe suggestions or recipe detail endpoints
 
 **Resolution:** Sync 2026-05-24 fast-track → DI-007
+
+---
+
+### GD-009 · `deviation` · `promoted_to_sync`
+
+| Feature | Source | Source Ref | Discovered In |
+| --- | --- | --- | --- |
+| FEAT-REC-001 | human_feedback | FM-004,FM-005,FM-006 | BUILD-REC-001 |
+
+**Summary:** V1 recipe UX and ingredient model differ from FEAT-REC-001 spec
+
+**Resolution:** Sync 2026-05-24 → DI-009 incorporated in FEAT-REC-001 + ui-principles.
+
+---
+
+### GD-010 · `deviation` · `promoted_to_sync`
+
+| Feature | Source | Source Ref | Discovered In |
+| --- | --- | --- | --- |
+| FEAT-SES-001 | human_feedback | FM-004 | BUILD-SES-001 |
+
+**Summary:** Accept/deduct applies to all recipe ingredients (no optional skip)
+
+**Resolution:** Sync 2026-05-24 → DI-010 incorporated in FEAT-SES-001 + OQ-037.
+
+---
+
+### GD-011 · `deviation` · `promoted_to_sync`
+
+| Feature | Source | Source Ref | Discovered In |
+| --- | --- | --- | --- |
+| FEAT-INV-001 | human_feedback | FM-002,FM-007 | BUILD-INV-001 |
+
+**Summary:** Inventory merge and add-form UX beyond original spec
+
+**Resolution:** Sync 2026-05-24 → DI-008 incorporated in FEAT-INV-001.
+
+---
+
+### GD-012 · `deviation` · `promoted_to_sync`
+
+| Feature | Source | Source Ref | Discovered In |
+| --- | --- | --- | --- |
+| FEAT-AUTH-001 | human_feedback | FM-003 | BUILD-AUTH-001 |
+
+**Summary:** Demo-user inventory pre-seeded on API startup
+
+**Resolution:** Sync 2026-05-24 → DI-011 incorporated in FEAT-AUTH-001 + backend README.

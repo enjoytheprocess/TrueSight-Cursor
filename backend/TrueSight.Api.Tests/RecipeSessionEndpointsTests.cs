@@ -13,6 +13,7 @@ public sealed class RecipeSessionEndpointsTests(TrueSightWebApplicationFactory f
         await CreateInventoryItem(client, "Chicken", 300, "g");
         await CreateInventoryItem(client, "Spinach", 120, "g");
         await CreateInventoryItem(client, "Eggs", 2, "count");
+        await CreateInventoryItem(client, "Cheese", 40, "g");
 
         var acceptResponse = await client.PostJsonAsync("/api/recipe-sessions", new
         {
@@ -26,7 +27,8 @@ public sealed class RecipeSessionEndpointsTests(TrueSightWebApplicationFactory f
         Assert.NotNull(session);
         Assert.Equal("chicken-spinach-eggs", session.RecipeId);
         Assert.Equal("Chicken Spinach Scramble", session.RecipeName);
-        Assert.Equal(3, session.Lines.Count);
+        Assert.Equal(4, session.Lines.Count);
+        Assert.Contains(session.Lines, line => line.IngredientName == "cheese");
 
         var inventoryResponse = await client.GetAsync("/api/inventory");
         var inventory = await inventoryResponse.ReadJsonAsync<List<InventoryItemDto>>();
@@ -50,6 +52,7 @@ public sealed class RecipeSessionEndpointsTests(TrueSightWebApplicationFactory f
         await CreateInventoryItem(client, "Chicken", 300, "g");
         await CreateInventoryItem(client, "Spinach", 120, "g");
         await CreateInventoryItem(client, "Eggs", 2, "count");
+        await CreateInventoryItem(client, "Cheese", 40, "g");
 
         var acceptResponse = await client.PostJsonAsync("/api/recipe-sessions", new { recipeId = "chicken-spinach-eggs" });
 
@@ -66,6 +69,24 @@ public sealed class RecipeSessionEndpointsTests(TrueSightWebApplicationFactory f
         var client = factory.CreateClient().ForUser($"recipe-session-fail-{Guid.NewGuid():N}");
 
         await CreateInventoryItem(client, "Eggs", 1, "count");
+
+        var acceptResponse = await client.PostJsonAsync("/api/recipe-sessions", new
+        {
+            recipeId = "chicken-spinach-eggs",
+            servingMultiplier = 1,
+        });
+
+        Assert.Equal(HttpStatusCode.BadRequest, acceptResponse.StatusCode);
+    }
+
+    [Fact]
+    public async Task AcceptRecipe_returns_bad_request_when_any_ingredient_is_missing()
+    {
+        var client = factory.CreateClient().ForUser($"recipe-session-missing-cheese-{Guid.NewGuid():N}");
+
+        await CreateInventoryItem(client, "Chicken", 300, "g");
+        await CreateInventoryItem(client, "Spinach", 120, "g");
+        await CreateInventoryItem(client, "Eggs", 2, "count");
 
         var acceptResponse = await client.PostJsonAsync("/api/recipe-sessions", new
         {

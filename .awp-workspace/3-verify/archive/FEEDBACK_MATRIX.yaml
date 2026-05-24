@@ -14,7 +14,7 @@ entries:
     feature_id: FEAT-INV-001
     type: observation
     severity: high
-    status: resolved_in_loop
+    status: resolved
     summary: "Teammate may have admitted V1 build tasks without a full IRG rubric pass"
     detail: >
       TASK_READINESS shows numeric IRG scores (S/A/I/R/V) and ready_for_build, but the team
@@ -25,3 +25,96 @@ entries:
     recorded_by: team
     resolution_note: >
       IRG retrospective incorporated (DI-001). Verify/Sync fast-track 2026-05-24 to Design.
+
+  - id: FM-002
+    task_id: BUILD-INV-001
+    feature_id: FEAT-INV-001
+    type: observation
+    severity: medium
+    status: resolved
+    summary: "Summary stats (Expiring soon, Suggestions, Cooked) should stay on one row at cellphone width"
+    detail: >
+      On narrow/mobile viewports the summary-strip stats currently wrap or stack. Reviewer prefers
+      all three stats (Expiring soon, Suggestions, Cooked) to remain in a single horizontal row
+      at cellphone width.
+    recorded_at: "2026-05-24"
+    recorded_by: human_reviewer
+    resolution_note: "styles.css — summary-strip keeps 3 columns below 520px with compact stat sizing."
+
+  - id: FM-003
+    task_id: BUILD-AUTH-001
+    feature_id: FEAT-AUTH-001
+    type: observation
+    severity: medium
+    status: resolved
+    summary: "Demo mode should start with sample inventory already in stock"
+    detail: >
+      Enter Demo currently lands on an empty inventory, which makes recipe suggestions and the
+      expiring-soon stat hard to evaluate. Pre-seed demo-user with representative ingredients so
+      reviewers can exercise the full V1 flow without manual data entry.
+    recorded_at: "2026-05-24"
+    recorded_by: human_reviewer
+    resolution_note: "DemoInventorySeeder seeds demo-user on startup when inventory is empty."
+
+  - id: FM-004
+    task_id: BUILD-REC-001
+    feature_id: FEAT-REC-001
+    type: observation
+    severity: medium
+    status: resolved
+    summary: "Do not show (optional) on recipe ingredient lines"
+    detail: >
+      Recipe suggestion cards append "(optional)" next to optional ingredients. In the current V1
+      implementation all ingredients are deducted on accept, so the optional label is misleading
+      and should be removed from the UI.
+    recorded_at: "2026-05-24"
+    recorded_by: human_reviewer
+    resolution_note: "RecipeCard ingredient table omits optional label."
+
+  - id: FM-005
+    task_id: BUILD-REC-001
+    feature_id: FEAT-REC-001
+    type: observation
+    severity: medium
+    status: resolved
+    summary: "Recipe card: adjustable servings before ingredient list; ingredients as a table"
+    detail: >
+      Show an adjustable number-of-servings control (not a fixed label) in a box immediately before
+      the ingredient list — not only in the metadata row with time and cuisine. Replace the inline
+      ingredient list (name — need X · have Y) with a table: columns Ingredient, Required amount,
+      Amount in stock. Required amounts should update when the user changes servings, before accept.
+    recorded_at: "2026-05-24"
+    recorded_by: human_reviewer
+    resolution_note: "RecipeCard — servings input box + ingredient table with scaled required amounts."
+
+  - id: FM-006
+    task_id: BUILD-REC-001
+    feature_id: FEAT-REC-001
+    type: observation
+    severity: medium
+    status: resolved
+    summary: "Highlight missing ingredients in red on the row; drop the N missing chip"
+    detail: >
+      Recipe cards currently show a header chip such as "2 missing" when stock is short. Prefer
+      row-level indication instead: each under-stocked ingredient row in the ingredient table should
+      be styled in red. Remove the aggregate missing-count chip from the card header (keep Ready
+      or equivalent only when all ingredients are in stock, if still useful).
+    recorded_at: "2026-05-24"
+    recorded_by: human_reviewer
+    resolution_note: "RecipeCard — ingredient-short row styling; header shows Ready only when cookable."
+
+  - id: FM-007
+    task_id: BUILD-INV-001
+    feature_id: FEAT-INV-001
+    type: observation
+    severity: medium
+    status: resolved
+    summary: "Inventory add form: quantity and unit on one row; visible labels or hints for fields"
+    detail: >
+      The add-item form stacks quantity (number) and unit (select) on separate rows. Place them on
+      the same row. Fields currently rely on placeholders and aria-labels only; add left-side labels
+      or clear hint/placeholder text so users can tell what each box is for (ingredient name, quantity,
+      unit, expiry date).
+    recorded_at: "2026-05-24"
+    recorded_by: human_reviewer
+    resolution_note: "MainApp item-form — visible field labels; quantity and unit share one row."

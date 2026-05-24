@@ -2,7 +2,6 @@ export type RecipeIngredientLine = {
   name: string;
   requiredQuantity: number;
   unit: string;
-  optional: boolean;
   inStockQuantity: number;
   status: 'sufficient' | 'short' | 'missing';
 };

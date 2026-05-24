@@ -95,3 +95,55 @@ _Open items. Move resolved items to `archive/DESIGN_INPUTS.yaml`._
 
 **Resolution:** `incorporated`  
 **Pointer:** —
+
+---
+
+### DI-008 · `deviation` · `addressed`
+
+| Feature | Cycle | Source Ref |
+| --- | --- | --- |
+| FEAT-INV-001 |  | GD-011 |
+
+**Summary:** Inventory merge on create and labeled add form
+
+**Resolution:** `incorporated`  
+**Pointer:** —
+
+---
+
+### DI-009 · `deviation` · `addressed`
+
+| Feature | Cycle | Source Ref |
+| --- | --- | --- |
+| FEAT-REC-001 |  | GD-009 |
+
+**Summary:** Recipe card table UX, adjustable servings, no optional ingredients
+
+**Resolution:** `incorporated`  
+**Pointer:** —
+
+---
+
+### DI-010 · `deviation` · `addressed`
+
+| Feature | Cycle | Source Ref |
+| --- | --- | --- |
+| FEAT-SES-001 |  | GD-010 |
+
+**Summary:** Deduct all recipe ingredients on accept
+
+**Resolution:** `incorporated`  
+**Pointer:** —
+
+---
+
+### DI-011 · `deviation` · `addressed`
+
+| Feature | Cycle | Source Ref |
+| --- | --- | --- |
+| FEAT-AUTH-001 |  | GD-012 |
+
+**Summary:** Demo inventory seeder for demo-user
+
+**Resolution:** `incorporated`  
+**Pointer:** —

@@ -60,6 +60,7 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<TrueSightDbContext>();
     await db.Database.EnsureCreatedAsync();
+    await DemoInventorySeeder.SeedIfEmptyAsync(db);
 }
 
 app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));

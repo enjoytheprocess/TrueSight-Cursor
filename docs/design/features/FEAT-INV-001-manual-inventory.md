@@ -35,6 +35,8 @@ As a user, I want to add, view, edit, and remove what I have in my fridge, so th
 - All operations are scoped to the current user (see [ADR-20260524-01](../decisions/ADR-20260524-01-v1-interim-identity-header.md) — login off; `X-TrueSight-User` interim identity, TMP-001).
 - **Delete:** hard delete of the user's `InventoryItem` (`DELETE /api/inventory/{id}` → 204 or 404). No soft-delete or audit trail in V1. **Unchanged when IngredientCatalog ships** — catalog is reference data; deleting inventory does not delete catalog rows (see [domain model](../../product/domain-model.md)).
 - Quantities are non-negative; **units** are free-text strings (max 32 chars); recipe matching requires **exact same unit** on inventory and recipe line.
+- **Merge on create:** `POST /api/inventory` with the same normalized name + unit as an existing row **adds quantity** to that row (earliest expiry wins). `InventoryConsolidator` removes duplicate rows for the same user/name/unit after create.
+- **Add form UX:** labeled fields; quantity and unit on one row; integer quantity step.
 
 ## API / contracts
 

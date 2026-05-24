@@ -25,3 +25,83 @@ _Completed tasks. Active tasks are in `TASK_READINESS.yaml`._
 
 > Completed 2026-05-24. IRG 10/10. TMP-001 client user id in frontend/src/api/userId.ts.
 
+
+---
+
+### BUILD-INV-001 · **Implement manual inventory CRUD**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-INV-001 | backend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 2 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-INV-001-manual-inventory.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md, docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+
+> Done 2026-05-24 — Sync archived.
+
+---
+
+### BUILD-REC-001 · **Implement V1 recipe suggestions**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-REC-001 | backend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 2 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-REC-001-recipe-suggestions.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
+
+> Done 2026-05-24 — Sync archived.
+
+---
+
+### BUILD-SES-001 · **Implement recipe acceptance and inventory deduction**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-SES-001 | backend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 2 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+
+> Done 2026-05-24 — Sync archived.
+
+---
+
+### BUILD-AUTH-001 · **Implement demo login screen (temporary)**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-AUTH-001 | frontend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 2 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-AUTH-001-demo-login-screen.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+
+> Done 2026-05-24 — Sync archived.

@@ -17,97 +17,6 @@
 schema_version: 5
 
 tasks:
-  - id: BUILD-INV-001
-    feature_id: FEAT-INV-001
-    title: "Implement manual inventory CRUD"
-    component: backend
-    spec_link: "docs/design/features/FEAT-INV-001-manual-inventory.md"
-    advisor_status: not_required
-    advisor_track: none
-    quality_requirements: []
-    decision_links:
-      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
-    priority: P1
-    phase: build
-    capability: CAP-V1-CORE
-    target_window: TBD
-    mode: sequential
-    lock_id: none
-    owner: unassigned
-    status: awaiting_human_review
-    build_dependencies: none
-    design_dependencies: none
-    validation: "Run: dotnet test backend/MyApp.sln — InventoryEndpointsTests (AP-004 added)"
-    notes: "Build slice 2026-05-24 — AP-004 InventoryItem_is_isolated_per_user. Awaiting acceptance gate."
-
-  - id: BUILD-AUTH-001
-    feature_id: FEAT-AUTH-001
-    title: "Implement demo login screen (temporary)"
-    component: frontend
-    spec_link: "docs/design/features/FEAT-AUTH-001-demo-login-screen.md"
-    advisor_status: not_required
-    advisor_track: none
-    quality_requirements: []
-    decision_links:
-      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
-    priority: P2
-    phase: build
-    capability: CAP-V1-CORE
-    target_window: TBD
-    mode: parallel
-    lock_id: none
-    owner: unassigned
-    status: awaiting_human_review
-    build_dependencies: none
-    design_dependencies: none
-    validation: "npm test — login gate + Enter Demo; manual mobile/desktop"
-    notes: "Build slice 2026-05-24 — TMP-001 demo login screen. Awaiting review."
-
-  - id: BUILD-REC-001
-    feature_id: FEAT-REC-001
-    title: "Implement V1 recipe suggestions"
-    component: backend
-    spec_link: "docs/design/features/FEAT-REC-001-recipe-suggestions.md"
-    advisor_status: not_required
-    advisor_track: none
-    quality_requirements: []
-    decision_links:
-      - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
-    priority: P1
-    phase: build
-    capability: CAP-V1-CORE
-    target_window: TBD
-    mode: sequential
-    lock_id: none
-    owner: unassigned
-    status: awaiting_human_review
-    build_dependencies: BUILD-INV-001
-    design_dependencies: none
-    validation: "dotnet test — RecipeSuggestionsEndpointsTests; npm test (recipe card)"
-    notes: "Build slice 2026-05-24 — ingredients[] + canCook API + card UX. Awaiting review."
-
-  - id: BUILD-SES-001
-    feature_id: FEAT-SES-001
-    title: "Implement recipe acceptance and inventory deduction"
-    component: backend
-    spec_link: "docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md"
-    advisor_status: not_required
-    advisor_track: none
-    quality_requirements: []
-    decision_links: []
-    priority: P1
-    phase: build
-    capability: CAP-V1-CORE
-    target_window: TBD
-    mode: sequential
-    lock_id: none
-    owner: unassigned
-    status: awaiting_human_review
-    build_dependencies: BUILD-REC-001
-    design_dependencies: none
-    validation: "dotnet test — RecipeSessionEndpointsTests; OQ-039 body shape"
-    notes: "Build slice 2026-05-24 — optional servingMultiplier (default 1), int 1–12. Awaiting review."
-
   - id: BUILD-CAT-001
     feature_id: FEAT-CAT-001
     title: "Implement ingredient catalog"
@@ -128,4 +37,4 @@ tasks:
     build_dependencies: BUILD-INV-001
     design_dependencies: none
     validation: "Design only — tick AC before build admit (post-V1 / TMP-002)"
-    notes: "Not admitted — P3; OQ-053–055 spec ready; awaits V1 core done."
+    notes: "V1 core synced 2026-05-24 — BUILD-INV-001 done; not build-admitted."
