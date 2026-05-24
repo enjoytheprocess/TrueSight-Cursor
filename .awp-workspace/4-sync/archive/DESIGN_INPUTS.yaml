@@ -1,0 +1,235 @@
+# Design Inputs Archive — resolved gaps and deviations.
+# type: gap | deviation
+# status: open | addressed
+# resolution_type (when addressed): incorporated | dismissed
+
+schema_version: 1
+
+items:
+  - id: DI-001
+    type: gap
+    status: addressed
+    resolution_type: incorporated
+    feature_id: none
+    source_ref: GD-002
+    summary: "Retrospective IRG audit for admitted V1 build tasks"
+    detail: >
+      Re-run IRG rubric for SETUP-001, BUILD-INV-001, BUILD-REC-001, BUILD-SES-001 with
+      evidence (spec TBDs closed or explicitly deferred, advisor tracks, blocking unknowns).
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      All four tasks needs_detail (7/10; A=1 I=1). Re-admit after Design closes DI-002–DI-007.
+      IRG re-score 2026-05-24: SETUP-001 + BUILD-REC-001 ready_for_build; INV/SES need_detail.
+
+  - id: DI-002
+    type: gap
+    status: addressed
+    resolution_type: incorporated
+    feature_id: none
+    source_ref: GD-003
+    priority: P1
+    summary: "Resolve V1 identity — brief vs dev header (OQ-001)"
+    detail: >
+      Project brief lists sign-up/login in V1; implementation uses X-TrueSight-User only.
+      Decide MVP identity (defer auth vs minimal JWT/cookie) and update brief + specs.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      Login off for V1 core loop. ADR-20260524-01 + TMP-001 interim header identity;
+      auth follow-on task removes TMP-001. Brief updated.
+
+  - id: DI-003
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-REC-001
+    source_ref: GD-004
+    priority: P1
+    summary: "Recipe provider configuration contract (ADR-20260523-02)"
+    detail: >
+      appsettings/env keys for provider selection; replace hardcoded StaticRecipeProvider
+      registration or document explicit V1 stub waiver in spec.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      V1 waiver — hardcoded StaticRecipeProvider acceptable for demo. Config keys documented
+      in ADR-02 as follow-on when adding live vendor.
+
+  - id: DI-004
+    type: gap
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SES-001
+    source_ref: GD-005
+    priority: P0
+    summary: "CRITICAL — Recipe accept idempotency (OQ-038 / GD-005)"
+    detail: >
+      Duplicate POST /api/recipe-sessions double-deducts inventory. Design must specify
+      idempotency key or natural key policy before re-admit BUILD-SES-001.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      Reported "double deduct" was required quantity vs stock UX (e.g. 2 eggs/serving), not
+      duplicate POST. FEAT-REC-001 recipe card (required vs in-stock, canCook) addresses user
+      trust. Server idempotency (OQ-038) deferred for V1; optional UI click guard only.
+
+  - id: DI-005
+    type: gap
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-INV-001
+    source_ref: GD-006
+    priority: P2
+    summary: "IngredientCatalog vs inline names (OQ-030)"
+    detail: >
+      Spec references catalog entity; code uses free-text + NormalizedName. Decide V1 scope
+      and update FEAT-INV-001 + domain model.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      V1 inline names only; TMP-002. No catalog schema in current re-build. Domain model updated.
+
+  - id: DI-006
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-INV-001
+    source_ref: GD-007
+    priority: P3
+    summary: "Inventory API contract polish (PATCH, 404 problem details, pagination)"
+    detail: >
+      Defer or specify in spec: PATCH vs PUT-only, RFC7807 on 404, list pagination, cross-user tests.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      V1 waivers in FEAT-INV-001 § Deferred API polish (AP-001–AP-005). AP-004 cross-user
+      test required; other items deferred individually.
+
+  - id: DI-007
+    type: gap
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-REC-001
+    source_ref: GD-008
+    priority: P2
+    summary: "Recipe suggestions test coverage"
+    detail: >
+      Add integration tests for GET /api/recipes/suggestions and /api/recipes/{id} or waive in
+      quality plan before BUILD-REC-001 re-admit.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      Required integration tests documented in FEAT-REC-001 test plan (DI-007).
+
+  - id: DI-008
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-INV-001
+    source_ref: GD-011
+    priority: P2
+    summary: "Inventory merge on create and labeled add form"
+    detail: >
+      POST merges same normalized name + unit; quantity/unit row and field labels in UI.
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-INV-001 behavior + backend InventoryConsolidator documented."
+
+  - id: DI-009
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-REC-001
+    source_ref: GD-009
+    priority: P1
+    summary: "Recipe card table UX, adjustable servings, no optional ingredients"
+    detail: >
+      Ingredient table, red short rows, servings control; all lines required for canCook.
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-REC-001 + ui-principles updated; optional removed from API."
+
+  - id: DI-010
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SES-001
+    source_ref: GD-010
+    priority: P1
+    summary: "Deduct all recipe ingredients on accept"
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-SES-001 + OQ-037 aligned with implementation."
+
+  - id: DI-011
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-AUTH-001
+    source_ref: GD-012
+    priority: P2
+    summary: "Demo inventory seeder for demo-user"
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-AUTH-001 + backend README document DemoInventorySeeder."
+
+  - id: DI-012
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SHP-001
+    source_ref: GD-013
+    priority: P4
+    summary: "Shopping list photo-add preview mockup"
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      FEAT-SHP-001 § Shopping photo preview; asset /mockups/shopping-preset.png;
+      ui-principles cross-ref.
+
+  - id: DI-013
+    type: gap
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SHP-001
+    source_ref: GD-014
+    priority: P1
+    summary: "SQLite schema patch for ShoppingListItems on upgrade"
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "TrueSightDbInitializer at startup; backend README + initializer tests."
+
+  - id: DI-014
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SHP-001
+    source_ref: GD-015
+    priority: P4
+    summary: "Tab-specific headlines and per-tab item count"
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-SHP-001 main shell table updated; TRUESIGHT V2.1 eyebrow."
+
+  - id: DI-015
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SHP-001
+    source_ref: GD-016
+    priority: P4
+    summary: "Icon controls for move-to-stock and add-to-shopping-list"
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: "FEAT-SHP-001 + ui-principles — green cart/move icons, ALL header control."
+
+  - id: DI-016
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-AUTH-002
+    source_ref: sync-2026-05-24
+    priority: P2
+    summary: "App.tsx skips DemoLoginScreen cold-start gate"
+    detail: >
+      FEAT-AUTH-001 specified login gate on cold start; product chose direct MainApp entry.
+      DemoLoginScreen supports real sign-in/sign-up when mounted; optional /login route TBD.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      Documented in FEAT-AUTH-002 and BUILD-AUTH-002 notes. Intentional UX choice;
+      not a security bypass in Production.

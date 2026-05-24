@@ -64,3 +64,34 @@ features:
       - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
     blocking_questions: none
     notes: "Sync 2026-05-24 — BUILD-AUTH-001 done; DI-011 incorporated."
+
+  - feature_id: FEAT-SEC-001
+    title: "Production security baseline"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-SEC-001
+      - BUILD-SEC-002
+      - BUILD-SEC-003
+      - BUILD-SEC-004
+    primary_design_link: docs/design/features/FEAT-SEC-001-production-security-baseline.md
+    decision_links: []
+    blocking_questions: none
+    notes: "Sync 2026-05-24 — CAP-V1-SEC delivered."
+
+  - feature_id: FEAT-AUTH-002
+    title: "Real authentication"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-AUTH-002
+    primary_design_link: docs/design/features/FEAT-AUTH-002-real-authentication.md
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+      - docs/design/decisions/ADR-20260524-02-cookie-authentication.md
+    blocking_questions: none
+    notes: "Sync 2026-05-24 — cookie auth; TMP-001 closed; DI-016 (no App login gate)."

@@ -64,3 +64,33 @@ _Completed features. Active design triage is in `DESIGN_STATES.yaml`._
 **Blocking questions:** none
 
 > Sync 2026-05-24 — BUILD-AUTH-001 done; DI-011 incorporated.
+
+---
+
+### FEAT-SEC-001 · **Production security baseline**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `complete` | unassigned | 2026-05-24 |
+
+**Linked idea:** none · **Tasks:** BUILD-SEC-001, BUILD-SEC-002, BUILD-SEC-003, BUILD-SEC-004  
+**Spec:** `docs/design/features/FEAT-SEC-001-production-security-baseline.md`  
+**Decisions:**   
+**Blocking questions:** none
+
+> Sync 2026-05-24 — CAP-V1-SEC delivered.
+
+---
+
+### FEAT-AUTH-002 · **Real authentication**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `complete` | unassigned | 2026-05-24 |
+
+**Linked idea:** none · **Tasks:** BUILD-AUTH-002  
+**Spec:** `docs/design/features/FEAT-AUTH-002-real-authentication.md`  
+**Decisions:** docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md, docs/design/decisions/ADR-20260524-02-cookie-authentication.md  
+**Blocking questions:** none
+
+> Sync 2026-05-24 — cookie auth; TMP-001 closed; DI-016 (no App login gate).

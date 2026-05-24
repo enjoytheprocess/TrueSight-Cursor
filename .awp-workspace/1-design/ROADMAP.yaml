@@ -37,14 +37,3 @@ capabilities:
     status: active
     owner: unassigned
     notes: "Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred."
-
-  - id: CAP-V1-SEC
-    target_window: TBD
-    objective: "Production security — CI, API hardening, real auth (closes TMP-001)"
-    feature_ids:
-      - FEAT-SEC-001
-      - FEAT-AUTH-002
-    depends_on: CAP-V1-CORE
-    status: active
-    owner: unassigned
-    notes: "Admitted 2026-05-24 from security audit. BUILD-SEC-001 first; BUILD-AUTH-002 after SEC-003 accepted."

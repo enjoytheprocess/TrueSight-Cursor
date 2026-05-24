@@ -49,33 +49,3 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 **Blocking questions:** none
 
 > Sync 2026-05-24 — implementation shipped; BUILD-SHP-* awaiting human review.
-
----
-
-### FEAT-SEC-001 · **Production security baseline**
-
-| Design State | Owner | Last Updated |
-| --- | --- | --- |
-| `ready` | unassigned | 2026-05-24 |
-
-**Linked idea:** none · **Tasks:** BUILD-SEC-001, BUILD-SEC-002, BUILD-SEC-003, BUILD-SEC-004  
-**Spec:** `docs/design/features/FEAT-SEC-001-production-security-baseline.md`  
-**Decisions:**   
-**Blocking questions:** none
-
-> Security audit 2026-05-24 — BUILD-SEC-001/002/003 shipped; awaiting human acceptance.
-
----
-
-### FEAT-AUTH-002 · **Real authentication**
-
-| Design State | Owner | Last Updated |
-| --- | --- | --- |
-| `spec_review` | unassigned | 2026-05-24 |
-
-**Linked idea:** none · **Tasks:** BUILD-AUTH-002  
-**Spec:** `docs/design/features/FEAT-AUTH-002-real-authentication.md`  
-**Decisions:** docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md  
-**Blocking questions:** Auth mechanism — cookie session vs JWT (see FEAT-AUTH-002)
-
-> Build blocked until BUILD-SEC-003 accepted and mechanism ADR written.

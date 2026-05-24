@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace TrueSight.Api.Infrastructure.Data;
 
-public sealed class TrueSightDbContext(DbContextOptions<TrueSightDbContext> options) : DbContext(options)
+public sealed class TrueSightDbContext(DbContextOptions<TrueSightDbContext> options)
+    : IdentityDbContext<ApplicationUser>(options)
 {
     public DbSet<InventoryItem> InventoryItems => Set<InventoryItem>();
 
@@ -14,6 +16,8 @@ public sealed class TrueSightDbContext(DbContextOptions<TrueSightDbContext> opti
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<InventoryItem>(entity =>
         {
             entity.HasKey(item => item.Id);

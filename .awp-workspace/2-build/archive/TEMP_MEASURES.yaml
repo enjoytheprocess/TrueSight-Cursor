@@ -3,4 +3,25 @@
 
 schema_version: 1
 
-measures: []
+measures:
+  - id: TMP-001
+    status: closed
+    title: "Demo login screen — real auth disabled, interim X-TrueSight-User identity"
+    summary: >
+      V1 showed a login screen with all real auth controls disabled. Users enter via
+      Enter Demo (demo-user). Per-user isolation used X-TrueSight-User header only until removed.
+    owner: unassigned
+    exit_trigger: >
+      Dedicated real-auth build task completes: sign-up/login replaces demo entry and
+      header identity (ASP.NET Identity + cookies or JWT — mechanism chosen at auth task admission).
+    removal_target: "Closed 2026-05-24 — BUILD-AUTH-002"
+    linked_tasks:
+      - BUILD-AUTH-001
+      - BUILD-AUTH-002
+      - BUILD-INV-001
+      - BUILD-REC-001
+      - BUILD-SES-001
+    decision_link: docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    notes: >
+      Sync 2026-05-24 — BUILD-AUTH-002 + ADR-20260524-02. Production uses cookie auth;
+      dev may still use header/demo via Auth:AllowHeaderIdentity.

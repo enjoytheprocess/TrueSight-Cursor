@@ -110,3 +110,107 @@ tasks:
       - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
     notes: "Done 2026-05-24 — Sync archived."
 
+  - id: BUILD-SEC-001
+    feature_id: FEAT-SEC-001
+    title: "Security hygiene and sustained quality requirements"
+    component: repo
+    spec_link: "docs/design/features/FEAT-SEC-001-production-security-baseline.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 2
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: security
+    advisor_status: complete
+    quality_requirements:
+      - QR-SEC-001
+      - QR-SEC-002
+      - QR-SEC-003
+    decision_links: []
+    notes: "Sync 2026-05-24 — done."
+
+  - id: BUILD-SEC-002
+    feature_id: FEAT-SEC-001
+    title: "CI security automation (GitHub Actions)"
+    component: repo
+    spec_link: "docs/design/features/FEAT-SEC-001-production-security-baseline.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 2
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements:
+      - QR-SEC-003
+    decision_links: []
+    notes: "Sync 2026-05-24 — done."
+
+  - id: BUILD-SEC-003
+    feature_id: FEAT-SEC-001
+    title: "API production edge hardening"
+    component: backend
+    spec_link: "docs/design/features/FEAT-SEC-001-production-security-baseline.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 2
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: security
+    advisor_status: complete
+    quality_requirements:
+      - QR-SEC-001
+      - QR-SEC-002
+    decision_links: []
+    notes: "Sync 2026-05-24 — done."
+
+  - id: BUILD-SEC-004
+    feature_id: FEAT-SEC-001
+    title: "Retroactive SECURITY_REVIEWS for shipped V1 APIs"
+    component: repo
+    spec_link: "docs/design/features/FEAT-SEC-001-production-security-baseline.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 1
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: security
+    advisor_status: complete
+    quality_requirements: []
+    decision_links: []
+    notes: "Sync 2026-05-24 — done."
+
+  - id: BUILD-AUTH-002
+    feature_id: FEAT-AUTH-002
+    title: "Implement real authentication (close TMP-001)"
+    component: backend
+    spec_link: "docs/design/features/FEAT-AUTH-002-real-authentication.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 2
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: security
+    advisor_status: complete
+    quality_requirements:
+      - QR-SEC-001
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+      - docs/design/decisions/ADR-20260524-02-cookie-authentication.md
+    notes: "Sync 2026-05-24 — done; TMP-001 closed."
+

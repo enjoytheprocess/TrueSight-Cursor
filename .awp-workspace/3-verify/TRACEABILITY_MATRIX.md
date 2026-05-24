@@ -110,10 +110,10 @@
 | docs/design/features/FEAT-SEC-001-production-security-baseline.md | 2026-05-24 | `aligned` | unassigned |
 
 **Task IDs:** BUILD-SEC-001, BUILD-SEC-002, BUILD-SEC-003, BUILD-SEC-004  
-**Code links:** .gitignore, .github/workflows/ci.yml, backend/TrueSight.Api/Program.cs, backend/TrueSight.Api/appsettings.json, backend/TrueSight.Api/appsettings.Production.json, backend/TrueSight.Api/Infrastructure/Security, backend/TrueSight.Api/Infrastructure/HeaderCurrentUser.cs, .awp-workspace/1-design/QUALITY_REQUIREMENTS.yaml, .awp-workspace/3-verify/SECURITY_REVIEWS.md  
-**Test links:** backend/TrueSight.Api.Tests/ProductionSecurityTests.cs, backend/TrueSight.Api.Tests/ApiMutationRateLimitingTests.cs, backend/TrueSight.Api.Tests
+**Code links:** .gitignore, .github/workflows/ci.yml, backend/TrueSight.Api/Program.cs, backend/TrueSight.Api/appsettings.json, backend/TrueSight.Api/appsettings.Production.json, backend/TrueSight.Api/Infrastructure/Security, backend/TrueSight.Api/Infrastructure/ClaimsCurrentUser.cs, .awp-workspace/1-design/QUALITY_REQUIREMENTS.yaml, .awp-workspace/3-verify/SECURITY_REVIEWS.md  
+**Test links:** backend/TrueSight.Api.Tests/ProductionSecurityTests.cs, backend/TrueSight.Api.Tests/ApiMutationRateLimitingTests.cs, backend/TrueSight.Api.Tests/AuthEndpointsTests.cs, backend/TrueSight.Api.Tests
 
-> Security audit 2026-05-24 — not yet implemented.
+> Sync 2026-05-24 — CAP-V1-SEC delivered (SEC-001–004, AUTH-002).
 
 ---
 
@@ -121,10 +121,10 @@
 
 | Spec | Last Synced | Drift Status | Owner |
 | --- | --- | --- | --- |
-| docs/design/features/FEAT-AUTH-002-real-authentication.md | 2026-05-24 | `review_needed` | unassigned |
+| docs/design/features/FEAT-AUTH-002-real-authentication.md | 2026-05-24 | `aligned` | unassigned |
 
 **Task IDs:** BUILD-AUTH-002  
-**Code links:** backend/TrueSight.Api/Infrastructure/HeaderCurrentUser.cs, frontend/src/api/userId.ts, frontend/src/features/auth/DemoLoginScreen.tsx  
-**Test links:** —
+**Code links:** backend/TrueSight.Api/Features/Auth, backend/TrueSight.Api/Infrastructure/ClaimsCurrentUser.cs, backend/TrueSight.Api/Infrastructure/Data/ApplicationUser.cs, frontend/src/api/auth.ts, frontend/src/api/client.ts, frontend/src/features/auth/DemoLoginScreen.tsx  
+**Test links:** backend/TrueSight.Api.Tests/AuthEndpointsTests.cs, backend/TrueSight.Api.Tests/ProductionSecurityTests.cs
 
-> Design draft — closes TMP-001 after BUILD-SEC-003.
+> Sync 2026-05-24 — cookie auth; TMP-001 closed; DI-016 no App cold-start gate.

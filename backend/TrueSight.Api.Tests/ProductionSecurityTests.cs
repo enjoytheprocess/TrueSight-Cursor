@@ -1,5 +1,5 @@
 using System.Net;
-using TrueSight.Api.Infrastructure.Security;
+using System.Net.Http.Json;
 using TrueSight.Api.Tests.Support;
 
 namespace TrueSight.Api.Tests;
@@ -7,7 +7,7 @@ namespace TrueSight.Api.Tests;
 public sealed class ProductionSecurityTests(ProductionWebApplicationFactory factory) : IClassFixture<ProductionWebApplicationFactory>
 {
     [Fact]
-    public async Task Production_inventory_list_without_user_header_returns_401()
+    public async Task Production_inventory_list_without_auth_returns_401()
     {
         var client = factory.CreateClient();
 
@@ -17,9 +17,10 @@ public sealed class ProductionSecurityTests(ProductionWebApplicationFactory fact
     }
 
     [Fact]
-    public async Task Production_inventory_list_with_valid_user_header_succeeds()
+    public async Task Production_inventory_list_after_register_returns_ok()
     {
-        var client = factory.CreateClient().ForUser($"production-user-{Guid.NewGuid():N}");
+        var client = factory.CreateClient();
+        await client.RegisterAndLoginAsync();
 
         var response = await client.GetAsync("/api/inventory");
 
@@ -27,18 +28,7 @@ public sealed class ProductionSecurityTests(ProductionWebApplicationFactory fact
     }
 
     [Fact]
-    public async Task Production_rejects_oversized_user_header()
-    {
-        var client = factory.CreateClient();
-        client.DefaultRequestHeaders.Add("X-TrueSight-User", new string('x', ProductionIdentityMiddleware.MaxUserIdLength + 1));
-
-        var response = await client.GetAsync("/api/inventory");
-
-        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-    }
-
-    [Fact]
-    public async Task Production_health_does_not_require_user_header()
+    public async Task Production_health_does_not_require_auth()
     {
         var client = factory.CreateClient();
 
@@ -48,10 +38,10 @@ public sealed class ProductionSecurityTests(ProductionWebApplicationFactory fact
     }
 
     [Fact]
-    public async Task Testing_environment_still_allows_missing_user_header()
+    public async Task Testing_environment_still_allows_header_identity()
     {
         using var testingFactory = new TrueSightWebApplicationFactory();
-        var client = testingFactory.CreateClient();
+        var client = testingFactory.CreateClient().ForUser($"testing-user-{Guid.NewGuid():N}");
 
         var response = await client.GetAsync("/api/inventory");
 

@@ -16,3 +16,15 @@ _Completed and parked capabilities. Active capabilities are in `ROADMAP.yaml`._
 **Feature IDs:** FEAT-INV-001, FEAT-REC-001, FEAT-SES-001, FEAT-AUTH-001
 
 > Delivered 2026-05-24 — Sync closed V1 core (INV, REC, SES, AUTH demo).
+
+---
+
+### CAP-V1-SEC · **Production security — CI, API hardening, real auth (closes TMP-001)**
+
+| Target Window | Status | Owner | Depends On |
+| --- | --- | --- | --- |
+| TBD | `completed` | unassigned | CAP-V1-CORE |
+
+**Feature IDs:** FEAT-SEC-001, FEAT-AUTH-002
+
+> Sync 2026-05-24 — BUILD-SEC-001–004 + BUILD-AUTH-002 done.

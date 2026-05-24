@@ -1,6 +1,6 @@
 # FEAT-AUTH-002: Real authentication
 
-**Status:** draft  
+**Status:** approved  
 **Module:** Profile / Identity  
 **Related AWP feature_id:** `FEAT-AUTH-002`
 
