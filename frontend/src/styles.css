@@ -274,6 +274,17 @@ h1 {
 }
 
 .recipe-meta,
+.ingredient-lines {
+  margin: 0;
+  padding: 0 0 0 1rem;
+  color: #334238;
+  font-size: 0.9rem;
+}
+
+.ingredient-lines li {
+  margin-bottom: 0.35rem;
+}
+
 .ingredient-row {
   display: flex;
   flex-wrap: wrap;

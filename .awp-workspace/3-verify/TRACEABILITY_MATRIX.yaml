@@ -47,7 +47,7 @@ features:
       - frontend/src/features/recipes
     test_links:
       - "dotnet build backend/MyApp.sln"
-    notes: "Build admitted 2026-05-24 — BUILD-REC-001 todo; DI-007 tests pending"
+    notes: "BUILD-REC-001 awaiting_human_review — DI-007 tests + canCook/ingredients[] 2026-05-24"
 
   - id: FEAT-SES-001
     spec_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md

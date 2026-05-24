@@ -80,11 +80,11 @@ tasks:
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: todo
+    status: awaiting_human_review
     build_dependencies: BUILD-INV-001
     design_dependencies: none
-    validation: "Build when admitted — DI-007 integration tests per FEAT-REC-001"
-    notes: "build_dependencies BUILD-INV-001 (implementation). Start when INV awaiting_human_review+."
+    validation: "dotnet test — RecipeSuggestionsEndpointsTests; npm test (recipe card)"
+    notes: "Build slice 2026-05-24 — ingredients[] + canCook API + card UX. Awaiting review."
 
   - id: BUILD-SES-001
     feature_id: FEAT-SES-001

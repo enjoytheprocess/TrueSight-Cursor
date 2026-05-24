@@ -27,20 +27,25 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
         return recipes
             .Select(recipe =>
             {
-                var required = recipe.Ingredients.Where(ingredient => !ingredient.Optional).ToList();
-                var owned = recipe.Ingredients
-                    .Where(ingredient => inventoryByName.ContainsKey(TextNormalizer.Ingredient(ingredient.Name)))
-                    .Select(ingredient => ingredient.Name)
+                var ingredientLines = recipe.Ingredients
+                    .Select(ingredient => MapIngredientLine(ingredient, inventoryByName))
                     .ToList();
+
+                var required = ingredientLines.Where(line => !line.Optional).ToList();
                 var missing = required
-                    .Where(ingredient => !inventoryByName.ContainsKey(TextNormalizer.Ingredient(ingredient.Name)))
-                    .Select(ingredient => ingredient.Name)
+                    .Where(line => line.Status != "sufficient")
+                    .Select(line => line.Name)
+                    .ToList();
+                var owned = ingredientLines
+                    .Where(line => line.Status == "sufficient")
+                    .Select(line => line.Name)
                     .ToList();
                 var expiringSoon = recipe.Ingredients.Count(ingredient =>
                     inventoryByName.TryGetValue(TextNormalizer.Ingredient(ingredient.Name), out var items)
                     && items.Any(item => item.ExpiryDate is not null && item.ExpiryDate <= today.AddDays(3)));
 
                 var score = (owned.Count * 12m) - (missing.Count * 18m) + (expiringSoon * 8m) - Math.Min(recipe.EstimatedMinutes, 60) / 10m;
+                var canCook = required.Count > 0 && required.All(line => line.Status == "sufficient");
 
                 return new RecipeSuggestionResponse(
                     recipe.Id,
@@ -50,6 +55,8 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
                     recipe.Difficulty,
                     recipe.EstimatedMinutes,
                     recipe.Servings,
+                    canCook,
+                    ingredientLines,
                     owned.Count,
                     missing.Count,
                     expiringSoon,
@@ -62,5 +69,35 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser, IRe
             .ThenBy(suggestion => suggestion.EstimatedMinutes)
             .ToList();
     }
-}
 
+    private static RecipeIngredientLineResponse MapIngredientLine(
+        RecipeIngredientDto ingredient,
+        IReadOnlyDictionary<string, List<InventoryItem>> inventoryByName)
+    {
+        var normalizedName = TextNormalizer.Ingredient(ingredient.Name);
+        var inStockQuantity = 0m;
+
+        if (inventoryByName.TryGetValue(normalizedName, out var matchingItems))
+        {
+            inStockQuantity = matchingItems
+                .Where(item => item.Unit == ingredient.Unit)
+                .Sum(item => item.Quantity);
+        }
+
+        var status = ingredient.Optional
+            ? inStockQuantity > 0 ? "sufficient" : "missing"
+            : inStockQuantity >= ingredient.Quantity
+                ? "sufficient"
+                : inStockQuantity > 0
+                    ? "short"
+                    : "missing";
+
+        return new RecipeIngredientLineResponse(
+            ingredient.Name,
+            ingredient.Quantity,
+            ingredient.Unit,
+            ingredient.Optional,
+            inStockQuantity,
+            status);
+    }
+}

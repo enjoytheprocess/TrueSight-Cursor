@@ -161,8 +161,8 @@ export function App() {
                     <h3>{recipe.name}</h3>
                     <p>{recipe.description}</p>
                   </div>
-                  <span className={recipe.missingIngredientCount === 0 ? 'match-badge ready' : 'match-badge'}>
-                    {recipe.missingIngredientCount === 0 ? 'Ready' : `${recipe.missingIngredientCount} missing`}
+                  <span className={recipe.canCook ? 'match-badge ready' : 'match-badge'}>
+                    {recipe.canCook ? 'Ready' : `${recipe.missingIngredientCount} missing`}
                   </span>
                 </div>
                 <div className="recipe-meta">
@@ -170,17 +170,24 @@ export function App() {
                     <Clock size={16} />
                     {recipe.estimatedMinutes} min
                   </span>
+                  <span>Serves {recipe.servings}</span>
                   <span>{recipe.cuisineType}</span>
-                  <span>{recipe.ownedIngredientCount} owned</span>
                 </div>
-                <div className="ingredient-row">
-                  {recipe.usesIngredients.map((ingredient) => (
-                    <span className="ingredient-chip" key={ingredient}>{ingredient}</span>
+                <ul className="ingredient-lines">
+                  {recipe.ingredients.map((line) => (
+                    <li key={`${recipe.id}-${line.name}`}>
+                      <strong>{line.name}</strong>
+                      {line.optional ? ' (optional)' : ''}
+                      {' — need '}
+                      {line.requiredQuantity} {line.unit}
+                      {' · have '}
+                      {line.inStockQuantity} {line.unit}
+                    </li>
                   ))}
-                </div>
+                </ul>
                 <button
                   className="cook-action"
-                  disabled={acceptRecipe.isLoading || recipe.missingIngredientCount > 0}
+                  disabled={acceptRecipe.isLoading || !recipe.canCook}
                   onClick={() => acceptRecipe.mutate(recipe.id)}
                 >
                   <Check size={18} />
