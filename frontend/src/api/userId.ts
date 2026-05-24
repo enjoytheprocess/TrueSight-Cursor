@@ -1,9 +1,18 @@
 /** Persists a stable per-browser user id for TMP-001 interim identity (ADR-20260524-01). */
 export const CLIENT_USER_ID_STORAGE_KEY = 'truesight-user-id';
+export const DEMO_USER_ID = 'demo-user';
+
+export function hasClientUserId(): boolean {
+  if (typeof localStorage === 'undefined') {
+    return false;
+  }
+
+  return Boolean(localStorage.getItem(CLIENT_USER_ID_STORAGE_KEY)?.trim());
+}
 
 export function getClientUserId(): string {
   if (typeof localStorage === 'undefined') {
-    return 'demo-user';
+    return DEMO_USER_ID;
   }
 
   const existing = localStorage.getItem(CLIENT_USER_ID_STORAGE_KEY);
@@ -11,7 +20,9 @@ export function getClientUserId(): string {
     return existing.trim();
   }
 
-  const id = crypto.randomUUID();
-  localStorage.setItem(CLIENT_USER_ID_STORAGE_KEY, id);
-  return id;
+  return DEMO_USER_ID;
+}
+
+export function enterDemoUser(): void {
+  localStorage.setItem(CLIENT_USER_ID_STORAGE_KEY, DEMO_USER_ID);
 }

@@ -57,11 +57,11 @@ tasks:
     mode: parallel
     lock_id: none
     owner: unassigned
-    status: todo
+    status: in_progress
     build_dependencies: none
     design_dependencies: none
-    validation: "Build when admitted — TMP-001 demo login per FEAT-AUTH-001"
-    notes: "Admitted 2026-05-24 after OQ triage; no implementation in this pass."
+    validation: "npm test — login gate + Enter Demo; manual mobile/desktop"
+    notes: "Build slice 2026-05-24 — TMP-001 demo login screen."
 
   - id: BUILD-REC-001
     feature_id: FEAT-REC-001

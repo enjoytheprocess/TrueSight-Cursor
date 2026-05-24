@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { App } from './App';
+import { CLIENT_USER_ID_STORAGE_KEY, DEMO_USER_ID } from './api/userId';
 import { InventoryItem } from './features/inventory/types';
 import { RecipeSession, RecipeSuggestion } from './features/recipes/types';
 
@@ -117,9 +118,29 @@ function renderApp() {
 
 describe('App', () => {
   beforeEach(() => {
+    localStorage.setItem(CLIENT_USER_ID_STORAGE_KEY, DEMO_USER_ID);
     getMock.mockClear();
     postMock.mockClear();
     deleteMock.mockClear();
+  });
+
+  it('shows the demo login screen before Enter Demo', () => {
+    localStorage.clear();
+    renderApp();
+
+    expect(screen.getByRole('button', { name: 'Enter Demo' })).toBeInTheDocument();
+    expect(screen.getByText('Welcome to the Demo')).toBeInTheDocument();
+    expect(screen.queryByText('Fridge inventory that cooks itself down.')).not.toBeInTheDocument();
+  });
+
+  it('enters demo and renders the main app', async () => {
+    localStorage.clear();
+    const user = userEvent.setup();
+    renderApp();
+
+    await user.click(screen.getByRole('button', { name: 'Enter Demo' }));
+
+    expect(await screen.findByText('Fridge inventory that cooks itself down.')).toBeInTheDocument();
   });
 
   it('renders inventory and recipe suggestions from the API', async () => {
