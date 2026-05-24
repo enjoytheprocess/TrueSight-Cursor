@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using TrueSight.Api.Features.Inventory;
 using TrueSight.Api.Features.Recipes;
 using TrueSight.Api.Features.Sessions;
+using TrueSight.Api.Features.ShoppingList;
 using TrueSight.Api.Infrastructure;
 using TrueSight.Api.Infrastructure.Data;
 using TrueSight.Api.Infrastructure.Recipes;
@@ -65,6 +66,7 @@ using (var scope = app.Services.CreateScope())
 
 app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));
 app.MapInventoryEndpoints();
+app.MapShoppingListEndpoints();
 app.MapRecipeEndpoints();
 app.MapSessionEndpoints();
 

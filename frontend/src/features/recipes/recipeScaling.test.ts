@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { canCookAtServings, isIngredientShort, scaledRequiredQuantity, servingMultiplierFor } from './recipeScaling';
+import {
+  canCookAtServings,
+  ingredientGapQuantity,
+  isIngredientShort,
+  scaledRequiredQuantity,
+  servingMultiplierFor,
+} from './recipeScaling';
 import { RecipeSuggestion } from './types';
 
 const baseRecipe: RecipeSuggestion = {
@@ -49,5 +55,10 @@ describe('recipeScaling', () => {
     expect(isIngredientShort(baseRecipe.ingredients[1], 1)).toBe(true);
     expect(canCookAtServings(baseRecipe, 1)).toBe(false);
     expect(canCookAtServings(baseRecipe, 2)).toBe(false);
+  });
+
+  it('computes gap quantity for shopping list adds', () => {
+    expect(ingredientGapQuantity(baseRecipe.ingredients[0], 1)).toBe(0);
+    expect(ingredientGapQuantity(baseRecipe.ingredients[1], 1)).toBe(200);
   });
 });

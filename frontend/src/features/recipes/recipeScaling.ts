@@ -12,6 +12,11 @@ export function isIngredientShort(line: RecipeIngredientLine, servingMultiplier:
   return line.inStockQuantity < scaledRequiredQuantity(line, servingMultiplier);
 }
 
+export function ingredientGapQuantity(line: RecipeIngredientLine, servingMultiplier: number) {
+  const required = scaledRequiredQuantity(line, servingMultiplier);
+  return Math.max(0, required - line.inStockQuantity);
+}
+
 export function canCookAtServings(recipe: RecipeSuggestion, servingMultiplier: number) {
   return (
     recipe.ingredients.length > 0 &&

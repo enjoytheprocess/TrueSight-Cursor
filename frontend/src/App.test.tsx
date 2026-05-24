@@ -5,7 +5,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { App } from './App';
 import { CLIENT_USER_ID_STORAGE_KEY, DEMO_USER_ID } from './api/userId';
 import { InventoryItem } from './features/inventory/types';
-import { RecipeSession, RecipeSuggestion } from './features/recipes/types';
+import { RecipeSuggestion } from './features/recipes/types';
+import { ShoppingListItem } from './features/shopping-list/types';
 
 const inventory: InventoryItem[] = [
   {
@@ -18,6 +19,8 @@ const inventory: InventoryItem[] = [
     updatedAt: '2026-05-01T00:00:00Z',
   },
 ];
+
+const shoppingList: ShoppingListItem[] = [];
 
 const suggestions: RecipeSuggestion[] = [
   {
@@ -72,17 +75,15 @@ const suggestions: RecipeSuggestion[] = [
   },
 ];
 
-const sessions: RecipeSession[] = [];
-
 const getMock = vi.fn(async (path: string) => {
   if (path === '/api/inventory') {
     return inventory;
   }
+  if (path === '/api/shopping-list') {
+    return shoppingList;
+  }
   if (path === '/api/recipes/suggestions') {
     return suggestions;
-  }
-  if (path === '/api/recipe-sessions') {
-    return sessions;
   }
   throw new Error(`Unexpected GET ${path}`);
 });
@@ -141,15 +142,15 @@ describe('App', () => {
     expect(await screen.findByText('Fridge inventory that cooks itself down.')).toBeInTheDocument();
   });
 
-  it('renders inventory and recipe suggestions from the API', async () => {
+  it('renders inventory and recipe pager from the API', async () => {
     renderApp();
 
     expect(await screen.findByRole('heading', { name: 'Eggs' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Vegetable Omelette' })).toBeInTheDocument();
-    expect(screen.getByText('1 items')).toBeInTheDocument();
+    expect(screen.getByText('1 in stock')).toBeInTheDocument();
+    expect(screen.getByText('(1/2)')).toBeInTheDocument();
     expect(screen.getByText('Ready')).toBeInTheDocument();
-    expect(screen.queryByText(/\d+ missing/)).not.toBeInTheDocument();
-    expect(screen.getAllByRole('columnheader', { name: 'Required amount' }).length).toBeGreaterThan(0);
+    expect(screen.queryByRole('heading', { name: 'Chicken Spinach Scramble' })).not.toBeInTheDocument();
   });
 
   it('submits a new inventory item', async () => {
@@ -185,6 +186,34 @@ describe('App', () => {
     });
   });
 
+  it('switches to the shopping list tab', async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await screen.findByRole('heading', { name: 'Eggs' });
+
+    await user.click(screen.getByRole('tab', { name: 'Shopping List' }));
+
+    expect(screen.getByRole('heading', { name: 'Shopping List' })).toBeInTheDocument();
+    expect(screen.getByText('Shopping List that stock your fridge up')).toBeInTheDocument();
+    expect(screen.queryByText('Fridge inventory that cooks itself down.')).not.toBeInTheDocument();
+    expect(screen.getByText('0 to buy')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Expiry date')).not.toBeInTheDocument();
+  });
+
+  it('opens the shopping photo preview overlay', async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await screen.findByRole('heading', { name: 'Eggs' });
+
+    await user.click(screen.getByRole('tab', { name: 'Shopping List' }));
+    await user.click(screen.getByRole('button', { name: /Try shopping photo preview/i }));
+
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByText(/Preview — sample photo/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Use sample photo' })).toBeInTheDocument();
+    expect(screen.getByAltText(/Sample product packaging/i)).toHaveAttribute('src', '/mockups/shopping-preset.png');
+  });
+
   it('opens the fridge photo preview overlay', async () => {
     const user = userEvent.setup();
     renderApp();
@@ -194,20 +223,19 @@ describe('App', () => {
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(screen.getByText(/Preview — sample photo/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Use sample photo' })).toBeInTheDocument();
-    expect(screen.getByAltText(/Sample refrigerator interior/i)).toHaveAttribute(
-      'src',
-      '/mockups/fridge-preset.jpg',
-    );
   });
 
   it('disables cook action when ingredients are missing', async () => {
+    const user = userEvent.setup();
     renderApp();
-    await screen.findByRole('heading', { name: 'Chicken Spinach Scramble' });
+    await screen.findByRole('heading', { name: 'Vegetable Omelette' });
 
-    const cookButtons = screen.getAllByRole('button', { name: 'Cook and deduct' });
+    expect(screen.getByRole('button', { name: 'Cook and deduct' })).toBeEnabled();
 
-    expect(cookButtons[0]).toBeEnabled();
-    expect(cookButtons[1]).toBeDisabled();
+    await user.click(screen.getByRole('button', { name: 'Next recipe' }));
+
+    expect(await screen.findByRole('heading', { name: 'Chicken Spinach Scramble' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Cook and deduct' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Add all missing ingredients to shopping list' })).toHaveTextContent('ALL');
   });
 });

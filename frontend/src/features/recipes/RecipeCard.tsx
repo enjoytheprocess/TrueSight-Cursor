@@ -1,19 +1,28 @@
 import { useState } from 'react';
-import { Check, Clock } from 'lucide-react';
+import { Check, Clock, ShoppingCart } from 'lucide-react';
 import { formatQuantity } from '../inventory/formatting';
-import { canCookAtServings, isIngredientShort, scaledRequiredQuantity, servingMultiplierFor } from './recipeScaling';
+import {
+  canCookAtServings,
+  ingredientGapQuantity,
+  isIngredientShort,
+  scaledRequiredQuantity,
+  servingMultiplierFor,
+} from './recipeScaling';
 import { RecipeSuggestion } from './types';
 
 type RecipeCardProps = {
   recipe: RecipeSuggestion;
   isAccepting: boolean;
+  isAddingToList?: boolean;
   onAccept: (recipeId: string, servingMultiplier: number) => void;
+  onAddToList?: (payload: { name: string; quantity: number; unit: string; sourceRecipeId?: string }) => void;
 };
 
-export function RecipeCard({ recipe, isAccepting, onAccept }: RecipeCardProps) {
+export function RecipeCard({ recipe, isAccepting, isAddingToList = false, onAccept, onAddToList }: RecipeCardProps) {
   const [selectedServings, setSelectedServings] = useState(recipe.servings);
   const servingMultiplier = servingMultiplierFor(recipe, selectedServings);
   const canCook = canCookAtServings(recipe, servingMultiplier);
+  const shortLines = recipe.ingredients.filter((line) => isIngredientShort(line, servingMultiplier));
 
   const changeServings = (value: number) => {
     const min = recipe.servings;
@@ -27,6 +36,19 @@ export function RecipeCard({ recipe, isAccepting, onAccept }: RecipeCardProps) {
 
   const adjustServings = (delta: number) => {
     changeServings(selectedServings + delta * recipe.servings);
+  };
+
+  const addLineToList = (name: string, quantity: number, unit: string) => {
+    onAddToList?.({ name, quantity, unit, sourceRecipeId: recipe.id });
+  };
+
+  const addAllMissing = () => {
+    for (const line of shortLines) {
+      const gap = ingredientGapQuantity(line, servingMultiplier);
+      if (gap > 0) {
+        addLineToList(line.name, gap, line.unit);
+      }
+    }
   };
 
   return (
@@ -84,21 +106,51 @@ export function RecipeCard({ recipe, isAccepting, onAccept }: RecipeCardProps) {
             <tr>
               <th scope="col">Ingredient</th>
               <th scope="col">Required amount</th>
-              <th scope="col">Amount in stock</th>
+              <th scope="col" className="stock-col-header">
+                <div className="stock-col-header-inner">
+                  <span>Amount in stock</span>
+                  {!canCook && onAddToList && shortLines.length > 0 ? (
+                    <button
+                      type="button"
+                      className="add-all-cart"
+                      disabled={isAddingToList}
+                      aria-label="Add all missing ingredients to shopping list"
+                      onClick={addAllMissing}
+                    >
+                      <span className="add-all-cart-label">ALL</span>
+                      <ShoppingCart size={16} aria-hidden />
+                    </button>
+                  ) : null}
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
             {recipe.ingredients.map((line) => {
               const required = scaledRequiredQuantity(line, servingMultiplier);
               const short = isIngredientShort(line, servingMultiplier);
+              const gap = ingredientGapQuantity(line, servingMultiplier);
               return (
                 <tr className={short ? 'ingredient-short' : undefined} key={`${recipe.id}-${line.name}`}>
                   <td>{line.name}</td>
                   <td>
                     {formatQuantity(required)} {line.unit}
                   </td>
-                  <td>
-                    {formatQuantity(line.inStockQuantity)} {line.unit}
+                  <td className="stock-cell">
+                    <span>
+                      {formatQuantity(line.inStockQuantity)} {line.unit}
+                    </span>
+                    {onAddToList && short && gap > 0 ? (
+                      <button
+                        type="button"
+                        className="icon-button add-to-cart-button"
+                        disabled={isAddingToList}
+                        aria-label={`Add ${line.name} to shopping list`}
+                        onClick={() => addLineToList(line.name, gap, line.unit)}
+                      >
+                        <ShoppingCart size={18} />
+                      </button>
+                    ) : null}
                   </td>
                 </tr>
               );
