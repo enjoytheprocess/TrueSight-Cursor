@@ -3,39 +3,51 @@
 Seeded by `make init`.
 
 ## Current phase
-- Phase: design
-- Primary objective: define the first implementation slice for TrueSight
-- Completion criteria: linked task reaches `ready_for_build` with updated traceability and validation
+- Phase: build
+- Primary objective: V1 manual inventory, recipe suggestions, and recipe-session deduction
+- Completion criteria: V1 endpoints and web client reach human review with updated traceability and validation
 
 ## Scope
-- In scope: the first feature slice assigned to this component
-- Out of scope: later milestones and unrelated refactors
+- In scope: V1 API for inventory CRUD, recipe suggestions, and recipe acceptance with inventory deduction
+- Out of scope: V2 photo recognition, charity/org flows, receipt scanning, and final production auth
 
 ## Interfaces and contracts
 - Upstream dependencies: fill in when known
 - Downstream consumers: mobile-first web client (`frontend/` when added)
 - **Advisor tracks (project):** `security` + `api_contract` — see [docs/design/advisor-policy.md](../docs/design/advisor-policy.md)
 - Key interfaces *(annotate each with `stable | beta | internal` — changing a `stable` interface requires `advisor_track: api_contract`)*:
-  - V1 endpoints: default **`beta`** until post-demo; list paths here as they ship
-  - example: `GET /api/inventory` — beta
+  - `GET /api/health` — beta
+  - `GET /api/inventory` — beta
+  - `POST /api/inventory` — beta
+  - `GET /api/inventory/{id}` — beta
+  - `PUT /api/inventory/{id}` — beta
+  - `DELETE /api/inventory/{id}` — beta
+  - `GET /api/recipes/suggestions` — beta
+  - `GET /api/recipes/{id}` — beta
+  - `GET /api/recipe-sessions` — beta
+  - `POST /api/recipe-sessions` — beta
 
 ## Setup
 ```bash
-# install dependencies
+dotnet restore backend/MyApp.sln
+cd frontend && npm install
 ```
 
 ## Run
 ```bash
-# start component
+dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
+cd frontend && npm run dev
 ```
 
 ## Verify
 ```bash
-# run tests/checks
+dotnet build backend/MyApp.sln
+cd frontend && npm run build
 ```
 
 ## Required environment variables
-- `EXAMPLE_ENV`:
+- `ConnectionStrings__TrueSight`: optional SQLite connection override. Defaults to `Data Source=truesight.db`.
+- `VITE_API_BASE_URL`: optional frontend API base URL. Defaults to Vite proxy `/api` during local dev.
 
 ## Links
 - Design docs index: docs/README.md
@@ -44,12 +56,17 @@ Seeded by `make init`.
 - AWP roadmap: .awp-workspace/1-design/ROADMAP.md
 - Work queue: .awp-workspace/2-build/WORK_QUEUE.md
 - Design docs:
+  - docs/design/features/FEAT-INV-001-manual-inventory.md
+  - docs/design/features/FEAT-REC-001-recipe-suggestions.md
+  - docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
 - ADRs:
+  - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+  - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
 
 ## Operational contract *(fill in before production deployment)*
 
-- **SLO target**: (e.g., 99.9% availability, p99 latency < 500 ms)
-- **Key health metric**: (the single metric that best signals this component is healthy)
-- **Where to look when it breaks**: (log location, dashboard link, or alert name)
-- **Rollback procedure**: (steps to revert to the previous version)
-- **Escalation path**: (who to contact and how)
+- **SLO target**: TBD before production.
+- **Key health metric**: `GET /api/health` returns `200 OK`; V1 mutation error rate remains low.
+- **Where to look when it breaks**: ASP.NET Core structured logs and browser devtools network panel.
+- **Rollback procedure**: revert the last deployment or Git commit for the API/client pair.
+- **Escalation path**: project owner during hackathon development.

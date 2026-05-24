@@ -9,13 +9,13 @@
 
 | Spec | Last Synced | Drift Status | Owner |
 | --- | --- | --- | --- |
-| docs/design/features/FEAT-INV-001-manual-inventory.md | 2026-05-23 | `review_needed` | unassigned |
+| docs/design/features/FEAT-INV-001-manual-inventory.md | 2026-05-23 | `aligned` | unassigned |
 
-**Task IDs:** —  
-**Code links:** backend/  
-**Test links:** —
+**Task IDs:** BUILD-INV-001  
+**Code links:** backend/TrueSight.Api/Features/Inventory, frontend/src/features/inventory  
+**Test links:** dotnet build backend/MyApp.sln, curl smoke test: inventory create/list
 
-> Specs drafted; implementation not started
+> Implemented beta V1 API and UI flow; awaiting human acceptance
 
 ---
 
@@ -23,13 +23,13 @@
 
 | Spec | Last Synced | Drift Status | Owner |
 | --- | --- | --- | --- |
-| docs/design/features/FEAT-REC-001-recipe-suggestions.md | 2026-05-23 | `review_needed` | unassigned |
+| docs/design/features/FEAT-REC-001-recipe-suggestions.md | 2026-05-23 | `aligned` | unassigned |
 
-**Task IDs:** —  
-**Code links:** backend/  
-**Test links:** —
+**Task IDs:** BUILD-REC-001  
+**Code links:** backend/TrueSight.Api/Features/Recipes, backend/TrueSight.Api/Infrastructure/Recipes, frontend/src/features/recipes  
+**Test links:** dotnet build backend/MyApp.sln, curl smoke test: recipe suggestions
 
-> Specs drafted; implementation not started
+> Implemented static provider and heuristic ranking; awaiting human acceptance
 
 ---
 
@@ -37,13 +37,13 @@
 
 | Spec | Last Synced | Drift Status | Owner |
 | --- | --- | --- | --- |
-| docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md | 2026-05-23 | `review_needed` | unassigned |
+| docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md | 2026-05-23 | `aligned` | unassigned |
 
-**Task IDs:** —  
-**Code links:** backend/  
-**Test links:** —
+**Task IDs:** BUILD-SES-001  
+**Code links:** backend/TrueSight.Api/Features/Sessions, frontend/src/features/recipes  
+**Test links:** dotnet build backend/MyApp.sln, curl smoke test: accept recipe and inventory deduction
 
-> Specs drafted; implementation not started
+> Implemented recipe-session persistence and required ingredient deduction; awaiting human acceptance
 
 ---
 
