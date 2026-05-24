@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Fridge Chef</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream:       #f5efe4;
+    --cream-deep:  #ece4d3;
+    --ink:         #2a1810;   /* warm dark for body text */
+    --ink-soft:    #5c4a40;
+    --burgundy:    #4a1a0e;   /* darkest brand color (was forest green) */
+    --burgundy-mid:#6e2918;
+    --coral:       #d65a3a;   /* brand primary */
+    --peach:       #f0a875;   /* warm highlight (was butter yellow) */
+    --line:        #4a1a0e22;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 15% 10%, #f0a87522 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, #d65a3a18 0%, transparent 45%);
+  }
+
+  /* subtle grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: var(--burgundy);
+    text-decoration: none;
+  }
+  .logo:hover { color: var(--burgundy-mid); }
+  .logo span { color: var(--coral); }
+  .nav-meta {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 100px 0 80px;
+    position: relative;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 600;
+    margin-bottom: 28px;
+    padding: 6px 14px;
+    border: 1px solid var(--coral);
+    border-radius: 999px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 8vw, 104px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: var(--burgundy);
+    max-width: 14ch;
+    margin-bottom: 32px;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--coral);
+  }
+  .lede {
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.5;
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  /* decorative big number */
+  .hero-decor {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 240px;
+    line-height: 1;
+    color: var(--peach);
+    opacity: 0.4;
+    z-index: -1;
+    user-select: none;
+  }
+  @media (max-width: 768px) { .hero-decor { display: none; } }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 80px 0; border-top: 1px solid var(--line); }
+  .section-label {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--coral);
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: -0.02em;
+    color: var(--burgundy);
+    line-height: 1.05;
+  }
+
+  /* Problem split — 3 cards in section 1 */
+  .split {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 980px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+
+  .card {
+    background: var(--cream-deep);
+    border-radius: 4px;
+    padding: 32px 28px;
+    position: relative;
+    border: 1px solid var(--line);
+  }
+  .card.dark {
+    background: var(--burgundy);
+    color: var(--cream);
+  }
+  .card.dark .card-title { color: var(--peach); }
+  .card-tag {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--coral);
+    margin-bottom: 18px;
+  }
+  .card.dark .card-tag { color: var(--peach); }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.015em;
+    color: var(--burgundy);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .card p { font-size: 15px; line-height: 1.6; }
+  .card p + p { margin-top: 12px; }
+
+  /* ===== STEPS ===== */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    counter-reset: step;
+  }
+  @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+
+  .step {
+    padding: 36px 0;
+    border-top: 3px solid var(--burgundy);
+    position: relative;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 56px;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .step h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--burgundy);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .step p { color: var(--ink-soft); font-size: 15px; }
+
+  /* ===== ROADMAP ===== */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    background: var(--cream-deep);
+  }
+  @media (max-width: 820px) { .roadmap { grid-template-columns: 1fr; } }
+
+  .version {
+    padding: 36px 32px;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .version:last-child { border-right: none; }
+  @media (max-width: 820px) {
+    .version { border-right: none; border-bottom: 1px solid var(--line); }
+    .version:last-child { border-bottom: none; }
+  }
+  .version-tag {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--coral);
+    margin-bottom: 14px;
+  }
+  .version h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--burgundy);
+    margin-bottom: 10px;
+  }
+  .version p { color: var(--ink-soft); font-size: 14px; line-height: 1.55; }
+  .version .status {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .status.shipping { background: var(--burgundy); color: var(--peach); }
+  .status.next { background: var(--coral); color: var(--cream); }
+  .status.future { background: transparent; color: var(--ink-soft); border: 1px solid var(--line); }
+
+  /* ===== FEATURES ===== */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 700px) { .features-grid { grid-template-columns: 1fr; } }
+
+  .feature {
+    padding: 28px 8px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .feature:nth-child(odd) { border-right: 1px solid var(--line); padding-right: 32px; }
+  .feature:nth-child(even) { padding-left: 32px; }
+  @media (max-width: 700px) {
+    .feature:nth-child(odd) { border-right: none; padding-right: 8px; }
+    .feature:nth-child(even) { padding-left: 8px; }
+  }
+  .feature-dot {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--coral);
+    font-size: 16px;
+    margin-top: 2px;
+    min-width: 24px;
+  }
+  .feature-text strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--burgundy);
+    margin-bottom: 4px;
+  }
+  .feature-text span {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ===== AUDIENCE ===== */
+  .audience-card {
+    background: var(--burgundy);
+    color: var(--cream);
+    padding: 64px;
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .audience-card::before, .audience-card::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+  .audience-card::before {
+    background: var(--coral);
+    top: -80px; left: -80px;
+  }
+  .audience-card::after {
+    background: var(--peach);
+    bottom: -100px; right: -60px;
+  }
+  .audience-card .label {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--peach);
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .audience-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    position: relative;
+    z-index: 1;
+  }
+  .audience-card h3 em {
+    font-style: italic;
+    color: var(--peach);
+  }
+  @media (max-width: 700px) { .audience-card { padding: 40px 28px; } }
+
+  /* ===== ORIGIN ===== */
+  .origin-body { max-width: 65ch; }
+  .origin-lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1.3;
+    color: var(--burgundy);
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+  .origin-lede em {
+    font-style: italic;
+    color: var(--coral);
+  }
+  .origin-body p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .origin-body p:last-child { margin-bottom: 0; }
+  .origin-body p strong {
+    color: var(--burgundy);
+    font-weight: 500;
+  }
+
+  /* ===== REQUIREMENTS ===== */
+  .req {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.5;
+    color: var(--burgundy);
+    max-width: 50ch;
+  }
+  .req::before {
+    content: '"';
+    font-size: 80px;
+    line-height: 0.3;
+    color: var(--coral);
+    vertical-align: -0.4em;
+    margin-right: 8px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 48px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+  footer a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  footer a:hover { color: var(--burgundy); }
+  @media (max-width: 600px) {
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+
+  /* fade-in animation */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: rise 0.8s ease-out backwards; }
+  .hero .eyebrow { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.15s; }
+  .hero .lede { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav>
+    <a class="logo" href="/">Fridge Chef<span>.</span></a>
+    <div class="nav-meta">About — v1.0</div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-decor">01</div>
+    <span class="eyebrow">About the app</span>
+    <h1>Know what you have. <em>Cook what you'll eat. Donate the rest.</em></h1>
+    <p class="lede">Fridge Chef is the simplest way to know what's in your fridge — and turn it into dinner. Because the food you forgot you bought is the food that ends up in the trash. And the bulk pack you'll never finish? That could feed someone who needs it.</p>
+  </header>
+
+  <section id="problem">
+    <div class="section-label">
+      <span class="section-num">01 —</span>
+      <h2 class="section-title">The problem we keep finding in the back of the fridge</h2>
+    </div>
+    <div class="split">
+      <div class="card">
+        <div class="card-tag">Personal</div>
+        <h3 class="card-title">You don't remember everything you have.</h3>
+        <p>Half-used herbs, leftovers behind the milk, a second bag of spinach you didn't know you bought. About $1,300 per Canadian household, per year — in the trash, because we forget.</p>
+      </div>
+      <div class="card dark">
+        <div class="card-tag">Recipients</div>
+        <h3 class="card-title">And for some, the food arrives unfamiliar.</h3>
+        <p>Food bank recipients — often low-income families and newcomers — are handed packages of donated items they didn't choose. Ingredients they don't recognize. Cans they've never used. The food is there. The recipes that turn it into dinner aren't.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Community</div>
+        <h3 class="card-title">And the bulk pack you'll never finish could feed them.</h3>
+        <p>Twelve cans of tomatoes on sale, you'll cook with four. The other eight aren't waste — they're a match for a food bank wish list. The food is sitting right there in your cupboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="solution">
+    <div class="section-label">
+      <span class="section-num">02 —</span>
+      <h2 class="section-title">The solution: a fridge that tells you what's for dinner</h2>
+    </div>
+    <p class="lede" style="margin-bottom: 0;">Tell Fridge Chef what you have. We suggest recipes that match, and update your inventory when you cook. When you've got more of something than you'll use, we'll let you know who in your community could use it.</p>
+  </section>
+
+  <section id="steps">
+    <div class="section-label">
+      <span class="section-num">03 —</span>
+      <h2 class="section-title">How it works</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Add what you have</h3>
+        <p>Tap items into your inventory — quick search, common presets, done. Image recognition arrives in v2.</p>
+      </div>
+      <div class="step">
+        <h3>See your recipes</h3>
+        <p>We surface meals that match what you actually own — ranked by inventory, dietary preferences, and what you can cook.</p>
+      </div>
+      <div class="step">
+        <h3>Cook and update</h3>
+        <p>Tap "I made this" and Fridge Chef deducts the ingredients from your inventory automatically.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="section-label">
+      <span class="section-num">04 —</span>
+      <h2 class="section-title">Where we're going</h2>
+    </div>
+    <div class="roadmap">
+      <div class="version">
+        <div class="version-tag">v1</div>
+        <h4>Tap &amp; Cook</h4>
+        <p>Enter the items you have. Smart recipe matching against your inventory. Auto-deduction when you cook.</p>
+        <span class="status shipping">Shipping</span>
+      </div>
+      <div class="version">
+        <div class="version-tag">v2</div>
+        <h4>Snap &amp; Share</h4>
+        <p>Image recognition for fridge and receipt photos — no more typing. Food banks publish wish lists, and when your inventory has more of an item than you'll use, we suggest a match.</p>
+        <span class="status next">Up next</span>
+      </div>
+      <div class="version">
+        <div class="version-tag">v3</div>
+        <h4>Healthy Cooking</h4>
+        <p>Connect to health apps. Track calories and nutrition. Cook for your goals — recipes that match both what you have and how you want to eat.</p>
+        <span class="status future">In development</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-label">
+      <span class="section-num">05 —</span>
+      <h2 class="section-title">What's in the kitchen — and what's on the stove</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <span class="feature-dot">i.</span>
+        <div class="feature-text"><strong>Image recognition</strong><span>Snap the fridge. The app reads what's there. No typing, no checklist.</span></div>
+      </div>
+      <div class="feature">
+        <span class="feature-dot">ii.</span>
+        <div class="feature-text"><strong>Receipt-to-pantry</strong><span>Photograph a grocery receipt; we extract names, quantities, and expiration dates.</span></div>
+      </div>
+      <div class="feature">
+        <span class="feature-dot">iii.</span>
+        <div class="feature-text"><strong>Auto-deduct inventory</strong><span>Accepting a recipe quietly clears the ingredients from your fridge.</span></div>
+      </div>
+      <div class="feature">
+        <span class="feature-dot">iv.</span>
+        <div class="feature-text"><strong>Cook-for count</strong><span>Scale any recipe to one person or a Sunday table of eight.</span></div>
+      </div>
+      <div class="feature">
+        <span class="feature-dot">v.</span>
+        <div class="feature-text"><strong>Dietary restrictions</strong><span>Allergens, vegetarian, halal, gluten-free — set once, trusted always.</span></div>
+      </div>
+      <div class="feature">
+        <span class="feature-dot">vi.</span>
+        <div class="feature-text"><strong>Cuisine preferences</strong><span>Lean into what you love, or discover something new on purpose.</span></div>
+      </div>
+      <div class="feature">
+        <span class="feature-dot">vii.</span>
+        <div class="feature-text"><strong>Wish-list matching</strong><span>Bulk extras you won't use, matched against what local food banks actually need.</span></div>
+      </div>
+      <div class="feature">
+        <span class="feature-dot">viii.</span>
+        <div class="feature-text"><strong>Health &amp; nutrition</strong><span>Connect to Apple Health or Google Fit. Track calories per meal automatically.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="audience">
+    <div class="audience-card">
+      <div class="label">Who it's for</div>
+      <h3>If you own a fridge, <em>Fridge Chef is built for you.</em></h3>
+    </div>
+  </section>
+
+  <section id="origin">
+    <div class="section-label">
+      <span class="section-num">06 —</span>
+      <h2 class="section-title">Where the idea came from</h2>
+    </div>
+    <div class="origin-body">
+      <p class="origin-lede">Fridge Chef is for anyone with a fridge — <em>but the idea didn't come from nowhere.</em></p>
+      <p>It came from working and volunteering with non-profits — food banks among them — where recipients receive packages of donated items they didn't choose and don't always know how to cook. Cans they don't recognize. Ingredients they've never used. Food that ends up in the trash — <strong>not from lack of need, but from lack of know-how.</strong></p>
+      <p>That's the gap Fridge Chef was first built to close. Once the matching engine worked for that, we realized it could help the rest of us, too — but the heart of the project still lives in those organizations and the people they serve.</p>
+    </div>
+  </section>
+
+  <section id="principles">
+    <div class="section-label">
+      <span class="section-num">07 —</span>
+      <h2 class="section-title">One promise</h2>
+    </div>
+    <p class="req">Fridge Chef works the same on the phone in your hand and the laptop on your counter. The kitchen is where you are — the app meets you there.</p>
+  </section>
+
+  <footer>
+    <div>© 2026 Fridge Chef. — Know what you have. Help who needs it.</div>
+    <div>Less waste. More dinners. · <a href="/">Back to app</a></div>
+  </footer>
+
+</div>
+
+</body>
+</html>
