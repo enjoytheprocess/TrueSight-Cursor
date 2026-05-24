@@ -1,10 +1,51 @@
 # TrueSight
 
-Full-stack application (ASP.NET Core backend, React frontend). See `cursor.md` for stack overview.
+Full-stack application (ASP.NET Core backend, React frontend). See [`cursor.md`](cursor.md) for stack overview.
+
+## Libraries and tools
+
+### Application stack
+
+| Layer | Libraries / runtime |
+|-------|---------------------|
+| **Backend** | ASP.NET Core 9, Entity Framework Core (SQLite), MediatR, FluentValidation, ASP.NET Core Identity |
+| **Backend tests** | xUnit, `Microsoft.AspNetCore.Mvc.Testing` |
+| **Frontend** | React 18, TypeScript, Vite, React Router, TanStack Query, Lucide React |
+| **Frontend tests** | Vitest, Testing Library (React, Jest DOM, user-event), jsdom |
+| **Database** | SQLite (file `truesight.db` in development) |
+
+### Development and automation
+
+| Tool | Role |
+|------|------|
+| [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) | Build and run the API (`global.json` pins SDK 9.0.100+) |
+| [Node.js](https://nodejs.org/) 20+ | Frontend install, dev server, build, and tests |
+| [Make](https://www.gnu.org/software/make/) | Root and AWP targets (`backend-*`, `frontend-*`, `awp-*`) |
+| [yq](https://github.com/mikefarah/yq) v4 | Render and validate AWP register YAML |
+| [Graphviz](https://graphviz.org/) (`dot`) | Optional AWP diagram render (`make awp-render` / `make diagram` in `.awp-workspace/`) |
+| [Git](https://git-scm.com/) | Version control; optional pre-commit hook via `make awp-install-hooks` |
+| [PowerShell](https://learn.microsoft.com/powershell/) | Windows helper scripts under `scripts/` |
+| [GitHub Actions](https://github.com/features/actions) | CI: `dotnet` build/test, `npm ci` / build / test, vulnerability and audit checks (`.github/workflows/ci.yml`) |
+| [Cursor](https://cursor.com/) | IDE; phase rules and hooks under `.cursor/` |
+
+Architecture notes: vertical slice + CQRS on the backend; mobile-first React SPA (PWA-capable). Details in [`backend/README.md`](backend/README.md) and [`frontend/README.md`](frontend/README.md).
 
 ## AI workspace (AWP)
 
-**Design documentation** lives in [`docs/`](docs/) (`@docs/` in Cursor). **AWP registers** (queue, readiness, traceability) live in [`.awp-workspace/`](.awp-workspace/). Code: [`backend/`](backend/).
+**Design documentation** lives in [`docs/`](docs/) (`@docs/` in Cursor). **AWP registers** (queue, readiness, traceability) live in [`.awp-workspace/`](.awp-workspace/). Code: [`backend/`](backend/) and [`frontend/`](frontend/).
+
+### AWP Build template (source)
+
+Planning workflow is adapted from **[AWP Build](https://gitlab.com/agent-workspace-protocols/workspace-build)** (Agent Workspace Protocols on GitLab):
+
+| | |
+|---|---|
+| **Original template** | [gitlab.com/agent-workspace-protocols/workspace-build](https://gitlab.com/agent-workspace-protocols/workspace-build) |
+| **Template package name** | `workspace-template` (see [`.awp-workspace/template-release.yaml`](.awp-workspace/template-release.yaml)) |
+| **Adopted release** | `2026.05.22` |
+| **Installed in this repo** | [`.awp-workspace/`](.awp-workspace/) (direct-use, monorepo layout) |
+
+Related upstream templates (`workspace-deployment`, `workspace-sustain`) live in the same GitLab group; only **Build** is vendored here as `.awp-workspace/`. Sideload and upgrade flow: [`.awp-workspace/docs/guides/template-sideloading.md`](.awp-workspace/docs/guides/template-sideloading.md).
 
 **Linux / WSL / macOS:**
 
