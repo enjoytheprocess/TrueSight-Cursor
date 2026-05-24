@@ -185,15 +185,15 @@ describe('App', () => {
     });
   });
 
-  it('opens the fridge photo demo overlay', async () => {
+  it('opens the fridge photo preview overlay', async () => {
     const user = userEvent.setup();
     renderApp();
     await screen.findByRole('heading', { name: 'Eggs' });
 
-    await user.click(screen.getByRole('button', { name: /Try fridge photo demo/i }));
+    await user.click(screen.getByRole('button', { name: /Try fridge photo preview/i }));
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
-    expect(screen.getByText(/Demo — sample photo/i)).toBeInTheDocument();
+    expect(screen.getByText(/Preview — sample photo/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Use sample photo' })).toBeInTheDocument();
     expect(screen.getByAltText(/Sample refrigerator interior/i)).toHaveAttribute(
       'src',

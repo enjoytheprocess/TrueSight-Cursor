@@ -9,7 +9,7 @@ export async function saveDetectedItems(
 
   for (const row of toSave) {
     await postItem({
-      name: row.name,
+      name: row.name.trim(),
       quantity: Math.round(row.quantity),
       unit: row.unit,
       expiryDate: row.expiryDate || null,
@@ -23,5 +23,5 @@ export function canSaveDetections(rows: DetectedItemDraft[]): boolean {
     return false;
   }
 
-  return included.every((row) => row.quantity >= 1);
+  return included.every((row) => row.name.trim().length > 0 && row.quantity >= 1);
 }

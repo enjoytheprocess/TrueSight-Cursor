@@ -178,12 +178,12 @@ export function MainApp() {
               <button
                 type="button"
                 className="camera-demo-button"
-                title="Try fridge photo demo (sample image)"
-                aria-label="Try fridge photo demo (sample image, not a real scan)"
+                title="Try fridge photo preview (sample image)"
+                aria-label="Try fridge photo preview (sample image, not a real scan)"
                 onClick={() => setFridgePhotoOpen(true)}
               >
                 <Camera size={20} />
-                <span className="demo-badge">Demo</span>
+                <span className="demo-badge">Preview</span>
               </button>
             </div>
           </form>

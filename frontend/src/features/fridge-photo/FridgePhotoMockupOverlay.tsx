@@ -80,12 +80,12 @@ export function FridgePhotoMockupOverlay({ units, onClose, onSaved, postItem }: 
         <button
           type="button"
           className="fridge-overlay-back"
-          aria-label="Close fridge photo demo"
+          aria-label="Close fridge photo preview"
           onClick={onClose}
         >
           <ArrowLeft size={18} />
         </button>
-        <h2 id="fridge-overlay-title">Fridge photo demo</h2>
+        <h2 id="fridge-overlay-title">Fridge photo preview</h2>
       </header>
 
       <DemoBanner />
@@ -112,75 +112,85 @@ export function FridgePhotoMockupOverlay({ units, onClose, onSaved, postItem }: 
       ) : null}
 
       {step === 'review' ? (
-        <div className="fridge-overlay-body fridge-overlay-review">
-          <div className="fridge-review-intro">
-            <h3>Suggested items (demo)</h3>
-            <p>Edit quantities and expiry, then save to your inventory.</p>
-            <p className="fridge-review-footnote">Confidence shown for demo only.</p>
-          </div>
+        <div className="fridge-overlay-review-layout">
+          <div className="fridge-overlay-scroll">
+            <div className="fridge-review-intro">
+              <h3>Suggested items (preview)</h3>
+              <p>Edit names, quantities, units, and expiry, then save to your inventory.</p>
+              <p className="fridge-review-footnote">Confidence shown for preview only.</p>
+            </div>
 
-          <ul className="fridge-review-list">
-            {rows.map((row) => (
-              <li key={row.id} className="fridge-review-row">
-                <label className="fridge-review-include">
-                  <input
-                    type="checkbox"
-                    checked={row.included}
-                    onChange={(event) => updateRow(row.id, { included: event.target.checked })}
-                  />
-                  <span className="fridge-review-name">{row.name}</span>
-                  <span className={`confidence-badge confidence-${row.confidence}`}>{row.confidence}</span>
-                </label>
-
-                <div className="fridge-review-fields">
-                  <div className="field-label quantity-field">
-                    <span>Quantity</span>
-                    <div className="quantity-stepper">
-                      <button
-                        type="button"
-                        className="stepper-button"
-                        aria-label={`Decrease ${row.name} quantity`}
-                        disabled={row.quantity <= 0}
-                        onClick={() => adjustRowQuantity(row.id, -1)}
-                      >
-                        −
-                      </button>
+            <ul className="fridge-review-list">
+              {rows.map((row) => (
+                <li key={row.id} className="fridge-review-row">
+                  <div className="fridge-review-head">
+                    <label className="fridge-review-include">
                       <input
-                        aria-label={`${row.name} quantity`}
-                        type="number"
-                        min="0"
-                        step="1"
-                        value={row.quantity}
-                        onChange={(event) =>
-                          updateRow(row.id, {
-                            quantity: Math.max(0, Math.round(Number(event.target.value) || 0)),
-                          })
-                        }
+                        type="checkbox"
+                        checked={row.included}
+                        aria-label={`Include ${row.name}`}
+                        onChange={(event) => updateRow(row.id, { included: event.target.checked })}
                       />
-                      <button
-                        type="button"
-                        className="stepper-button"
-                        aria-label={`Increase ${row.name} quantity`}
-                        onClick={() => adjustRowQuantity(row.id, 1)}
-                      >
-                        +
-                      </button>
-                    </div>
+                    </label>
+                    <input
+                      className="fridge-review-name-input"
+                      aria-label="Ingredient name"
+                      value={row.name}
+                      onChange={(event) => updateRow(row.id, { name: event.target.value })}
+                    />
+                    <span className={`confidence-badge confidence-${row.confidence}`}>{row.confidence}</span>
                   </div>
 
-                  <label className="field-label">
-                    Unit
-                    <select
-                      value={row.unit}
-                      onChange={(event) => updateRow(row.id, { unit: event.target.value })}
-                    >
-                      {units.map((unit) => (
-                        <option key={unit}>{unit}</option>
-                      ))}
-                    </select>
-                  </label>
+                  <div className="field-row quantity-unit-row fridge-review-quantity-unit">
+                    <div className="field-label quantity-field">
+                      <span>Quantity</span>
+                      <div className="quantity-stepper">
+                        <button
+                          type="button"
+                          className="stepper-button"
+                          aria-label={`Decrease ${row.name} quantity`}
+                          disabled={row.quantity <= 0}
+                          onClick={() => adjustRowQuantity(row.id, -1)}
+                        >
+                          −
+                        </button>
+                        <input
+                          aria-label={`${row.name} quantity`}
+                          type="number"
+                          min="0"
+                          step="1"
+                          value={row.quantity}
+                          onChange={(event) =>
+                            updateRow(row.id, {
+                              quantity: Math.max(0, Math.round(Number(event.target.value) || 0)),
+                            })
+                          }
+                        />
+                        <button
+                          type="button"
+                          className="stepper-button"
+                          aria-label={`Increase ${row.name} quantity`}
+                          onClick={() => adjustRowQuantity(row.id, 1)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
 
-                  <label className="field-label">
+                    <label className="field-label">
+                      Unit
+                      <select
+                        value={row.unit}
+                        onChange={(event) => updateRow(row.id, { unit: event.target.value })}
+                      >
+                        {units.map((unit) => (
+                          <option key={unit}>{unit}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+
+                  <label className="field-label field-full">
                     Expiry date
                     <input
                       type="date"
@@ -190,30 +200,32 @@ export function FridgePhotoMockupOverlay({ units, onClose, onSaved, postItem }: 
                       }
                     />
                   </label>
-                </div>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
 
-          {saveError ? (
-            <p className="fridge-save-error" role="alert">
-              {saveError}
-            </p>
-          ) : null}
-
-          <div className="fridge-overlay-actions">
-            <button type="button" className="secondary-action" onClick={onClose} disabled={isSaving}>
-              Cancel
-            </button>
-            <button
-              type="button"
-              className="primary-action"
-              disabled={saveDisabled}
-              onClick={() => void handleSave()}
-            >
-              {isSaving ? 'Saving…' : 'Save to inventory'}
-            </button>
+            {saveError ? (
+              <p className="fridge-save-error" role="alert">
+                {saveError}
+              </p>
+            ) : null}
           </div>
+
+          <footer className="fridge-overlay-footer">
+            <div className="fridge-overlay-actions">
+              <button type="button" className="secondary-action" onClick={onClose} disabled={isSaving}>
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="primary-action"
+                disabled={saveDisabled}
+                onClick={() => void handleSave()}
+              >
+                {isSaving ? 'Saving…' : 'Save to inventory'}
+              </button>
+            </div>
+          </footer>
         </div>
       ) : null}
     </div>

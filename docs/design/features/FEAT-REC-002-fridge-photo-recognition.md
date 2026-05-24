@@ -21,7 +21,7 @@ As a user, I want to photograph my fridge and review suggested items before they
 - **Entry:** Small **camera** control beside the existing **Add** button in the **In Stock** add-item section ([FEAT-INV-001](FEAT-INV-001-manual-inventory.md) form; same field vocabulary: name, quantity, unit, optional expiry).
 - **Camera screen:** Full-screen or sheet overlay that shows a **fixed preset fridge photo** (bundled asset — no live `getUserMedia` required for mockup). Optional single **Capture** or **Use photo** affordance that advances the flow (cosmetic only; always uses the preset).
 - **Scan step:** Brief “Scanning…” state, then a **review list** of stub `DetectedItem` rows (name + suggested quantity/unit/expiry + confidence label).
-- **Review:** Per row — include/exclude toggle; editable **quantity**, **unit** (same unit list as manual add), **expiry date**; name read-only in mockup (editable in production if vision mislabels).
+- **Review:** Per row — include/exclude toggle; editable **name**, **quantity**, **unit** (quantity + unit on one row), **expiry date**; sticky **Save** / **Cancel** footer at bottom of screen.
 - **Save:** **Save to inventory** persists only **included** rows via existing `POST /api/inventory` (merge rules unchanged). No recognition API calls in mockup.
 
 ### In scope — production V2 (after mockup)
@@ -53,7 +53,7 @@ flowchart LR
 
 1. User taps **camera** next to **Add** on the inventory add form.
 2. Overlay shows the bundled preset image (`/mockups/fridge-preset.jpg` — see [Preset photo asset](#preset-photo-asset)).
-3. User taps **Use sample photo** → client shows **Scanning sample photo…** (~1–2 s) with demo banner → stub list (see [Mock detection payload](#mock-detection-payload)).
+3. User taps **Use sample photo** → client shows **Scanning sample photo…** (~1–2 s) with preview banner → stub list (see [Mock detection payload](#mock-detection-payload)).
 4. User adjusts quantity, unit, expiry; toggles off unwanted lines.
 5. **Save to inventory** runs `POST /api/inventory` for each **included** row with quantity ≥ 1. **All-or-nothing:** only dismiss the overlay after **every** included row succeeds; if any request fails, show an error, keep the review screen, and do not treat the batch as complete (no partial dismiss — avoids duplicate merge on retry).
 6. **Cancel** or **back** from Review **closes** the overlay with no API writes.
@@ -77,28 +77,28 @@ Privacy (production only): document retention and deletion policy for images (PI
 
 | Screen | Purpose | Key elements |
 |--------|---------|----------------|
-| **Add section (existing)** | Manual add unchanged | Ingredient, quantity, unit, expiry; **Add** + **Camera (demo)** icon on one row; see [Mockup labeling](#mockup-labeling) |
-| **Camera** | Simulate capture | **Demo banner**; preset photo (full width); helper copy; primary **Use sample photo** |
-| **Scanning** | Feedback | **Demo banner**; spinner + “Scanning sample photo…” (not “your fridge”) |
-| **Review** | Human gate | **Demo banner** + subtitle that items are **suggested for demo**; list with checkboxes; footer **Save to inventory**, **Cancel** |
+| **Add section (existing)** | Manual add unchanged | Ingredient, quantity, unit, expiry; **Add** + **Camera (preview)** icon on one row; see [Mockup labeling](#mockup-labeling) |
+| **Camera** | Simulate capture | **Preview banner**; preset photo (full width); helper copy; primary **Use sample photo** |
+| **Scanning** | Feedback | **Preview banner**; spinner + “Scanning sample photo…” (not “your fridge”) |
+| **Review** | Human gate | Scrollable checklist rows (editable name); **sticky footer** with **Save to inventory** / **Cancel** at bottom of viewport |
 
 ### Mockup labeling
 
-Users must never mistake the mockup for live AI or a real camera capture. Labeling is **required in Phase A** and **removed** when production vision ships (same screens, no demo chrome).
+Users must never mistake the mockup for live AI or a real camera capture. Labeling is **required in Phase A** and **removed** when production vision ships (same screens, no preview chrome).
 
 | Location | Requirement |
 |----------|-------------|
-| **Camera button** | Visible **“Demo”** pill/badge on or beside the icon (not only `aria-label`). Tooltip / `title`: “Try fridge photo demo (sample image)” |
-| **`aria-label`** | “Try fridge photo demo (sample image, not a real scan)” |
-| **Overlay header** | Every mockup screen (Camera, Scanning, Review): compact **info banner** — e.g. **“Demo — sample photo & suggested items, not real AI yet.”** Non-dismissible for the session (stays while overlay is open) |
+| **Camera button** | Visible **“Preview”** pill/badge on or beside the icon (not only `aria-label`). Tooltip / `title`: “Try fridge photo preview (sample image)” |
+| **`aria-label`** | “Try fridge photo preview (sample image, not a real scan)” |
+| **Overlay header** | Every mockup screen (Camera, Scanning, Review): compact **info banner** — e.g. **“Preview — sample photo & suggested items, not real AI yet.”** Non-dismissible for the session (stays while overlay is open) |
 | **Camera screen body** | Secondary line under banner: “Uses a fixed sample image to preview the flow.” Primary button text: **Use sample photo** (not “Capture” / “Take photo”) |
 | **Scanning copy** | **“Scanning sample photo…”** — avoids implying the user’s fridge is being analyzed |
-| **Review heading** | Title: **“Suggested items (demo)”**; one line: “Edit quantities and expiry, then save to your inventory.” |
-| **Confidence badges** | Keep **High / Medium / Low**; optional footnote on Review: “Confidence shown for demo only.” |
+| **Review heading** | Title: **“Suggested items (preview)”**; one line: “Edit quantities and expiry, then save to your inventory.” |
+| **Confidence badges** | Keep **High / Medium / Low**; optional footnote on Review: “Confidence shown for preview only.” |
 
 **Tone:** Match the honest demo pattern used on login ([FEAT-AUTH-001](FEAT-AUTH-001-demo-login-screen.md), [ui-principles](../ui-principles.md) — clear that persistence is real but the **scan is simulated**.
 
-**Production cutover:** When Phase B uses live upload + `VisionService`, remove Demo badge, demo banner, and “sample” wording; restore “Scanning your fridge…” and camera-appropriate primary labels per ADR-01.
+**Production cutover:** When Phase B uses live upload + `VisionService`, remove Preview badge, preview banner, and “sample” wording; restore “Scanning your fridge…” and camera-appropriate primary labels per ADR-01.
 
 ### Entry control (beside Add)
 
@@ -107,8 +107,8 @@ Users must never mistake the mockup for live AI or a real camera capture. Labeli
 | Control | Icon button only (`Camera` / lucide), no text label on narrow screens |
 | Placement | Immediately **right of** the full-width **Add** button — same grid row: Add flex-grows, camera fixed square (~44px touch target) |
 | Style | Secondary / outline — must not compete visually with primary **Add** |
-| Visible label | **Demo** badge on camera control (see [Mockup labeling](#mockup-labeling)) |
-| `aria-label` | “Try fridge photo demo (sample image, not a real scan)” |
+| Visible label | **Preview** badge on camera control (see [Mockup labeling](#mockup-labeling)) |
+| `aria-label` | “Try fridge photo preview (sample image, not a real scan)” |
 
 Reference: current add form ends with a full-width primary **Add** in `MainApp.tsx`; mockup splits that row into `[ Add (flex) | Camera (icon) ]`.
 
@@ -117,9 +117,9 @@ Reference: current add form ends with a full-width primary **Add** in `MainApp.t
 | Field | Mockup | Notes |
 |-------|--------|-------|
 | Include | Checkbox, default **on** for high/medium, **off** for low | Matches [ui-principles](../ui-principles.md) example |
-| Name | Text, **read-only** in mockup | From stub; production may allow edit |
-| Quantity | Same stepper/input as manual add | Integer ≥ 1 for included rows; **Save** disabled if any included row is &lt; 1 |
-| Unit | Same `<select>` options as manual add | Align with `FEAT-INV-001` free-text units |
+| Name | Text **input** (editable) | Correct mislabeled detections before save |
+| Quantity | Same stepper/input as manual add; **same row as unit** | Integer ≥ 1 for included rows; **Save** disabled if any included row is &lt; 1 or name is blank |
+| Unit | Same `<select>` options as manual add; **same row as quantity** | Validator enum (see manual add) |
 | Expiry | `type="date"`, optional | Empty allowed |
 | Confidence | Badge: High / Medium / Low | Not persisted |
 
@@ -179,7 +179,7 @@ Suggested expiry values are **pre-filled** date inputs; user may clear or change
 ### UI mockup (first build slice when admitted)
 
 - [ ] Camera icon appears beside **Add** in the add-item section; manual add unchanged.
-- [ ] **Demo** labeling visible on camera control and on every overlay screen (banner + copy per [Mockup labeling](#mockup-labeling)); no wording that implies real AI or user photo capture.
+- [ ] **Preview** labeling visible on camera control and on every overlay screen (banner + copy per [Mockup labeling](#mockup-labeling)); no wording that implies real AI or user photo capture.
 - [ ] Flow uses preset photo only (no live camera permission prompt required).
 - [ ] Review screen lists stub detections with confidence; user can toggle lines and edit quantity, unit, expiry.
 - [ ] **Save** disabled when no rows checked or any included quantity &lt; 1; disabled while requests run.

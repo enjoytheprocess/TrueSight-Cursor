@@ -65,4 +65,8 @@ describe('canSaveDetections', () => {
   it('returns true when at least one included row has quantity at least 1', () => {
     expect(canSaveDetections([row({ id: '1', name: 'Eggs', included: true, quantity: 2 })])).toBe(true);
   });
+
+  it('returns false when an included row has an empty name', () => {
+    expect(canSaveDetections([row({ id: '1', name: '   ', included: true, quantity: 2 })])).toBe(false);
+  });
 });

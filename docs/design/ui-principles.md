@@ -66,8 +66,8 @@ Per [FEAT-REC-002](features/FEAT-REC-002-fridge-photo-recognition.md). **First d
 |---------|------|
 | **Camera control** | Icon button immediately **beside** the primary **Add** button (same row; Add grows, camera fixed ~44px) |
 | **Manual add** | Unchanged — camera is additive, not a replacement |
-| **Mockup signal** | Visible **Demo** badge on the camera control; `aria-label` explains sample image / not a real scan |
-| **Production** | Remove Demo badge and demo copy when live vision ships |
+| **Mockup signal** | Visible **Preview** badge on the camera control; `aria-label` explains sample image / not a real scan |
+| **Production** | Remove Preview badge and preview copy when live vision ships |
 
 ### Mockup labeling (required until real vision)
 
@@ -75,30 +75,30 @@ Honest labeling like the demo login screen — users must know the scan is simul
 
 | Where | Copy / pattern |
 |-------|----------------|
-| Camera button | **Demo** badge + tooltip “Try fridge photo demo (sample image)” |
-| Overlay (all steps) | Persistent info banner: **“Demo — sample photo & suggested items, not real AI yet.”** |
+| Camera button | **Preview** badge + tooltip “Try fridge photo preview (sample image)” |
+| Overlay (all steps) | Persistent info banner: **“Preview — sample photo & suggested items, not real AI yet.”** |
 | Camera step | **Use sample photo** (not “Capture”); helper: fixed sample image |
 | Scanning | **“Scanning sample photo…”** |
-| Review | Heading **“Suggested items (demo)”** |
+| Review | Heading **“Suggested items (preview)”** |
 
 Full table: [FEAT-REC-002 § Mockup labeling](features/FEAT-REC-002-fridge-photo-recognition.md#mockup-labeling).
 
 ### Camera → review flow (mockup)
 
-1. **Preset photo** screen with demo banner (bundled image; **Use sample photo**).
+1. **Preset photo** screen with preview banner (bundled image; **Use sample photo**).
 2. **Scanning** feedback (short; “sample photo” wording).
-3. **Review** list — same quantity / unit / expiry controls as manual add; demo heading + banner.
+3. **Review** list — same quantity / unit / expiry controls as manual add; preview heading + banner.
 
 ### Confirmation (mockup and production)
 
 After vision (or stub) proposes items, show **confidence** and let the user toggle each line before save — never auto-add low-confidence items without review.
 
-Example pattern (mockup — use **“Suggested items (demo)”** as heading, not “AI found”):
+Example pattern (mockup — use **“Suggested items (preview)”** as heading, not “AI found”):
 
 ```
-[Demo banner: sample photo & suggested items, not real AI yet]
+[Preview banner: sample photo & suggested items, not real AI yet]
 
-Suggested items (demo)
+Suggested items (preview)
   [✓] Eggs      (high)     qty · unit · expiry
   [✓] Milk      (medium)   …
   [ ] Lettuce   (low)      …

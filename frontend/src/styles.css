@@ -187,7 +187,7 @@ h1 {
 }
 
 .quantity-unit-row {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
 }
 
 .quantity-field > span {
@@ -678,8 +678,29 @@ h1 {
   width: 100%;
 }
 
-.fridge-overlay-review {
-  padding-bottom: 24px;
+.fridge-overlay-review-layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.fridge-overlay-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.fridge-overlay-footer {
+  flex-shrink: 0;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid #e8ebdf;
+  background: #ffffff;
 }
 
 .fridge-review-intro h3 {
@@ -714,15 +735,32 @@ h1 {
   gap: 10px;
 }
 
-.fridge-review-include {
+.fridge-review-head {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 700;
 }
 
-.fridge-review-name {
+.fridge-review-include {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.fridge-review-name-input {
   flex: 1;
+  min-width: 0;
+  height: 42px;
+  border: 1px solid #cfd7c5;
+  border-radius: 6px;
+  padding: 0 10px;
+  background: #fbfcf8;
+  color: #162016;
+  font-weight: 600;
+}
+
+.fridge-review-row .field-full {
+  grid-column: 1 / -1;
 }
 
 .confidence-badge {
@@ -749,9 +787,14 @@ h1 {
   color: #991b1b;
 }
 
-.fridge-review-fields {
-  display: grid;
-  gap: 8px;
+.fridge-review-quantity-unit > .field-label,
+.fridge-review-quantity-unit > .quantity-field {
+  min-width: 0;
+}
+
+.fridge-review-quantity-unit .quantity-stepper {
+  width: 100%;
+  grid-template-columns: minmax(36px, 0.85fr) minmax(0, 1fr) minmax(36px, 0.85fr);
 }
 
 .fridge-save-error {
