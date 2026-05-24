@@ -13,7 +13,7 @@ Seeded by `make init`.
 
 ## Interfaces and contracts
 - Upstream dependencies: fill in when known
-- Downstream consumers: mobile-first web client (`frontend/` when added)
+- Downstream consumers: mobile-first web client ([`frontend/`](../frontend/))
 - **Advisor tracks (project):** `security` + `api_contract` — see [docs/design/advisor-policy.md](../docs/design/advisor-policy.md)
 - Key interfaces *(annotate each with `stable | beta | internal` — changing a `stable` interface requires `advisor_track: api_contract`)*:
   - `GET /api/health` — beta
@@ -121,6 +121,8 @@ If session lists grow large or need server-side paging, add a sortable stored co
 ## Required environment variables
 - `ConnectionStrings__TrueSight`: optional SQLite connection override. Defaults to `Data Source=truesight.db`.
 - `VITE_API_BASE_URL`: optional frontend API base URL. Defaults to Vite proxy `/api` during local dev.
+
+**V1 identity (interim):** Clients send `X-TrueSight-User` (see [ADR-20260524-01](../docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md)). The web client stores a UUID in `localStorage` and sets the header on each request. Missing header defaults to `demo-user` on the API for local convenience only.
 
 ## Links
 - Design docs index: docs/README.md

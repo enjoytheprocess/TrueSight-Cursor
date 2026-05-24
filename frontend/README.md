@@ -1,27 +1,29 @@
 # frontend
 
-Mobile-first web client for TrueSight (FridgeWise). Stub scaffold — routes and feature folders only; API integration when backend slices ship.
+Mobile-first web client for TrueSight (FridgeWise). V1 UI: inventory list, recipe suggestions, and cook/deduct.
 
-## Stack (planned — see `docs/product/open-questions.md`)
+## Stack
 
-- React + TypeScript
+- React 18 + TypeScript
 - Vite
 - React Router
 - TanStack Query
-- Tailwind CSS
+- Lucide icons
+
+See [docs/product/open-questions.md](../docs/product/open-questions.md) for future toolchain decisions (Tailwind, PWA depth, etc.).
 
 ## Structure
 
 ```text
 src/
-  app/           # providers, shell pages
-  routes/        # route table
-  services/      # shared api-client
-  shared/        # cross-feature UI
-  features/      # vertical slices (inventory, recipes, …)
-  components/    # shared presentational components
-  hooks/         # shared hooks
+  api/           # HTTP client + interim user id (TMP-001)
+  features/      # inventory + recipes types/formatting
+  App.tsx        # V1 inventory and recipe suggestion screens
 ```
+
+## Identity (V1 interim)
+
+Login is off ([TMP-001](../.awp-workspace/2-build/TEMP_MEASURES.yaml)). The client generates a UUID on first visit, stores it in `localStorage` under `truesight-user-id`, and sends it on every request as `X-TrueSight-User`. See [ADR-20260524-01](../docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md).
 
 ## Setup
 
@@ -37,11 +39,12 @@ cp .env.example .env   # optional
 npm run dev
 ```
 
-Opens http://localhost:5173. Dev server proxies `/api` → `http://localhost:5158` (when backend is running — `make backend-run`).
+Opens http://localhost:5173 (or next free port). Dev server proxies `/api` → `http://localhost:5158` when the backend is running (`make backend-run` from repo root).
 
-## Build
+## Test & build
 
 ```bash
+npm run test
 npm run build
 ```
 
