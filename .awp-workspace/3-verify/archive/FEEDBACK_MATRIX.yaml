@@ -8,4 +8,20 @@
 
 schema_version: 2
 
-entries: []
+entries:
+  - id: FM-001
+    task_id: BUILD-INV-001
+    feature_id: FEAT-INV-001
+    type: observation
+    severity: high
+    status: resolved_in_loop
+    summary: "Teammate may have admitted V1 build tasks without a full IRG rubric pass"
+    detail: >
+      TASK_READINESS shows numeric IRG scores (S/A/I/R/V) and ready_for_build, but the team
+      suspects admission skipped the qualitative IRG gate (scores filed without rubric review).
+      Triggered retrospective Verify + Sync on 2026-05-24 before human acceptance.
+    diagnosis: "Possible process bypass — verify spec fit and re-validate IRG evidence per task"
+    recorded_at: "2026-05-24"
+    recorded_by: team
+    resolution_note: >
+      IRG retrospective incorporated (DI-001). Verify/Sync fast-track 2026-05-24 to Design.

@@ -11,14 +11,14 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `ready` | unassigned | 2026-05-23 |
+| `needs_redesign` | unassigned | 2026-05-24 |
 
 **Linked idea:** none · **Tasks:** BUILD-INV-001  
 **Spec:** `docs/design/features/FEAT-INV-001-manual-inventory.md`  
 **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
-**Blocking questions:** none
+**Blocking questions:** DI-005 catalog scope; DI-006 API polish; DI-002 identity
 
-> V1 — CRUD inventory implemented and awaiting human review
+> Sync 2026-05-24 fast-track — spec refresh before re-admit
 
 ---
 
@@ -26,14 +26,14 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `ready` | unassigned | 2026-05-23 |
+| `needs_redesign` | unassigned | 2026-05-24 |
 
 **Linked idea:** none · **Tasks:** BUILD-REC-001  
 **Spec:** `docs/design/features/FEAT-REC-001-recipe-suggestions.md`  
 **Decisions:** docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md  
-**Blocking questions:** none
+**Blocking questions:** DI-003 provider config; DI-007 test plan
 
-> V1 — static RecipeProvider adapter implemented and awaiting human review
+> Sync 2026-05-24 fast-track — ADR/spec alignment before re-admit
 
 ---
 
@@ -41,14 +41,14 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `ready` | unassigned | 2026-05-23 |
+| `needs_redesign` | unassigned | 2026-05-24 |
 
 **Linked idea:** none · **Tasks:** BUILD-SES-001  
 **Spec:** `docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md`  
 **Decisions:**   
-**Blocking questions:** none
+**Blocking questions:** DI-004 P0 idempotency (duplicate POST double-deduct)
 
-> V1 — RecipeSession + deduction implemented and awaiting human review
+> Sync 2026-05-24 fast-track — critical design decision required
 
 ---
 

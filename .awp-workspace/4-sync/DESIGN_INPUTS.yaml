@@ -20,32 +20,72 @@ items:
     detail: >
       Re-run IRG rubric for SETUP-001, BUILD-INV-001, BUILD-REC-001, BUILD-SES-001 with
       evidence (spec TBDs closed or explicitly deferred, advisor tracks, blocking unknowns).
-      If scores cannot be justified, set readiness to needs_detail and block acceptance until
-      Design re-admits.
     promoted_at: "2026-05-24"
     addressed_at: "2026-05-24"
     resolution_note: >
-      All four tasks set needs_detail (totals 7/10; A=1 I=1). blocking_unknowns populated.
-      See TASK_READINESS.yaml IRG 2026-05-24 retrospective notes. Human accept blocked until re-admit.
+      All four tasks needs_detail (7/10; A=1 I=1). Re-admit after Design closes DI-002–DI-007.
 
   - id: DI-002
     type: gap
     status: open
     feature_id: none
     source_ref: GD-003
+    priority: P1
     summary: "Resolve V1 identity — brief vs dev header (OQ-001)"
     detail: >
       Project brief lists sign-up/login in V1; implementation uses X-TrueSight-User only.
-      Decide MVP identity approach and update spec + TASK_READINESS notes before production.
-    promoted_at: "2026-05-24"
+      Decide MVP identity (defer auth vs minimal JWT/cookie) and update brief + specs.
 
   - id: DI-003
     type: deviation
     status: open
     feature_id: FEAT-REC-001
     source_ref: GD-004
+    priority: P1
     summary: "Recipe provider configuration contract (ADR-20260523-02)"
     detail: >
-      Document appsettings/env keys for provider selection; align FEAT-REC-001 acceptance
-      criterion for configured provider vs hardcoded StaticRecipeProvider.
-    promoted_at: "2026-05-24"
+      appsettings/env keys for provider selection; replace hardcoded StaticRecipeProvider
+      registration or document explicit V1 stub waiver in spec.
+
+  - id: DI-004
+    type: gap
+    status: open
+    feature_id: FEAT-SES-001
+    source_ref: GD-005
+    priority: P0
+    summary: "CRITICAL — Recipe accept idempotency (OQ-038 / GD-005)"
+    detail: >
+      Duplicate POST /api/recipe-sessions double-deducts inventory. Design must specify
+      idempotency key or natural key policy before re-admit BUILD-SES-001.
+
+  - id: DI-005
+    type: gap
+    status: open
+    feature_id: FEAT-INV-001
+    source_ref: GD-006
+    priority: P2
+    summary: "IngredientCatalog vs inline names (OQ-030)"
+    detail: >
+      Spec references catalog entity; code uses free-text + NormalizedName. Decide V1 scope
+      and update FEAT-INV-001 + domain model.
+
+  - id: DI-006
+    type: deviation
+    status: open
+    feature_id: FEAT-INV-001
+    source_ref: GD-007
+    priority: P3
+    summary: "Inventory API contract polish (PATCH, 404 problem details, pagination)"
+    detail: >
+      Defer or specify in spec: PATCH vs PUT-only, RFC7807 on 404, list pagination, cross-user tests.
+
+  - id: DI-007
+    type: gap
+    status: open
+    feature_id: FEAT-REC-001
+    source_ref: GD-008
+    priority: P2
+    summary: "Recipe suggestions test coverage"
+    detail: >
+      Add integration tests for GET /api/recipes/suggestions and /api/recipes/{id} or waive in
+      quality plan before BUILD-REC-001 re-admit.

@@ -15,7 +15,7 @@
 **Code links:** backend/TrueSight.Api/Features/Inventory, frontend/src/features/inventory  
 **Test links:** dotnet build backend/MyApp.sln, backend/TrueSight.Api.Tests/InventoryEndpointsTests.cs
 
-> Verify 2026-05-24: API CRUD OK; GD-006 catalog, GD-007 contract polish; UI update missing
+> Design refresh 2026-05-24 — DI-005 DI-006; implementation baseline retained
 
 ---
 
@@ -29,7 +29,7 @@
 **Code links:** backend/TrueSight.Api/Features/Recipes, backend/TrueSight.Api/Infrastructure/Recipes, frontend/src/features/recipes  
 **Test links:** dotnet build backend/MyApp.sln
 
-> Verify 2026-05-24: GD-004 provider config AC gap; GD-008 no suggestion tests (review_needed — active verify)
+> Design refresh 2026-05-24 — DI-003 DI-007; implementation baseline retained
 
 ---
 
@@ -43,7 +43,7 @@
 **Code links:** backend/TrueSight.Api/Features/Sessions, frontend/src/features/recipes  
 **Test links:** backend/TrueSight.Api.Tests/RecipeSessionEndpointsTests.cs
 
-> Verify 2026-05-24: core accept/deduct tested; GD-005 idempotency missing
+> Design refresh 2026-05-24 — DI-004 P0 idempotency; do not re-build until spec closed
 
 ---
 

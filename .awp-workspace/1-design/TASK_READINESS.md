@@ -23,7 +23,7 @@ _Active tasks. Move completed tasks (WORK_QUEUE status: done) to `archive/TASK_R
 **QRs:**   
 **Decisions:** 
 
-> IRG 2026-05-24 retrospective: build ran on inflated A/I=2. Stack OK (GD-003). Re-admit after DI-002 closes identity scope or brief defers auth to post-V1.
+> Design session 2026-05-24: start with DI-002 (identity). Fast-tracked from Verify/Sync. Re-admit when IRG A=2 I=2 and blocking_unknowns none.
 
 
 ---
@@ -44,7 +44,7 @@ _Active tasks. Move completed tasks (WORK_QUEUE status: done) to `archive/TASK_R
 **QRs:**   
 **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
 
-> IRG 2026-05-24 retrospective: API CRUD implemented (GD-006/007). Prior admission invalid: A/I overstated. Do not accept until catalog/identity TBDs closed or spec updated + V≥2.
+> Design session: DI-005 catalog, DI-006 API polish, DI-002 identity. Code baseline exists.
 
 
 ---
@@ -65,7 +65,7 @@ _Active tasks. Move completed tasks (WORK_QUEUE status: done) to `archive/TASK_R
 **QRs:**   
 **Decisions:** docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
 
-> IRG 2026-05-24 retrospective: ranking OK; hardcoded provider fails A (config AC). Re-admit after DI-003 + suggestion endpoint tests or waived AC in spec.
+> Design session: DI-003 provider config, DI-007 tests. Code baseline exists.
 
 
 ---
@@ -86,5 +86,5 @@ _Active tasks. Move completed tasks (WORK_QUEUE status: done) to `archive/TASK_R
 **QRs:**   
 **Decisions:** 
 
-> IRG 2026-05-24 retrospective: deduct+session tested. A/I=2 was wrong — idempotency open. Fix GD-005 or spec waiver before accept.
+> Design session: DI-004 P0 CRITICAL idempotency first. Do not re-build accept path until closed.
 

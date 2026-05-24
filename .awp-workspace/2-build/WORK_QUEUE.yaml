@@ -26,17 +26,17 @@ tasks:
     quality_requirements: []
     decision_links: []
     priority: P1
-    phase: verify
+    phase: design
     capability: none
     target_window: TBD
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: awaiting_human_review
+    status: needs_rework
     build_dependencies: none
     design_dependencies: none
-    validation: "make awp-docs-check; verify 2026-05-24 — scaffold OK; identity/PWA gaps in GD-003/DI-002"
-    notes: "Verify loop 2026-05-24: stack wired; auth is dev header only (GD-003). IRG bypass suspected (GD-002→DI-001)."
+    validation: "Verify/Sync fast-track 2026-05-24: needs_design_refresh; see DI-002"
+    notes: "Returned to Design — identity scope (DI-002). Re-admit after IRG refresh."
 
   - id: BUILD-INV-001
     feature_id: FEAT-INV-001
@@ -49,17 +49,17 @@ tasks:
     decision_links:
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
     priority: P1
-    phase: verify
+    phase: design
     capability: CAP-V1-CORE
     target_window: TBD
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: awaiting_human_review
+    status: needs_rework
     build_dependencies: SETUP-001
     design_dependencies: none
-    validation: "dotnet build backend/MyApp.sln; InventoryEndpointsTests CRUD+validation; no cross-user test"
-    notes: "Verify 2026-05-24: API CRUD matches paths; GD-006 catalog, GD-007 PATCH/404/pagination; UI lacks update."
+    validation: "Verify/Sync fast-track 2026-05-24: needs_design_refresh; DI-005 DI-006"
+    notes: "Returned to Design — catalog + API polish. Code baseline kept; spec refresh first."
 
   - id: BUILD-REC-001
     feature_id: FEAT-REC-001
@@ -72,17 +72,17 @@ tasks:
     decision_links:
       - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
     priority: P1
-    phase: verify
+    phase: design
     capability: CAP-V1-CORE
     target_window: TBD
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: awaiting_human_review
+    status: needs_rework
     build_dependencies: BUILD-INV-001
     design_dependencies: none
-    validation: "dotnet build backend/MyApp.sln; manual/curl only — GD-008 no suggestion tests"
-    notes: "Verify 2026-05-24: heuristic ranking OK; GD-004 hardcoded provider; GD-008 missing tests."
+    validation: "Verify/Sync fast-track 2026-05-24: needs_design_refresh; DI-003 DI-007"
+    notes: "Returned to Design — provider config + tests. Code baseline kept."
 
   - id: BUILD-SES-001
     feature_id: FEAT-SES-001
@@ -94,14 +94,14 @@ tasks:
     quality_requirements: []
     decision_links: []
     priority: P1
-    phase: verify
+    phase: design
     capability: CAP-V1-CORE
     target_window: TBD
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: awaiting_human_review
+    status: needs_rework
     build_dependencies: BUILD-REC-001
     design_dependencies: none
-    validation: "dotnet build backend/MyApp.sln; RecipeSessionEndpointsTests accept+insufficient stock"
-    notes: "Verify 2026-05-24: deduct+session OK; GD-005 no idempotency (duplicate POST double-deducts)."
+    validation: "Verify/Sync fast-track 2026-05-24: needs_design_refresh; DI-004 P0 critical"
+    notes: "Returned to Design — idempotency required before re-build (duplicate POST bug)."

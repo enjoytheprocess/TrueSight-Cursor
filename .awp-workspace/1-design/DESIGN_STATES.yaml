@@ -31,44 +31,44 @@ schema_version: 4
 features:
   - feature_id: FEAT-INV-001
     title: "Manual inventory"
-    design_state: ready
+    design_state: needs_redesign
     owner: unassigned
-    last_updated: "2026-05-23"
+    last_updated: "2026-05-24"
     linked_idea: none
     linked_tasks:
       - BUILD-INV-001
     primary_design_link: docs/design/features/FEAT-INV-001-manual-inventory.md
     decision_links:
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
-    blocking_questions: none
-    notes: "V1 — CRUD inventory implemented and awaiting human review"
+    blocking_questions: "DI-005 catalog scope; DI-006 API polish; DI-002 identity"
+    notes: "Sync 2026-05-24 fast-track — spec refresh before re-admit"
 
   - feature_id: FEAT-REC-001
     title: "Recipe suggestions from inventory"
-    design_state: ready
+    design_state: needs_redesign
     owner: unassigned
-    last_updated: "2026-05-23"
+    last_updated: "2026-05-24"
     linked_idea: none
     linked_tasks:
       - BUILD-REC-001
     primary_design_link: docs/design/features/FEAT-REC-001-recipe-suggestions.md
     decision_links:
       - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
-    blocking_questions: none
-    notes: "V1 — static RecipeProvider adapter implemented and awaiting human review"
+    blocking_questions: "DI-003 provider config; DI-007 test plan"
+    notes: "Sync 2026-05-24 fast-track — ADR/spec alignment before re-admit"
 
   - feature_id: FEAT-SES-001
     title: "Recipe acceptance and inventory deduction"
-    design_state: ready
+    design_state: needs_redesign
     owner: unassigned
-    last_updated: "2026-05-23"
+    last_updated: "2026-05-24"
     linked_idea: none
     linked_tasks:
       - BUILD-SES-001
     primary_design_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
     decision_links: []
-    blocking_questions: none
-    notes: "V1 — RecipeSession + deduction implemented and awaiting human review"
+    blocking_questions: "DI-004 P0 idempotency (duplicate POST double-deduct)"
+    notes: "Sync 2026-05-24 fast-track — critical design decision required"
 
   - feature_id: FEAT-REC-002
     title: "Fridge photo recognition (V2)"

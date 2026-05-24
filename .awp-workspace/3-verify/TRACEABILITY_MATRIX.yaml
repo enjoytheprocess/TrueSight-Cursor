@@ -32,7 +32,7 @@ features:
     test_links:
       - "dotnet build backend/MyApp.sln"
       - backend/TrueSight.Api.Tests/InventoryEndpointsTests.cs
-    notes: "Verify 2026-05-24: API CRUD OK; GD-006 catalog, GD-007 contract polish; UI update missing"
+    notes: "Design refresh 2026-05-24 — DI-005 DI-006; implementation baseline retained"
 
   - id: FEAT-REC-001
     spec_link: docs/design/features/FEAT-REC-001-recipe-suggestions.md
@@ -47,7 +47,7 @@ features:
       - frontend/src/features/recipes
     test_links:
       - "dotnet build backend/MyApp.sln"
-    notes: "Verify 2026-05-24: GD-004 provider config AC gap; GD-008 no suggestion tests (review_needed — active verify)"
+    notes: "Design refresh 2026-05-24 — DI-003 DI-007; implementation baseline retained"
 
   - id: FEAT-SES-001
     spec_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
@@ -61,7 +61,7 @@ features:
       - frontend/src/features/recipes
     test_links:
       - backend/TrueSight.Api.Tests/RecipeSessionEndpointsTests.cs
-    notes: "Verify 2026-05-24: core accept/deduct tested; GD-005 idempotency missing"
+    notes: "Design refresh 2026-05-24 — DI-004 P0 idempotency; do not re-build until spec closed"
 
   - id: FEAT-REC-002
     spec_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
