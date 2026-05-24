@@ -11,15 +11,15 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| none | backend | P1 | build | `awaiting_human_review` | sequential | none |
+| none | backend | P1 | verify | `awaiting_human_review` | sequential | none |
 
 **Spec:** `docs/product/project-brief.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** —  
 **Owner:** unassigned · **Lock:** none · **Target:** TBD  
 **Build deps:** none · **Design deps:** none  
-**Validation:** `make awp-docs-check`
+**Validation:** `make awp-docs-check; verify 2026-05-24 — scaffold OK; identity/PWA gaps in GD-003/DI-002`
 
-> Backend solution, API project, and frontend client scaffolded; V1 implementation added for human review
+> Verify loop 2026-05-24: stack wired; auth is dev header only (GD-003). IRG bypass suspected (GD-002→DI-001).
 
 ---
 
@@ -27,15 +27,15 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| FEAT-INV-001 | backend | P1 | build | `awaiting_human_review` | sequential | CAP-V1-CORE |
+| FEAT-INV-001 | backend | P1 | verify | `awaiting_human_review` | sequential | CAP-V1-CORE |
 
 **Spec:** `docs/design/features/FEAT-INV-001-manual-inventory.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
 **Owner:** unassigned · **Lock:** none · **Target:** TBD  
 **Build deps:** SETUP-001 · **Design deps:** none  
-**Validation:** `dotnet build backend/MyApp.sln; curl smoke test for inventory CRUD`
+**Validation:** `dotnet build backend/MyApp.sln; InventoryEndpointsTests CRUD+validation; no cross-user test`
 
-> Implemented beta API with X-TrueSight-User development identity and hard deletes
+> Verify 2026-05-24: API CRUD matches paths; GD-006 catalog, GD-007 PATCH/404/pagination; UI lacks update.
 
 ---
 
@@ -43,15 +43,15 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| FEAT-REC-001 | backend | P1 | build | `awaiting_human_review` | sequential | CAP-V1-CORE |
+| FEAT-REC-001 | backend | P1 | verify | `awaiting_human_review` | sequential | CAP-V1-CORE |
 
 **Spec:** `docs/design/features/FEAT-REC-001-recipe-suggestions.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md  
 **Owner:** unassigned · **Lock:** none · **Target:** TBD  
 **Build deps:** BUILD-INV-001 · **Design deps:** none  
-**Validation:** `dotnet build backend/MyApp.sln; curl smoke test for /api/recipes/suggestions`
+**Validation:** `dotnet build backend/MyApp.sln; manual/curl only — GD-008 no suggestion tests`
 
-> Implemented static RecipeProvider adapter and transparent heuristic ranking
+> Verify 2026-05-24: heuristic ranking OK; GD-004 hardcoded provider; GD-008 missing tests.
 
 ---
 
@@ -59,12 +59,12 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| FEAT-SES-001 | backend | P1 | build | `awaiting_human_review` | sequential | CAP-V1-CORE |
+| FEAT-SES-001 | backend | P1 | verify | `awaiting_human_review` | sequential | CAP-V1-CORE |
 
 **Spec:** `docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** —  
 **Owner:** unassigned · **Lock:** none · **Target:** TBD  
 **Build deps:** BUILD-REC-001 · **Design deps:** none  
-**Validation:** `dotnet build backend/MyApp.sln; curl smoke test for /api/recipe-sessions`
+**Validation:** `dotnet build backend/MyApp.sln; RecipeSessionEndpointsTests accept+insufficient stock`
 
-> Implemented transactional accept flow for required ingredients with same-unit deduction
+> Verify 2026-05-24: deduct+session OK; GD-005 no idempotency (duplicate POST double-deducts).

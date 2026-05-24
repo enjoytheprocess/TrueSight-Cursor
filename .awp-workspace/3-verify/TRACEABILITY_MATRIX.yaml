@@ -21,8 +21,8 @@ schema_version: 1
 features:
   - id: FEAT-INV-001
     spec_link: docs/design/features/FEAT-INV-001-manual-inventory.md
-    last_synced: "2026-05-23"
-    drift_status: aligned
+    last_synced: "2026-05-24"
+    drift_status: review_needed
     owner: unassigned
     task_ids:
       - BUILD-INV-001
@@ -31,13 +31,13 @@ features:
       - frontend/src/features/inventory
     test_links:
       - "dotnet build backend/MyApp.sln"
-      - "curl smoke test: inventory create/list"
-    notes: "Implemented beta V1 API and UI flow; awaiting human acceptance"
+      - backend/TrueSight.Api.Tests/InventoryEndpointsTests.cs
+    notes: "Verify 2026-05-24: API CRUD OK; GD-006 catalog, GD-007 contract polish; UI update missing"
 
   - id: FEAT-REC-001
     spec_link: docs/design/features/FEAT-REC-001-recipe-suggestions.md
-    last_synced: "2026-05-23"
-    drift_status: aligned
+    last_synced: "2026-05-24"
+    drift_status: review_needed
     owner: unassigned
     task_ids:
       - BUILD-REC-001
@@ -47,13 +47,12 @@ features:
       - frontend/src/features/recipes
     test_links:
       - "dotnet build backend/MyApp.sln"
-      - "curl smoke test: recipe suggestions"
-    notes: "Implemented static provider and heuristic ranking; awaiting human acceptance"
+    notes: "Verify 2026-05-24: GD-004 provider config AC gap; GD-008 no suggestion tests (review_needed — active verify)"
 
   - id: FEAT-SES-001
     spec_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
-    last_synced: "2026-05-23"
-    drift_status: aligned
+    last_synced: "2026-05-24"
+    drift_status: review_needed
     owner: unassigned
     task_ids:
       - BUILD-SES-001
@@ -61,9 +60,8 @@ features:
       - backend/TrueSight.Api/Features/Sessions
       - frontend/src/features/recipes
     test_links:
-      - "dotnet build backend/MyApp.sln"
-      - "curl smoke test: accept recipe and inventory deduction"
-    notes: "Implemented recipe-session persistence and required ingredient deduction; awaiting human acceptance"
+      - backend/TrueSight.Api.Tests/RecipeSessionEndpointsTests.cs
+    notes: "Verify 2026-05-24: core accept/deduct tested; GD-005 idempotency missing"
 
   - id: FEAT-REC-002
     spec_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md

@@ -9,4 +9,43 @@
 
 schema_version: 1
 
-items: []  # populated by Sync from GAPS_AND_DEVIATIONS entries
+items:
+  - id: DI-001
+    type: gap
+    status: addressed
+    resolution_type: incorporated
+    feature_id: none
+    source_ref: GD-002
+    summary: "Retrospective IRG audit for admitted V1 build tasks"
+    detail: >
+      Re-run IRG rubric for SETUP-001, BUILD-INV-001, BUILD-REC-001, BUILD-SES-001 with
+      evidence (spec TBDs closed or explicitly deferred, advisor tracks, blocking unknowns).
+      If scores cannot be justified, set readiness to needs_detail and block acceptance until
+      Design re-admits.
+    promoted_at: "2026-05-24"
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      All four tasks set needs_detail (totals 7/10; A=1 I=1). blocking_unknowns populated.
+      See TASK_READINESS.yaml IRG 2026-05-24 retrospective notes. Human accept blocked until re-admit.
+
+  - id: DI-002
+    type: gap
+    status: open
+    feature_id: none
+    source_ref: GD-003
+    summary: "Resolve V1 identity — brief vs dev header (OQ-001)"
+    detail: >
+      Project brief lists sign-up/login in V1; implementation uses X-TrueSight-User only.
+      Decide MVP identity approach and update spec + TASK_READINESS notes before production.
+    promoted_at: "2026-05-24"
+
+  - id: DI-003
+    type: deviation
+    status: open
+    feature_id: FEAT-REC-001
+    source_ref: GD-004
+    summary: "Recipe provider configuration contract (ADR-20260523-02)"
+    detail: >
+      Document appsettings/env keys for provider selection; align FEAT-REC-001 acceptance
+      criterion for configured provider vs hardcoded StaticRecipeProvider.
+    promoted_at: "2026-05-24"

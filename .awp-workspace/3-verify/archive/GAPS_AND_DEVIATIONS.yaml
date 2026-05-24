@@ -28,3 +28,21 @@ entries:
       backend/TrueSight.Api/Features/Sessions/ListRecipeSessions/Handler.cs.
       Documented in docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
       and backend/README.md.
+
+  - id: GD-002
+    feature_id: none
+    type: gap
+    summary: "Possible IRG bypass at build admission — scores on file without rubric evidence"
+    detail: >
+      Team reports a teammate may have moved V1 tasks to ready_for_build / WORK_QUEUE without
+      completing the IRG rubric (S/A/I/R/V with A=2 and I=2). TASK_READINESS shows totals >= 8
+      but no admission notes documenting unknowns closed. Retrospective IRG audit required before
+      accepting BUILD-* tasks.
+    source: human_feedback
+    source_ref: FM-001
+    discovered_in_task: BUILD-INV-001
+    status: promoted_to_sync
+    severity: high
+    resolution_note: >
+      Fast Sync 2026-05-24: promoted to DESIGN_INPUTS DI-001 for Design-cycle IRG re-score;
+      Verify loop continues for spec/code fit (GD-003–GD-008).

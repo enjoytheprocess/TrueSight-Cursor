@@ -20,17 +20,19 @@ tasks:
     spec_link: "docs/product/project-brief.md"
     irg:
       S: 2
-      A: 2
-      I: 2
+      A: 1
+      I: 1
       R: 1
       V: 2
-    blocking_unknowns: none
-    readiness: ready_for_build
+    blocking_unknowns: "OQ-001 V1 identity (brief vs dev header); scaffold AC not tied to brief sign-up/login"
+    readiness: needs_detail
     advisor_track: none
     advisor_status: not_required
     quality_requirements: []
     decision_links: []
-    notes: "seeded by make init; mark done when setup is complete — keep this row as the setup record"
+    notes: >
+      IRG 2026-05-24 retrospective: build ran on inflated A/I=2. Stack OK (GD-003).
+      Re-admit after DI-002 closes identity scope or brief defers auth to post-V1.
 
   - id: BUILD-INV-001
     feature_id: FEAT-INV-001
@@ -39,18 +41,20 @@ tasks:
     spec_link: "docs/design/features/FEAT-INV-001-manual-inventory.md"
     irg:
       S: 2
-      A: 2
-      I: 2
+      A: 1
+      I: 1
       R: 1
-      V: 2
-    blocking_unknowns: none
-    readiness: ready_for_build
+      V: 1
+    blocking_unknowns: "OQ-030 IngredientCatalog vs inline; OQ-001 per-user identity; spec AC still draft/unchecked"
+    readiness: needs_detail
     advisor_track: none
     advisor_status: not_required
     quality_requirements: []
     decision_links:
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
-    notes: "Admitted for V1 build; final auth remains a future design decision, development identity is header-scoped"
+    notes: >
+      IRG 2026-05-24 retrospective: API CRUD implemented (GD-006/007). Prior admission invalid:
+      A/I overstated. Do not accept until catalog/identity TBDs closed or spec updated + V≥2.
 
   - id: BUILD-REC-001
     feature_id: FEAT-REC-001
@@ -59,18 +63,20 @@ tasks:
     spec_link: "docs/design/features/FEAT-REC-001-recipe-suggestions.md"
     irg:
       S: 2
-      A: 2
-      I: 2
+      A: 1
+      I: 1
       R: 1
-      V: 2
-    blocking_unknowns: none
-    readiness: ready_for_build
+      V: 1
+    blocking_unknowns: "Provider config contract (GD-004/DI-003); OQ-002 vendor selection; GD-008 test gap"
+    readiness: needs_detail
     advisor_track: none
     advisor_status: not_required
     quality_requirements: []
     decision_links:
       - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
-    notes: "Admitted for V1 build with static provider implementation"
+    notes: >
+      IRG 2026-05-24 retrospective: ranking OK; hardcoded provider fails A (config AC).
+      Re-admit after DI-003 + suggestion endpoint tests or waived AC in spec.
 
   - id: BUILD-SES-001
     feature_id: FEAT-SES-001
@@ -79,14 +85,16 @@ tasks:
     spec_link: "docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md"
     irg:
       S: 2
-      A: 2
-      I: 2
+      A: 1
+      I: 1
       R: 1
       V: 2
-    blocking_unknowns: none
-    readiness: ready_for_build
+    blocking_unknowns: "OQ-038 idempotency on accept (GD-005); optional-ingredient policy TBD in spec"
+    readiness: needs_detail
     advisor_track: none
     advisor_status: not_required
     quality_requirements: []
     decision_links: []
-    notes: "Admitted for V1 build with same-unit required ingredient deduction"
+    notes: >
+      IRG 2026-05-24 retrospective: deduct+session tested. A/I=2 was wrong — idempotency open.
+      Fix GD-005 or spec waiver before accept.
