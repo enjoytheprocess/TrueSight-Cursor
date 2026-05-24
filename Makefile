@@ -27,14 +27,14 @@ backend-run: setup-dotnet
 frontend-install:
 	cd frontend && npm install
 
-frontend-build:
+frontend-build: frontend-install
 	cd frontend && npm run build
 
 frontend-stop:
 	@chmod +x scripts/frontend-stop.sh
 	@./scripts/frontend-stop.sh
 
-frontend-run: frontend-stop
+frontend-run: frontend-install frontend-stop
 	cd frontend && npm run dev
 
 awp-init:
