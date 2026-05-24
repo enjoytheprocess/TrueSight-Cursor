@@ -1,6 +1,7 @@
 import { FormEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Plus, Trash2 } from 'lucide-react';
+import { Camera, Plus, Trash2 } from 'lucide-react';
+import { FridgePhotoMockupOverlay } from '../fridge-photo/FridgePhotoMockupOverlay';
 import { api } from '../../api/client';
 import { formatDate, formatQuantity, isExpiringSoon } from '../inventory/formatting';
 import { InventoryInput, InventoryItem } from '../inventory/types';
@@ -12,6 +13,7 @@ const units = ['count', 'g', 'kg', 'ml', 'l', 'oz', 'lb', 'cup', 'tbsp', 'tsp'];
 export function MainApp() {
   const queryClient = useQueryClient();
   const [form, setForm] = useState<InventoryInput>({ name: '', quantity: 1, unit: 'count', expiryDate: null });
+  const [fridgePhotoOpen, setFridgePhotoOpen] = useState(false);
 
   const inventory = useQuery({
     queryKey: ['inventory'],
@@ -168,10 +170,22 @@ export function MainApp() {
                 onChange={(event) => setForm((current) => ({ ...current, expiryDate: event.target.value || null }))}
               />
             </label>
-            <button className="primary-action field-full" type="submit" disabled={createItem.isLoading}>
-              <Plus size={18} />
-              Add
-            </button>
+            <div className="add-actions-row field-full">
+              <button className="primary-action add-submit" type="submit" disabled={createItem.isLoading}>
+                <Plus size={18} />
+                Add
+              </button>
+              <button
+                type="button"
+                className="camera-demo-button"
+                title="Try fridge photo demo (sample image)"
+                aria-label="Try fridge photo demo (sample image, not a real scan)"
+                onClick={() => setFridgePhotoOpen(true)}
+              >
+                <Camera size={20} />
+                <span className="demo-badge">Demo</span>
+              </button>
+            </div>
           </form>
 
           <div className="item-list">
@@ -209,6 +223,15 @@ export function MainApp() {
           </div>
         </section>
       </div>
+
+      {fridgePhotoOpen ? (
+        <FridgePhotoMockupOverlay
+          units={units}
+          onClose={() => setFridgePhotoOpen(false)}
+          onSaved={invalidateV1}
+          postItem={(input) => api.post<InventoryItem>('/api/inventory', input)}
+        />
+      ) : null}
 
       {createItem.error || acceptRecipe.error ? (
         <div className="toast" role="alert">{((createItem.error ?? acceptRecipe.error) as Error).message}</div>

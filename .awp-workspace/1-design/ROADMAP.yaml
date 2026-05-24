@@ -34,6 +34,6 @@ capabilities:
     feature_ids:
       - FEAT-REC-002
     depends_on: CAP-V1-CORE
-    status: planned
+    status: active
     owner: unassigned
-    notes: "See docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md"
+    notes: "Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred."

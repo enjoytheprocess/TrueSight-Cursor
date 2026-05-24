@@ -69,10 +69,12 @@ Junction between Recipe and IngredientCatalog (quantity, unit, optional flag). A
 
 ### DetectedItem (V2 fridge recognition)
 
-Transient detection result before user confirmation.
+Transient detection result before user confirmation (not persisted until save).
 
-- suggested name, quantity estimate, confidence
-- links to `InventoryItem` after user confirms
+- suggested **name** (read-only in UI mockup; editable in production TBD)
+- **quantity**, **unit**, optional **expiry** — user-editable on review screen
+- **confidence** (`high` | `medium` | `low`) — UI only; drives default include toggle
+- materializes as `InventoryItem` via `POST /api/inventory` (mockup) or batch confirm API (production TBD)
 
 ### ReceiptScan (ideation — IDEA-008)
 

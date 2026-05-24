@@ -5,6 +5,29 @@
 schema_version: 3
 
 tasks:
+  - id: BUILD-REC-002-MOCKUP
+    feature_id: FEAT-REC-002
+    title: "Implement fridge photo UI mockup (demo scan)"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-REC-002-fridge-photo-recognition.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 1
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+      - docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
+    notes: >
+      Phase A only: preset /mockups/fridge-preset.jpg, stub detections, demo labeling,
+      POST /api/inventory all-or-nothing. Production vision (OQ-005/006) out of scope.
+
   - id: BUILD-CAT-001
     feature_id: FEAT-CAT-001
     title: "Implement ingredient catalog"

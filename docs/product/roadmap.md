@@ -17,7 +17,7 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 
 | # | Capability | Notes |
 |---|------------|--------|
-| 5 | Fridge photo recognition | Upload photo → vision service → detected items → **user confirms/edits** → inventory |
+| 5 | Fridge photo recognition | **UI mockup first:** camera beside Add → preset photo → stub scan → user edits qty/unit/expiry → save. **Then:** upload → vision service → same review → inventory ([FEAT-REC-002](../design/features/FEAT-REC-002-fridge-photo-recognition.md)) |
 
 ## Explicit non-goals (MVP)
 

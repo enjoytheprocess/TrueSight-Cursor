@@ -35,8 +35,8 @@ _Active capabilities. Move completed/parked capabilities to `archive/ROADMAP.yam
 
 | Target Window | Status | Owner | Depends On |
 | --- | --- | --- | --- |
-| TBD | `planned` | unassigned | CAP-V1-CORE |
+| TBD | `active` | unassigned | CAP-V1-CORE |
 
 **Feature IDs:** FEAT-REC-002
 
-> See docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
+> Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred.

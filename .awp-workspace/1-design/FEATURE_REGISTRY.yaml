@@ -31,7 +31,7 @@ features:
 
   - id: FEAT-REC-002
     title: "Fridge photo recognition (V2)"
-    components: [backend]
+    components: [backend, frontend]
     created_on: "2026-05-23"
 
   - id: FEAT-AUTH-001

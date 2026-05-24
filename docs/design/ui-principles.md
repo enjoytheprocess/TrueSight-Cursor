@@ -56,22 +56,59 @@ Per [FEAT-AUTH-001](features/FEAT-AUTH-001-demo-login-screen.md) and TMP-001:
 - Helper copy: **“Welcome to the Demo”** near the disabled fields.
 - Email, password, sign-up/forgot links, and OAuth buttons are visible but **disabled** (layout preview only).
 
-## V2 confirmation (fridge photo)
+## V2 fridge photo — entry and mockup
 
-After vision proposes items, show **confidence** and let the user toggle each line before save — never auto-add low-confidence items without review.
+Per [FEAT-REC-002](features/FEAT-REC-002-fridge-photo-recognition.md). **First delivery:** UI mockup with preset photo and stub detections; **later:** live camera + server vision.
 
-Example pattern:
+### Entry (add-item section)
+
+| Element | Rule |
+|---------|------|
+| **Camera control** | Icon button immediately **beside** the primary **Add** button (same row; Add grows, camera fixed ~44px) |
+| **Manual add** | Unchanged — camera is additive, not a replacement |
+| **Mockup signal** | Visible **Demo** badge on the camera control; `aria-label` explains sample image / not a real scan |
+| **Production** | Remove Demo badge and demo copy when live vision ships |
+
+### Mockup labeling (required until real vision)
+
+Honest labeling like the demo login screen — users must know the scan is simulated while **Save** still writes real inventory.
+
+| Where | Copy / pattern |
+|-------|----------------|
+| Camera button | **Demo** badge + tooltip “Try fridge photo demo (sample image)” |
+| Overlay (all steps) | Persistent info banner: **“Demo — sample photo & suggested items, not real AI yet.”** |
+| Camera step | **Use sample photo** (not “Capture”); helper: fixed sample image |
+| Scanning | **“Scanning sample photo…”** |
+| Review | Heading **“Suggested items (demo)”** |
+
+Full table: [FEAT-REC-002 § Mockup labeling](features/FEAT-REC-002-fridge-photo-recognition.md#mockup-labeling).
+
+### Camera → review flow (mockup)
+
+1. **Preset photo** screen with demo banner (bundled image; **Use sample photo**).
+2. **Scanning** feedback (short; “sample photo” wording).
+3. **Review** list — same quantity / unit / expiry controls as manual add; demo heading + banner.
+
+### Confirmation (mockup and production)
+
+After vision (or stub) proposes items, show **confidence** and let the user toggle each line before save — never auto-add low-confidence items without review.
+
+Example pattern (mockup — use **“Suggested items (demo)”** as heading, not “AI found”):
 
 ```
-AI found:
-  [✓] Eggs      (high)
-  [✓] Milk      (medium)
-  [ ] Lettuce   (low)
+[Demo banner: sample photo & suggested items, not real AI yet]
 
-[Confirm selection]
+Suggested items (demo)
+  [✓] Eggs      (high)     qty · unit · expiry
+  [✓] Milk      (medium)   …
+  [ ] Lettuce   (low)      …
+
+[Save to inventory]  [Cancel]
 ```
 
-See [FEAT-REC-002](features/FEAT-REC-002-fridge-photo-recognition.md).
+Low-confidence lines default **unchecked**. Primary action: **Save to inventory** (not “Confirm” alone — makes persistence explicit).
+
+**Save rules (mockup):** Disable **Save** when no rows are checked, when any included quantity is &lt; 1, or while requests are in flight. **All-or-nothing** — dismiss overlay only after every included `POST` succeeds; on failure, keep the review screen (no partial dismiss).
 
 ## Accessibility and trust
 

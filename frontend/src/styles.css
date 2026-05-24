@@ -552,6 +552,228 @@ h1 {
   width: 100%;
 }
 
+.add-actions-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.add-submit {
+  flex: 1;
+  min-width: 0;
+}
+
+.camera-demo-button {
+  position: relative;
+  display: grid;
+  flex: 0 0 44px;
+  width: 44px;
+  min-height: 42px;
+  place-items: center;
+  border: 1px solid #cfd7c5;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #162016;
+}
+
+.demo-badge {
+  position: absolute;
+  top: -7px;
+  right: -8px;
+  border: 1px solid #d5dbc8;
+  border-radius: 4px;
+  padding: 1px 4px;
+  background: #fff8e8;
+  color: #92400e;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.fridge-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: #f6f7f2;
+  overflow: hidden;
+}
+
+.fridge-overlay-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e8ebdf;
+  background: #ffffff;
+}
+
+.fridge-overlay-header h2 {
+  font-size: 1rem;
+}
+
+.fridge-overlay-back {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid #d9dfd0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #162016;
+}
+
+.fridge-demo-banner {
+  margin: 0;
+  padding: 10px 16px;
+  background: #eff6ff;
+  border-bottom: 1px solid #bfdbfe;
+  color: #1e3a5f;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.fridge-overlay-body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.fridge-overlay-center {
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  color: #39453d;
+}
+
+.fridge-scan-spinner {
+  animation: fridge-spin 1s linear infinite;
+}
+
+@keyframes fridge-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fridge-preset-photo {
+  width: 100%;
+  max-height: min(52vh, 520px);
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #d9dfd0;
+}
+
+.fridge-overlay-helper {
+  color: #5b655d;
+  font-size: 0.9rem;
+}
+
+.fridge-overlay-primary {
+  width: 100%;
+}
+
+.fridge-overlay-review {
+  padding-bottom: 24px;
+}
+
+.fridge-review-intro h3 {
+  font-size: 1.05rem;
+}
+
+.fridge-review-intro p {
+  margin-top: 6px;
+  color: #5b655d;
+  font-size: 0.9rem;
+}
+
+.fridge-review-footnote {
+  font-size: 0.8rem !important;
+  font-style: italic;
+}
+
+.fridge-review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.fridge-review-row {
+  border: 1px solid #e3e8dc;
+  border-radius: 8px;
+  padding: 12px;
+  background: #ffffff;
+  display: grid;
+  gap: 10px;
+}
+
+.fridge-review-include {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.fridge-review-name {
+  flex: 1;
+}
+
+.confidence-badge {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.confidence-high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.confidence-medium {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.confidence-low {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.fridge-review-fields {
+  display: grid;
+  gap: 8px;
+}
+
+.fridge-save-error {
+  margin: 0;
+  color: #991b1b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.fridge-overlay-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.fridge-overlay-actions .secondary-action,
+.fridge-overlay-actions .primary-action {
+  width: auto;
+  min-height: 42px;
+}
+
 @media (max-width: 520px) {
   .summary-strip {
     grid-template-columns: repeat(3, minmax(0, 1fr));

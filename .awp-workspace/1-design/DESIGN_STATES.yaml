@@ -7,17 +7,18 @@ schema_version: 4
 features:
   - feature_id: FEAT-REC-002
     title: "Fridge photo recognition (V2)"
-    design_state: concept
+    design_state: ready
     owner: unassigned
-    last_updated: "2026-05-23"
+    last_updated: "2026-05-24"
     linked_idea: none
-    linked_tasks: []
+    linked_tasks:
+      - BUILD-REC-002-MOCKUP
     primary_design_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
     decision_links:
       - docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
     blocking_questions: none
-    notes: "V2 — OQ-005/006 deferred until phase committed"
+    notes: "Mockup build admitted (BUILD-REC-002-MOCKUP). Production vision OQ-005/006 deferred."
 
   - feature_id: FEAT-CAT-001
     title: "Ingredient catalog"

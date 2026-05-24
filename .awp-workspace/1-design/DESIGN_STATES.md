@@ -11,14 +11,14 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `concept` | unassigned | 2026-05-23 |
+| `ready` | unassigned | 2026-05-24 |
 
-**Linked idea:** none · **Tasks:**   
+**Linked idea:** none · **Tasks:** BUILD-REC-002-MOCKUP  
 **Spec:** `docs/design/features/FEAT-REC-002-fridge-photo-recognition.md`  
 **Decisions:** docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md, docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
 **Blocking questions:** none
 
-> V2 — OQ-005/006 deferred until phase committed
+> Mockup build admitted (BUILD-REC-002-MOCKUP). Production vision OQ-005/006 deferred.
 
 ---
 

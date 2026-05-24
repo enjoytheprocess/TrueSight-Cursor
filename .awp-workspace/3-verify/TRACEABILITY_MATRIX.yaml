@@ -56,14 +56,21 @@ features:
 
   - id: FEAT-REC-002
     spec_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
-    last_synced: "2026-05-23"
-    drift_status: review_needed
+    last_synced: "2026-05-24"
+    drift_status: aligned
     owner: unassigned
-    task_ids: []
+    task_ids:
+      - BUILD-REC-002-MOCKUP
     code_links:
-      - backend/
-    test_links: []
-    notes: "V2 spec draft; blocked on CAP-V2-VISION admission"
+      - frontend/public/mockups/fridge-preset.jpg
+      - frontend/src/features/app/MainApp.tsx
+      - frontend/src/features/fridge-photo/FridgePhotoMockupOverlay.tsx
+      - frontend/src/features/fridge-photo/stubDetections.ts
+      - frontend/src/features/fridge-photo/saveDetectedItems.ts
+    test_links:
+      - frontend/src/App.test.tsx
+      - frontend/src/features/fridge-photo/saveDetectedItems.test.ts
+    notes: "Phase A mockup admitted — preset photo + stub review UI; production Recognition slice TBD."
 
   - id: FEAT-AUTH-001
     spec_link: docs/design/features/FEAT-AUTH-001-demo-login-screen.md
