@@ -1,6 +1,7 @@
 using System.Reflection;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using TrueSight.Api.Features.Inventory;
 using TrueSight.Api.Features.Recipes;
@@ -9,6 +10,7 @@ using TrueSight.Api.Features.ShoppingList;
 using TrueSight.Api.Infrastructure;
 using TrueSight.Api.Infrastructure.Data;
 using TrueSight.Api.Infrastructure.Recipes;
+using TrueSight.Api.Infrastructure.Security;
 using TrueSight.Api.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,15 +29,14 @@ builder.Services.AddMediatR(configuration =>
 });
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddProblemDetails();
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-        policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-});
+builder.Services.AddTrueSightCors(builder.Environment, builder.Configuration);
+builder.Services.AddApiMutationRateLimiting(builder.Configuration);
 
 var app = builder.Build();
 
 app.UseExceptionHandler();
+app.UseMiddleware<SecurityHeadersMiddleware>();
+app.UseMiddleware<ProductionIdentityMiddleware>();
 app.Use(async (context, next) =>
 {
     try
@@ -55,7 +56,15 @@ app.Use(async (context, next) =>
         await Results.Problem(ex.Message, statusCode: StatusCodes.Status400BadRequest).ExecuteAsync(context);
     }
 });
+
+if (app.Environment.IsProduction())
+{
+    app.UseHsts();
+    app.UseHttpsRedirection();
+}
+
 app.UseCors();
+app.UseRateLimiter();
 
 using (var scope = app.Services.CreateScope())
 {

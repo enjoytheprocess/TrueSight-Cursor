@@ -11,11 +11,11 @@ _Active capabilities. Move completed/parked capabilities to `archive/ROADMAP.yam
 
 | Target Window | Status | Owner | Depends On |
 | --- | --- | --- | --- |
-| TBD | `parked` | unassigned | CAP-V1-CORE |
+| TBD | `active` | unassigned | CAP-V1-CORE |
 
 **Feature IDs:** FEAT-SHP-001
 
-> P4 — spec drafted; build deferred behind V2 fridge-photo mockup/design (FEAT-REC-002).
+> Sync 2026-05-24 — BUILD-SHP-001/002/003 shipped; awaiting human acceptance gate.
 
 ---
 
@@ -40,3 +40,15 @@ _Active capabilities. Move completed/parked capabilities to `archive/ROADMAP.yam
 **Feature IDs:** FEAT-REC-002
 
 > Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred.
+
+---
+
+### CAP-V1-SEC · **Production security — CI, API hardening, real auth (closes TMP-001)**
+
+| Target Window | Status | Owner | Depends On |
+| --- | --- | --- | --- |
+| TBD | `active` | unassigned | CAP-V1-CORE |
+
+**Feature IDs:** FEAT-SEC-001, FEAT-AUTH-002
+
+> Admitted 2026-05-24 from security audit. BUILD-SEC-001 first; BUILD-AUTH-002 after SEC-003 accepted.

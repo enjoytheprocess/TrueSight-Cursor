@@ -16,7 +16,7 @@ measures:
     exit_trigger: >
       Dedicated real-auth build task completes: sign-up/login replaces demo entry and
       header identity (ASP.NET Identity + cookies or JWT — mechanism chosen at auth task admission).
-    removal_target: "Future real-auth task (post BUILD-AUTH-001) — not yet in WORK_QUEUE"
+    removal_target: "BUILD-AUTH-002 — admitted 2026-05-24 (CAP-V1-SEC); blocked on BUILD-SEC-003 + auth ADR"
     linked_tasks:
       - BUILD-AUTH-001
       - BUILD-INV-001

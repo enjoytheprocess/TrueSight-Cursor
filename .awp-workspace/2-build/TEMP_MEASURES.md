@@ -12,7 +12,7 @@ _Active measures. Move closed entries to `archive/TEMP_MEASURES.yaml` during Syn
 
 | Scope | Status | Introduced On | Owner | Removal Target |
 | --- | --- | --- | --- | --- |
-|  | `open` |  | unassigned | Future real-auth task (post BUILD-AUTH-001) — not yet in WORK_QUEUE |
+|  | `open` |  | unassigned | BUILD-AUTH-002 — admitted 2026-05-24 (CAP-V1-SEC); blocked on BUILD-SEC-003 + auth ADR |
 
 **Exit trigger:** Dedicated real-auth build task completes: sign-up/login replaces demo entry and header identity (ASP.NET Identity + cookies or JWT — mechanism chosen at auth task admission).
   

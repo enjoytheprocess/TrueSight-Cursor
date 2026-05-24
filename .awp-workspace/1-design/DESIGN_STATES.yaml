@@ -35,12 +35,45 @@ features:
 
   - feature_id: FEAT-SHP-001
     title: "Shopping list and main shell navigation"
-    design_state: spec_draft
+    design_state: ready
     owner: unassigned
     last_updated: "2026-05-24"
     linked_idea: IDEA-011
-    linked_tasks: []
+    linked_tasks:
+      - BUILD-SHP-001
+      - BUILD-SHP-002
+      - BUILD-SHP-003
     primary_design_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
     decision_links: []
     blocking_questions: none
-    notes: "P4 parked — build deferred behind V2 photo mockup; spec retained for when CAP-V1-SHOP un-parks."
+    notes: "Sync 2026-05-24 — implementation shipped; BUILD-SHP-* awaiting human review."
+
+  - feature_id: FEAT-SEC-001
+    title: "Production security baseline"
+    design_state: ready
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-SEC-001
+      - BUILD-SEC-002
+      - BUILD-SEC-003
+      - BUILD-SEC-004
+    primary_design_link: docs/design/features/FEAT-SEC-001-production-security-baseline.md
+    decision_links: []
+    blocking_questions: none
+    notes: "Security audit 2026-05-24 — BUILD-SEC-001/002/003 shipped; awaiting human acceptance."
+
+  - feature_id: FEAT-AUTH-002
+    title: "Real authentication"
+    design_state: spec_review
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-AUTH-002
+    primary_design_link: docs/design/features/FEAT-AUTH-002-real-authentication.md
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    blocking_questions: "Auth mechanism — cookie session vs JWT (see FEAT-AUTH-002)"
+    notes: "Build blocked until BUILD-SEC-003 accepted and mechanism ADR written."

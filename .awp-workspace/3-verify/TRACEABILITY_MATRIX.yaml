@@ -104,11 +104,64 @@ features:
   - id: FEAT-SHP-001
     spec_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
     last_synced: "2026-05-24"
+    drift_status: aligned
+    owner: unassigned
+    task_ids:
+      - BUILD-SHP-001
+      - BUILD-SHP-002
+      - BUILD-SHP-003
+    code_links:
+      - backend/TrueSight.Api/Features/ShoppingList
+      - backend/TrueSight.Api/Infrastructure/Data/TrueSightDbInitializer.cs
+      - frontend/src/features/app/MainApp.tsx
+      - frontend/src/features/shopping-list
+      - frontend/src/features/shopping-photo
+      - frontend/src/features/recipes/RecipePager.tsx
+      - frontend/src/features/recipes/RecipeCard.tsx
+      - frontend/public/mockups/shopping-preset.png
+    test_links:
+      - backend/TrueSight.Api.Tests/ShoppingListEndpointsTests.cs
+      - backend/TrueSight.Api.Tests/TrueSightDbInitializerTests.cs
+      - frontend/src/App.test.tsx
+      - frontend/src/features/recipes/RecipePager.test.tsx
+    notes: "Sync 2026-05-24 — spec aligned (DI-012–DI-016); shopping photo mockup documented as preview extension."
+
+  - id: FEAT-SEC-001
+    spec_link: docs/design/features/FEAT-SEC-001-production-security-baseline.md
+    last_synced: "2026-05-24"
+    drift_status: aligned
+    owner: unassigned
+    task_ids:
+      - BUILD-SEC-001
+      - BUILD-SEC-002
+      - BUILD-SEC-003
+      - BUILD-SEC-004
+    code_links:
+      - .gitignore
+      - .github/workflows/ci.yml
+      - backend/TrueSight.Api/Program.cs
+      - backend/TrueSight.Api/appsettings.json
+      - backend/TrueSight.Api/appsettings.Production.json
+      - backend/TrueSight.Api/Infrastructure/Security
+      - backend/TrueSight.Api/Infrastructure/HeaderCurrentUser.cs
+      - .awp-workspace/1-design/QUALITY_REQUIREMENTS.yaml
+      - .awp-workspace/3-verify/SECURITY_REVIEWS.md
+    test_links:
+      - backend/TrueSight.Api.Tests/ProductionSecurityTests.cs
+      - backend/TrueSight.Api.Tests/ApiMutationRateLimitingTests.cs
+      - backend/TrueSight.Api.Tests
+    notes: "Security audit 2026-05-24 — not yet implemented."
+
+  - id: FEAT-AUTH-002
+    spec_link: docs/design/features/FEAT-AUTH-002-real-authentication.md
+    last_synced: "2026-05-24"
     drift_status: review_needed
     owner: unassigned
-    task_ids: []
+    task_ids:
+      - BUILD-AUTH-002
     code_links:
-      - docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
-      - frontend/src/features/app/MainApp.tsx
+      - backend/TrueSight.Api/Infrastructure/HeaderCurrentUser.cs
+      - frontend/src/api/userId.ts
+      - frontend/src/features/auth/DemoLoginScreen.tsx
     test_links: []
-    notes: "P4 parked — spec draft retained; build deferred behind FEAT-REC-002 photo design."
+    notes: "Design draft — closes TMP-001 after BUILD-SEC-003."

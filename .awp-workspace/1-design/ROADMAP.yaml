@@ -14,9 +14,9 @@ capabilities:
     feature_ids:
       - FEAT-SHP-001
     depends_on: CAP-V1-CORE
-    status: parked
+    status: active
     owner: unassigned
-    notes: "P4 — spec drafted; build deferred behind V2 fridge-photo mockup/design (FEAT-REC-002)."
+    notes: "Sync 2026-05-24 — BUILD-SHP-001/002/003 shipped; awaiting human acceptance gate."
 
   - id: CAP-V1-EXT
     target_window: TBD
@@ -37,3 +37,14 @@ capabilities:
     status: active
     owner: unassigned
     notes: "Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred."
+
+  - id: CAP-V1-SEC
+    target_window: TBD
+    objective: "Production security — CI, API hardening, real auth (closes TMP-001)"
+    feature_ids:
+      - FEAT-SEC-001
+      - FEAT-AUTH-002
+    depends_on: CAP-V1-CORE
+    status: active
+    owner: unassigned
+    notes: "Admitted 2026-05-24 from security audit. BUILD-SEC-001 first; BUILD-AUTH-002 after SEC-003 accepted."

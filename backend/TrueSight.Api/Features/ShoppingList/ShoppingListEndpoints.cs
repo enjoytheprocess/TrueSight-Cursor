@@ -1,8 +1,10 @@
 using MediatR;
+using Microsoft.AspNetCore.RateLimiting;
 using TrueSight.Api.Features.ShoppingList.CreateShoppingListItem;
 using TrueSight.Api.Features.ShoppingList.DeleteShoppingListItem;
 using TrueSight.Api.Features.ShoppingList.ListShoppingListItems;
 using TrueSight.Api.Features.ShoppingList.MoveShoppingListItemToInventory;
+using TrueSight.Api.Infrastructure.Security;
 
 namespace TrueSight.Api.Features.ShoppingList;
 
@@ -10,7 +12,8 @@ public static class ShoppingListEndpoints
 {
     public static void MapShoppingListEndpoints(this IEndpointRouteBuilder routes)
     {
-        var group = routes.MapGroup("/api/shopping-list").WithTags("ShoppingList");
+        var group = routes.MapGroup("/api/shopping-list").WithTags("ShoppingList")
+            .RequireRateLimiting(ApiMutationRateLimiting.PolicyName);
 
         group.MapGet("/", async (ISender sender, CancellationToken cancellationToken) =>
             Results.Ok(await sender.Send(new ListShoppingListItemsQuery(), cancellationToken)));
