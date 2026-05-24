@@ -61,7 +61,7 @@ features:
       - frontend/src/features/recipes
     test_links:
       - backend/TrueSight.Api.Tests/RecipeSessionEndpointsTests.cs
-    notes: "Build admitted 2026-05-24 — BUILD-SES-001 todo; OQ-038 deferred"
+    notes: "BUILD-SES-001 awaiting_human_review — servingMultiplier optional default 1; OQ-038 deferred"
 
   - id: FEAT-REC-002
     spec_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
@@ -84,9 +84,12 @@ features:
     code_links:
       - frontend/src/api/userId.ts
       - frontend/src/App.tsx
+      - frontend/src/features/auth/DemoLoginScreen.tsx
+      - frontend/src/features/app/MainApp.tsx
     test_links:
       - frontend/src/api/userId.test.ts
-    notes: "Build admitted 2026-05-24 — BUILD-AUTH-001 todo (TMP-001 not implemented yet)"
+      - frontend/src/App.test.tsx
+    notes: "BUILD-AUTH-001 awaiting_human_review — TMP-001 demo login 2026-05-24"
 
   - id: FEAT-CAT-001
     spec_link: docs/design/features/FEAT-CAT-001-ingredient-catalog.md

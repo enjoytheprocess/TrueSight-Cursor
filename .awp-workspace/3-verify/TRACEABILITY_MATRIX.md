@@ -29,7 +29,7 @@
 **Code links:** backend/TrueSight.Api/Features/Recipes, backend/TrueSight.Api/Infrastructure/Recipes, frontend/src/features/recipes  
 **Test links:** dotnet build backend/MyApp.sln
 
-> Build admitted 2026-05-24 — BUILD-REC-001 todo; DI-007 tests pending
+> BUILD-REC-001 awaiting_human_review — DI-007 tests + canCook/ingredients[] 2026-05-24
 
 ---
 
@@ -43,7 +43,7 @@
 **Code links:** backend/TrueSight.Api/Features/Sessions, frontend/src/features/recipes  
 **Test links:** backend/TrueSight.Api.Tests/RecipeSessionEndpointsTests.cs
 
-> Build admitted 2026-05-24 — BUILD-SES-001 todo; OQ-038 deferred
+> BUILD-SES-001 awaiting_human_review — servingMultiplier optional default 1; OQ-038 deferred
 
 ---
 
@@ -68,10 +68,10 @@
 | docs/design/features/FEAT-AUTH-001-demo-login-screen.md | 2026-05-24 | `review_needed` | unassigned |
 
 **Task IDs:** BUILD-AUTH-001  
-**Code links:** frontend/src/api/userId.ts, frontend/src/App.tsx  
-**Test links:** frontend/src/api/userId.test.ts
+**Code links:** frontend/src/api/userId.ts, frontend/src/App.tsx, frontend/src/features/auth/DemoLoginScreen.tsx, frontend/src/features/app/MainApp.tsx  
+**Test links:** frontend/src/api/userId.test.ts, frontend/src/App.test.tsx
 
-> Build admitted 2026-05-24 — BUILD-AUTH-001 todo (TMP-001 not implemented yet)
+> BUILD-AUTH-001 awaiting_human_review — TMP-001 demo login 2026-05-24
 
 ---
 
