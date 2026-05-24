@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Camera, Plus, Trash2 } from 'lucide-react';
+import { ArrowLeft, Camera, Check, Plus, Trash2 } from 'lucide-react';
 import { FridgePhotoMockupOverlay } from '../fridge-photo/FridgePhotoMockupOverlay';
 import { ShoppingPhotoMockupOverlay } from '../shopping-photo/ShoppingPhotoMockupOverlay';
 import { api } from '../../api/client';
@@ -190,7 +190,7 @@ export function MainApp() {
     <main className="app-shell">
       <div className="main-column">
         <header className="topbar">
-          <p className="eyebrow">TrueSight V1</p>
+          <p className="eyebrow">TRUESIGHT V2.1</p>
           <h1>{headline}</h1>
         </header>
 
@@ -369,18 +369,25 @@ export function MainApp() {
                       {movingItemId === item.id ? (
                         <button
                           type="button"
-                          className="secondary-action move-confirm"
+                          className="icon-button move-to-stock-button"
                           disabled={moveToInventory.isLoading}
+                          aria-label={`Confirm move ${item.name} to in stock`}
                           onClick={() => confirmMove(item.id)}
                         >
-                          Confirm move
+                          <Check size={18} />
                         </button>
                       ) : (
-                        <button type="button" className="secondary-action" onClick={() => startMove(item.id)}>
-                          Move to In Stock
+                        <button
+                          type="button"
+                          className="icon-button move-to-stock-button"
+                          aria-label={`Move ${item.name} to in stock`}
+                          onClick={() => startMove(item.id)}
+                        >
+                          <ArrowLeft size={18} />
                         </button>
                       )}
                       <button
+                        type="button"
                         className="icon-button"
                         onClick={() => deleteShopping.mutate(item.id)}
                         aria-label={`Delete ${item.name}`}
