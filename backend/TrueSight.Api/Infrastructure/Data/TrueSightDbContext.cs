@@ -1,10 +1,14 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace TrueSight.Api.Infrastructure.Data;
 
-public sealed class TrueSightDbContext(DbContextOptions<TrueSightDbContext> options) : DbContext(options)
+public sealed class TrueSightDbContext(DbContextOptions<TrueSightDbContext> options)
+    : IdentityDbContext<ApplicationUser>(options)
 {
     public DbSet<InventoryItem> InventoryItems => Set<InventoryItem>();
+
+    public DbSet<ShoppingListItem> ShoppingListItems => Set<ShoppingListItem>();
 
     public DbSet<RecipeSession> RecipeSessions => Set<RecipeSession>();
 
@@ -12,6 +16,8 @@ public sealed class TrueSightDbContext(DbContextOptions<TrueSightDbContext> opti
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<InventoryItem>(entity =>
         {
             entity.HasKey(item => item.Id);
@@ -19,6 +25,16 @@ public sealed class TrueSightDbContext(DbContextOptions<TrueSightDbContext> opti
             entity.Property(item => item.Unit).HasMaxLength(32).IsRequired();
             entity.Property(item => item.UserId).HasMaxLength(120).IsRequired();
             entity.HasIndex(item => new { item.UserId, item.NormalizedName });
+        });
+
+        modelBuilder.Entity<ShoppingListItem>(entity =>
+        {
+            entity.HasKey(item => item.Id);
+            entity.Property(item => item.Name).HasMaxLength(120).IsRequired();
+            entity.Property(item => item.Unit).HasMaxLength(32).IsRequired();
+            entity.Property(item => item.UserId).HasMaxLength(120).IsRequired();
+            entity.Property(item => item.SourceRecipeId).HasMaxLength(80);
+            entity.HasIndex(item => new { item.UserId, item.NormalizedName, item.Unit });
         });
 
         modelBuilder.Entity<RecipeSession>(entity =>
@@ -53,6 +69,18 @@ public sealed class InventoryItem
     public DateOnly? ExpiryDate { get; set; }
     public DateTimeOffset AddedAt { get; set; }
     public DateTimeOffset UpdatedAt { get; set; }
+}
+
+public sealed class ShoppingListItem
+{
+    public Guid Id { get; set; }
+    public string UserId { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string NormalizedName { get; set; } = string.Empty;
+    public decimal Quantity { get; set; }
+    public string Unit { get; set; } = string.Empty;
+    public string? SourceRecipeId { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 }
 
 public sealed class RecipeSession

@@ -4,15 +4,13 @@ V1 entities are required for Phase 1 build. Shapes marked **planned (V2+)** or *
 
 ## Core Entities (V1)
 
-### IngredientCatalog
-
-Global reference list of ingredients (name, category, unit of measure).
-
 ### InventoryItem
 
 A user's instance of an ingredient in their fridge.
 
-- quantity, unit, expiry date, date added
+- `name`, `normalizedName` (server-derived), quantity, unit, expiry date, date added
+- **V1 (TMP-002):** inline free-text names only — no `IngredientCatalog` foreign key
+- **Delete:** hard delete of the user's `InventoryItem` row (`DELETE` → 204). Removing an item does **not** delete or mutate catalog reference data. This semantics is stable when `IngredientCatalog` ships later — only the optional FK/link on create/update changes, not delete behavior.
 
 ### Recipe
 
@@ -22,15 +20,21 @@ A user's instance of an ingredient in their fridge.
 
 May be sourced from an external catalog via **RecipeProvider** (integration boundary — not a persisted domain entity).
 
-### RecipeIngredient
-
-Junction between Recipe and IngredientCatalog (quantity, unit, optional flag).
-
 ### RecipeSession
 
 When a user accepts a recipe — triggers inventory deduction.
 
 - selected recipe, serving multiplier, timestamp
+
+### ShoppingListItem (V1.1 — [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md))
+
+A user's planned grocery line — not yet in the fridge.
+
+- `name`, `normalizedName`, quantity, unit, `createdAt`
+- optional `sourceRecipeId` when added from a recipe gap
+- **Move to In Stock:** merges into `InventoryItem` (same name + unit rules), then row is deleted
+
+**Shipped (V1.1, 2026-05-24):** `ShoppingListItems` table; API under `/api/shopping-list`.
 
 ## Integration boundary
 
@@ -39,6 +43,21 @@ When a user accepts a recipe — triggers inventory deduction.
 Abstraction for plug-and-play recipe data (Spoonacular, Edamam, custom). The API selects an implementation via configuration. No vendor-specific types in core entities. See [ADR-20260523-02-recipe-provider-adapter.md](../design/decisions/ADR-20260523-02-recipe-provider-adapter.md).
 
 ## Planned entities (V2+ / ideation — not V1 schema)
+
+### IngredientCatalog
+
+Global reference list of ingredients (name, category, unit of measure). **Deferred (TMP-002)** — current V1 build uses inline names on `InventoryItem` only.
+
+When implemented ([FEAT-CAT-001](../design/features/FEAT-CAT-001-ingredient-catalog.md)):
+
+- Catalog rows grow **organically** when users add inventory with new names (OQ-053) — no static seed file.
+- `InventoryItem` may optionally FK to catalog; add flow uses **typeahead** search (OQ-054).
+- Catalog is **append-only** in V1 — no delete/retire API (OQ-055).
+- **Inventory delete stays the same:** delete removes only the user's `InventoryItem`; catalog rows are global reference data and are not removed when a user deletes stock (OQ-031).
+
+### RecipeIngredient
+
+Junction between Recipe and IngredientCatalog (quantity, unit, optional flag). Applies when catalog ships.
 
 ### UserProfile
 
@@ -51,10 +70,12 @@ Abstraction for plug-and-play recipe data (Spoonacular, Edamam, custom). The API
 
 ### DetectedItem (V2 fridge recognition)
 
-Transient detection result before user confirmation.
+Transient detection result before user confirmation (not persisted until save).
 
-- suggested name, quantity estimate, confidence
-- links to `InventoryItem` after user confirms
+- suggested **name** (editable on review screen before save)
+- **quantity**, **unit**, optional **expiry** — user-editable on review screen
+- **confidence** (`high` | `medium` | `low`) — UI only; drives default include toggle
+- materializes as `InventoryItem` via `POST /api/inventory` (mockup) or batch confirm API (production TBD)
 
 ### ReceiptScan (ideation — IDEA-008)
 

@@ -25,7 +25,16 @@ check_component_dir() {
 }
 
 if [[ -f "$WORKSPACE_ROOT/workspace-layout.yaml" ]]; then
-  check_component_dir "$COMPONENT_ROOT" "$COMPONENT_REL"
+  had_components=0
+  while IFS=$'\t' read -r name path _type _verify; do
+    [[ -z "$name" || -z "$path" ]] && continue
+    had_components=1
+    check_component_dir "$MONOREPO_ROOT/$path" "$path"
+  done < <(list_monorepo_components)
+
+  if [[ $had_components -eq 0 ]]; then
+    check_component_dir "$COMPONENT_ROOT" "$COMPONENT_REL"
+  fi
 else
   COMPONENTS_DIR="$REPO_ROOT/components"
   if [[ ! -d "$COMPONENTS_DIR" ]]; then

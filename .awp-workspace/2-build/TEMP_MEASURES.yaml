@@ -1,0 +1,23 @@
+# Temporary Measures Register — short-term exceptions or tactical decisions that must be removed later.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+
+schema_version: 1
+
+measures:
+  - id: TMP-002
+    status: open
+    title: "Inline ingredient names — no IngredientCatalog in V1"
+    summary: >
+      Inventory uses free-text Name + NormalizedName only. IngredientCatalog entity in domain
+      model is not implemented; recipe matching relies on normalized string equality + exact units.
+    owner: unassigned
+    exit_trigger: >
+      IngredientCatalog promoted to V1+ scope: catalog table seeded, inventory links to catalog
+      rows, specs and domain model updated.
+    removal_target: "BUILD-CAT-001 — design queued 2026-05-24"
+    linked_tasks:
+      - BUILD-CAT-001
+      - BUILD-INV-001
+      - BUILD-REC-001
+    notes: "Product decision 2026-05-24 (DI-005). Do not add catalog schema in current re-build. Inventory hard-delete unchanged when catalog links ship (OQ-031)."

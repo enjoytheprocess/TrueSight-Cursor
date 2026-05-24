@@ -9,4 +9,4 @@
 
 schema_version: 1
 
-items: []  # populated by Sync from GAPS_AND_DEVIATIONS entries
+items: []

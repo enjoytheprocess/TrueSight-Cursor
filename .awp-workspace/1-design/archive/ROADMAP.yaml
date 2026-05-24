@@ -6,4 +6,27 @@
 
 schema_version: 2
 
-capabilities: []
+capabilities:
+  - id: CAP-V1-CORE
+    target_window: TBD
+    objective: "V1 — manual inventory, recipe suggestions, deduction on recipe acceptance"
+    feature_ids:
+      - FEAT-INV-001
+      - FEAT-REC-001
+      - FEAT-SES-001
+      - FEAT-AUTH-001
+    depends_on: none
+    status: completed
+    owner: unassigned
+    notes: "Delivered 2026-05-24 — Sync closed V1 core (INV, REC, SES, AUTH demo)."
+
+  - id: CAP-V1-SEC
+    target_window: TBD
+    objective: "Production security — CI, API hardening, real auth (closes TMP-001)"
+    feature_ids:
+      - FEAT-SEC-001
+      - FEAT-AUTH-002
+    depends_on: CAP-V1-CORE
+    status: completed
+    owner: unassigned
+    notes: "Sync 2026-05-24 — BUILD-SEC-001–004 + BUILD-AUTH-002 done."

@@ -8,17 +8,25 @@
 schema_version: 2
 
 capabilities:
-  - id: CAP-V1-CORE
+  - id: CAP-V1-SHOP
     target_window: TBD
-    objective: "V1 — manual inventory, recipe suggestions, deduction on recipe acceptance"
+    objective: "V1.1 — shopping list, In Stock | Shopping List tabs, recipe pager"
     feature_ids:
-      - FEAT-INV-001
-      - FEAT-REC-001
-      - FEAT-SES-001
-    depends_on: none
+      - FEAT-SHP-001
+    depends_on: CAP-V1-CORE
     status: active
     owner: unassigned
-    notes: "Committed Phase 1; see docs/product/roadmap.md"
+    notes: "Sync 2026-05-24 — BUILD-SHP-001/002/003 shipped; awaiting human acceptance gate."
+
+  - id: CAP-V1-EXT
+    target_window: TBD
+    objective: "V1 extension — ingredient catalog, inventory linkage, removes TMP-002"
+    feature_ids:
+      - FEAT-CAT-001
+    depends_on: CAP-V1-CORE
+    status: planned
+    owner: unassigned
+    notes: "Post core loop; inventory hard delete unchanged (OQ-031)"
 
   - id: CAP-V2-VISION
     target_window: TBD
@@ -26,6 +34,6 @@ capabilities:
     feature_ids:
       - FEAT-REC-002
     depends_on: CAP-V1-CORE
-    status: planned
+    status: active
     owner: unassigned
-    notes: "See docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md"
+    notes: "Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred."

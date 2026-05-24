@@ -22,6 +22,7 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 | IDEA-008 | Receipt photo → inventory list | Smart input | open |
 | IDEA-009 | PWA install + offline shell | Platform | open |
 | IDEA-010 | Firebase-first stack (alternative) | Architecture | parked |
+| IDEA-011 | Shopping list | Inventory & UX | implemented (awaiting acceptance) |
 
 ---
 
@@ -82,7 +83,21 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 
 ---
 
-## Inventory
+## Inventory & UX
+
+### IDEA-011: Shopping list
+
+**Status:** implemented (awaiting human acceptance — 2026-05-24)  
+**Summary:** **In Stock** \| **Shopping List** tabs; add what you have vs what you will buy; **move to stock** after purchase; recipe **pager** below the lists.
+
+**Discussion**
+
+- Supports use case #1 ([use-cases.md](use-cases.md) — at the market).
+- Shipped per [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md); includes shopping photo preview mockup and icon-based move/cart controls.
+
+**Outcome:** Promoted to V1.1 (`CAP-V1-SHOP`); acceptance gate pending on BUILD-SHP-001/002/003.
+
+---
 
 ### IDEA-006: Expiry proximity warnings
 

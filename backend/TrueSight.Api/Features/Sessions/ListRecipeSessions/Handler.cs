@@ -16,6 +16,7 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser)
             .Where(session => session.UserId == currentUser.UserId)
             .ToListAsync(cancellationToken);
 
+        // SQLite cannot translate ORDER BY on DateTimeOffset; sort in memory after fetch.
         return sessions
             .OrderByDescending(session => session.AcceptedAt)
             .Select(session => new RecipeSessionResponse(
@@ -30,3 +31,4 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser)
             .ToList();
     }
 }
+

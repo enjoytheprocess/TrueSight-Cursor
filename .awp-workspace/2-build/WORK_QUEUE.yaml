@@ -1,6 +1,7 @@
 # Work Queue — canonical execution table for admitted tasks.
 # Edit this file directly or ask your agent to update it.
 # Field definitions: docs/core/glossary.md | Workflow rules: docs/core/workflow-reference.md
+# Build agents: docs/design/build-agent-loop.md — one task, commit, re-scan when deps accepted.
 #
 # phase:               design | build | verify | sync
 # mode:                sequential | parallel
@@ -16,64 +17,18 @@
 schema_version: 5
 
 tasks:
-  - id: SETUP-001
-    feature_id: none
-    title: "Configure workspace and connect project components"
+  - id: BUILD-SHP-001
+    feature_id: FEAT-SHP-001
+    title: "Implement shopping list API and schema"
     component: backend
-    spec_link: "docs/product/project-brief.md"
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
     advisor_status: not_required
     advisor_track: none
     quality_requirements: []
     decision_links: []
-    priority: P1
+    priority: P4
     phase: build
-    capability: none
-    target_window: TBD
-    mode: sequential
-    lock_id: none
-    owner: unassigned
-    status: awaiting_human_review
-    build_dependencies: none
-    design_dependencies: none
-    validation: "make awp-docs-check"
-    notes: "Backend solution, API project, and frontend client scaffolded; V1 implementation added for human review"
-
-  - id: BUILD-INV-001
-    feature_id: FEAT-INV-001
-    title: "Implement manual inventory CRUD"
-    component: backend
-    spec_link: "docs/design/features/FEAT-INV-001-manual-inventory.md"
-    advisor_status: not_required
-    advisor_track: none
-    quality_requirements: []
-    decision_links:
-      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
-    priority: P1
-    phase: build
-    capability: CAP-V1-CORE
-    target_window: TBD
-    mode: sequential
-    lock_id: none
-    owner: unassigned
-    status: awaiting_human_review
-    build_dependencies: SETUP-001
-    design_dependencies: none
-    validation: "dotnet build backend/MyApp.sln; curl smoke test for inventory CRUD"
-    notes: "Implemented beta API with X-TrueSight-User development identity and hard deletes"
-
-  - id: BUILD-REC-001
-    feature_id: FEAT-REC-001
-    title: "Implement V1 recipe suggestions"
-    component: backend
-    spec_link: "docs/design/features/FEAT-REC-001-recipe-suggestions.md"
-    advisor_status: not_required
-    advisor_track: none
-    quality_requirements: []
-    decision_links:
-      - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
-    priority: P1
-    phase: build
-    capability: CAP-V1-CORE
+    capability: CAP-V1-SHOP
     target_window: TBD
     mode: sequential
     lock_id: none
@@ -81,27 +36,97 @@ tasks:
     status: awaiting_human_review
     build_dependencies: BUILD-INV-001
     design_dependencies: none
-    validation: "dotnet build backend/MyApp.sln; curl smoke test for /api/recipes/suggestions"
-    notes: "Implemented static RecipeProvider adapter and transparent heuristic ranking"
+    validation: "dotnet test — 18 passed; GET/POST/DELETE /api/shopping-list, move-to-inventory"
+    notes: "Shipped 2026-05-24 — ShoppingListItems + TrueSightDbInitializer for legacy SQLite."
 
-  - id: BUILD-SES-001
-    feature_id: FEAT-SES-001
-    title: "Implement recipe acceptance and inventory deduction"
-    component: backend
-    spec_link: "docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md"
+  - id: BUILD-SHP-002
+    feature_id: FEAT-SHP-001
+    title: "Implement shopping list tab shell and recipe pager"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
     advisor_status: not_required
     advisor_track: none
     quality_requirements: []
-    decision_links: []
-    priority: P1
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    priority: P4
     phase: build
-    capability: CAP-V1-CORE
+    capability: CAP-V1-SHOP
     target_window: TBD
     mode: sequential
     lock_id: none
     owner: unassigned
     status: awaiting_human_review
-    build_dependencies: BUILD-REC-001
+    build_dependencies: BUILD-SHP-001
     design_dependencies: none
-    validation: "dotnet build backend/MyApp.sln; curl smoke test for /api/recipe-sessions"
-    notes: "Implemented transactional accept flow for required ingredients with same-unit deduction"
+    validation: "npm run build && npm run test (29 passed); manual: tabs, pager, move/delete icons"
+    notes: "Shipped 2026-05-24 — In Stock | Shopping List shell, tab headlines, item-count bar."
+
+  - id: BUILD-SHP-003
+    feature_id: FEAT-SHP-001
+    title: "Recipe add-to-shopping-list and shopping photo mockup"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    priority: P4
+    phase: build
+    capability: CAP-V1-SHOP
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: awaiting_human_review
+    build_dependencies: BUILD-SHP-001
+    design_dependencies: none
+    validation: "npm run test; manual: cart icons, ALL add-missing, shopping photo preview flow"
+    notes: "Shipped 2026-05-24 — /mockups/shopping-preset.png stub scan → POST /api/shopping-list."
+
+  - id: BUILD-REC-002-MOCKUP
+    feature_id: FEAT-REC-002
+    title: "Implement fridge photo UI mockup (demo scan)"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-REC-002-fridge-photo-recognition.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+      - docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
+    priority: P2
+    phase: build
+    capability: CAP-V2-VISION
+    target_window: TBD
+    mode: parallel
+    lock_id: none
+    owner: unassigned
+    status: awaiting_human_review
+    build_dependencies: none
+    design_dependencies: none
+    validation: "npm run build && npm run test (22 passed); manual: demo flow + mockup AC in FEAT-REC-002"
+    notes: "Phase A mockup shipped — overlay, demo labeling, stub scan, all-or-nothing POST inventory."
+
+  - id: BUILD-CAT-001
+    feature_id: FEAT-CAT-001
+    title: "Implement ingredient catalog"
+    component: backend
+    spec_link: "docs/design/features/FEAT-CAT-001-ingredient-catalog.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links: []
+    priority: P3
+    phase: design
+    capability: CAP-V1-EXT
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: todo
+    build_dependencies: BUILD-INV-001
+    design_dependencies: none
+    validation: "Design only — tick AC before build admit (post-V1 / TMP-002)"
+    notes: "V1 core synced 2026-05-24 — BUILD-INV-001 done; not build-admitted."

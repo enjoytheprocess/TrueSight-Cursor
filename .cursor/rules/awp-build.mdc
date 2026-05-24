@@ -1,23 +1,27 @@
 ---
-description: Build phase — backend implementation tied to WORK_QUEUE
-globs: backend/**
+description: Build phase — one task per pass, commit, dependency re-scan
+globs: backend/**,frontend/**,docs/design/build-agent-loop.md
 alwaysApply: false
 ---
 
-# AWP Build (backend)
+# AWP Build
 
-Before coding:
+**Loop (required):** [`docs/design/build-agent-loop.md`](../../docs/design/build-agent-loop.md)
 
-1. Read active row in `.awp-workspace/2-build/WORK_QUEUE.yaml` — status, `spec_link`, `feature_id`
-2. Read matching `1-design/TASK_READINESS.yaml` — must be `ready_for_build`
-3. Read **design spec** at `spec_link` (path under `docs/`)
-4. Read `DESIGN_STATES.yaml` + `3-verify/TRACEABILITY_MATRIX.yaml` for the feature
+## Before coding
+
+1. Scan `2-build/WORK_QUEUE.yaml` for the **next buildable** row (`phase: build`, `todo`/`in_progress`, all `build_dependencies` → `accepted` or `done`).
+2. Read that row’s `spec_link` and component `AGENTS.md` (`backend/` or `frontend/`).
+3. Read `DESIGN_STATES.yaml` + `TRACEABILITY_MATRIX.yaml` for the feature.
 
 ## Discipline
 
-- Only implement `ready_for_build` tasks
-- `todo` → `in_progress` when starting; `in_progress` → `awaiting_human_review` when done (not `accepted`/`done` without human)
-- Log gaps in `3-verify/GAPS_AND_DEVIATIONS.yaml`
-- `make awp-docs-check` before handoff
+- **One task per pass** — do not implement multiple BUILD-* tasks in one change set unless the user explicitly asks.
+- **Commit per task** when the user wants git commits — scope staging and message to that task id.
+- Only implement admitted tasks (`ready_for_build` at admission).
+- `todo` → `in_progress` → `awaiting_human_review` (not `accepted` without human gate).
+- After no buildable tasks remain, **re-scan** when upstream dependencies become `accepted`.
+- Log gaps in `3-verify/GAPS_AND_DEVIATIONS.yaml`.
+- `make awp-render` after register YAML edits; `make awp-docs-check` before handoff.
 
-Architecture: `.cursor/rules/architecture.mdc` + `.cursor/rules/backend.mdc`
+Architecture: `.cursor/rules/architecture.mdc`, `.cursor/rules/backend.mdc`, `.cursor/rules/frontend.mdc`

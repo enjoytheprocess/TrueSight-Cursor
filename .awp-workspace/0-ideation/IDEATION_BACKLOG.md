@@ -121,3 +121,16 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 **Decision:** `none`  
 **Promotion target:** —
+
+---
+
+### IDEA-011 · **Shopping list**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-24 | backend, frontend |
+
+**Summary:** V1.1 implemented 2026-05-24 — awaiting human acceptance (BUILD-SHP-*).
+
+**Decision:** `promoted`  
+**Promotion target:** —

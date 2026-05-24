@@ -15,4 +15,241 @@
 
 schema_version: 5
 
-tasks: []
+tasks:
+  - id: SETUP-001
+    feature_id: none
+    title: "Configure workspace and connect project components"
+    component: backend
+    spec_link: "docs/product/project-brief.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    priority: P1
+    phase: sync
+    capability: none
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: none
+    design_dependencies: none
+    validation: >
+      make awp-docs-check; make backend-test; frontend npm run test;
+      frontend/src/api/userId.ts sends X-TrueSight-User from localStorage UUID (TMP-001)
+    notes: >
+      Completed 2026-05-24. Workspace wired; backend+frontend connected; client user id fixed;
+      READMEs updated. Archived after verify.
+
+  - id: BUILD-INV-001
+    feature_id: FEAT-INV-001
+    title: "Implement manual inventory CRUD"
+    component: backend
+    spec_link: "docs/design/features/FEAT-INV-001-manual-inventory.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    priority: P1
+    phase: sync
+    capability: CAP-V1-CORE
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: none
+    design_dependencies: none
+    validation: "dotnet test — 14 passed; npm test — 16 passed; npm run build"
+    notes: "Sync 2026-05-24 — GD-011 incorporated (merge on create, form UX)."
+
+  - id: BUILD-AUTH-001
+    feature_id: FEAT-AUTH-001
+    title: "Implement demo login screen (temporary)"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-AUTH-001-demo-login-screen.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    priority: P2
+    phase: sync
+    capability: CAP-V1-CORE
+    target_window: TBD
+    mode: parallel
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: none
+    design_dependencies: none
+    validation: "npm test — login gate + Enter Demo"
+    notes: "Sync 2026-05-24 — GD-012 incorporated (DemoInventorySeeder)."
+
+  - id: BUILD-REC-001
+    feature_id: FEAT-REC-001
+    title: "Implement V1 recipe suggestions"
+    component: backend
+    spec_link: "docs/design/features/FEAT-REC-001-recipe-suggestions.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
+    priority: P1
+    phase: sync
+    capability: CAP-V1-CORE
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: BUILD-INV-001
+    design_dependencies: none
+    validation: "RecipeSuggestionsEndpointsTests; recipe card + recipeScaling tests"
+    notes: "Sync 2026-05-24 — GD-009 incorporated (table UX, no optional, servings)."
+
+  - id: BUILD-SES-001
+    feature_id: FEAT-SES-001
+    title: "Implement recipe acceptance and inventory deduction"
+    component: backend
+    spec_link: "docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links: []
+    priority: P1
+    phase: sync
+    capability: CAP-V1-CORE
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: BUILD-REC-001
+    design_dependencies: none
+    validation: "RecipeSessionEndpointsTests — 14 backend total"
+    notes: "Sync 2026-05-24 — GD-010 incorporated (deduct all ingredients). OQ-038 deferred."
+
+  - id: BUILD-SEC-001
+    feature_id: FEAT-SEC-001
+    title: "Security hygiene and sustained quality requirements"
+    component: repo
+    spec_link: "docs/design/features/FEAT-SEC-001-production-security-baseline.md"
+    advisor_status: complete
+    advisor_track: security
+    quality_requirements:
+      - QR-SEC-001
+      - QR-SEC-002
+      - QR-SEC-003
+    decision_links: []
+    priority: P1
+    phase: sync
+    capability: CAP-V1-SEC
+    target_window: TBD
+    mode: parallel
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: none
+    design_dependencies: none
+    validation: "make awp-docs-check passed; .gitignore .env*; QR-SEC-001–003; backend/README production keys"
+    notes: "Sync 2026-05-24 — accepted; commit 03cfb65."
+
+  - id: BUILD-SEC-002
+    feature_id: FEAT-SEC-001
+    title: "CI security automation (GitHub Actions)"
+    component: repo
+    spec_link: "docs/design/features/FEAT-SEC-001-production-security-baseline.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements:
+      - QR-SEC-003
+    decision_links: []
+    priority: P1
+    phase: sync
+    capability: CAP-V1-SEC
+    target_window: TBD
+    mode: parallel
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: none
+    design_dependencies: none
+    validation: ".github/workflows/ci.yml — backend test + vulnerable packages; frontend build/test + npm audit"
+    notes: "Sync 2026-05-24 — accepted; commit d0612fa."
+
+  - id: BUILD-SEC-003
+    feature_id: FEAT-SEC-001
+    title: "API production edge hardening"
+    component: backend
+    spec_link: "docs/design/features/FEAT-SEC-001-production-security-baseline.md"
+    advisor_status: complete
+    advisor_track: security
+    quality_requirements:
+      - QR-SEC-001
+      - QR-SEC-002
+    decision_links: []
+    priority: P1
+    phase: sync
+    capability: CAP-V1-SEC
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: BUILD-SEC-001
+    design_dependencies: none
+    validation: "dotnet test — Production 401 + cookie auth path; CORS/rate-limit/headers/HSTS"
+    notes: "Sync 2026-05-24 — accepted; commit f3fb113."
+
+  - id: BUILD-SEC-004
+    feature_id: FEAT-SEC-001
+    title: "Retroactive SECURITY_REVIEWS for shipped V1 APIs"
+    component: repo
+    spec_link: "docs/design/features/FEAT-SEC-001-production-security-baseline.md"
+    advisor_status: complete
+    advisor_track: security
+    quality_requirements: []
+    decision_links: []
+    priority: P2
+    phase: sync
+    capability: CAP-V1-SEC
+    target_window: TBD
+    mode: parallel
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: none
+    design_dependencies: none
+    validation: "SECURITY_REVIEWS — SEC-RETRO-INV/REC/SES/SHP"
+    notes: "Sync 2026-05-24 — accepted; verify slice complete."
+
+  - id: BUILD-AUTH-002
+    feature_id: FEAT-AUTH-002
+    title: "Implement real authentication (close TMP-001)"
+    component: backend
+    spec_link: "docs/design/features/FEAT-AUTH-002-real-authentication.md"
+    advisor_status: complete
+    advisor_track: security
+    quality_requirements:
+      - QR-SEC-001
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+      - docs/design/decisions/ADR-20260524-02-cookie-authentication.md
+    priority: P1
+    phase: sync
+    capability: CAP-V1-SEC
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: BUILD-SEC-003
+    design_dependencies: none
+    validation: "dotnet test 29; npm test 28; TMP-001 closed; cookie auth"
+    notes: "Sync 2026-05-24 — accepted; ADR-20260524-02. App.tsx no cold-start login gate (DI-016)."
+

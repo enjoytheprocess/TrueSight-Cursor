@@ -1,13 +1,22 @@
+import { getClientUserId } from './userId';
+
 const apiBase = import.meta.env.VITE_API_BASE_URL ?? '';
+const useDevHeaderIdentity = import.meta.env.DEV;
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    ...(init?.headers as Record<string, string> | undefined),
+  };
+
+  if (useDevHeaderIdentity) {
+    headers['X-TrueSight-User'] = getClientUserId();
+  }
+
   const response = await fetch(`${apiBase}${path}`, {
     ...init,
-    headers: {
-      'Content-Type': 'application/json',
-      'X-TrueSight-User': 'demo-user',
-      ...init?.headers,
-    },
+    credentials: 'include',
+    headers,
   });
 
   if (!response.ok) {
@@ -28,4 +37,3 @@ export const api = {
   put: <T>(path: string, body: unknown) => request<T>(path, { method: 'PUT', body: JSON.stringify(body) }),
   delete: <T>(path: string) => request<T>(path, { method: 'DELETE' }),
 };
-

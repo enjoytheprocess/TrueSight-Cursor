@@ -62,18 +62,6 @@ h1 {
   letter-spacing: 0;
 }
 
-h1 span {
-  color: #166534;
-}
-
-.hero-copy {
-  max-width: 660px;
-  margin-top: 12px;
-  color: #4e5d53;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
 .status-pill {
   flex: 0 0 auto;
   min-width: 86px;
@@ -84,6 +72,191 @@ h1 span {
   color: #334238;
   font-weight: 800;
   text-align: center;
+}
+
+.main-column {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: 14px;
+}
+
+.main-column .topbar {
+  display: block;
+  max-width: none;
+  margin: 0 0 12px;
+}
+
+.status-pill-bar {
+  width: 100%;
+  margin-bottom: 14px;
+  border-radius: 8px;
+}
+
+.tab-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid #d9dfd0;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.tab-button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #39453d;
+  font-weight: 700;
+}
+
+.tab-button.active {
+  background: #e8f0e3;
+  color: #162016;
+}
+
+.tab-hint {
+  color: #b45309;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.shopping-item {
+  align-items: flex-start;
+}
+
+.shopping-item-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.icon-button.move-to-stock-button {
+  color: #166534;
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.icon-button.move-to-stock-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.move-expiry-field {
+  margin-top: 8px;
+}
+
+.recipe-pager-header {
+  border-bottom: 1px solid #e8ebdf;
+}
+
+.recipe-pager-nav-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px 8px;
+}
+
+.recipe-pager-nav-row h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.recipe-pager-spacer {
+  width: 40px;
+}
+
+.recipe-pager-position {
+  margin: 0;
+  padding: 0 16px 12px;
+  color: #5c675e;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.recipe-pager-body {
+  touch-action: pan-y;
+}
+
+.pager-button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #d9dfd0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #162016;
+  flex-shrink: 0;
+}
+
+.pager-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.stock-col-header {
+  min-width: 6.5rem;
+  max-width: 9.5rem;
+}
+
+.stock-col-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stock-col-header-inner > span {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.icon-button.add-to-cart-button,
+.add-all-cart {
+  flex-shrink: 0;
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.add-all-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.icon-button.add-to-cart-button:disabled,
+.add-all-cart:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.add-all-cart-label {
+  line-height: 1;
+}
+
+.stock-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.stock-cell > span {
+  min-width: 0;
 }
 
 .summary-strip,
@@ -105,18 +278,22 @@ h1 span {
   border-radius: 8px;
   padding: 14px;
   background: #ffffff;
+  min-width: 0;
 }
 
 .stat span {
   display: block;
   color: #5c675e;
   font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .stat strong {
   display: block;
   margin-top: 6px;
-  font-size: 2rem;
+  font-size: clamp(1.35rem, 4vw, 2rem);
 }
 
 .stat.warm strong {
@@ -157,45 +334,81 @@ h1 span {
   font-size: 1rem;
 }
 
-.preference-panel {
+.item-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px;
-  border-bottom: 1px solid #e8ebdf;
   padding: 16px;
-  background: #f8faf3;
+  border-bottom: 1px solid #e8ebdf;
 }
 
-.preference-panel label {
+.field-label {
   display: grid;
-  gap: 7px;
-}
-
-.preference-panel span {
-  display: inline-flex;
-  align-items: center;
   gap: 6px;
-  color: #314039;
-  font-size: 0.86rem;
-  font-weight: 800;
+  color: #39453d;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-.preference-panel input {
+.field-label input,
+.field-label select {
   min-width: 0;
-  height: 40px;
+  height: 42px;
   border: 1px solid #cfd7c5;
   border-radius: 6px;
   padding: 0 10px;
-  background: #ffffff;
+  background: #fbfcf8;
   color: #162016;
+  font-weight: 400;
 }
 
-.item-form {
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 92px 92px;
   gap: 8px;
-  padding: 16px;
-  border-bottom: 1px solid #e8ebdf;
+}
+
+.quantity-unit-row {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+.quantity-field > span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #39453d;
+}
+
+.quantity-stepper {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  gap: 6px;
+  align-items: center;
+}
+
+.quantity-stepper input {
+  text-align: center;
+}
+
+.stepper-button {
+  display: grid;
+  place-items: center;
+  height: 42px;
+  border: 1px solid #cfd7c5;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #162016;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stepper-button:disabled {
+  cursor: not-allowed;
+  color: #9aa396;
+  background: #f3f5ef;
 }
 
 .item-form input,
@@ -209,13 +422,8 @@ h1 span {
   color: #162016;
 }
 
-.item-form input[type="date"] {
-  grid-column: span 2;
-}
-
 .primary-action,
-.cook-action,
-.refresh-action {
+.cook-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -229,8 +437,7 @@ h1 span {
 }
 
 .primary-action:disabled,
-.cook-action:disabled,
-.refresh-action:disabled {
+.cook-action:disabled {
   cursor: not-allowed;
   background: #d2d8cb;
   color: #69726b;
@@ -264,6 +471,10 @@ h1 span {
   font-size: 1rem;
 }
 
+.inventory-item h3 {
+  font-weight: 600;
+}
+
 .inventory-item p,
 .recipe-card p {
   margin-top: 4px;
@@ -287,61 +498,6 @@ h1 span {
   display: grid;
   gap: 12px;
   padding: 12px;
-}
-
-.refresh-action {
-  min-height: 36px;
-  border: 1px solid #cbd5c4;
-  padding: 0 12px;
-  background: #ffffff;
-  color: #172017;
-}
-
-.food-bank-callout {
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr);
-  gap: 12px;
-  border-bottom: 1px solid #e8ebdf;
-  padding: 16px;
-  background: #f3f7ee;
-}
-
-.food-bank-icon {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  border-radius: 8px;
-  background: #dcfce7;
-  color: #166534;
-}
-
-.food-bank-callout h3 {
-  font-size: 1rem;
-}
-
-.food-bank-callout p {
-  margin-top: 5px;
-  color: #4d5c51;
-  font-size: 0.92rem;
-  line-height: 1.45;
-}
-
-.donation-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.donation-list span {
-  border: 1px solid #bad0b8;
-  border-radius: 999px;
-  padding: 4px 9px;
-  background: #ffffff;
-  color: #254d2f;
-  font-size: 0.82rem;
-  font-weight: 800;
 }
 
 .recipe-card {
@@ -376,6 +532,67 @@ h1 span {
 }
 
 .recipe-meta,
+.ingredient-lines {
+  margin: 0;
+  padding: 0;
+  color: #334238;
+  font-size: 0.9rem;
+}
+
+.servings-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: fit-content;
+}
+
+.servings-label .quantity-stepper {
+  width: auto;
+}
+
+.servings-label .quantity-stepper input {
+  width: 56px;
+  flex: 0 0 auto;
+}
+
+.ingredient-table-wrap {
+  overflow-x: auto;
+}
+
+.ingredient-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.ingredient-table th,
+.ingredient-table td {
+  border-bottom: 1px solid #e8ebdf;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.ingredient-table th {
+  color: #5c675e;
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.ingredient-table tbody td:first-child {
+  font-weight: 600;
+}
+
+.ingredient-table tr.ingredient-short td {
+  color: #991b1b;
+  background: #fef2f2;
+}
+
+.ingredient-lines li {
+  margin-bottom: 0.35rem;
+}
+
 .ingredient-row {
   display: flex;
   flex-wrap: wrap;
@@ -393,47 +610,6 @@ h1 span {
   background: #eef3e9;
   color: #39453d;
   font-size: 0.85rem;
-}
-
-.ingredient-chip.missing {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.spin {
-  animation: spin 0.8s linear infinite;
-}
-
-.recent-session {
-  display: grid;
-  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.3fr);
-  gap: 14px;
-  max-width: 1180px;
-  margin: 14px auto 0;
-  border: 1px solid #bad0b8;
-  border-radius: 8px;
-  padding: 16px;
-  background: #ffffff;
-}
-
-.recent-session h2 {
-  font-size: 1.1rem;
-}
-
-.session-lines {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-content: start;
-}
-
-.session-lines span {
-  border-radius: 999px;
-  padding: 6px 10px;
-  background: #eef3e9;
-  color: #254d2f;
-  font-size: 0.86rem;
-  font-weight: 800;
 }
 
 .cook-action {
@@ -462,6 +638,7 @@ h1 span {
 @media (max-width: 840px) {
   .app-shell {
     padding: 14px;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   }
 
   .topbar {
@@ -470,6 +647,13 @@ h1 span {
 
   h1 {
     font-size: 2.35rem;
+  }
+
+  .tab-bar {
+    position: sticky;
+    bottom: 8px;
+    z-index: 2;
+    box-shadow: 0 8px 24px rgb(15 23 42 / 8%);
   }
 
   .summary-strip,
@@ -484,29 +668,365 @@ h1 span {
   .item-form {
     grid-template-columns: 1fr 92px;
   }
+}
 
-  .preference-panel,
-  .recent-session {
-    grid-template-columns: 1fr;
-  }
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
 
-  .item-form select,
-  .primary-action {
-    grid-column: span 1;
+.login-card {
+  width: min(100%, 420px);
+  border: 1px solid #d5dbc8;
+  border-radius: 24px;
+  background: #ffffff;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-card h1 {
+  font-size: 2rem;
+}
+
+.enter-demo {
+  width: 100%;
+  justify-content: center;
+}
+
+.login-helper {
+  color: #55715d;
+  font-weight: 700;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.login-form input {
+  border: 1px solid #d5dbc8;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #f3f5ef;
+}
+
+.login-links,
+.oauth-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.login-links button,
+.oauth-button,
+.secondary-action {
+  border: 1px solid #d5dbc8;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #f3f5ef;
+  color: #6b7a70;
+}
+
+.secondary-action {
+  width: 100%;
+}
+
+.add-actions-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.add-submit {
+  flex: 1;
+  min-width: 0;
+}
+
+.camera-demo-button {
+  position: relative;
+  display: grid;
+  flex: 0 0 44px;
+  width: 44px;
+  min-height: 42px;
+  place-items: center;
+  border: 1px solid #cfd7c5;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #162016;
+}
+
+.demo-badge {
+  position: absolute;
+  top: -7px;
+  right: -8px;
+  border: 1px solid #d5dbc8;
+  border-radius: 4px;
+  padding: 1px 4px;
+  background: #fff8e8;
+  color: #92400e;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.fridge-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: #f6f7f2;
+  overflow: hidden;
+}
+
+.fridge-overlay-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e8ebdf;
+  background: #ffffff;
+}
+
+.fridge-overlay-header h2 {
+  font-size: 1rem;
+}
+
+.fridge-overlay-back {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid #d9dfd0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #162016;
+}
+
+.fridge-demo-banner {
+  margin: 0;
+  padding: 10px 16px;
+  background: #eff6ff;
+  border-bottom: 1px solid #bfdbfe;
+  color: #1e3a5f;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.fridge-overlay-body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.fridge-overlay-center {
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  color: #39453d;
+}
+
+.fridge-scan-spinner {
+  animation: fridge-spin 1s linear infinite;
+}
+
+@keyframes fridge-spin {
+  to {
+    transform: rotate(360deg);
   }
+}
+
+.fridge-preset-photo {
+  width: 100%;
+  max-height: min(52vh, 520px);
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #d9dfd0;
+}
+
+.fridge-overlay-helper {
+  color: #5b655d;
+  font-size: 0.9rem;
+}
+
+.fridge-overlay-primary {
+  width: 100%;
+}
+
+.fridge-overlay-review-layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.fridge-overlay-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.fridge-overlay-footer {
+  flex-shrink: 0;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid #e8ebdf;
+  background: #ffffff;
+}
+
+.fridge-review-intro h3 {
+  font-size: 1.05rem;
+}
+
+.fridge-review-intro p {
+  margin-top: 6px;
+  color: #5b655d;
+  font-size: 0.9rem;
+}
+
+.fridge-review-footnote {
+  font-size: 0.8rem !important;
+  font-style: italic;
+}
+
+.fridge-review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.fridge-review-row {
+  border: 1px solid #e3e8dc;
+  border-radius: 8px;
+  padding: 12px;
+  background: #ffffff;
+  display: grid;
+  gap: 10px;
+}
+
+.fridge-review-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fridge-review-include {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.fridge-review-name-input {
+  flex: 1;
+  min-width: 0;
+  height: 42px;
+  border: 1px solid #cfd7c5;
+  border-radius: 6px;
+  padding: 0 10px;
+  background: #fbfcf8;
+  color: #162016;
+  font-weight: 600;
+}
+
+.fridge-review-row .field-full {
+  grid-column: 1 / -1;
+}
+
+.confidence-badge {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.confidence-high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.confidence-medium {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.confidence-low {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.fridge-review-quantity-unit > .field-label,
+.fridge-review-quantity-unit > .quantity-field {
+  min-width: 0;
+}
+
+.fridge-review-quantity-unit .quantity-stepper {
+  width: 100%;
+  grid-template-columns: minmax(36px, 0.85fr) minmax(0, 1fr) minmax(36px, 0.85fr);
+}
+
+.fridge-save-error {
+  margin: 0;
+  color: #991b1b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.fridge-overlay-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.fridge-overlay-actions .secondary-action,
+.fridge-overlay-actions .primary-action {
+  width: auto;
+  min-height: 42px;
 }
 
 @media (max-width: 520px) {
   .summary-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .stat {
+    min-height: 64px;
+    padding: 10px;
+  }
+
+  .stat span {
+    font-size: 0.72rem;
   }
 
   .item-form {
     grid-template-columns: 1fr;
-  }
-
-  .item-form input[type="date"] {
-    grid-column: auto;
   }
 
   .recipe-card-header {
@@ -518,8 +1038,3 @@ h1 span {
   }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}

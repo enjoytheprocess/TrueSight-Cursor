@@ -1,3 +1,11 @@
+export type RecipeIngredientLine = {
+  name: string;
+  requiredQuantity: number;
+  unit: string;
+  inStockQuantity: number;
+  status: 'sufficient' | 'short' | 'missing';
+};
+
 export type RecipeSuggestion = {
   id: string;
   name: string;
@@ -6,6 +14,8 @@ export type RecipeSuggestion = {
   difficulty: string;
   estimatedMinutes: number;
   servings: number;
+  canCook: boolean;
+  ingredients: RecipeIngredientLine[];
   ownedIngredientCount: number;
   missingIngredientCount: number;
   expiringSoonIngredientCount: number;
@@ -26,4 +36,3 @@ export type RecipeSession = {
     unit: string;
   }>;
 };
-

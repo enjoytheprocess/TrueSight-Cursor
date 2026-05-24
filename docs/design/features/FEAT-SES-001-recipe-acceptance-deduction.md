@@ -1,6 +1,6 @@
 # FEAT-SES-001: Recipe acceptance and inventory deduction
 
-**Status:** draft  
+**Status:** ready  
 **Module:** Sessions  
 **Related AWP feature_id:** `FEAT-SES-001`
 
@@ -28,15 +28,18 @@ As a user, when I choose to cook a suggested recipe, I want my inventory updated
 
 ## Behavior
 
-- Validate user has sufficient quantity for required (non-optional) ingredients; return validation errors if not.
-- Optional ingredients: skip or deduct if present — **TBD** in handler design.
-- Idempotency: duplicate accept requests — **TBD** (session id or client idempotency key).
+- Validate user has sufficient quantity for **all** recipe ingredients; return validation errors if not.
+- **UI alignment:** [FEAT-REC-001](FEAT-REC-001-recipe-suggestions.md) disables **Cook and deduct** when stock is insufficient (`canCook === false`); this endpoint must still enforce the same rules so API clients cannot bypass the gate.
+- **Ingredient model (OQ-037):** V1 has **no optional ingredients**. Handler deducts **every** recipe line when stock suffices (same rule as `canCook` in [FEAT-REC-001](FEAT-REC-001-recipe-suggestions.md)).
+- **Idempotency (OQ-038):** **Deferred for V1.** Reported “double deduct” was recipe card UX (required qty per serving); see [FEAT-REC-001](FEAT-REC-001-recipe-suggestions.md). Client loading guard optional; no server idempotency key for V1.
+
+**Deferred (not V1):** unit conversion ([OQ-041](../../product/open-questions.md)); partial adherence ([OQ-042](../../product/open-questions.md)).
 
 ## API / contracts
 
 | Method | Path | Notes |
 |--------|------|-------|
-| POST | `/api/recipe-sessions` | Body: recipe id, serving multiplier, optional line overrides — shape TBD |
+| POST | `/api/recipe-sessions` | Body (OQ-039): `{ "recipeId": string, "servingMultiplier"?: integer }` — multiplier optional, defaults to **1**, **integer only** (no decimals); no per-line overrides |
 | GET | `/api/recipe-sessions` | Optional history for UI |
 
 ## Data model
@@ -46,9 +49,9 @@ As a user, when I choose to cook a suggested recipe, I want my inventory updated
 
 ## Acceptance criteria
 
-- [ ] Accepting a recipe reduces inventory for used ingredients.
-- [ ] Insufficient stock returns a clear, actionable error.
-- [ ] Session is persisted and linked to user.
+- [x] Accepting a recipe reduces inventory for used ingredients.
+- [x] Insufficient stock returns a clear, actionable error.
+- [x] Session is persisted and linked to user.
 
 ## Traceability (AWP)
 
@@ -71,3 +74,11 @@ At build admission (see [advisor-policy.md](../advisor-policy.md)):
 ## Decisions
 
 - Depends on manual inventory (`FEAT-INV-001`) and recipe identity from `FEAT-REC-001`.
+
+## Implementation notes (MVP / SQLite)
+
+**Bug (resolved):** `GET /api/recipe-sessions` returned 500 when listing sessions ordered by `AcceptedAt` (`DateTimeOffset`). EF Core 9 + SQLite does **not** translate `ORDER BY` on `DateTimeOffset` — this is a [known provider limitation](https://learn.microsoft.com/en-us/ef/core/providers/sqlite/limitations), not a version mismatch fixable by upgrading packages.
+
+**Mitigation:** `ListRecipeSessions` loads the user's sessions from SQLite, then sorts by `AcceptedAt` in memory before mapping the response. Fine for V1 personal session history; revisit if session volume or server-side paging requires a sortable column (e.g. store `AcceptedAtUtcTicks` as `long`).
+
+**AWP record:** `GD-001` in `.awp-workspace/3-verify/archive/GAPS_AND_DEVIATIONS.yaml` (`resolved_in_loop`).

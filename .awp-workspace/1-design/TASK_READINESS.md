@@ -7,80 +7,104 @@ _Active tasks. Move completed tasks (WORK_QUEUE status: done) to `archive/TASK_R
 
 ---
 
-### SETUP-001 · **Configure workspace and connect project components**
+### BUILD-SHP-001 · **Implement shopping list API and schema**
 
 | Feature | Component | Readiness | Advisor Track | Advisor Status |
 | --- | --- | --- | --- | --- |
-| none | backend | `ready_for_build` | none | not_required |
+| FEAT-SHP-001 | backend | `ready_for_build` | none | not_required |
 
 | S | A | I | R | V |
 | --- | --- | --- | --- | --- |
-| 2 | 2 | 2 | 1 | 2 |
+| 2 | 2 | 2 | 2 | 1 |
 
 **Blocking unknowns:** none
 
-**Spec:** `docs/product/project-brief.md`  
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
 **QRs:**   
 **Decisions:** 
 
-> seeded by make init; mark done when setup is complete — keep this row as the setup record
+> Retroactive admission at sync 2026-05-24. Build complete; awaiting human acceptance gate.
+
 
 ---
 
-### BUILD-INV-001 · **Implement manual inventory CRUD**
+### BUILD-SHP-002 · **Implement shopping list tab shell and recipe pager**
 
 | Feature | Component | Readiness | Advisor Track | Advisor Status |
 | --- | --- | --- | --- | --- |
-| FEAT-INV-001 | backend | `ready_for_build` | none | not_required |
+| FEAT-SHP-001 | frontend | `ready_for_build` | none | not_required |
 
 | S | A | I | R | V |
 | --- | --- | --- | --- | --- |
-| 2 | 2 | 2 | 1 | 2 |
+| 2 | 2 | 2 | 2 | 1 |
 
 **Blocking unknowns:** none
 
-**Spec:** `docs/design/features/FEAT-INV-001-manual-inventory.md`  
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
 **QRs:**   
 **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
 
-> Admitted for V1 build; final auth remains a future design decision, development identity is header-scoped
+> Retroactive admission at sync 2026-05-24. Tab headlines and TRUESIGHT V2.1 documented in spec.
+
 
 ---
 
-### BUILD-REC-001 · **Implement V1 recipe suggestions**
+### BUILD-SHP-003 · **Recipe add-to-shopping-list and shopping photo mockup**
 
 | Feature | Component | Readiness | Advisor Track | Advisor Status |
 | --- | --- | --- | --- | --- |
-| FEAT-REC-001 | backend | `ready_for_build` | none | not_required |
+| FEAT-SHP-001 | frontend | `ready_for_build` | none | not_required |
 
 | S | A | I | R | V |
 | --- | --- | --- | --- | --- |
-| 2 | 2 | 2 | 1 | 2 |
+| 2 | 2 | 2 | 2 | 1 |
 
 **Blocking unknowns:** none
 
-**Spec:** `docs/design/features/FEAT-REC-001-recipe-suggestions.md`  
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
 **QRs:**   
-**Decisions:** docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
 
-> Admitted for V1 build with static provider implementation
+> Shopping photo mockup is a V1.1 preview extension (parallel to FEAT-REC-002 mockup pattern).
+
 
 ---
 
-### BUILD-SES-001 · **Implement recipe acceptance and inventory deduction**
+### BUILD-REC-002-MOCKUP · **Implement fridge photo UI mockup (demo scan)**
 
 | Feature | Component | Readiness | Advisor Track | Advisor Status |
 | --- | --- | --- | --- | --- |
-| FEAT-SES-001 | backend | `ready_for_build` | none | not_required |
+| FEAT-REC-002 | frontend | `ready_for_build` | none | not_required |
 
 | S | A | I | R | V |
 | --- | --- | --- | --- | --- |
-| 2 | 2 | 2 | 1 | 2 |
+| 2 | 2 | 2 | 2 | 1 |
 
 **Blocking unknowns:** none
 
-**Spec:** `docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md`  
+**Spec:** `docs/design/features/FEAT-REC-002-fridge-photo-recognition.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md, docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
+
+> Phase A only: preset /mockups/fridge-preset.jpg, stub detections, demo labeling, POST /api/inventory all-or-nothing. Production vision (OQ-005/006) out of scope.
+
+
+---
+
+### BUILD-CAT-001 · **Implement ingredient catalog**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-CAT-001 | backend | `needs_detail` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 1 | 2 | 2 | 1 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-CAT-001-ingredient-catalog.md`  
 **QRs:**   
 **Decisions:** 
 
-> Admitted for V1 build with same-unit required ingredient deduction
+> Post-V1 (P3). OQ-053–055 closed in spec. Tick AC before build admit; BUILD-INV-001 done.

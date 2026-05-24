@@ -31,5 +31,30 @@ features:
 
   - id: FEAT-REC-002
     title: "Fridge photo recognition (V2)"
-    components: [backend]
+    components: [backend, frontend]
     created_on: "2026-05-23"
+
+  - id: FEAT-AUTH-001
+    title: "Demo login screen (temporary)"
+    components: [frontend]
+    created_on: "2026-05-24"
+
+  - id: FEAT-CAT-001
+    title: "Ingredient catalog"
+    components: [backend, frontend]
+    created_on: "2026-05-24"
+
+  - id: FEAT-SHP-001
+    title: "Shopping list and main shell navigation"
+    components: [backend, frontend]
+    created_on: "2026-05-24"
+
+  - id: FEAT-SEC-001
+    title: "Production security baseline"
+    components: [backend, frontend]
+    created_on: "2026-05-24"
+
+  - id: FEAT-AUTH-002
+    title: "Real authentication"
+    components: [backend, frontend]
+    created_on: "2026-05-24"

@@ -1,9 +1,11 @@
 using MediatR;
+using Microsoft.AspNetCore.RateLimiting;
 using TrueSight.Api.Features.Inventory.CreateInventoryItem;
 using TrueSight.Api.Features.Inventory.DeleteInventoryItem;
 using TrueSight.Api.Features.Inventory.GetInventoryItem;
 using TrueSight.Api.Features.Inventory.ListInventoryItems;
 using TrueSight.Api.Features.Inventory.UpdateInventoryItem;
+using TrueSight.Api.Infrastructure.Security;
 
 namespace TrueSight.Api.Features.Inventory;
 
@@ -11,7 +13,8 @@ public static class InventoryEndpoints
 {
     public static void MapInventoryEndpoints(this IEndpointRouteBuilder routes)
     {
-        var group = routes.MapGroup("/api/inventory").WithTags("Inventory");
+        var group = routes.MapGroup("/api/inventory").WithTags("Inventory")
+            .RequireRateLimiting(ApiMutationRateLimiting.PolicyName);
 
         group.MapGet("/", async (ISender sender, CancellationToken cancellationToken) =>
             Results.Ok(await sender.Send(new ListInventoryItemsQuery(), cancellationToken)));

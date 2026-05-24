@@ -1,0 +1,18 @@
+#!/bin/sh
+# AWP pre-commit dispatcher — installed to .git/hooks/pre-commit by make awp-install-hooks
+# or pwsh scripts/install-hooks.ps1
+
+ROOT="$(git rev-parse --show-toplevel)"
+
+case "$(uname -s 2>/dev/null)" in
+  MINGW*|MSYS*|CYGWIN*)
+    if command -v pwsh >/dev/null 2>&1; then
+      exec pwsh -NoProfile -File "$ROOT/scripts/awp-pre-commit.ps1"
+    fi
+    if command -v powershell >/dev/null 2>&1; then
+      exec powershell -NoProfile -File "$ROOT/scripts/awp-pre-commit.ps1"
+    fi
+    ;;
+esac
+
+exec "$ROOT/scripts/awp-pre-commit"

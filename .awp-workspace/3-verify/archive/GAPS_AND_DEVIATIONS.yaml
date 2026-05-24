@@ -8,4 +8,216 @@
 
 schema_version: 1
 
-entries: []
+entries:
+  - id: GD-001
+    feature_id: FEAT-SES-001
+    type: deviation
+    summary: "GET /api/recipe-sessions failed — SQLite cannot ORDER BY DateTimeOffset"
+    detail: >
+      ListRecipeSessions translated OrderByDescending(AcceptedAt) to SQL. EF Core 9 SQLite
+      throws NotSupportedException for DateTimeOffset in ORDER BY. This is a provider
+      limitation, not a package version mismatch. Fix: load user sessions then sort in
+      memory; acceptable for V1 per-user session volume.
+    source: verify
+    source_ref: ""
+    discovered_in_task: BUILD-SES-001
+    status: resolved_in_loop
+    severity: medium
+    resolution_note: >
+      Client-side OrderByDescending after ToListAsync in
+      backend/TrueSight.Api/Features/Sessions/ListRecipeSessions/Handler.cs.
+      Documented in docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
+      and backend/README.md.
+
+  - id: GD-002
+    feature_id: none
+    type: gap
+    summary: "Possible IRG bypass at build admission — scores on file without rubric evidence"
+    detail: >
+      Team reports a teammate may have moved V1 tasks to ready_for_build / WORK_QUEUE without
+      completing the IRG rubric (S/A/I/R/V with A=2 and I=2). TASK_READINESS shows totals >= 8
+      but no admission notes documenting unknowns closed. Retrospective IRG audit required before
+      accepting BUILD-* tasks.
+    source: human_feedback
+    source_ref: FM-001
+    discovered_in_task: BUILD-INV-001
+    status: promoted_to_sync
+    severity: high
+    resolution_note: >
+      Fast Sync 2026-05-24: promoted to DESIGN_INPUTS DI-001 for Design-cycle IRG re-score;
+      Verify loop continues for spec/code fit (GD-003–GD-008).
+
+  - id: GD-003
+    feature_id: none
+    type: gap
+    summary: "V1 identity missing — project brief lists sign-up/login; only X-TrueSight-User dev header"
+    detail: >
+      docs/product/project-brief.md lists user sign-up/login in V1 scope. Implementation uses
+      HeaderCurrentUser with optional X-TrueSight-User defaulting to demo-user.
+    source: human_feedback
+    source_ref: FM-001
+    discovered_in_task: SETUP-001
+    status: promoted_to_sync
+    severity: high
+    resolution_note: "Sync 2026-05-24 fast-track → DI-002"
+
+  - id: GD-004
+    feature_id: FEAT-REC-001
+    type: deviation
+    summary: "Recipe provider hardcoded — config keys and ADR acceptance criterion not met"
+    detail: >
+      StaticRecipeProvider registered in Program.cs with no appsettings selection or documented env keys.
+    source: agent
+    source_ref: verify-2026-05-24
+    discovered_in_task: BUILD-REC-001
+    status: promoted_to_sync
+    severity: medium
+    resolution_note: "Sync 2026-05-24 fast-track → DI-003"
+
+  - id: GD-005
+    feature_id: FEAT-SES-001
+    type: gap
+    summary: "Recipe accept is not idempotent — duplicate POST double-deducts inventory"
+    detail: >
+      AcceptRecipe creates a new session and deducts on every POST with no idempotency key.
+    source: agent
+    source_ref: verify-2026-05-24
+    discovered_in_task: BUILD-SES-001
+    status: promoted_to_sync
+    severity: high
+    resolution_note: "Sync 2026-05-24 fast-track → DI-004 (P0 critical)"
+
+  - id: GD-006
+    feature_id: FEAT-INV-001
+    type: gap
+    summary: "IngredientCatalog entity absent — free-text names only"
+    detail: >
+      Spec and domain model reference IngredientCatalog; implementation uses inline name + NormalizedName.
+    source: agent
+    source_ref: verify-2026-05-24
+    discovered_in_task: BUILD-INV-001
+    status: promoted_to_sync
+    severity: medium
+    resolution_note: "Sync 2026-05-24 fast-track → DI-005"
+
+  - id: GD-007
+    feature_id: FEAT-INV-001
+    type: deviation
+    summary: "Inventory API polish gaps — no PATCH, 404 without problem details, no pagination"
+    detail: >
+      Spec allows PATCH; only PUT mapped. Missing items return empty 404. List unpaginated.
+    source: agent
+    source_ref: verify-2026-05-24
+    discovered_in_task: BUILD-INV-001
+    status: promoted_to_sync
+    severity: low
+    resolution_note: "Sync 2026-05-24 fast-track → DI-006"
+
+  - id: GD-008
+    feature_id: FEAT-REC-001
+    type: gap
+    summary: "No automated tests for recipe suggestions or recipe detail endpoints"
+    detail: >
+      ListRecipeSuggestions and GetRecipe have no integration tests.
+    source: agent
+    source_ref: verify-2026-05-24
+    discovered_in_task: BUILD-REC-001
+    status: promoted_to_sync
+    severity: medium
+    resolution_note: "Sync 2026-05-24 fast-track → DI-007"
+
+  - id: GD-009
+    type: deviation
+    feature_id: FEAT-REC-001
+    source: human_feedback
+    source_ref: FM-004,FM-005,FM-006
+    status: promoted_to_sync
+    discovered_in_task: BUILD-REC-001
+    summary: "V1 recipe UX and ingredient model differ from FEAT-REC-001 spec"
+    resolution_note: "Sync 2026-05-24 → DI-009 incorporated in FEAT-REC-001 + ui-principles."
+
+  - id: GD-010
+    type: deviation
+    feature_id: FEAT-SES-001
+    source: human_feedback
+    source_ref: FM-004
+    status: promoted_to_sync
+    discovered_in_task: BUILD-SES-001
+    summary: "Accept/deduct applies to all recipe ingredients (no optional skip)"
+    resolution_note: "Sync 2026-05-24 → DI-010 incorporated in FEAT-SES-001 + OQ-037."
+
+  - id: GD-011
+    type: deviation
+    feature_id: FEAT-INV-001
+    source: human_feedback
+    source_ref: FM-002,FM-007
+    status: promoted_to_sync
+    discovered_in_task: BUILD-INV-001
+    summary: "Inventory merge and add-form UX beyond original spec"
+    resolution_note: "Sync 2026-05-24 → DI-008 incorporated in FEAT-INV-001."
+
+  - id: GD-012
+    type: deviation
+    feature_id: FEAT-AUTH-001
+    source: human_feedback
+    source_ref: FM-003
+    status: promoted_to_sync
+    discovered_in_task: BUILD-AUTH-001
+    summary: "Demo-user inventory pre-seeded on API startup"
+    resolution_note: "Sync 2026-05-24 → DI-011 incorporated in FEAT-AUTH-001 + backend README."
+
+  - id: GD-013
+    type: deviation
+    feature_id: FEAT-SHP-001
+    source: agent
+    source_ref: ""
+    status: resolved_in_loop
+    discovered_in_task: BUILD-SHP-003
+    severity: low
+    summary: "Shopping list photo-add preview mockup (not in original FEAT-SHP-001 scope)"
+    detail: >
+      Shopping List tab includes camera preview beside Add (preset product packaging image,
+      stub detections, POST /api/shopping-list) mirroring FEAT-REC-002 mockup pattern.
+    resolution_note: "Sync 2026-05-24 → DI-012 incorporated in FEAT-SHP-001 + ui-principles."
+
+  - id: GD-014
+    type: gap
+    feature_id: FEAT-SHP-001
+    source: agent
+    source_ref: ""
+    status: resolved_in_loop
+    discovered_in_task: BUILD-SHP-001
+    severity: medium
+    summary: "Legacy SQLite databases missing ShoppingListItems table (500 on GET)"
+    detail: >
+      EnsureCreated does not alter existing truesight.db files. TrueSightDbInitializer
+      patches schema with CREATE TABLE IF NOT EXISTS at startup.
+    resolution_note: "Sync 2026-05-24 → DI-013 documented in backend README + initializer tests."
+
+  - id: GD-015
+    type: deviation
+    feature_id: FEAT-SHP-001
+    source: agent
+    source_ref: ""
+    status: resolved_in_loop
+    discovered_in_task: BUILD-SHP-002
+    severity: low
+    summary: "Tab-specific shell headlines and TRUESIGHT V2.1 branding"
+    detail: >
+      Header h1 switches per tab (inventory vs shopping taglines); eyebrow TRUESIGHT V2.1;
+      item-count bar shows "N in stock" / "N to buy".
+    resolution_note: "Sync 2026-05-24 → DI-014 incorporated in FEAT-SHP-001."
+
+  - id: GD-016
+    type: deviation
+    feature_id: FEAT-SHP-001
+    source: agent
+    source_ref: ""
+    status: resolved_in_loop
+    discovered_in_task: BUILD-SHP-002
+    severity: low
+    summary: "Move-to-stock and recipe cart actions use green icon buttons"
+    detail: >
+      Move to In Stock is a green left-arrow icon with check confirm; recipe gap lines use
+      cart icons and ALL header control instead of text buttons.
+    resolution_note: "Sync 2026-05-24 → DI-015 incorporated in FEAT-SHP-001 + ui-principles."

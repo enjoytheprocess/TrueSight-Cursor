@@ -7,4 +7,91 @@
 
 schema_version: 4
 
-features: []
+features:
+  - feature_id: FEAT-INV-001
+    title: "Manual inventory"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-INV-001
+    primary_design_link: docs/design/features/FEAT-INV-001-manual-inventory.md
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    blocking_questions: none
+    notes: "Sync 2026-05-24 — BUILD-INV-001 done; DI-008 incorporated."
+
+  - feature_id: FEAT-REC-001
+    title: "Recipe suggestions from inventory"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-REC-001
+    primary_design_link: docs/design/features/FEAT-REC-001-recipe-suggestions.md
+    decision_links:
+      - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
+    blocking_questions: none
+    notes: "Sync 2026-05-24 — BUILD-REC-001 done; DI-009 incorporated."
+
+  - feature_id: FEAT-SES-001
+    title: "Recipe acceptance and inventory deduction"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-SES-001
+    primary_design_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    blocking_questions: none
+    notes: "Sync 2026-05-24 — BUILD-SES-001 done; DI-010 incorporated."
+
+  - feature_id: FEAT-AUTH-001
+    title: "Demo login screen (temporary)"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-AUTH-001
+    primary_design_link: docs/design/features/FEAT-AUTH-001-demo-login-screen.md
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    blocking_questions: none
+    notes: "Sync 2026-05-24 — BUILD-AUTH-001 done; DI-011 incorporated."
+
+  - feature_id: FEAT-SEC-001
+    title: "Production security baseline"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-SEC-001
+      - BUILD-SEC-002
+      - BUILD-SEC-003
+      - BUILD-SEC-004
+    primary_design_link: docs/design/features/FEAT-SEC-001-production-security-baseline.md
+    decision_links: []
+    blocking_questions: none
+    notes: "Sync 2026-05-24 — CAP-V1-SEC delivered."
+
+  - feature_id: FEAT-AUTH-002
+    title: "Real authentication"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-AUTH-002
+    primary_design_link: docs/design/features/FEAT-AUTH-002-real-authentication.md
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+      - docs/design/decisions/ADR-20260524-02-cookie-authentication.md
+    blocking_questions: none
+    notes: "Sync 2026-05-24 — cookie auth; TMP-001 closed; DI-016 (no App login gate)."

@@ -42,6 +42,7 @@ is_allowed() {
 
   [[ "$path" == .awp-workspace/* ]] && return 0
   [[ "$path" == backend/* ]] && return 0
+  [[ "$path" == frontend/* ]] && return 0
   [[ "$path" == docs/* ]] && return 0
   [[ "$path" == .cursor/* ]] && return 0
   [[ "$path" == scripts/* ]] && return 0
