@@ -2,5 +2,5 @@ using MediatR;
 
 namespace TrueSight.Api.Features.Sessions.AcceptRecipe;
 
-public sealed record AcceptRecipeCommand(string RecipeId, decimal ServingMultiplier) : IRequest<RecipeSessionResponse>;
+public sealed record AcceptRecipeCommand(string RecipeId, int ServingMultiplier) : IRequest<RecipeSessionResponse>;
 

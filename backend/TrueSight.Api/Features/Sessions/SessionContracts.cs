@@ -1,6 +1,6 @@
 namespace TrueSight.Api.Features.Sessions;
 
-public sealed record AcceptRecipeRequest(string RecipeId, decimal ServingMultiplier);
+public sealed record AcceptRecipeRequest(string RecipeId, int? ServingMultiplier);
 
 public sealed record RecipeSessionLineResponse(string IngredientName, decimal QuantityDeducted, string Unit);
 

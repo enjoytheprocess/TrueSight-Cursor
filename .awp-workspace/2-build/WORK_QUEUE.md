@@ -27,15 +27,15 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| FEAT-AUTH-001 | frontend | P2 | build | `todo` | parallel | CAP-V1-CORE |
+| FEAT-AUTH-001 | frontend | P2 | build | `awaiting_human_review` | parallel | CAP-V1-CORE |
 
 **Spec:** `docs/design/features/FEAT-AUTH-001-demo-login-screen.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md  
 **Owner:** unassigned · **Lock:** none · **Target:** TBD  
 **Build deps:** none · **Design deps:** none  
-**Validation:** `Build when admitted — TMP-001 demo login per FEAT-AUTH-001`
+**Validation:** `npm test — login gate + Enter Demo; manual mobile/desktop`
 
-> Admitted 2026-05-24 after OQ triage; no implementation in this pass.
+> Build slice 2026-05-24 — TMP-001 demo login screen. Awaiting review.
 
 ---
 
@@ -43,15 +43,15 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| FEAT-REC-001 | backend | P1 | build | `todo` | sequential | CAP-V1-CORE |
+| FEAT-REC-001 | backend | P1 | build | `awaiting_human_review` | sequential | CAP-V1-CORE |
 
 **Spec:** `docs/design/features/FEAT-REC-001-recipe-suggestions.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md  
 **Owner:** unassigned · **Lock:** none · **Target:** TBD  
 **Build deps:** BUILD-INV-001 · **Design deps:** none  
-**Validation:** `Build when admitted — DI-007 integration tests per FEAT-REC-001`
+**Validation:** `dotnet test — RecipeSuggestionsEndpointsTests; npm test (recipe card)`
 
-> build_dependencies BUILD-INV-001 (implementation). Start when INV awaiting_human_review+.
+> Build slice 2026-05-24 — ingredients[] + canCook API + card UX. Awaiting review.
 
 ---
 
@@ -59,7 +59,7 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| FEAT-SES-001 | backend | P1 | build | `todo` | sequential | CAP-V1-CORE |
+| FEAT-SES-001 | backend | P1 | build | `awaiting_human_review` | sequential | CAP-V1-CORE |
 
 **Spec:** `docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** —  
@@ -67,7 +67,7 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 **Build deps:** BUILD-REC-001 · **Design deps:** none  
 **Validation:** `dotnet test — RecipeSessionEndpointsTests; OQ-039 body shape`
 
-> build_dependencies BUILD-REC-001 (implementation). Start when REC awaiting_human_review+.
+> Build slice 2026-05-24 — optional servingMultiplier (default 1), int 1–12. Awaiting review.
 
 ---
 

@@ -17,7 +17,7 @@ public sealed class RecipeSessionEndpointsTests(TrueSightWebApplicationFactory f
         var acceptResponse = await client.PostJsonAsync("/api/recipe-sessions", new
         {
             recipeId = "chicken-spinach-eggs",
-            servingMultiplier = 1m,
+            servingMultiplier = 1,
         });
 
         Assert.Equal(HttpStatusCode.Created, acceptResponse.StatusCode);
@@ -43,6 +43,24 @@ public sealed class RecipeSessionEndpointsTests(TrueSightWebApplicationFactory f
     }
 
     [Fact]
+    public async Task AcceptRecipe_defaults_serving_multiplier_when_omitted()
+    {
+        var client = factory.CreateClient().ForUser($"recipe-session-default-{Guid.NewGuid():N}");
+
+        await CreateInventoryItem(client, "Chicken", 300, "g");
+        await CreateInventoryItem(client, "Spinach", 120, "g");
+        await CreateInventoryItem(client, "Eggs", 2, "count");
+
+        var acceptResponse = await client.PostJsonAsync("/api/recipe-sessions", new { recipeId = "chicken-spinach-eggs" });
+
+        Assert.Equal(HttpStatusCode.Created, acceptResponse.StatusCode);
+
+        var session = await acceptResponse.ReadJsonAsync<RecipeSessionDto>();
+        Assert.NotNull(session);
+        Assert.Equal(1m, session.ServingMultiplier);
+    }
+
+    [Fact]
     public async Task AcceptRecipe_returns_bad_request_when_inventory_is_insufficient()
     {
         var client = factory.CreateClient().ForUser($"recipe-session-fail-{Guid.NewGuid():N}");
@@ -52,7 +70,7 @@ public sealed class RecipeSessionEndpointsTests(TrueSightWebApplicationFactory f
         var acceptResponse = await client.PostJsonAsync("/api/recipe-sessions", new
         {
             recipeId = "chicken-spinach-eggs",
-            servingMultiplier = 1m,
+            servingMultiplier = 1,
         });
 
         Assert.Equal(HttpStatusCode.BadRequest, acceptResponse.StatusCode);

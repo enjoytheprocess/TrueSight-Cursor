@@ -15,7 +15,8 @@ public static class SessionEndpoints
 
         group.MapPost("/", async (AcceptRecipeRequest request, ISender sender, CancellationToken cancellationToken) =>
         {
-            var session = await sender.Send(new AcceptRecipeCommand(request.RecipeId, request.ServingMultiplier), cancellationToken);
+            var multiplier = request.ServingMultiplier is > 0 ? request.ServingMultiplier.Value : 1;
+            var session = await sender.Send(new AcceptRecipeCommand(request.RecipeId, multiplier), cancellationToken);
             return Results.Created($"/api/recipe-sessions/{session.Id}", session);
         });
     }
