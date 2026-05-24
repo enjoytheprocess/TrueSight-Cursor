@@ -31,7 +31,7 @@ schema_version: 4
 features:
   - feature_id: FEAT-INV-001
     title: "Manual inventory"
-    design_state: needs_redesign
+    design_state: ready
     owner: unassigned
     last_updated: "2026-05-24"
     linked_idea: none
@@ -40,12 +40,13 @@ features:
     primary_design_link: docs/design/features/FEAT-INV-001-manual-inventory.md
     decision_links:
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
-    blocking_questions: "DI-005 catalog scope; DI-006 API polish; DI-002 identity"
-    notes: "Sync 2026-05-24 fast-track — spec refresh before re-admit"
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    blocking_questions: none
+    notes: "Design approved 2026-05-24 — OQ triage + spec AC signed off."
 
   - feature_id: FEAT-REC-001
     title: "Recipe suggestions from inventory"
-    design_state: needs_redesign
+    design_state: ready
     owner: unassigned
     last_updated: "2026-05-24"
     linked_idea: none
@@ -54,21 +55,22 @@ features:
     primary_design_link: docs/design/features/FEAT-REC-001-recipe-suggestions.md
     decision_links:
       - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
-    blocking_questions: "DI-003 provider config; DI-007 test plan"
-    notes: "Sync 2026-05-24 fast-track — ADR/spec alignment before re-admit"
+    blocking_questions: none
+    notes: "Design approved 2026-05-24 — build admits after BUILD-INV-001."
 
   - feature_id: FEAT-SES-001
     title: "Recipe acceptance and inventory deduction"
-    design_state: needs_redesign
+    design_state: ready
     owner: unassigned
     last_updated: "2026-05-24"
     linked_idea: none
     linked_tasks:
       - BUILD-SES-001
     primary_design_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
-    decision_links: []
-    blocking_questions: "DI-004 P0 idempotency (duplicate POST double-deduct)"
-    notes: "Sync 2026-05-24 fast-track — critical design decision required"
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    blocking_questions: none
+    notes: "Design approved 2026-05-24 — OQ-038 idempotency deferred."
 
   - feature_id: FEAT-REC-002
     title: "Fridge photo recognition (V2)"
@@ -82,4 +84,31 @@ features:
       - docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
     blocking_questions: none
-    notes: "V2 — vision + human confirm"
+    notes: "V2 — OQ-005/006 deferred until phase committed"
+
+  - feature_id: FEAT-AUTH-001
+    title: "Demo login screen (temporary)"
+    design_state: ready
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-AUTH-001
+    primary_design_link: docs/design/features/FEAT-AUTH-001-demo-login-screen.md
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    blocking_questions: none
+    notes: "Design approved 2026-05-24 — TMP-001 demo login."
+
+  - feature_id: FEAT-CAT-001
+    title: "Ingredient catalog"
+    design_state: spec_review
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: none
+    linked_tasks:
+      - BUILD-CAT-001
+    primary_design_link: docs/design/features/FEAT-CAT-001-ingredient-catalog.md
+    decision_links: []
+    blocking_questions: "spec AC checkboxes unchecked — P3 post-V1"
+    notes: "OQ-053–055 closed; not build-admitted yet (TMP-002)."

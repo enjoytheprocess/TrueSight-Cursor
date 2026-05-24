@@ -13,9 +13,21 @@ _Active capabilities. Move completed/parked capabilities to `archive/ROADMAP.yam
 | --- | --- | --- | --- |
 | TBD | `active` | unassigned | none |
 
-**Feature IDs:** FEAT-INV-001, FEAT-REC-001, FEAT-SES-001
+**Feature IDs:** FEAT-INV-001, FEAT-REC-001, FEAT-SES-001, FEAT-AUTH-001
 
 > Committed Phase 1; see docs/product/roadmap.md
+
+---
+
+### CAP-V1-EXT · **V1 extension — ingredient catalog, inventory linkage, removes TMP-002**
+
+| Target Window | Status | Owner | Depends On |
+| --- | --- | --- | --- |
+| TBD | `planned` | unassigned | CAP-V1-CORE |
+
+**Feature IDs:** FEAT-CAT-001
+
+> Post core loop; inventory hard delete unchanged (OQ-031)
 
 ---
 

@@ -7,4 +7,25 @@
 
 schema_version: 3
 
-tasks: []
+tasks:
+  - id: SETUP-001
+    feature_id: none
+    title: "Configure workspace and connect project components"
+    component: backend
+    spec_link: "docs/product/project-brief.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 2
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    notes: >
+      Completed 2026-05-24. IRG 10/10. TMP-001 client user id in frontend/src/api/userId.ts.
+

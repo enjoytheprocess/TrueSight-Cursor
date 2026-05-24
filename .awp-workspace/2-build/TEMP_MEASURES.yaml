@@ -1,0 +1,45 @@
+# Temporary Measures Register — short-term exceptions or tactical decisions that must be removed later.
+# Edit this file directly or ask your agent to update it.
+# Workflow rules: docs/core/workflow-reference.md
+
+schema_version: 1
+
+measures:
+  - id: TMP-001
+    status: open
+    title: "Demo login screen — real auth disabled, interim X-TrueSight-User identity"
+    summary: >
+      V1 shows a login screen with all real auth controls disabled. Users enter via
+      Enter Demo (demo-user). Per-user isolation uses X-TrueSight-User header only.
+      Not suitable for production multi-user security until removed.
+    owner: unassigned
+    exit_trigger: >
+      Dedicated real-auth build task completes: sign-up/login replaces demo entry and
+      header identity (ASP.NET Identity + cookies or JWT — mechanism chosen at auth task admission).
+    removal_target: "Future real-auth task (post BUILD-AUTH-001) — not yet in WORK_QUEUE"
+    linked_tasks:
+      - BUILD-AUTH-001
+      - BUILD-INV-001
+      - BUILD-REC-001
+      - BUILD-SES-001
+    decision_link: docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    notes: >
+      Product decision 2026-05-24 (DI-002). UX refresh 2026-05-24: demo login screen
+      (FEAT-AUTH-001). Client identity helpers in frontend/src/api/userId.ts.
+
+  - id: TMP-002
+    status: open
+    title: "Inline ingredient names — no IngredientCatalog in V1"
+    summary: >
+      Inventory uses free-text Name + NormalizedName only. IngredientCatalog entity in domain
+      model is not implemented; recipe matching relies on normalized string equality + exact units.
+    owner: unassigned
+    exit_trigger: >
+      IngredientCatalog promoted to V1+ scope: catalog table seeded, inventory links to catalog
+      rows, specs and domain model updated.
+    removal_target: "BUILD-CAT-001 — design queued 2026-05-24"
+    linked_tasks:
+      - BUILD-CAT-001
+      - BUILD-INV-001
+      - BUILD-REC-001
+    notes: "Product decision 2026-05-24 (DI-005). Do not add catalog schema in current re-build. Inventory hard-delete unchanged when catalog links ship (OQ-031)."

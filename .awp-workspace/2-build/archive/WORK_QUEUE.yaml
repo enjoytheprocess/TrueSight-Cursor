@@ -15,4 +15,31 @@
 
 schema_version: 5
 
-tasks: []
+tasks:
+  - id: SETUP-001
+    feature_id: none
+    title: "Configure workspace and connect project components"
+    component: backend
+    spec_link: "docs/product/project-brief.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    priority: P1
+    phase: sync
+    capability: none
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: none
+    design_dependencies: none
+    validation: >
+      make awp-docs-check; make backend-test; frontend npm run test;
+      frontend/src/api/userId.ts sends X-TrueSight-User from localStorage UUID (TMP-001)
+    notes: >
+      Completed 2026-05-24. Workspace wired; backend+frontend connected; client user id fixed;
+      READMEs updated. Archived after verify.
+

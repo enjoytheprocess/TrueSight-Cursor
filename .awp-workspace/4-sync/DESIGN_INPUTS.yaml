@@ -24,10 +24,12 @@ items:
     addressed_at: "2026-05-24"
     resolution_note: >
       All four tasks needs_detail (7/10; A=1 I=1). Re-admit after Design closes DI-002–DI-007.
+      IRG re-score 2026-05-24: SETUP-001 + BUILD-REC-001 ready_for_build; INV/SES need_detail.
 
   - id: DI-002
     type: gap
-    status: open
+    status: addressed
+    resolution_type: incorporated
     feature_id: none
     source_ref: GD-003
     priority: P1
@@ -35,10 +37,15 @@ items:
     detail: >
       Project brief lists sign-up/login in V1; implementation uses X-TrueSight-User only.
       Decide MVP identity (defer auth vs minimal JWT/cookie) and update brief + specs.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      Login off for V1 core loop. ADR-20260524-01 + TMP-001 interim header identity;
+      auth follow-on task removes TMP-001. Brief updated.
 
   - id: DI-003
     type: deviation
-    status: open
+    status: addressed
+    resolution_type: incorporated
     feature_id: FEAT-REC-001
     source_ref: GD-004
     priority: P1
@@ -46,10 +53,15 @@ items:
     detail: >
       appsettings/env keys for provider selection; replace hardcoded StaticRecipeProvider
       registration or document explicit V1 stub waiver in spec.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      V1 waiver — hardcoded StaticRecipeProvider acceptable for demo. Config keys documented
+      in ADR-02 as follow-on when adding live vendor.
 
   - id: DI-004
     type: gap
-    status: open
+    status: addressed
+    resolution_type: incorporated
     feature_id: FEAT-SES-001
     source_ref: GD-005
     priority: P0
@@ -57,10 +69,16 @@ items:
     detail: >
       Duplicate POST /api/recipe-sessions double-deducts inventory. Design must specify
       idempotency key or natural key policy before re-admit BUILD-SES-001.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      Reported "double deduct" was required quantity vs stock UX (e.g. 2 eggs/serving), not
+      duplicate POST. FEAT-REC-001 recipe card (required vs in-stock, canCook) addresses user
+      trust. Server idempotency (OQ-038) deferred for V1; optional UI click guard only.
 
   - id: DI-005
     type: gap
-    status: open
+    status: addressed
+    resolution_type: incorporated
     feature_id: FEAT-INV-001
     source_ref: GD-006
     priority: P2
@@ -68,20 +86,29 @@ items:
     detail: >
       Spec references catalog entity; code uses free-text + NormalizedName. Decide V1 scope
       and update FEAT-INV-001 + domain model.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      V1 inline names only; TMP-002. No catalog schema in current re-build. Domain model updated.
 
   - id: DI-006
     type: deviation
-    status: open
+    status: addressed
+    resolution_type: incorporated
     feature_id: FEAT-INV-001
     source_ref: GD-007
     priority: P3
     summary: "Inventory API contract polish (PATCH, 404 problem details, pagination)"
     detail: >
       Defer or specify in spec: PATCH vs PUT-only, RFC7807 on 404, list pagination, cross-user tests.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      V1 waivers in FEAT-INV-001 § Deferred API polish (AP-001–AP-005). AP-004 cross-user
+      test required; other items deferred individually.
 
   - id: DI-007
     type: gap
-    status: open
+    status: addressed
+    resolution_type: incorporated
     feature_id: FEAT-REC-001
     source_ref: GD-008
     priority: P2
@@ -89,3 +116,6 @@ items:
     detail: >
       Add integration tests for GET /api/recipes/suggestions and /api/recipes/{id} or waive in
       quality plan before BUILD-REC-001 re-admit.
+    addressed_at: "2026-05-24"
+    resolution_note: >
+      Required integration tests documented in FEAT-REC-001 test plan (DI-007).

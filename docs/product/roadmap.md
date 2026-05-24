@@ -6,7 +6,7 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 
 | # | Capability | Notes |
 |---|------------|--------|
-| 0 | Identity (sign-up / login) | Auth for per-user inventory (mechanism TBD) |
+| 0 | Identity (demo entry) | **V1:** demo login screen + `X-TrueSight-User` header ([ADR-20260524-01](../design/decisions/ADR-20260524-01-v1-interim-identity-header.md), [FEAT-AUTH-001](../design/features/FEAT-AUTH-001-demo-login-screen.md)); real sign-up/login follow-on |
 | 1 | Inventory management (manual input) | CRUD, quantity, expiry; list/view |
 | 2 | Recipe suggestions from current inventory | Match available ingredients via recipe provider adapter |
 | 3 | Inventory deduction on recipe acceptance | `RecipeSession` flow |

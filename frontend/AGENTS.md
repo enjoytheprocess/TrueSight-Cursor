@@ -16,10 +16,11 @@ Instructions for AI agents working in the frontend component.
 
 ## Execution rules
 
-1. Only implement tasks marked `ready_for_build`.
-2. Prefer TanStack Query for server state; keep feature logic in `features/<name>/api`, `hooks`, `types`.
-3. Use the shared `api-client` in `src/services/` for HTTP.
-4. Match [ui-principles.md](../docs/design/ui-principles.md) for inventory and recipe screens.
+1. Follow [`docs/design/build-agent-loop.md`](../docs/design/build-agent-loop.md) — one BUILD-* task per pass (e.g. BUILD-AUTH-001 parallel with backend tasks but **separate commit**); re-scan when `build_dependencies` are satisfied.
+2. Only implement tasks marked `ready_for_build`.
+3. Prefer TanStack Query for server state; keep feature logic in `features/<name>/api`, `hooks`, `types`.
+4. Use the shared `api` client in `src/api/` for HTTP.
+5. Match [ui-principles.md](../docs/design/ui-principles.md) for inventory and recipe screens.
 
 ## Verification contract
 

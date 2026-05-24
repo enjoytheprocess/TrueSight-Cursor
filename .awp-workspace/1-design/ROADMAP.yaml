@@ -15,10 +15,21 @@ capabilities:
       - FEAT-INV-001
       - FEAT-REC-001
       - FEAT-SES-001
+      - FEAT-AUTH-001
     depends_on: none
     status: active
     owner: unassigned
     notes: "Committed Phase 1; see docs/product/roadmap.md"
+
+  - id: CAP-V1-EXT
+    target_window: TBD
+    objective: "V1 extension — ingredient catalog, inventory linkage, removes TMP-002"
+    feature_ids:
+      - FEAT-CAT-001
+    depends_on: CAP-V1-CORE
+    status: planned
+    owner: unassigned
+    notes: "Post core loop; inventory hard delete unchanged (OQ-031)"
 
   - id: CAP-V2-VISION
     target_window: TBD

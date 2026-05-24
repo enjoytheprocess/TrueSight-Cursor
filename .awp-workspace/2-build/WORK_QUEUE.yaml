@@ -1,6 +1,7 @@
 # Work Queue — canonical execution table for admitted tasks.
 # Edit this file directly or ask your agent to update it.
 # Field definitions: docs/core/glossary.md | Workflow rules: docs/core/workflow-reference.md
+# Build agents: docs/design/build-agent-loop.md — one task, commit, re-scan when deps accepted.
 #
 # phase:               design | build | verify | sync
 # mode:                sequential | parallel
@@ -16,28 +17,6 @@
 schema_version: 5
 
 tasks:
-  - id: SETUP-001
-    feature_id: none
-    title: "Configure workspace and connect project components"
-    component: backend
-    spec_link: "docs/product/project-brief.md"
-    advisor_status: not_required
-    advisor_track: none
-    quality_requirements: []
-    decision_links: []
-    priority: P1
-    phase: design
-    capability: none
-    target_window: TBD
-    mode: sequential
-    lock_id: none
-    owner: unassigned
-    status: needs_rework
-    build_dependencies: none
-    design_dependencies: none
-    validation: "Verify/Sync fast-track 2026-05-24: needs_design_refresh; see DI-002"
-    notes: "Returned to Design — identity scope (DI-002). Re-admit after IRG refresh."
-
   - id: BUILD-INV-001
     feature_id: FEAT-INV-001
     title: "Implement manual inventory CRUD"
@@ -49,17 +28,40 @@ tasks:
     decision_links:
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
     priority: P1
-    phase: design
+    phase: build
     capability: CAP-V1-CORE
     target_window: TBD
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: needs_rework
-    build_dependencies: SETUP-001
+    status: todo
+    build_dependencies: none
     design_dependencies: none
-    validation: "Verify/Sync fast-track 2026-05-24: needs_design_refresh; DI-005 DI-006"
-    notes: "Returned to Design — catalog + API polish. Code baseline kept; spec refresh first."
+    validation: "Build when admitted — AP-004 cross-user test per spec"
+    notes: "Admitted 2026-05-24 after OQ triage; no implementation in this pass."
+
+  - id: BUILD-AUTH-001
+    feature_id: FEAT-AUTH-001
+    title: "Implement demo login screen (temporary)"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-AUTH-001-demo-login-screen.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md
+    priority: P2
+    phase: build
+    capability: CAP-V1-CORE
+    target_window: TBD
+    mode: parallel
+    lock_id: none
+    owner: unassigned
+    status: todo
+    build_dependencies: none
+    design_dependencies: none
+    validation: "Build when admitted — TMP-001 demo login per FEAT-AUTH-001"
+    notes: "Admitted 2026-05-24 after OQ triage; no implementation in this pass."
 
   - id: BUILD-REC-001
     feature_id: FEAT-REC-001
@@ -72,17 +74,17 @@ tasks:
     decision_links:
       - docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md
     priority: P1
-    phase: design
+    phase: build
     capability: CAP-V1-CORE
     target_window: TBD
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: needs_rework
+    status: todo
     build_dependencies: BUILD-INV-001
     design_dependencies: none
-    validation: "Verify/Sync fast-track 2026-05-24: needs_design_refresh; DI-003 DI-007"
-    notes: "Returned to Design — provider config + tests. Code baseline kept."
+    validation: "Build when admitted — DI-007 integration tests per FEAT-REC-001"
+    notes: "Admitted 2026-05-24; depends BUILD-INV-001 accepted."
 
   - id: BUILD-SES-001
     feature_id: FEAT-SES-001
@@ -94,14 +96,36 @@ tasks:
     quality_requirements: []
     decision_links: []
     priority: P1
-    phase: design
+    phase: build
     capability: CAP-V1-CORE
     target_window: TBD
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: needs_rework
+    status: todo
     build_dependencies: BUILD-REC-001
     design_dependencies: none
-    validation: "Verify/Sync fast-track 2026-05-24: needs_design_refresh; DI-004 P0 critical"
-    notes: "Returned to Design — idempotency required before re-build (duplicate POST bug)."
+    validation: "dotnet test — RecipeSessionEndpointsTests; OQ-039 body shape"
+    notes: "Queued — after REC; OQ-038 idempotency deferred."
+
+  - id: BUILD-CAT-001
+    feature_id: FEAT-CAT-001
+    title: "Implement ingredient catalog"
+    component: backend
+    spec_link: "docs/design/features/FEAT-CAT-001-ingredient-catalog.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links: []
+    priority: P3
+    phase: design
+    capability: CAP-V1-EXT
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: todo
+    build_dependencies: BUILD-INV-001
+    design_dependencies: none
+    validation: "Design only — tick AC before build admit (post-V1 / TMP-002)"
+    notes: "Not admitted — P3; OQ-053–055 spec ready; awaits V1 core done."

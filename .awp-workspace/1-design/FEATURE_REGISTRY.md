@@ -8,3 +8,5 @@
 | FEAT-REC-001 | Recipe suggestions from inventory | backend | 2026-05-23 |
 | FEAT-SES-001 | Recipe acceptance and inventory deduction | backend | 2026-05-23 |
 | FEAT-REC-002 | Fridge photo recognition (V2) | backend | 2026-05-23 |
+| FEAT-AUTH-001 | Demo login screen (temporary) | frontend | 2026-05-24 |
+| FEAT-CAT-001 | Ingredient catalog | backend, frontend | 2026-05-24 |

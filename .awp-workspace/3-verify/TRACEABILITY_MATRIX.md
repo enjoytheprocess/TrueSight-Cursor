@@ -15,7 +15,7 @@
 **Code links:** backend/TrueSight.Api/Features/Inventory, frontend/src/features/inventory  
 **Test links:** dotnet build backend/MyApp.sln, backend/TrueSight.Api.Tests/InventoryEndpointsTests.cs
 
-> Design refresh 2026-05-24 — DI-005 DI-006; implementation baseline retained
+> Build admitted 2026-05-24 — BUILD-INV-001 todo (AP-004 in spec)
 
 ---
 
@@ -29,7 +29,7 @@
 **Code links:** backend/TrueSight.Api/Features/Recipes, backend/TrueSight.Api/Infrastructure/Recipes, frontend/src/features/recipes  
 **Test links:** dotnet build backend/MyApp.sln
 
-> Design refresh 2026-05-24 — DI-003 DI-007; implementation baseline retained
+> Build admitted 2026-05-24 — BUILD-REC-001 todo; DI-007 tests pending
 
 ---
 
@@ -43,7 +43,7 @@
 **Code links:** backend/TrueSight.Api/Features/Sessions, frontend/src/features/recipes  
 **Test links:** backend/TrueSight.Api.Tests/RecipeSessionEndpointsTests.cs
 
-> Design refresh 2026-05-24 — DI-004 P0 idempotency; do not re-build until spec closed
+> Build admitted 2026-05-24 — BUILD-SES-001 todo; OQ-038 deferred
 
 ---
 
@@ -58,3 +58,31 @@
 **Test links:** —
 
 > V2 spec draft; blocked on CAP-V2-VISION admission
+
+---
+
+### FEAT-AUTH-001
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-AUTH-001-demo-login-screen.md | 2026-05-24 | `review_needed` | unassigned |
+
+**Task IDs:** BUILD-AUTH-001  
+**Code links:** frontend/src/api/userId.ts, frontend/src/App.tsx  
+**Test links:** frontend/src/api/userId.test.ts
+
+> Build admitted 2026-05-24 — BUILD-AUTH-001 todo (TMP-001 not implemented yet)
+
+---
+
+### FEAT-CAT-001
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-CAT-001-ingredient-catalog.md | 2026-05-24 | `review_needed` | unassigned |
+
+**Task IDs:** BUILD-CAT-001  
+**Code links:** docs/product/domain-model.md  
+**Test links:** —
+
+> Design queued 2026-05-24 — TMP-002; delete semantics per OQ-031; no implementation yet

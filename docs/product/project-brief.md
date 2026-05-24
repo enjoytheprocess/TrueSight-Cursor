@@ -57,7 +57,8 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 
 ## Scope
 
-- **In scope (V1):** User sign-up/login (mechanism TBD at build), manual inventory CRUD, recipe suggestions from inventory, inventory deduction on recipe acceptance.
+- **In scope (V1):** Manual inventory CRUD, recipe suggestions from inventory, inventory deduction on recipe acceptance.
+- **Deferred from V1 (temporary):** User sign-up/login — **off** for the current core loop; interim **demo login screen** with disabled auth controls and **Enter Demo** ([FEAT-AUTH-001](../design/features/FEAT-AUTH-001-demo-login-screen.md), [ADR-20260524-01](../design/decisions/ADR-20260524-01-v1-interim-identity-header.md), TMP-001). Real auth in a follow-on task.
 - **In scope (V2):** Fridge photo → detection → user confirmation → inventory (see [roadmap.md](roadmap.md)).
 - **Out of scope for MVP:** Native apps; charity/org-specific product flows (ideation only); receipt scanning (ideation IDEA-008).
 - **Non-goals:** Duplicating register state in `docs/`; scheduling wishlist items without promoting them from [ideation.md](ideation.md).
@@ -74,7 +75,8 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 
 ## Constraints
 
-- **Tech:** ASP.NET Core (.NET 9), EF Core + SQLite, React + TypeScript frontend.
+- **Tech:** ASP.NET Core (.NET 9), EF Core + **SQLite** (MVP and first production scale per [OQ-004](open-questions.md)), React + TypeScript frontend.
+- **Expiry UX:** Inventory “expiring soon” highlight within **3 days** of expiry ([OQ-040](open-questions.md), [ui-principles](../design/ui-principles.md)).
 - **UX:** Mobile-first responsive web; PWA-capable; desktop parity.
 - **Architecture:** Layered client-server; vertical slices + CQRS on the API (see [../architecture/overview.md](../architecture/overview.md) and `.cursor/rules/architecture.mdc`).
 

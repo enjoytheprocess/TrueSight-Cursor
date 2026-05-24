@@ -33,3 +33,13 @@ features:
     title: "Fridge photo recognition (V2)"
     components: [backend]
     created_on: "2026-05-23"
+
+  - id: FEAT-AUTH-001
+    title: "Demo login screen (temporary)"
+    components: [frontend]
+    created_on: "2026-05-24"
+
+  - id: FEAT-CAT-001
+    title: "Ingredient catalog"
+    components: [backend, frontend]
+    created_on: "2026-05-24"

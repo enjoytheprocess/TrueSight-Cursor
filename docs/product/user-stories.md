@@ -12,7 +12,8 @@ Stories tied to the [committed roadmap](roadmap.md). Exploratory stories live un
 
 ### Identity
 
-- As a user, I can sign up and sign in so my inventory is private to me
+- As a user, I can sign up and sign in so my inventory is private to me *(deferred — real auth)*
+- As a visitor, I can tap **Enter Demo** on the login screen to try the app as the demo user without signing up *(interim — [FEAT-AUTH-001](../design/features/FEAT-AUTH-001-demo-login-screen.md), TMP-001)*
 
 ### Inventory
 

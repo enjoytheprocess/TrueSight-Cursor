@@ -1,0 +1,6 @@
+# Temporary Measures — closed entries.
+# Entries with status closed are moved here from TEMP_MEASURES.yaml during Sync.
+
+schema_version: 1
+
+measures: []

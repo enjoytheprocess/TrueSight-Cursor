@@ -84,6 +84,6 @@ Optional. Not required for hackathon unless a mentor must formally approve — s
 
 ## Related
 
-- [Open questions](../product/open-questions.md) — auth mechanism (OQ-001), CORS (OQ-020)  
+- [Open questions](../product/open-questions.md) — resolved: interim identity (OQ-001), V1 dev proxy (OQ-020); see **Resolved** section  
 - [Architecture overview](../architecture/overview.md)  
 - Feature specs under [features/](features/)

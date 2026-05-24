@@ -180,6 +180,7 @@ These are independent gates. Both can be required on the same task: the advisor 
 
 ## Build rules
 - Pull work from `2-build/WORK_QUEUE.yaml`, not from a separate manual summary.
+- **Sequential build loop (agents):** Implement **one** admitted task per pass; when the user wants git history, **commit that task only**, then pick the next **buildable** row. When no buildable tasks remain, re-scan the queue — tasks blocked only by `build_dependencies` become buildable after upstream tasks reach **`accepted`** or **`done`**. Full algorithm and TrueSight V1 ordering: [`docs/design/build-agent-loop.md`](../../../docs/design/build-agent-loop.md).
 - Before pulling new work, check `2-build/WORK_QUEUE.yaml` for any `needs_rework` tasks and handle them first.
 - Keep queue status, owner, notes, and validation current in the same change set as the implementation.
 - Keep `3-verify/TRACEABILITY_MATRIX.yaml` current while building. When setting `drift_status: drift_detected`, create a matching entry in `3-verify/GAPS_AND_DEVIATIONS.yaml`. Reset to `aligned` only after that entry is `resolved_in_loop` or `promoted_to_sync`.
@@ -225,7 +226,7 @@ flowchart LR
 - Sync is not optional. Even when all GAPS_AND_DEVIATIONS entries were resolved in-loop, triage must complete.
 
 ## Dependency semantics
-- `Build Dependencies`: downstream work only needs the upstream implementation output to exist.
+- `Build Dependencies`: downstream work runs only after every listed upstream task is **`accepted`** or **`done`** in `WORK_QUEUE.yaml` (human acceptance gate passed). Implementation may exist earlier on the branch; the queue gate is intentional. See [`docs/design/build-agent-loop.md`](../../../docs/design/build-agent-loop.md).
 - `Design Dependencies`: downstream work must wait for verified upstream learning and a later design refresh.
 
 Use `2-build/TASK_DEPENDENCIES.md` only when dependency management needs more structure than the queue alone.

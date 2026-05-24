@@ -20,7 +20,7 @@ _Open items. Move resolved items to `archive/DESIGN_INPUTS.yaml`._
 
 ---
 
-### DI-002 · `gap` · `open`
+### DI-002 · `gap` · `addressed`
 
 | Feature | Cycle | Source Ref |
 | --- | --- | --- |
@@ -28,9 +28,12 @@ _Open items. Move resolved items to `archive/DESIGN_INPUTS.yaml`._
 
 **Summary:** Resolve V1 identity — brief vs dev header (OQ-001)
 
+**Resolution:** `incorporated`  
+**Pointer:** —
+
 ---
 
-### DI-003 · `deviation` · `open`
+### DI-003 · `deviation` · `addressed`
 
 | Feature | Cycle | Source Ref |
 | --- | --- | --- |
@@ -38,9 +41,12 @@ _Open items. Move resolved items to `archive/DESIGN_INPUTS.yaml`._
 
 **Summary:** Recipe provider configuration contract (ADR-20260523-02)
 
+**Resolution:** `incorporated`  
+**Pointer:** —
+
 ---
 
-### DI-004 · `gap` · `open`
+### DI-004 · `gap` · `addressed`
 
 | Feature | Cycle | Source Ref |
 | --- | --- | --- |
@@ -48,9 +54,12 @@ _Open items. Move resolved items to `archive/DESIGN_INPUTS.yaml`._
 
 **Summary:** CRITICAL — Recipe accept idempotency (OQ-038 / GD-005)
 
+**Resolution:** `incorporated`  
+**Pointer:** —
+
 ---
 
-### DI-005 · `gap` · `open`
+### DI-005 · `gap` · `addressed`
 
 | Feature | Cycle | Source Ref |
 | --- | --- | --- |
@@ -58,9 +67,12 @@ _Open items. Move resolved items to `archive/DESIGN_INPUTS.yaml`._
 
 **Summary:** IngredientCatalog vs inline names (OQ-030)
 
+**Resolution:** `incorporated`  
+**Pointer:** —
+
 ---
 
-### DI-006 · `deviation` · `open`
+### DI-006 · `deviation` · `addressed`
 
 | Feature | Cycle | Source Ref |
 | --- | --- | --- |
@@ -68,12 +80,18 @@ _Open items. Move resolved items to `archive/DESIGN_INPUTS.yaml`._
 
 **Summary:** Inventory API contract polish (PATCH, 404 problem details, pagination)
 
+**Resolution:** `incorporated`  
+**Pointer:** —
+
 ---
 
-### DI-007 · `gap` · `open`
+### DI-007 · `gap` · `addressed`
 
 | Feature | Cycle | Source Ref |
 | --- | --- | --- |
 | FEAT-REC-001 |  | GD-008 |
 
 **Summary:** Recipe suggestions test coverage
+
+**Resolution:** `incorporated`  
+**Pointer:** —

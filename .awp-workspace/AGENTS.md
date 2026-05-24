@@ -31,10 +31,12 @@ Registers with terminal statuses use a split-YAML pattern: `REGISTER.yaml` holds
 4. Read `1-design/ROADMAP.yaml` for current capabilities and coverage.
 
 **Starting a Build session:**
-1. Read the active task in `2-build/WORK_QUEUE.yaml` and its matching row in `1-design/TASK_READINESS.yaml` — confirm status, IRG scores, blocking unknowns, and advisor gate.
-2. Read the linked rows in `1-design/DESIGN_STATES.yaml` and `3-verify/TRACEABILITY_MATRIX.yaml`.
-3. Read the `AGENTS.md` and linked specs for the component named by the task.
-4. Open optional registers only when the task uses them:
+1. Read `docs/design/build-agent-loop.md` — **one task per pass**, commit per task when the user wants commits, then re-scan for tasks unblocked by `build_dependencies`.
+2. Read the **next buildable** task in `2-build/WORK_QUEUE.yaml` (not every `todo` row — skip tasks whose `build_dependencies` are not yet `accepted`/`done`).
+3. Confirm the row’s admission snapshot: `spec_link`, `advisor_*`, `decision_links` on the WORK_QUEUE entry; open `TASK_READINESS.yaml` only if IRG context is needed.
+4. Read linked rows in `1-design/DESIGN_STATES.yaml` and `3-verify/TRACEABILITY_MATRIX.yaml`.
+5. Read the component `AGENTS.md` and the task spec under `docs/design/features/`.
+6. Open optional registers only when the task uses them:
    - `1-design/QUALITY_REQUIREMENTS.yaml` — when in use: read all `sustained` entries at build start; open for tasks with `quality_requirements` entries in TASK_READINESS to verify each linked `per_task` or `milestone` QR
    - `docs/design/decisions/` — when the task or feature has `decision_links` entries
    - `2-build/TASK_DEPENDENCIES.yaml` — when dependency tracking is in use

@@ -1,12 +1,12 @@
 # FEAT-INV-001: Manual inventory
 
-**Status:** draft  
+**Status:** ready  
 **Module:** Inventory  
 **Related AWP feature_id:** `FEAT-INV-001`
 
 ## Summary
 
-Allow users to maintain fridge inventory through manual create, read, update, and delete of items (ingredient reference, quantity, unit, optional expiry). Supports the V1 path before any photo-based input.
+Allow users to maintain fridge inventory through manual create, read, update, and delete of items (**inline ingredient name**, quantity, unit, optional expiry). Supports the V1 path before any photo-based input.
 
 ## User story
 
@@ -16,12 +16,14 @@ As a user, I want to add, view, edit, and remove what I have in my fridge, so th
 
 ### In scope
 
-- List inventory for the authenticated user.
-- Add item with quantity, unit, optional expiry, link to `IngredientCatalog` (or inline name if catalog not populated — TBD at build).
+- List inventory for the current user.
+- Add item with **inline name**, quantity, unit, optional expiry (TMP-002 — no catalog link).
 - Update and delete items.
-- Mobile-friendly API contracts (paginated list if needed).
+- Per-user isolation ([ADR-20260524-01](../decisions/ADR-20260524-01-v1-interim-identity-header.md), TMP-001).
 
 ### Out of scope
+
+- `IngredientCatalog` table (**TMP-002** — deferred; keep current inline schema).
 
 - Fridge photo detection (V2 — `FEAT-REC-002`).
 - Receipt scanning ([IDEA-008](../../product/ideation.md#idea-008-receipt-photo--inventory-list)).
@@ -30,9 +32,9 @@ As a user, I want to add, view, edit, and remove what I have in my fridge, so th
 
 ## Behavior
 
-- All operations are scoped to the current user (identity approach TBD during auth design).
-- Deletes are hard or soft — choose at implementation; document in API.
-- Quantities are non-negative; unit must be consistent with catalog or a fixed allow-list.
+- All operations are scoped to the current user (see [ADR-20260524-01](../decisions/ADR-20260524-01-v1-interim-identity-header.md) — login off; `X-TrueSight-User` interim identity, TMP-001).
+- **Delete:** hard delete of the user's `InventoryItem` (`DELETE /api/inventory/{id}` → 204 or 404). No soft-delete or audit trail in V1. **Unchanged when IngredientCatalog ships** — catalog is reference data; deleting inventory does not delete catalog rows (see [domain model](../../product/domain-model.md)).
+- Quantities are non-negative; **units** are free-text strings (max 32 chars); recipe matching requires **exact same unit** on inventory and recipe line.
 
 ## API / contracts
 
@@ -40,22 +42,36 @@ Placeholder minimal API surface (paths and shapes refined at build admission):
 
 | Method | Path | Notes |
 |--------|------|-------|
-| GET | `/api/inventory` | List current user's items |
+| GET | `/api/inventory` | Full list for current user (**V1:** no pagination — see deferred polish) |
 | POST | `/api/inventory` | Create item |
-| GET | `/api/inventory/{id}` | Get single item |
-| PUT / PATCH | `/api/inventory/{id}` | Update item |
-| DELETE | `/api/inventory/{id}` | Remove item |
+| GET | `/api/inventory/{id}` | 200 or **404** (plain, no body — see deferred polish) |
+| PUT | `/api/inventory/{id}` | Update (**V1:** PUT only — PATCH deferred) |
+| DELETE | `/api/inventory/{id}` | 204 or 404 |
+
+Validation errors (400) return problem details. **Identity:** `X-TrueSight-User` header.
+
+### Deferred API polish (DI-006 — resolve individually post-V1)
+
+Track each item separately; do not block V1 re-build on these:
+
+| ID | Item | V1 behavior | Future target |
+|----|------|-------------|---------------|
+| AP-001 | PATCH support | PUT only | Add PATCH for partial updates |
+| AP-002 | 404 problem details | Empty 404 body on GET/PUT/DELETE | RFC7807 body consistent with 400 |
+| AP-003 | List pagination | Return full user list | `?page` / cursor when lists grow |
+| AP-004 | Cross-user isolation tests | **Required** — integration test: user A cannot GET/PUT/DELETE user B's item id | Keep as sustained gate |
+| AP-005 | Hard vs soft delete | **Hard delete** (204/404); stable when catalog links added | Soft delete + audit only if product requires undo/history later |
 
 ## Data model
 
-- Entities: `InventoryItem`, `IngredientCatalog` (see [domain model](../../product/domain-model.md))
-- Migrations needed: **Y** (when API project is scaffolded)
+- Entity: `InventoryItem` only (see [domain model](../../product/domain-model.md), TMP-002)
+- Migrations: **Y** when schema changes (no catalog table in V1 re-build)
 
 ## Acceptance criteria
 
-- [ ] User can list, create, update, and delete inventory via API (or via UI once wired).
-- [ ] Invalid payloads return consistent problem details.
-- [ ] Operations are isolated per user.
+- [x] User can list, create, update, and delete inventory via API (or via UI once wired).
+- [x] Invalid payloads return consistent problem details.
+- [x] Operations isolated per user (includes AP-004 cross-user test).
 
 ## Traceability (AWP)
 

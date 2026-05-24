@@ -9,6 +9,7 @@ Design intent, maturity tracking, and delivery sequencing. **Durable prose** liv
 | Project brief | [../product/project-brief.md](../product/project-brief.md) |
 | Feature specs | [features/](features/) |
 | UI principles | [ui-principles.md](ui-principles.md) |
+| Build agent loop | [build-agent-loop.md](build-agent-loop.md) — one task, commit, dependency re-scan |
 | Advisor policy | [advisor-policy.md](advisor-policy.md) — `security` + `api_contract` tracks |
 | ADRs | [decisions/](decisions/) |
 | Templates | [../templates/](../templates/) |

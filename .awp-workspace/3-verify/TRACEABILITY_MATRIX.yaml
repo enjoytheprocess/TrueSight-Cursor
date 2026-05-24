@@ -32,7 +32,7 @@ features:
     test_links:
       - "dotnet build backend/MyApp.sln"
       - backend/TrueSight.Api.Tests/InventoryEndpointsTests.cs
-    notes: "Design refresh 2026-05-24 — DI-005 DI-006; implementation baseline retained"
+    notes: "Build admitted 2026-05-24 — BUILD-INV-001 todo (AP-004 in spec)"
 
   - id: FEAT-REC-001
     spec_link: docs/design/features/FEAT-REC-001-recipe-suggestions.md
@@ -47,7 +47,7 @@ features:
       - frontend/src/features/recipes
     test_links:
       - "dotnet build backend/MyApp.sln"
-    notes: "Design refresh 2026-05-24 — DI-003 DI-007; implementation baseline retained"
+    notes: "Build admitted 2026-05-24 — BUILD-REC-001 todo; DI-007 tests pending"
 
   - id: FEAT-SES-001
     spec_link: docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md
@@ -61,7 +61,7 @@ features:
       - frontend/src/features/recipes
     test_links:
       - backend/TrueSight.Api.Tests/RecipeSessionEndpointsTests.cs
-    notes: "Design refresh 2026-05-24 — DI-004 P0 idempotency; do not re-build until spec closed"
+    notes: "Build admitted 2026-05-24 — BUILD-SES-001 todo; OQ-038 deferred"
 
   - id: FEAT-REC-002
     spec_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
@@ -73,3 +73,29 @@ features:
       - backend/
     test_links: []
     notes: "V2 spec draft; blocked on CAP-V2-VISION admission"
+
+  - id: FEAT-AUTH-001
+    spec_link: docs/design/features/FEAT-AUTH-001-demo-login-screen.md
+    last_synced: "2026-05-24"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids:
+      - BUILD-AUTH-001
+    code_links:
+      - frontend/src/api/userId.ts
+      - frontend/src/App.tsx
+    test_links:
+      - frontend/src/api/userId.test.ts
+    notes: "Build admitted 2026-05-24 — BUILD-AUTH-001 todo (TMP-001 not implemented yet)"
+
+  - id: FEAT-CAT-001
+    spec_link: docs/design/features/FEAT-CAT-001-ingredient-catalog.md
+    last_synced: "2026-05-24"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids:
+      - BUILD-CAT-001
+    code_links:
+      - docs/product/domain-model.md
+    test_links: []
+    notes: "Design queued 2026-05-24 — TMP-002; delete semantics per OQ-031; no implementation yet"

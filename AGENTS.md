@@ -68,6 +68,10 @@ Use the **lowest model tier that fits the task**. Reserve high-reasoning models 
 | Build (routine slice) | Medium |
 | Build (new boundaries, integrations) | High |
 
+### Build loop (multi-task queues)
+
+When several tasks are in `phase: build`, agents run **[docs/design/build-agent-loop.md](docs/design/build-agent-loop.md)**: one task → commit (if requested) → next buildable task → after the queue stalls, re-scan when upstream tasks become **`accepted`**.
+
 ### Git and GitHub
 
 - **Commits / PRs:** low tier; `git status`, `git diff`, and `git log -5` only — no codebase exploration unless the user asks.

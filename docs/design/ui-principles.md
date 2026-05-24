@@ -15,7 +15,7 @@ Each inventory row or card should surface, at a glance:
 |---------|-------------|
 | **Image** | Clean product/ingredient imagery where available (catalog or user photo); consistent aspect ratio; placeholder when missing |
 | **Quantity** | Numeric amount + unit (e.g. `2 cups`, `500 g`) |
-| **Expiry** | Expiry date prominent; visual emphasis when within a “soon” window (exact thresholds TBD with [IDEA-006](../product/ideation.md#idea-006-expiry-proximity-warnings)) |
+| **Expiry** | Expiry date prominent; visual emphasis when within **3 days** of expiry ([OQ-040](../product/open-questions.md), [IDEA-006](../product/ideation.md#idea-006-expiry-proximity-warnings)) |
 
 Avoid clutter: name, quantity, and expiry are primary; secondary metadata collapsed or on detail view.
 
@@ -24,11 +24,23 @@ Avoid clutter: name, quantity, and expiry are primary; secondary metadata collap
 | Element | Requirement |
 |---------|-------------|
 | **Image** | Recipe hero image from provider when available |
-| **Match** | Clear signal: uses what you have vs missing ingredients (count or chips) |
+| **Match** | Per ingredient: **required amount** vs **in stock** (same unit), e.g. `need 2 count · have 4 count` — not name-only chips |
+| **Servings** | Show recipe serving count so required amounts are interpretable |
+| **Ready / cook** | **Ready** and **Cook and deduct** only when required ingredients are sufficient for default servings ([FEAT-REC-001](features/FEAT-REC-001-recipe-suggestions.md)) |
 | **Time** | Estimated cook time visible for “tired” use case |
 | **Macros** | Show nutrition/macros when the recipe provider supplies them (optional row; hide if unavailable) |
 
-Primary action: **Use this recipe** → triggers acceptance/deduction flow ([FEAT-SES-001](features/FEAT-SES-001-recipe-acceptance-deduction.md)).
+Primary action: **Cook and deduct** → acceptance/deduction ([FEAT-SES-001](features/FEAT-SES-001-recipe-acceptance-deduction.md)). Disabled when stock is insufficient; server re-validates on POST.
+
+**Deferred (not V1):** unit conversion between recipe and inventory units; adjusting deduct when the user did not follow the recipe exactly.
+
+## Demo login (V1 interim)
+
+Per [FEAT-AUTH-001](features/FEAT-AUTH-001-demo-login-screen.md) and TMP-001:
+
+- **Enter Demo** is the only enabled auth control; placed above the disabled login form.
+- Helper copy: **“Welcome to the Demo”** near the disabled fields.
+- Email, password, sign-up/forgot links, and OAuth buttons are visible but **disabled** (layout preview only).
 
 ## V2 confirmation (fridge photo)
 
