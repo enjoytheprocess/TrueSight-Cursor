@@ -24,6 +24,7 @@ Instructions for AI agents working in the frontend component.
 ## Verification contract
 
 - `npm run build` must pass before handoff.
+- `npm run test` for unit/component tests (Vitest + Testing Library).
 - Manual: `npm run dev` and smoke-test affected routes.
 
 ## Model tier

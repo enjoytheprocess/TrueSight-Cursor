@@ -68,3 +68,5 @@ app.MapRecipeEndpoints();
 app.MapSessionEndpoints();
 
 app.Run();
+
+public partial class Program;

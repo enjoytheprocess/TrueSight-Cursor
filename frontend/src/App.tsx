@@ -2,6 +2,7 @@ import { FormEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Check, Clock, Plus, Trash2 } from 'lucide-react';
 import { api } from './api/client';
+import { formatDate, formatQuantity, isExpiringSoon } from './features/inventory/formatting';
 import { InventoryInput, InventoryItem } from './features/inventory/types';
 import { RecipeSession, RecipeSuggestion } from './features/recipes/types';
 
@@ -209,21 +210,4 @@ function Stat({ label, value, tone }: { label: string; value: string; tone: 'war
 
 function EmptyState({ text }: { text: string }) {
   return <p className="empty-state">{text}</p>;
-}
-
-function isExpiringSoon(item: InventoryItem) {
-  if (!item.expiryDate) {
-    return false;
-  }
-  const soon = new Date();
-  soon.setDate(soon.getDate() + 3);
-  return new Date(`${item.expiryDate}T00:00:00`) <= soon;
-}
-
-function formatDate(value: string) {
-  return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(new Date(`${value}T00:00:00`));
-}
-
-function formatQuantity(value: number) {
-  return new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(value);
 }

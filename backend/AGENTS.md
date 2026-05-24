@@ -21,6 +21,7 @@ Instructions for AI agents working in this component repository.
 
 ## Verification contract
 - **Build:** `make backend-build` or `dotnet build backend/MyApp.sln`
+- **Test:** `make backend-test` or `dotnet test backend/MyApp.sln`
 - **Run:** `make backend-run` (http://localhost:5158)
 - **Smoke:** `curl -s http://localhost:5158/api/health` → `{"status":"ok"}`
 - Manual verification expectations: record in the queue `Validation` field

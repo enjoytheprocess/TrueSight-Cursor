@@ -2,8 +2,8 @@
 AWP_DIR := .awp-workspace
 
 .PHONY: awp-init awp-render awp-docs-check awp-workflow-status awp-install-tools awp-install-hooks
-.PHONY: setup-dotnet backend-build backend-run backend-stop
-.PHONY: frontend-install frontend-build frontend-run frontend-stop
+.PHONY: setup-dotnet backend-build backend-run backend-stop backend-test
+.PHONY: frontend-install frontend-build frontend-run frontend-stop frontend-test
 
 # Prefer user-local SDK from scripts/setup-dotnet.sh when system dotnet is missing.
 export PATH := $(HOME)/.dotnet:$(PATH)
@@ -14,6 +14,9 @@ setup-dotnet:
 
 backend-build: setup-dotnet
 	dotnet build backend/MyApp.sln
+
+backend-test: setup-dotnet
+	dotnet test backend/MyApp.sln
 
 backend-stop:
 	@chmod +x scripts/backend-stop.sh
@@ -29,6 +32,9 @@ frontend-install:
 
 frontend-build: frontend-install
 	cd frontend && npm run build
+
+frontend-test: frontend-install
+	cd frontend && npm run test
 
 frontend-stop:
 	@chmod +x scripts/frontend-stop.sh
