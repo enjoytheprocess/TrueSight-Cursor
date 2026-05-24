@@ -44,9 +44,11 @@ Or add `export PATH="$HOME/.dotnet:$PATH"` to your shell profile.
 ## Setup
 
 ```bash
+make frontend-install
 dotnet restore backend/MyApp.sln
-cd frontend && npm install
 ```
+
+Or: `cd frontend && npm install`
 
 On WSL/Linux, run `make setup-dotnet` once if `dotnet` is not installed.
 
@@ -56,6 +58,7 @@ On WSL/Linux, run `make setup-dotnet` once if `dotnet` is not installed.
 
 ```bash
 make backend-run
+make frontend-run    # separate terminal
 ```
 
 **Windows (PowerShell):**
@@ -65,29 +68,32 @@ pwsh scripts/backend-stop.ps1   # optional — clears port 5158
 dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
 ```
 
+In another terminal:
+
+```powershell
+pwsh scripts/frontend-stop.ps1   # optional — clears port 5173
+cd frontend && npm run dev
+```
+
 API listens on **http://localhost:5158** (matches Vite proxy in `frontend/vite.config.ts`).
 
 If you see **address already in use**, a previous dev server is still running:
 
 ```bash
-make backend-stop          # Linux / WSL
+make backend-stop           # Linux / WSL — port 5158
+make frontend-stop          # Linux / WSL — port 5173
 ```
 
 ```powershell
-pwsh scripts/backend-stop.ps1   # Windows
-```
-
-In another terminal:
-
-```bash
-cd frontend && npm run dev
+pwsh scripts/backend-stop.ps1    # Windows — port 5158
+pwsh scripts/frontend-stop.ps1   # Windows — port 5173
 ```
 
 ## Verify
 
 ```bash
-dotnet build backend/MyApp.sln
-cd frontend && npm run build
+make backend-build
+make frontend-build
 ```
 
 Health check (Linux / WSL / macOS):

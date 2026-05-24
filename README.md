@@ -42,27 +42,28 @@ Requires **.NET 9 SDK** and **Node.js** (for the frontend).
 ### Linux / WSL / macOS
 
 ```bash
-make setup-dotnet   # first time if `dotnet` is not found (installs to ~/.dotnet)
-make backend-run    # API at http://localhost:5158
+make setup-dotnet      # first time if `dotnet` is not found (installs to ~/.dotnet)
+make frontend-install  # once per machine (or after package.json changes)
+make backend-run       # API at http://localhost:5158
+make frontend-run      # web UI at http://localhost:5173 (separate terminal)
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-pwsh scripts/setup-dotnet.ps1   # checks SDK; links to installer if missing
-pwsh scripts/backend-stop.ps1   # free port 5158 if a previous run is still up
+pwsh scripts/setup-dotnet.ps1    # checks SDK; links to installer if missing
+pwsh scripts/backend-stop.ps1    # free port 5158 if a previous run is still up
 dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
 ```
 
-Or use `make backend-run` / `make backend-stop` if you have `make` (WSL or [GnuWin32 Make](https://gnuwin32.sourceforge.net/packages/make.htm)).
-
-### Frontend (all platforms)
-
 In another terminal:
 
-```bash
-cd frontend && npm install && npm run dev
+```powershell
+pwsh scripts/frontend-stop.ps1   # free port 5173 if needed
+cd frontend; npm install; npm run dev
 ```
+
+Or use `make backend-run`, `make frontend-run`, and `make frontend-stop` if you have `make` (WSL or [GnuWin32 Make](https://gnuwin32.sourceforge.net/packages/make.htm)).
 
 Web UI: http://localhost:5173 (proxies `/api` to the backend at http://localhost:5158).
 
@@ -70,8 +71,12 @@ Web UI: http://localhost:5173 (proxies `/api` to the backend at http://localhost
 
 | Task | Linux / WSL | Native Windows |
 |------|-------------|----------------|
-| Run API + frontend | `make backend-run` + `npm run dev` | `dotnet run …` + `npm run dev` |
+| Run API | `make backend-run` | `dotnet run …` |
+| Run frontend | `make frontend-run` | `cd frontend && npm run dev` |
 | Stop API on port 5158 | `make backend-stop` | `pwsh scripts/backend-stop.ps1` |
+| Stop frontend on port 5173 | `make frontend-stop` | `pwsh scripts/frontend-stop.ps1` |
+| Install frontend deps | `make frontend-install` | `cd frontend && npm install` |
+| Build frontend | `make frontend-build` | `cd frontend && npm run build` |
 | Install .NET SDK | `make setup-dotnet` | [Official installer](https://dotnet.microsoft.com/download/dotnet/9.0) or `winget install Microsoft.DotNet.SDK.9` |
 | AWP register render/check | `make awp-render`, `make awp-docs-check` | WSL recommended; or `make` + `pwsh scripts/install-tools.ps1` |
 | Git pre-commit hook | `make awp-install-hooks` | `pwsh scripts/install-hooks.ps1` |

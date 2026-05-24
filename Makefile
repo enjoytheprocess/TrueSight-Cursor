@@ -3,6 +3,7 @@ AWP_DIR := .awp-workspace
 
 .PHONY: awp-init awp-render awp-docs-check awp-workflow-status awp-install-tools awp-install-hooks
 .PHONY: setup-dotnet backend-build backend-run backend-stop
+.PHONY: frontend-install frontend-build frontend-run frontend-stop
 
 # Prefer user-local SDK from scripts/setup-dotnet.sh when system dotnet is missing.
 export PATH := $(HOME)/.dotnet:$(PATH)
@@ -22,6 +23,19 @@ backend-run: setup-dotnet
 	@chmod +x scripts/backend-stop.sh
 	@./scripts/backend-stop.sh
 	dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
+
+frontend-install:
+	cd frontend && npm install
+
+frontend-build:
+	cd frontend && npm run build
+
+frontend-stop:
+	@chmod +x scripts/frontend-stop.sh
+	@./scripts/frontend-stop.sh
+
+frontend-run: frontend-stop
+	cd frontend && npm run dev
 
 awp-init:
 	$(MAKE) -C $(AWP_DIR) init \
