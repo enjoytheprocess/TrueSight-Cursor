@@ -20,8 +20,9 @@ Instructions for AI agents working in this component repository.
 5. Record outcomes in shared handoff/queue artifacts.
 
 ## Verification contract
-- Required local checks: define before build admission
-- Required test suites: define before build admission
+- **Build:** `make backend-build` or `dotnet build backend/MyApp.sln`
+- **Run:** `make backend-run` (http://localhost:5158)
+- **Smoke:** `curl -s http://localhost:5158/api/health` → `{"status":"ok"}`
 - Manual verification expectations: record in the queue `Validation` field
 
 ## Escalation rules

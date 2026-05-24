@@ -27,22 +27,51 @@ Seeded by `make init`.
   - `GET /api/recipe-sessions` — beta
   - `POST /api/recipe-sessions` — beta
 
+## Prerequisites
+
+- **.NET 9 SDK** (project targets `net9.0`; see repo root `global.json`)
+
+On WSL or Linux without `dotnet` on PATH:
+
+```bash
+make setup-dotnet   # installs SDK to ~/.dotnet and prints PATH instructions
+```
+
+Or from repo root after adding `export PATH="$HOME/.dotnet:$PATH"` to your shell profile.
+
 ## Setup
 ```bash
+make setup-dotnet    # once per machine
 dotnet restore backend/MyApp.sln
 cd frontend && npm install
 ```
 
 ## Run
 ```bash
-dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
+make backend-run
+# or: dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
+```
+
+API listens on **http://localhost:5158** (matches Vite proxy in `frontend/vite.config.ts`).
+
+If you see **address already in use**, a previous dev server is still running:
+
+```bash
+make backend-stop
+make backend-run
+```
+
+In another terminal:
+
+```bash
 cd frontend && npm run dev
 ```
 
 ## Verify
 ```bash
-dotnet build backend/MyApp.sln
+make backend-build
 cd frontend && npm run build
+curl -s http://localhost:5158/api/health
 ```
 
 ## Required environment variables

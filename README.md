@@ -18,4 +18,11 @@ Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`docs/README.md`](docs/README.md),
 
 # Running App
 
-dotnet run --project ./backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
+Requires **.NET 9 SDK** and **Node.js** (for the frontend).
+
+```bash
+make setup-dotnet   # first time on WSL/Linux if `dotnet` is not found
+make backend-run    # API at http://localhost:5158
+```
+
+In another terminal: `cd frontend && npm run dev` (http://localhost:5173, proxies `/api` to the backend).

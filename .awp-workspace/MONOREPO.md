@@ -6,8 +6,9 @@ This directory is the **AWP planning workspace**. Product code lives outside it.
 |------|------|
 | `docs/` | **Stages 0–1 prose** (brief, ideation, design specs, ADRs) — use `@docs/` in Cursor |
 | `.awp-workspace/` | AWP registers, workflow docs, `make` targets |
-| `backend/` | Primary service component (`COMPONENT_NAME=backend`) |
+| `backend/` | API service component |
+| `frontend/` | Mobile-first web client (React + TypeScript) |
 
-Configuration: `workspace-layout.yaml` in this directory.
+Configuration: `workspace-layout.yaml` in this directory — the **component registry** for this monorepo (`backend`, `frontend`).
 
-Component `README.md` / `AGENTS.md` are generated under `backend/` and link back here via `.awp-workspace/...` paths.
+Each component has `README.md` and `AGENTS.md` at its repo root and links back here via `.awp-workspace/...` paths.

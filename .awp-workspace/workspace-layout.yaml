@@ -1,8 +1,15 @@
 # Monorepo layout: planning registers live here; product code lives at repo root.
-version: 1
+version: 2
 monorepo_root: ..
-component:
-  name: backend
-  path: backend
+primary_component: backend
+components:
+  - name: backend
+    path: backend
+    type: service
+    verify_command: "dotnet build backend/MyApp.sln"
+  - name: frontend
+    path: frontend
+    type: web
+    verify_command: "npm run build"
 workspace_link_prefix: .awp-workspace
 design_docs_root: docs
