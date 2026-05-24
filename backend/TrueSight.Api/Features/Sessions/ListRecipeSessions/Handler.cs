@@ -8,11 +8,15 @@ namespace TrueSight.Api.Features.Sessions.ListRecipeSessions;
 public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser)
     : IRequestHandler<ListRecipeSessionsQuery, IReadOnlyList<RecipeSessionResponse>>
 {
-    public async Task<IReadOnlyList<RecipeSessionResponse>> Handle(ListRecipeSessionsQuery request, CancellationToken cancellationToken) =>
-        await db.RecipeSessions
+    public async Task<IReadOnlyList<RecipeSessionResponse>> Handle(ListRecipeSessionsQuery request, CancellationToken cancellationToken)
+    {
+        var sessions = await db.RecipeSessions
             .AsNoTracking()
             .Include(session => session.Lines)
             .Where(session => session.UserId == currentUser.UserId)
+            .ToListAsync(cancellationToken);
+
+        return sessions
             .OrderByDescending(session => session.AcceptedAt)
             .Select(session => new RecipeSessionResponse(
                 session.Id,
@@ -23,6 +27,6 @@ public sealed class Handler(TrueSightDbContext db, ICurrentUser currentUser)
                 session.Lines
                     .Select(line => new RecipeSessionLineResponse(line.IngredientName, line.QuantityDeducted, line.Unit))
                     .ToList()))
-            .ToListAsync(cancellationToken);
+            .ToList();
+    }
 }
-

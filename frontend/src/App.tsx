@@ -1,6 +1,6 @@
 import { FormEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Check, Clock, Plus, Trash2 } from 'lucide-react';
+import { Check, Clock, HeartHandshake, Plus, RefreshCw, ShieldAlert, Sparkles, Trash2 } from 'lucide-react';
 import { api } from './api/client';
 import { InventoryInput, InventoryItem } from './features/inventory/types';
 import { RecipeSession, RecipeSuggestion } from './features/recipes/types';
@@ -10,6 +10,8 @@ const units = ['count', 'g', 'kg', 'ml', 'l', 'oz', 'lb', 'cup', 'tbsp', 'tsp'];
 export function App() {
   const queryClient = useQueryClient();
   const [form, setForm] = useState<InventoryInput>({ name: '', quantity: 1, unit: 'count', expiryDate: null });
+  const [allergies, setAllergies] = useState('');
+  const [preferredItems, setPreferredItems] = useState('');
 
   const inventory = useQuery({
     queryKey: ['inventory'],
@@ -17,8 +19,8 @@ export function App() {
   });
 
   const suggestions = useQuery({
-    queryKey: ['recipe-suggestions'],
-    queryFn: () => api.get<RecipeSuggestion[]>('/api/recipes/suggestions'),
+    queryKey: ['recipe-suggestions', allergies, preferredItems],
+    queryFn: () => api.get<RecipeSuggestion[]>(`/api/recipes/suggestions${buildPreferenceQuery(allergies, preferredItems)}`),
   });
 
   const sessions = useQuery({
@@ -59,6 +61,16 @@ export function App() {
     return inventory.data?.filter((item) => item.expiryDate && new Date(`${item.expiryDate}T00:00:00`) <= soon).length ?? 0;
   }, [inventory.data]);
 
+  const donationCandidates = useMemo(() => {
+    const recipeMatchedNames = new Set(
+      suggestions.data?.flatMap((recipe) => recipe.usesIngredients.map((ingredient) => ingredient.toLowerCase())) ?? [],
+    );
+
+    return inventory.data?.filter((item) => item.quantity > 0 && !recipeMatchedNames.has(item.name.toLowerCase())) ?? [];
+  }, [inventory.data, suggestions.data]);
+
+  const lastSession = sessions.data?.[0];
+
   const submitInventory = (event: FormEvent) => {
     event.preventDefault();
     createItem.mutate({
@@ -74,7 +86,10 @@ export function App() {
       <header className="topbar">
         <div>
           <p className="eyebrow">TrueSight V1</p>
-          <h1>Fridge inventory that cooks itself down.</h1>
+          <h1><span>FridgeWise</span> turns tonight's fridge into a plan.</h1>
+          <p className="hero-copy">
+            Personalized recipes for tired weeknights, family meals, and cuisine discovery, with unused expiring food flagged for donation.
+          </p>
         </div>
         <div className="status-pill">{inventory.data?.length ?? 0} items</div>
       </header>
@@ -89,6 +104,25 @@ export function App() {
         <section className="panel inventory-panel">
           <div className="panel-heading">
             <h2>Inventory</h2>
+          </div>
+
+          <div className="preference-panel">
+            <label>
+              <span><ShieldAlert size={16} /> Allergies</span>
+              <input
+                placeholder="peanuts, dairy"
+                value={allergies}
+                onChange={(event) => setAllergies(event.target.value)}
+              />
+            </label>
+            <label>
+              <span><Sparkles size={16} /> Preferred items</span>
+              <input
+                placeholder="chicken, spinach"
+                value={preferredItems}
+                onChange={(event) => setPreferredItems(event.target.value)}
+              />
+            </label>
           </div>
 
           <form className="item-form" onSubmit={submitInventory}>
@@ -151,6 +185,33 @@ export function App() {
         <section className="panel recipe-panel">
           <div className="panel-heading">
             <h2>Recipe Suggestions</h2>
+            <button
+              className="refresh-action"
+              type="button"
+              onClick={() => suggestions.refetch()}
+              disabled={suggestions.isFetching}
+            >
+              <RefreshCw className={suggestions.isFetching ? 'spin' : ''} size={17} />
+              Refresh
+            </button>
+          </div>
+          <div className="food-bank-callout">
+            <div className="food-bank-icon">
+              <HeartHandshake size={22} />
+            </div>
+            <div>
+              <h3>Cook what fits. Donate what does not.</h3>
+              <p>
+                Remaining items that do not match a current recipe can be routed toward a food bank, turning surplus into community meals instead of waste.
+              </p>
+              {donationCandidates.length > 0 ? (
+                <div className="donation-list">
+                  {donationCandidates.slice(0, 5).map((item) => (
+                    <span key={item.id}>{item.name}</span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
           <div className="recipe-list">
             {suggestions.data?.map((recipe) => (
@@ -176,6 +237,9 @@ export function App() {
                   {recipe.usesIngredients.map((ingredient) => (
                     <span className="ingredient-chip" key={ingredient}>{ingredient}</span>
                   ))}
+                  {recipe.missingIngredients.map((ingredient) => (
+                    <span className="ingredient-chip missing" key={ingredient}>{ingredient} missing</span>
+                  ))}
                 </div>
                 <button
                   className="cook-action"
@@ -190,6 +254,22 @@ export function App() {
           </div>
         </section>
       </div>
+
+      {lastSession ? (
+        <section className="recent-session" aria-label="Recently cooked recipe">
+          <div>
+            <p className="eyebrow">Inventory updated</p>
+            <h2>{lastSession.recipeName}</h2>
+          </div>
+          <div className="session-lines">
+            {lastSession.lines.map((line) => (
+              <span key={`${lastSession.id}-${line.ingredientName}`}>
+                {line.ingredientName}: -{formatQuantity(line.quantityDeducted)} {line.unit}
+              </span>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {createItem.error || acceptRecipe.error ? (
         <div className="toast" role="alert">{((createItem.error ?? acceptRecipe.error) as Error).message}</div>
@@ -226,4 +306,17 @@ function formatDate(value: string) {
 
 function formatQuantity(value: number) {
   return new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(value);
+}
+
+function buildPreferenceQuery(allergies: string, preferredItems: string) {
+  const params = new URLSearchParams();
+  if (allergies.trim()) {
+    params.set('allergies', allergies);
+  }
+  if (preferredItems.trim()) {
+    params.set('preferred', preferredItems);
+  }
+
+  const query = params.toString();
+  return query ? `?${query}` : '';
 }
