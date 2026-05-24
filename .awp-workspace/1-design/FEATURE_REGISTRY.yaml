@@ -43,3 +43,8 @@ features:
     title: "Ingredient catalog"
     components: [backend, frontend]
     created_on: "2026-05-24"
+
+  - id: FEAT-SHP-001
+    title: "Shopping list and main shell navigation"
+    components: [backend, frontend]
+    created_on: "2026-05-24"

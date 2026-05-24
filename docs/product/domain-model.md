@@ -26,6 +26,15 @@ When a user accepts a recipe — triggers inventory deduction.
 
 - selected recipe, serving multiplier, timestamp
 
+### ShoppingListItem (V1.1 — [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md))
+
+A user's planned grocery line — not yet in the fridge.
+
+- `name`, `normalizedName`, quantity, unit, `createdAt`
+- optional `sourceRecipeId` when added from a recipe gap
+- **Move to In Stock:** merges into `InventoryItem` (same name + unit rules), then row is deleted
+- **Not in V1 core schema** until V1.1 build ships
+
 ## Integration boundary
 
 ### RecipeProvider (adapter, not persisted)

@@ -109,6 +109,7 @@ These are **decided in docs**; do not re-litigate here unless changing an ADR.
 | OQ-053 | Catalog grows **organically** — add/upsert catalog entry when user adds an ingredient to inventory; no static seed file or external import for V1 | [FEAT-CAT-001](../design/features/FEAT-CAT-001-ingredient-catalog.md) | 2026-05-24 |
 | OQ-054 | Inventory add uses **typeahead/AJAX search** against catalog as user types; pick existing entry (FK) or submit a new name (creates catalog row per OQ-053) | [FEAT-CAT-001](../design/features/FEAT-CAT-001-ingredient-catalog.md) | 2026-05-24 |
 | OQ-055 | **No catalog delete/retire in V1** — append-only; admin/merge tooling deferred | [FEAT-CAT-001](../design/features/FEAT-CAT-001-ingredient-catalog.md) | 2026-05-24 |
+| OQ-056 | **Optional expiry on Move to In Stock** — inline date when user initiates move; null if skipped | [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) | 2026-05-24 |
 | OQ-007 | **xUnit** + `WebApplicationFactory` + in-memory SQLite — light V1 stack; document in `backend/README`; note room to improve (file DB, NUnit, coverage gates) later | `TrueSight.Api.Tests/`, [backend/README.md](../../backend/README.md) | 2026-05-24 |
 | OQ-052 | **Light V1 verify:** `make backend-build` + `dotnet test backend/MyApp.sln` + `make frontend-build` | [backend/README.md](../../backend/README.md), [backend/AGENTS.md](../../backend/AGENTS.md) | 2026-05-24 |
 | OQ-012 | **Tailwind CSS** for V1 styling (migrate from plain `styles.css`) | `frontend/` | 2026-05-24 |

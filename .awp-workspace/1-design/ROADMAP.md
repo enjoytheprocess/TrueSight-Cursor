@@ -7,6 +7,18 @@ _Active capabilities. Move completed/parked capabilities to `archive/ROADMAP.yam
 
 ---
 
+### CAP-V1-SHOP · **V1.1 — shopping list, In Stock | Shopping List tabs, recipe pager**
+
+| Target Window | Status | Owner | Depends On |
+| --- | --- | --- | --- |
+| TBD | `parked` | unassigned | CAP-V1-CORE |
+
+**Feature IDs:** FEAT-SHP-001
+
+> P4 — spec drafted; build deferred behind V2 fridge-photo mockup/design (FEAT-REC-002).
+
+---
+
 ### CAP-V1-EXT · **V1 extension — ingredient catalog, inventory linkage, removes TMP-002**
 
 | Target Window | Status | Owner | Depends On |

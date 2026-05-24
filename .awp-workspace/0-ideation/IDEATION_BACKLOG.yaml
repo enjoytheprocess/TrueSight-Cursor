@@ -124,3 +124,18 @@ ideas:
       decision: none
       reason: ""
       promotion_target: ""
+
+  - id: IDEA-011
+    title: "Shopping list"
+    status: open
+    date: "2026-05-24"
+    components: [backend, frontend]
+    summary: "P4 parked — spec drafted; build deferred behind V2 fridge-photo mockup."
+    discussion: |
+      - See docs/product/ideation.md#idea-011-shopping-list
+      - Spec: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
+      - CAP-V1-SHOP status parked in ROADMAP.yaml
+    outcome:
+      decision: none
+      reason: ""
+      promotion_target: CAP-V1-SHOP

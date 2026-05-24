@@ -86,3 +86,17 @@
 **Test links:** —
 
 > Design queued — next extension after V1 core sync.
+
+---
+
+### FEAT-SHP-001
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md | 2026-05-24 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md, frontend/src/features/app/MainApp.tsx  
+**Test links:** —
+
+> P4 parked — spec draft retained; build deferred behind FEAT-REC-002 photo design.

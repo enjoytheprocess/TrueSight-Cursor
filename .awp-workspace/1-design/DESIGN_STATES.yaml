@@ -31,3 +31,15 @@ features:
     decision_links: []
     blocking_questions: "spec AC checkboxes unchecked — P3 post-V1"
     notes: "OQ-053–055 closed; V1 core synced — next extension slice."
+
+  - feature_id: FEAT-SHP-001
+    title: "Shopping list and main shell navigation"
+    design_state: spec_draft
+    owner: unassigned
+    last_updated: "2026-05-24"
+    linked_idea: IDEA-011
+    linked_tasks: []
+    primary_design_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
+    decision_links: []
+    blocking_questions: none
+    notes: "P4 parked — build deferred behind V2 photo mockup; spec retained for when CAP-V1-SHOP un-parks."

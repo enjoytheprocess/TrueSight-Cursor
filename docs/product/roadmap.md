@@ -17,12 +17,18 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 
 | # | Capability | Notes |
 |---|------------|--------|
-| 4 | Fridge photo recognition | Upload photo → vision service → detected items → **user confirms/edits** → inventory |
+| 5 | Fridge photo recognition | Upload photo → vision service → detected items → **user confirms/edits** → inventory |
 
 ## Explicit non-goals (MVP)
 
 - **Native mobile app** (iOS/Android store) — deferred until web MVP proves usage.
 - Charity/org-specific inventory flows — ideation only ([IDEA-007](ideation.md#idea-007-charity--food-bank-persona)).
+
+## Parked / lower priority
+
+| Capability | Priority | Notes |
+|------------|----------|--------|
+| Shopping list + tab shell (`CAP-V1-SHOP`) | P4 | Spec: [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md). **Deferred** behind V2 fridge-photo design/mockup. |
 
 ## Not on this roadmap
 

@@ -22,6 +22,7 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 | IDEA-008 | Receipt photo → inventory list | Smart input | open |
 | IDEA-009 | PWA install + offline shell | Platform | open |
 | IDEA-010 | Firebase-first stack (alternative) | Architecture | parked |
+| IDEA-011 | Shopping list | Inventory & UX | open (P4 parked) |
 
 ---
 
@@ -82,7 +83,21 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 
 ---
 
-## Inventory
+## Inventory & UX
+
+### IDEA-011: Shopping list
+
+**Status:** open (P4 parked — build deferred behind V2 photo mockup)  
+**Summary:** **In Stock** \| **Shopping List** tabs; add what you have vs what you will buy; **Move to In Stock** after purchase; recipe **pager** below the lists.
+
+**Discussion**
+
+- Supports use case #1 ([use-cases.md](use-cases.md) — at the market).
+- Spec drafted: [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md); `CAP-V1-SHOP` parked in AWP roadmap until fridge-photo design advances.
+
+**Outcome:** —
+
+---
 
 ### IDEA-006: Expiry proximity warnings
 

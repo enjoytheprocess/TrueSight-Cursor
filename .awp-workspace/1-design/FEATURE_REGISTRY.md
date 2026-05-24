@@ -10,3 +10,4 @@
 | FEAT-REC-002 | Fridge photo recognition (V2) | backend | 2026-05-23 |
 | FEAT-AUTH-001 | Demo login screen (temporary) | frontend | 2026-05-24 |
 | FEAT-CAT-001 | Ingredient catalog | backend, frontend | 2026-05-24 |
+| FEAT-SHP-001 | Shopping list and main shell navigation | backend, frontend | 2026-05-24 |

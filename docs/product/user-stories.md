@@ -44,4 +44,6 @@ Tracked in [ideation.md](ideation.md) (IDEA-001 … IDEA-010). Examples:
 - As a user, I can set dietary restrictions, cooking skill level, and kitchen equipment *(IDEA-003, IDEA-004)*
 - As a user, I can photograph a receipt and get a suggested inventory list *(IDEA-008)*
 
+- As a user, I can switch between **In Stock** and **Shopping List**, move purchased items into stock, and use a recipe pager *(IDEA-011 — P4 parked; deferred behind V2 photo design)*
+
 Promote to this file under V1/V2 only after the idea is on the roadmap.

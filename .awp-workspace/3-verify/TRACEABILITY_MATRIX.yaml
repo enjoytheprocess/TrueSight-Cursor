@@ -93,3 +93,15 @@ features:
       - docs/product/domain-model.md
     test_links: []
     notes: "Design queued — next extension after V1 core sync."
+
+  - id: FEAT-SHP-001
+    spec_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
+    last_synced: "2026-05-24"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links:
+      - docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
+      - frontend/src/features/app/MainApp.tsx
+    test_links: []
+    notes: "P4 parked — spec draft retained; build deferred behind FEAT-REC-002 photo design."

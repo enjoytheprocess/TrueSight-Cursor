@@ -7,6 +7,20 @@ Cross-cutting UX guidance for the **mobile-first web** client. Feature-specific 
 - Same core flows on **phone and desktop** (responsive layout, touch-friendly targets on small screens).
 - Camera capture for V2 uses standard web APIs ([ADR-20260523-01](../decisions/ADR-20260523-01-delivery-model-pwa-web.md)).
 
+## Main shell (V1.1)
+
+Per [FEAT-SHP-001](features/FEAT-SHP-001-shopping-list-and-main-shell.md):
+
+| Area | Pattern |
+|------|---------|
+| **Tabs** | **In Stock** \| **Shopping List** |
+| **Layout** | Single column: add form → item list → recipe **pager** (not a side-by-side grid) |
+| **In Stock** | Add includes expiry; rows have **Delete** |
+| **Shopping List** | Add without expiry; rows have **Move to In Stock** (+ optional expiry at move); secondary delete |
+| **Recipes** | One card at a time; previous/next and position indicator |
+
+Do not add a third tab or third panel for recipes.
+
 ## Inventory list and detail
 
 Each inventory row or card should surface, at a glance:
