@@ -15,11 +15,15 @@ See [docs/product/open-questions.md](../docs/product/open-questions.md) for futu
 ## Structure
 
 ```text
+public/
+  about.html     # Team About page → /about.html
 src/
   api/           # HTTP client + interim user id (TMP-001)
   features/      # inventory + recipes types/formatting
   App.tsx        # V1 inventory and recipe suggestion screens
 ```
+
+The main app footer links to `/about.html`. The About page logo and footer link back to `/`.
 
 ## Identity (V1 interim)
 

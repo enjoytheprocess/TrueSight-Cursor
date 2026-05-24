@@ -425,6 +425,12 @@ export function MainApp() {
             </>
           )}
         </section>
+
+        <footer className="site-footer">
+          <a className="site-footer-link" href="/about.html">
+            About Fridge Chef
+          </a>
+        </footer>
       </div>
 
       {fridgePhotoOpen ? (

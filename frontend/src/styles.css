@@ -81,6 +81,25 @@ h1 {
   gap: 14px;
 }
 
+.site-footer {
+  margin-top: 8px;
+  padding: 16px 0 8px;
+  border-top: 1px solid #d9dfd0;
+  text-align: center;
+}
+
+.site-footer-link {
+  color: #55715d;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-footer-link:hover {
+  color: #162016;
+  text-decoration: underline;
+}
+
 .main-column .topbar {
   display: block;
   max-width: none;

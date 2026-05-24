@@ -2,6 +2,28 @@
 
 Full-stack application (ASP.NET Core backend, React frontend). See [`cursor.md`](cursor.md) for stack overview.
 
+## The Problem
+
+It starts with something small and daily: you get home after a long day, open the fridge, stare at it for two minutes, and still end up ordering takeout — not because the fridge is empty, but because your brain is. You have eggs, half a pepper, some leftover rice, and things you bought with good intentions three days ago. But turning that into an actual meal, right now, when you're tired? That's where the idea dies.
+
+Then Thursday comes. You open the fridge again and find that pepper has turned. The rice is gone. The eggs made it — barely. You throw things away, feel quietly guilty about it, and do the whole thing again next week.
+
+Wasted food is one of those things that bothers you every single time and yet keeps happening — not because you don't care, but because there was never a system to stop it. Globally, roughly a third of all food produced never gets eaten. Most of it starts exactly like this: in someone's fridge, with the best of intentions.
+
+## The Mission
+
+Food should not be thrown away. Not when people are hungry. Not when the ingredients were already paid for, already brought home, already full of potential. FridgeChef exists to close that gap — between what sits in your fridge and what ends up on your table or in someone else's hands.
+
+## The Solution
+
+FridgeChef is a smart kitchen companion that transforms your existing inventory into meal possibilities. Log what you have — or simply photograph your fridge — and instantly receive personalized recipe suggestions tailored to your family's dietary needs, cuisine preferences, and cooking ability. A family that always cooks the same five dishes can suddenly discover they already have everything needed for a Mediterranean spread or a Japanese stir-fry — they just never knew it.
+
+But FridgeChef goes further than recipes. When ingredients are approaching their expiry and won't make it into a meal in time, the app doesn't just flag them — it acts. It connects you with local food banks, automates the donation request, and turns what would have been a guilty trip to the bin into a contribution to someone who needs it. No food gets thrown. It either feeds your family or feeds someone else's.
+
+## Origin Story
+
+The idea for FridgeChef came from one founder's experience working with nonprofits, where food bank users sometimes received unfamiliar ingredients and were unsure how to cook with them. It showed us that the challenge is not always having food available — it is knowing how to turn that food into a meal.
+
 ## Libraries and tools
 
 ### Application stack
