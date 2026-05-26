@@ -56,7 +56,7 @@ features:
 
   - id: FEAT-REC-002
     spec_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
-    last_synced: "2026-05-24"
+    last_synced: "2026-05-26"
     drift_status: aligned
     owner: unassigned
     task_ids:
@@ -70,7 +70,7 @@ features:
     test_links:
       - frontend/src/App.test.tsx
       - frontend/src/features/fridge-photo/saveDetectedItems.test.ts
-    notes: "Phase A mockup admitted — preset photo + stub review UI; production Recognition slice TBD."
+    notes: "Sync 2026-05-26 — BUILD-REC-002-MOCKUP done; production Recognition slice TBD."
 
   - id: FEAT-AUTH-001
     spec_link: docs/design/features/FEAT-AUTH-001-demo-login-screen.md
@@ -138,9 +138,7 @@ features:
       - backend/TrueSight.Api.Tests/TrueSightDbInitializerTests.cs
       - frontend/src/App.test.tsx
       - frontend/src/features/recipes/RecipePager.test.tsx
-    notes: >
-      Aligned 2026-05-26 — BUILD-SHP-004 accepted: shell-workspace two-column layout, shopping-tab
-      persistence, centered tagline (OQ-057). BUILD-SHP-001–003 still awaiting_human_review.
+    notes: "Sync 2026-05-26 — BUILD-SHP-001–004 done; CAP-V1-SHOP completed."
 
   - id: FEAT-SEC-001
     spec_link: docs/design/features/FEAT-SEC-001-production-security-baseline.md

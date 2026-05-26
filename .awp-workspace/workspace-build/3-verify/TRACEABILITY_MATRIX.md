@@ -51,13 +51,13 @@
 
 | Spec | Last Synced | Drift Status | Owner |
 | --- | --- | --- | --- |
-| docs/design/features/FEAT-REC-002-fridge-photo-recognition.md | 2026-05-24 | `aligned` | unassigned |
+| docs/design/features/FEAT-REC-002-fridge-photo-recognition.md | 2026-05-26 | `aligned` | unassigned |
 
 **Task IDs:** BUILD-REC-002-MOCKUP  
 **Code links:** frontend/public/mockups/fridge-preset.jpg, frontend/src/features/app/MainApp.tsx, frontend/src/features/fridge-photo/FridgePhotoMockupOverlay.tsx, frontend/src/features/fridge-photo/stubDetections.ts, frontend/src/features/fridge-photo/saveDetectedItems.ts  
 **Test links:** frontend/src/App.test.tsx, frontend/src/features/fridge-photo/saveDetectedItems.test.ts
 
-> Phase A mockup admitted — preset photo + stub review UI; production Recognition slice TBD.
+> Sync 2026-05-26 — BUILD-REC-002-MOCKUP done; production Recognition slice TBD.
 
 ---
 
@@ -113,8 +113,7 @@
 **Code links:** backend/TrueSight.Api/Features/ShoppingList, backend/TrueSight.Api/Infrastructure/Data/TrueSightDbInitializer.cs, frontend/src/features/app/MainApp.tsx, frontend/src/styles.css, frontend/src/features/shopping-list, frontend/src/features/shopping-photo, frontend/src/features/recipes/RecipePager.tsx, frontend/src/features/recipes/RecipeCard.tsx, frontend/public/mockups/shopping-preset.png  
 **Test links:** backend/TrueSight.Api.Tests/ShoppingListEndpointsTests.cs, backend/TrueSight.Api.Tests/TrueSightDbInitializerTests.cs, frontend/src/App.test.tsx, frontend/src/features/recipes/RecipePager.test.tsx
 
-> Aligned 2026-05-26 — BUILD-SHP-004 accepted: shell-workspace two-column layout, shopping-tab persistence, centered tagline (OQ-057). BUILD-SHP-001–003 still awaiting_human_review.
-
+> Sync 2026-05-26 — BUILD-SHP-001–004 done; CAP-V1-SHOP completed.
 
 ---
 

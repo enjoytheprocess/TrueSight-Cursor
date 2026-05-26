@@ -8,16 +8,6 @@
 schema_version: 2
 
 capabilities:
-  - id: CAP-V1-SHOP
-    target_window: TBD
-    objective: "V1.1 — shopping list, In Stock | Shopping List tabs, recipe pager"
-    feature_ids:
-      - FEAT-SHP-001
-    depends_on: CAP-V1-CORE
-    status: active
-    owner: unassigned
-    notes: "Sync 2026-05-26 — IDEA-011 archived; BUILD-SHP-001–003 awaiting_human_review; BUILD-SHP-004 todo."
-
   - id: CAP-V1-EXT
     target_window: TBD
     objective: "V1 extension — ingredient catalog, inventory linkage, removes TMP-002"
@@ -36,7 +26,7 @@ capabilities:
     depends_on: CAP-V1-CORE
     status: active
     owner: unassigned
-    notes: "Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred."
+    notes: "Sync 2026-05-26 — Phase A mockup done; production vision OQ-005/006 deferred."
 
   - id: CAP-V1-PROFILE
     target_window: TBD

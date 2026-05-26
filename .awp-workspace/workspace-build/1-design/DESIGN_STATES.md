@@ -11,14 +11,15 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `ready` | unassigned | 2026-05-24 |
+| `ready` | unassigned | 2026-05-26 |
 
-**Linked idea:** none · **Tasks:** BUILD-REC-002-MOCKUP  
+**Linked idea:** none · **Tasks:**   
 **Spec:** `docs/design/features/FEAT-REC-002-fridge-photo-recognition.md`  
 **Decisions:** docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md, docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
 **Blocking questions:** none
 
-> Mockup build admitted (BUILD-REC-002-MOCKUP). Production vision OQ-005/006 deferred.
+> Sync 2026-05-26 — BUILD-REC-002-MOCKUP done (Phase A). Production vision OQ-005/006 deferred.
+
 
 ---
 
@@ -215,19 +216,3 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 **Blocking questions:** Build vs persona-only decision
 
 > design_priority P4 — CAP-V2-ORG; not consumer MVP
-
----
-
-### FEAT-SHP-001 · **Shopping list and main shell navigation**
-
-| Design State | Owner | Last Updated |
-| --- | --- | --- |
-| `ready` | unassigned | 2026-05-26 |
-
-**Linked idea:** IDEA-011 (archived → CAP-V1-SHOP) · **Tasks:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003, BUILD-SHP-004  
-**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
-**Decisions:**   
-**Blocking questions:** none
-
-> Design revision 2026-05-26 (DI-017, DI-018): two-column shell >840px for both tabs; stay on Shopping List after move confirm. BUILD-SHP-001–003 awaiting acceptance; BUILD-SHP-004 admitted for frontend follow-on.
-

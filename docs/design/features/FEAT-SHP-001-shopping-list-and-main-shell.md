@@ -1,6 +1,6 @@
 # FEAT-SHP-001: Shopping list and main shell navigation
 
-**Status:** design revision (2026-05-26) — core shipped; **BUILD-SHP-004** for responsive layout + shopping-tab persistence  
+**Status:** delivered (2026-05-26) — Sync closed CAP-V1-SHOP; BUILD-SHP-001–004 archived done  
 **Priority:** P4 (V1.1)  
 **Module:** Inventory | Recipes | Shell  
 **Related AWP feature_id:** `FEAT-SHP-001`  

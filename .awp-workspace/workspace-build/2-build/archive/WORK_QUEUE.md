@@ -166,3 +166,83 @@ _Completed tasks. Active tasks are in `WORK_QUEUE.yaml`._
 **Validation:** `dotnet test 29; npm test 28; TMP-001 closed; cookie auth`
 
 > Sync 2026-05-24 — accepted; ADR-20260524-02. App.tsx no cold-start login gate (DI-016).
+
+---
+
+### BUILD-SHP-001 · **Implement shopping list API and schema**
+
+| Feature | Component | Priority | Phase | Status | Mode | Capability |
+| --- | --- | --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | backend | P4 | sync | `done` | sequential | CAP-V1-SHOP |
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** —  
+**Owner:** unassigned · **Lock:** none · **Target:** TBD  
+**Build deps:** BUILD-INV-001 · **Design deps:** none  
+**Validation:** `dotnet test — 18 passed; GET/POST/DELETE /api/shopping-list, move-to-inventory`
+
+> Sync 2026-05-26 — accepted; CAP-V1-SHOP closed.
+
+---
+
+### BUILD-SHP-002 · **Implement shopping list tab shell and recipe pager**
+
+| Feature | Component | Priority | Phase | Status | Mode | Capability |
+| --- | --- | --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | frontend | P4 | sync | `done` | sequential | CAP-V1-SHOP |
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
+**Owner:** unassigned · **Lock:** none · **Target:** TBD  
+**Build deps:** BUILD-SHP-001 · **Design deps:** none  
+**Validation:** `npm run build && npm run test (29 passed); manual: tabs, pager, move/delete icons`
+
+> Sync 2026-05-26 — accepted.
+
+---
+
+### BUILD-SHP-003 · **Recipe add-to-shopping-list and shopping photo mockup**
+
+| Feature | Component | Priority | Phase | Status | Mode | Capability |
+| --- | --- | --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | frontend | P4 | sync | `done` | sequential | CAP-V1-SHOP |
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
+**Owner:** unassigned · **Lock:** none · **Target:** TBD  
+**Build deps:** BUILD-SHP-001 · **Design deps:** none  
+**Validation:** `npm run test; manual: cart icons, ALL add-missing, shopping photo preview flow`
+
+> Sync 2026-05-26 — accepted.
+
+---
+
+### BUILD-SHP-004 · **Responsive two-column shell and shopping-tab persistence**
+
+| Feature | Component | Priority | Phase | Status | Mode | Capability |
+| --- | --- | --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | frontend | P4 | sync | `done` | sequential | CAP-V1-SHOP |
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
+**Owner:** unassigned · **Lock:** none · **Target:** TBD  
+**Build deps:** BUILD-SHP-002 · **Design deps:** none  
+**Validation:** `npm run build && npm run test (30 passed); manual: >840px two-column on both tabs; move confirm stays on Shopping List`
+
+> Sync 2026-05-26 — accepted; FM-008 resolved in-loop.
+
+---
+
+### BUILD-REC-002-MOCKUP · **Implement fridge photo UI mockup (demo scan)**
+
+| Feature | Component | Priority | Phase | Status | Mode | Capability |
+| --- | --- | --- | --- | --- | --- | --- |
+| FEAT-REC-002 | frontend | P2 | sync | `done` | parallel | CAP-V2-VISION |
+
+**Spec:** `docs/design/features/FEAT-REC-002-fridge-photo-recognition.md`  
+**Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md, docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md  
+**Owner:** unassigned · **Lock:** none · **Target:** TBD  
+**Build deps:** none · **Design deps:** none  
+**Validation:** `npm run build && npm run test (30 passed); manual: demo flow + mockup AC in FEAT-REC-002`
+
+> Sync 2026-05-26 — Phase A mockup accepted; production vision remains TBD.

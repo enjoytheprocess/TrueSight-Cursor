@@ -9,16 +9,16 @@ features:
     title: "Fridge photo recognition (V2)"
     design_state: ready
     owner: unassigned
-    last_updated: "2026-05-24"
+    last_updated: "2026-05-26"
     linked_idea: none
-    linked_tasks:
-      - BUILD-REC-002-MOCKUP
+    linked_tasks: []
     primary_design_link: docs/design/features/FEAT-REC-002-fridge-photo-recognition.md
     decision_links:
       - docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
     blocking_questions: none
-    notes: "Mockup build admitted (BUILD-REC-002-MOCKUP). Production vision OQ-005/006 deferred."
+    notes: >
+      Sync 2026-05-26 — BUILD-REC-002-MOCKUP done (Phase A). Production vision OQ-005/006 deferred.
 
   - feature_id: FEAT-CAT-001
     title: "Ingredient catalog"
@@ -180,22 +180,3 @@ features:
     decision_links: []
     blocking_questions: "Build vs persona-only decision"
     notes: "design_priority P4 — CAP-V2-ORG; not consumer MVP"
-
-  - feature_id: FEAT-SHP-001
-    title: "Shopping list and main shell navigation"
-    design_state: ready
-    owner: unassigned
-    last_updated: "2026-05-26"
-    linked_idea: "IDEA-011 (archived → CAP-V1-SHOP)"
-    linked_tasks:
-      - BUILD-SHP-001
-      - BUILD-SHP-002
-      - BUILD-SHP-003
-      - BUILD-SHP-004
-    primary_design_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
-    decision_links: []
-    blocking_questions: none
-    notes: >
-      Design revision 2026-05-26 (DI-017, DI-018): two-column shell >840px for both tabs;
-      stay on Shopping List after move confirm. BUILD-SHP-001–003 awaiting acceptance;
-      BUILD-SHP-004 admitted for frontend follow-on.

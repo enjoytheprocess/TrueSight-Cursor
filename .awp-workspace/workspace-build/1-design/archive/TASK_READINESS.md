@@ -205,3 +205,103 @@ _Completed tasks. Active tasks are in `TASK_READINESS.yaml`._
 **Decisions:** docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md, docs/design/decisions/ADR-20260524-02-cookie-authentication.md
 
 > Sync 2026-05-24 — done; TMP-001 closed.
+
+---
+
+### BUILD-SHP-001 · **Implement shopping list API and schema**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | backend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 1 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**QRs:**   
+**Decisions:** 
+
+> Sync 2026-05-26 — done.
+
+---
+
+### BUILD-SHP-002 · **Implement shopping list tab shell and recipe pager**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | frontend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 1 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+
+> Sync 2026-05-26 — done.
+
+---
+
+### BUILD-SHP-003 · **Recipe add-to-shopping-list and shopping photo mockup**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | frontend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 1 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+
+> Sync 2026-05-26 — done.
+
+---
+
+### BUILD-SHP-004 · **Responsive two-column shell and shopping-tab persistence**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | frontend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 1 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+
+> Sync 2026-05-26 — done.
+
+---
+
+### BUILD-REC-002-MOCKUP · **Implement fridge photo UI mockup (demo scan)**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-REC-002 | frontend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 1 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-REC-002-fridge-photo-recognition.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md, docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
+
+> Sync 2026-05-26 — done (Phase A only).

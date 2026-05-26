@@ -214,3 +214,103 @@ tasks:
       - docs/design/decisions/ADR-20260524-02-cookie-authentication.md
     notes: "Sync 2026-05-24 — done; TMP-001 closed."
 
+  - id: BUILD-SHP-001
+    feature_id: FEAT-SHP-001
+    title: "Implement shopping list API and schema"
+    component: backend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 1
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links: []
+    notes: "Sync 2026-05-26 — done."
+
+  - id: BUILD-SHP-002
+    feature_id: FEAT-SHP-001
+    title: "Implement shopping list tab shell and recipe pager"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 1
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    notes: "Sync 2026-05-26 — done."
+
+  - id: BUILD-SHP-003
+    feature_id: FEAT-SHP-001
+    title: "Recipe add-to-shopping-list and shopping photo mockup"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 1
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    notes: "Sync 2026-05-26 — done."
+
+  - id: BUILD-SHP-004
+    feature_id: FEAT-SHP-001
+    title: "Responsive two-column shell and shopping-tab persistence"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 1
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    notes: "Sync 2026-05-26 — done."
+
+  - id: BUILD-REC-002-MOCKUP
+    feature_id: FEAT-REC-002
+    title: "Implement fridge photo UI mockup (demo scan)"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-REC-002-fridge-photo-recognition.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 1
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+      - docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
+    notes: "Sync 2026-05-26 — done (Phase A only)."
+

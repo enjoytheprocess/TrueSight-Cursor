@@ -94,3 +94,18 @@ _Completed features. Active design triage is in `DESIGN_STATES.yaml`._
 **Blocking questions:** none
 
 > Sync 2026-05-24 — cookie auth; TMP-001 closed; DI-016 (no App login gate).
+
+---
+
+### FEAT-SHP-001 · **Shopping list and main shell navigation**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `complete` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-011 (archived → CAP-V1-SHOP) · **Tasks:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003, BUILD-SHP-004  
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
+**Blocking questions:** none
+
+> Sync 2026-05-26 — CAP-V1-SHOP delivered; BUILD-SHP-001–004 done.

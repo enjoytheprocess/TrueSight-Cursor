@@ -253,3 +253,118 @@ tasks:
     validation: "dotnet test 29; npm test 28; TMP-001 closed; cookie auth"
     notes: "Sync 2026-05-24 — accepted; ADR-20260524-02. App.tsx no cold-start login gate (DI-016)."
 
+  - id: BUILD-SHP-001
+    feature_id: FEAT-SHP-001
+    title: "Implement shopping list API and schema"
+    component: backend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links: []
+    priority: P4
+    phase: sync
+    capability: CAP-V1-SHOP
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: BUILD-INV-001
+    design_dependencies: none
+    validation: "dotnet test — 18 passed; GET/POST/DELETE /api/shopping-list, move-to-inventory"
+    notes: "Sync 2026-05-26 — accepted; CAP-V1-SHOP closed."
+
+  - id: BUILD-SHP-002
+    feature_id: FEAT-SHP-001
+    title: "Implement shopping list tab shell and recipe pager"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    priority: P4
+    phase: sync
+    capability: CAP-V1-SHOP
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: BUILD-SHP-001
+    design_dependencies: none
+    validation: "npm run build && npm run test (29 passed); manual: tabs, pager, move/delete icons"
+    notes: "Sync 2026-05-26 — accepted."
+
+  - id: BUILD-SHP-003
+    feature_id: FEAT-SHP-001
+    title: "Recipe add-to-shopping-list and shopping photo mockup"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    priority: P4
+    phase: sync
+    capability: CAP-V1-SHOP
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: BUILD-SHP-001
+    design_dependencies: none
+    validation: "npm run test; manual: cart icons, ALL add-missing, shopping photo preview flow"
+    notes: "Sync 2026-05-26 — accepted."
+
+  - id: BUILD-SHP-004
+    feature_id: FEAT-SHP-001
+    title: "Responsive two-column shell and shopping-tab persistence"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    priority: P4
+    phase: sync
+    capability: CAP-V1-SHOP
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: BUILD-SHP-002
+    design_dependencies: none
+    validation: "npm run build && npm run test (30 passed); manual: >840px two-column on both tabs; move confirm stays on Shopping List"
+    notes: "Sync 2026-05-26 — accepted; FM-008 resolved in-loop."
+
+  - id: BUILD-REC-002-MOCKUP
+    feature_id: FEAT-REC-002
+    title: "Implement fridge photo UI mockup (demo scan)"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-REC-002-fridge-photo-recognition.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+      - docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md
+    priority: P2
+    phase: sync
+    capability: CAP-V2-VISION
+    target_window: TBD
+    mode: parallel
+    lock_id: none
+    owner: unassigned
+    status: done
+    build_dependencies: none
+    design_dependencies: none
+    validation: "npm run build && npm run test (30 passed); manual: demo flow + mockup AC in FEAT-REC-002"
+    notes: "Sync 2026-05-26 — Phase A mockup accepted; production vision remains TBD."
+

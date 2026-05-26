@@ -95,3 +95,20 @@ features:
       - docs/design/decisions/ADR-20260524-02-cookie-authentication.md
     blocking_questions: none
     notes: "Sync 2026-05-24 — cookie auth; TMP-001 closed; DI-016 (no App login gate)."
+
+  - feature_id: FEAT-SHP-001
+    title: "Shopping list and main shell navigation"
+    design_state: complete
+    owner: unassigned
+    last_updated: "2026-05-26"
+    linked_idea: "IDEA-011 (archived → CAP-V1-SHOP)"
+    linked_tasks:
+      - BUILD-SHP-001
+      - BUILD-SHP-002
+      - BUILD-SHP-003
+      - BUILD-SHP-004
+    primary_design_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    blocking_questions: none
+    notes: "Sync 2026-05-26 — CAP-V1-SHOP delivered; BUILD-SHP-001–004 done."

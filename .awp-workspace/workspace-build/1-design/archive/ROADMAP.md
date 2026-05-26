@@ -28,3 +28,15 @@ _Completed and parked capabilities. Active capabilities are in `ROADMAP.yaml`._
 **Feature IDs:** FEAT-SEC-001, FEAT-AUTH-002
 
 > Sync 2026-05-24 — BUILD-SEC-001–004 + BUILD-AUTH-002 done.
+
+---
+
+### CAP-V1-SHOP · **V1.1 — shopping list, In Stock | Shopping List tabs, recipe pager**
+
+| Target Window | Status | Owner | Depends On |
+| --- | --- | --- | --- |
+| TBD | `completed` | unassigned | CAP-V1-CORE |
+
+**Feature IDs:** FEAT-SHP-001
+
+> Sync 2026-05-26 — BUILD-SHP-001–004 done; FEAT-SHP-001 design complete.
