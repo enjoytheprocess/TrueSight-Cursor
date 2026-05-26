@@ -17,18 +17,18 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 
 | # | Capability | Notes |
 |---|------------|--------|
-| 5 | Fridge photo recognition | **UI mockup first:** camera beside Add → preset photo → stub scan → user edits qty/unit/expiry → save. **Then:** upload → vision service → same review → inventory ([FEAT-REC-002](../design/features/FEAT-REC-002-fridge-photo-recognition.md)) |
+| 5 | Fridge photo recognition | **Phase A mockup delivered 2026-05-26** (preset photo, stub scan, demo labeling). **Production:** upload → vision service → review → inventory ([FEAT-REC-002](../design/features/FEAT-REC-002-fridge-photo-recognition.md)) — OQ-005/006 TBD |
 
 ## Explicit non-goals (MVP)
 
 - **Native mobile app** (iOS/Android store) — deferred until web MVP proves usage.
 - Charity/org-specific inventory flows — ideation only ([IDEA-007](ideation.md#idea-007-charity--food-bank-persona)).
 
-## Phase 1.1 — Shopping list (V1.1) — **implemented 2026-05-24, awaiting acceptance**
+## Phase 1.1 — Shopping list (V1.1) — **delivered 2026-05-26**
 
 | # | Capability | Notes |
 |---|------------|--------|
-| 4 | Shopping list + tab shell (`CAP-V1-SHOP`) | In Stock \| Shopping List tabs, recipe pager, move-to-stock, recipe → cart, shopping photo preview mockup — [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) |
+| 4 | Shopping list + tab shell (`CAP-V1-SHOP`) | In Stock \| Shopping List tabs, recipe pager, move-to-stock, recipe → cart, shopping photo preview, responsive two-column shell (>840px), stay on Shopping List after move — [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) |
 
 ## Phase 1.2 — Profile & settings (V1.2) — **design only (2026-05-26)**
 
@@ -36,7 +36,7 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 |---|------------|--------|
 | 6 | User profile & settings (`CAP-V1-PROFILE`) | Diet/allergies, cuisine/skill/equipment, prioritize expiring toggle, per-item **use first** — [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md). **Not build-admitted.** Promoted from IDEA-002/003/004/012. |
 
-**Sequencing:** After V1.1 shopping acceptance; profile persistence pairs with real auth ([FEAT-AUTH-002](../design/features/FEAT-AUTH-002-real-authentication.md)) for production; demo may use `X-TrueSight-User` first.
+**Sequencing:** V1.1 shopping delivered; profile persistence pairs with real auth ([FEAT-AUTH-002](../design/features/FEAT-AUTH-002-real-authentication.md)) for production; demo may use `X-TrueSight-User` first.
 
 ## Phase 1.3 — Polish (V1.3) — **design only**
 
