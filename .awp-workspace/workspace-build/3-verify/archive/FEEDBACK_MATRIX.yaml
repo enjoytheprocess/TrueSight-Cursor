@@ -118,3 +118,21 @@ entries:
     recorded_at: "2026-05-24"
     recorded_by: human_reviewer
     resolution_note: "MainApp item-form — visible field labels; quantity and unit share one row."
+
+  - id: FM-008
+    task_id: BUILD-SHP-004
+    feature_id: FEAT-SHP-001
+    type: observation
+    severity: low
+    status: resolved
+    summary: "Tab headline (top h1) does not use full shell width on desktop"
+    detail: >
+      After the two-column shell widens (>840px), the header eyebrow + tab headline stay in a
+      narrow column instead of expanding with the window. Likely `h1 { max-width: 680px }` while
+      `.main-column` is now `max-width: 1180px`.
+    diagnosis: "Remove or raise the h1 max-width for wide viewports; align topbar with shell-workspace width"
+    recorded_at: "2026-05-26"
+    recorded_by: human_reviewer
+    resolution_note: >
+      styles.css — full-width centered topbar headline; container-query font sizing and
+      text-wrap balance/pretty to avoid orphan words at max shell width. Human accepted BUILD-SHP-004.

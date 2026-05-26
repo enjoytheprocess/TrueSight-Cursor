@@ -86,7 +86,7 @@ _Active tasks. Move completed tasks (WORK_QUEUE status: done) to `archive/TASK_R
 **QRs:**   
 **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
 
-> Design revision 2026-05-26 (OQ-057). Depends on BUILD-SHP-002 accepted or done for shell baseline.
+> Human accepted 2026-05-26 (acceptance gate). Design revision OQ-057 — responsive shell + shopping-tab persistence.
 
 
 ---

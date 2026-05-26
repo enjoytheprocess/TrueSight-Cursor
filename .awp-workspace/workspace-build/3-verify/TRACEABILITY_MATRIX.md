@@ -107,13 +107,13 @@
 
 | Spec | Last Synced | Drift Status | Owner |
 | --- | --- | --- | --- |
-| docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md | 2026-05-26 | `review_needed` | unassigned |
+| docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md | 2026-05-26 | `aligned` | unassigned |
 
 **Task IDs:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003, BUILD-SHP-004  
-**Code links:** backend/TrueSight.Api/Features/ShoppingList, backend/TrueSight.Api/Infrastructure/Data/TrueSightDbInitializer.cs, frontend/src/features/app/MainApp.tsx, frontend/src/features/shopping-list, frontend/src/features/shopping-photo, frontend/src/features/recipes/RecipePager.tsx, frontend/src/features/recipes/RecipeCard.tsx, frontend/public/mockups/shopping-preset.png  
+**Code links:** backend/TrueSight.Api/Features/ShoppingList, backend/TrueSight.Api/Infrastructure/Data/TrueSightDbInitializer.cs, frontend/src/features/app/MainApp.tsx, frontend/src/styles.css, frontend/src/features/shopping-list, frontend/src/features/shopping-photo, frontend/src/features/recipes/RecipePager.tsx, frontend/src/features/recipes/RecipeCard.tsx, frontend/public/mockups/shopping-preset.png  
 **Test links:** backend/TrueSight.Api.Tests/ShoppingListEndpointsTests.cs, backend/TrueSight.Api.Tests/TrueSightDbInitializerTests.cs, frontend/src/App.test.tsx, frontend/src/features/recipes/RecipePager.test.tsx
 
-> Design 2026-05-26 — drift: single-column shell + auto tab switch on move (MainApp.tsx) vs spec OQ-057 / BUILD-SHP-004. DI-017/DI-018 incorporated in FEAT-SHP-001.
+> Aligned 2026-05-26 — BUILD-SHP-004 accepted: shell-workspace two-column layout, shopping-tab persistence, centered tagline (OQ-057). BUILD-SHP-001–003 still awaiting_human_review.
 
 
 ---

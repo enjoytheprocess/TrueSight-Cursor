@@ -102,11 +102,11 @@ tasks:
     mode: sequential
     lock_id: none
     owner: unassigned
-    status: awaiting_human_review
+    status: accepted
     build_dependencies: BUILD-SHP-002
     design_dependencies: none
     validation: "npm run build && npm run test (30 passed); manual: >840px two-column on both tabs; move confirm stays on Shopping List"
-    notes: "Shipped 2026-05-26 — shell-workspace grid >840px; removed setTab(inStock) on move success."
+    notes: "Accepted 2026-05-26 — shell-workspace grid, shopping-tab persistence, centered tagline polish (FM-008)."
 
   - id: BUILD-REC-002-MOCKUP
     feature_id: FEAT-REC-002

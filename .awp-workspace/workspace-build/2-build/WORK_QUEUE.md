@@ -59,7 +59,7 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 
 | Feature | Component | Priority | Phase | Status | Mode | Capability |
 | --- | --- | --- | --- | --- | --- | --- |
-| FEAT-SHP-001 | frontend | P4 | build | `awaiting_human_review` | sequential | CAP-V1-SHOP |
+| FEAT-SHP-001 | frontend | P4 | build | `accepted` | sequential | CAP-V1-SHOP |
 
 **Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
 **Advisor track:** none · **Advisor status:** not_required · **QRs:** — · **Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
@@ -67,7 +67,7 @@ _Active tasks. Move completed tasks to `archive/WORK_QUEUE.yaml`._
 **Build deps:** BUILD-SHP-002 · **Design deps:** none  
 **Validation:** `npm run build && npm run test (30 passed); manual: >840px two-column on both tabs; move confirm stays on Shopping List`
 
-> Shipped 2026-05-26 — shell-workspace grid >840px; removed setTab(inStock) on move success.
+> Accepted 2026-05-26 — shell-workspace grid, shopping-tab persistence, centered tagline polish (FM-008).
 
 ---
 

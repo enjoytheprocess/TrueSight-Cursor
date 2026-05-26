@@ -116,7 +116,7 @@ features:
   - id: FEAT-SHP-001
     spec_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
     last_synced: "2026-05-26"
-    drift_status: review_needed
+    drift_status: aligned
     owner: unassigned
     task_ids:
       - BUILD-SHP-001
@@ -127,6 +127,7 @@ features:
       - backend/TrueSight.Api/Features/ShoppingList
       - backend/TrueSight.Api/Infrastructure/Data/TrueSightDbInitializer.cs
       - frontend/src/features/app/MainApp.tsx
+      - frontend/src/styles.css
       - frontend/src/features/shopping-list
       - frontend/src/features/shopping-photo
       - frontend/src/features/recipes/RecipePager.tsx
@@ -138,8 +139,8 @@ features:
       - frontend/src/App.test.tsx
       - frontend/src/features/recipes/RecipePager.test.tsx
     notes: >
-      Design 2026-05-26 — drift: single-column shell + auto tab switch on move (MainApp.tsx)
-      vs spec OQ-057 / BUILD-SHP-004. DI-017/DI-018 incorporated in FEAT-SHP-001.
+      Aligned 2026-05-26 — BUILD-SHP-004 accepted: shell-workspace two-column layout, shopping-tab
+      persistence, centered tagline (OQ-057). BUILD-SHP-001–003 still awaiting_human_review.
 
   - id: FEAT-SEC-001
     spec_link: docs/design/features/FEAT-SEC-001-production-security-baseline.md

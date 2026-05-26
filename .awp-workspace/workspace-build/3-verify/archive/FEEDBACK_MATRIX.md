@@ -76,3 +76,15 @@ _Resolved entries. Open entries are in `FEEDBACK_MATRIX.yaml`._
 | BUILD-INV-001 | FEAT-INV-001 | medium |  |  |
 
 **Summary:** Inventory add form: quantity and unit on one row; visible labels or hints for fields
+
+---
+
+### FM-008 · `observation` · `resolved`
+
+| Task | Feature | Severity | Tested By | Date |
+| --- | --- | --- | --- | --- |
+| BUILD-SHP-004 | FEAT-SHP-001 | low |  |  |
+
+**Summary:** Tab headline (top h1) does not use full shell width on desktop
+
+**Diagnosis:** Remove or raise the h1 max-width for wide viewports; align topbar with shell-workspace width

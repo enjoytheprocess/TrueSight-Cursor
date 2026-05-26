@@ -86,7 +86,7 @@ tasks:
     decision_links:
       - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
     notes: >
-      Design revision 2026-05-26 (OQ-057). Depends on BUILD-SHP-002 accepted or done for shell baseline.
+      Human accepted 2026-05-26 (acceptance gate). Design revision OQ-057 — responsive shell + shopping-tab persistence.
 
   - id: BUILD-REC-002-MOCKUP
     feature_id: FEAT-REC-002
