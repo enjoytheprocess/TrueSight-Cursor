@@ -15,7 +15,7 @@ _Active capabilities. Move completed/parked capabilities to `archive/ROADMAP.yam
 
 **Feature IDs:** FEAT-SHP-001
 
-> Sync 2026-05-24 — BUILD-SHP-001/002/003 shipped; awaiting human acceptance gate.
+> Sync 2026-05-26 — IDEA-011 archived; BUILD-SHP-001–003 awaiting_human_review; BUILD-SHP-004 todo.
 
 ---
 

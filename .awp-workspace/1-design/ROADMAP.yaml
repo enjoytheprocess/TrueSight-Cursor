@@ -16,7 +16,7 @@ capabilities:
     depends_on: CAP-V1-CORE
     status: active
     owner: unassigned
-    notes: "Sync 2026-05-24 — BUILD-SHP-001/002/003 shipped; awaiting human acceptance gate."
+    notes: "Sync 2026-05-26 — IDEA-011 archived; BUILD-SHP-001–003 awaiting_human_review; BUILD-SHP-004 todo."
 
   - id: CAP-V1-EXT
     target_window: TBD

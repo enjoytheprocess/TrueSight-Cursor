@@ -6,6 +6,7 @@
   status: open
   date: "YYYY-MM-DD"
   components: [backend]
+  depends_on: [CAP-V1-CORE]
   summary: "One paragraph describing the idea and the problem it addresses."
   discussion: |
     - (record key points in docs/product/ideation.md and here)

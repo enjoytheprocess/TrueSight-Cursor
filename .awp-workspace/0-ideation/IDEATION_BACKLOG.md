@@ -11,63 +11,11 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 | Status | Date | Components |
 | --- | --- | --- |
-| `open` | 2026-05-23 | backend |
+| `open` | 2026-05-23 | backend, frontend |
 
-**Summary:** Let users choose how many people they are cooking for and scale recipe ingredient amounts.
+**Summary:** Default or remembered serving context across recipes (beyond per-card stepper).
 
 **Decision:** `none`  
-**Promotion target:** —
-
----
-
-### IDEA-002 · **Cuisine preferences and discovery mode**
-
-| Status | Date | Components |
-| --- | --- | --- |
-| `open` | 2026-05-23 | backend, frontend |
-
-**Summary:** Filter and browse recipes by cuisine; optional discovery beyond strict inventory match.
-
-**Decision:** `promoted`  
-**Promotion target:** —
-
----
-
-### IDEA-003 · **Dietary restrictions and allergy filtering**
-
-| Status | Date | Components |
-| --- | --- | --- |
-| `open` | 2026-05-23 | backend, frontend |
-
-**Summary:** Global filters for vegan, gluten-free, allergies, etc. on recipe suggestions.
-
-**Decision:** `promoted`  
-**Promotion target:** —
-
----
-
-### IDEA-004 · **Cooking skill level and kitchen equipment**
-
-| Status | Date | Components |
-| --- | --- | --- |
-| `open` | 2026-05-23 | backend, frontend |
-
-**Summary:** Match recipes to skill level and available equipment.
-
-**Decision:** `promoted`  
-**Promotion target:** —
-
----
-
-### IDEA-012 · **Prioritize consumption and use-first items**
-
-| Status | Date | Components |
-| --- | --- | --- |
-| `open` | 2026-05-26 | backend, frontend |
-
-**Summary:** Per-item use-first and profile toggle for expiring-soon recipe ranking.
-
-**Decision:** `promoted`  
 **Promotion target:** —
 
 ---
@@ -89,9 +37,9 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 | Status | Date | Components |
 | --- | --- | --- |
-| `open` | 2026-05-23 | backend |
+| `open` | 2026-05-23 | backend, frontend |
 
-**Summary:** Notify users when inventory items are close to expiry.
+**Summary:** Proactive expiry warnings (banner, notification) beyond list styling.
 
 **Decision:** `none`  
 **Promotion target:** —
@@ -115,7 +63,7 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 | Status | Date | Components |
 | --- | --- | --- |
-| `open` | 2026-05-23 | backend |
+| `open` | 2026-05-23 | backend, frontend |
 
 **Summary:** OCR or vision on receipt photos to suggest inventory line items before user confirms.
 
@@ -128,7 +76,7 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 | Status | Date | Components |
 | --- | --- | --- |
-| `open` | 2026-05-23 | backend |
+| `open` | 2026-05-23 | frontend |
 
 **Summary:** Web app manifest, service worker, and limited offline UX for installation and resilience.
 
@@ -137,13 +85,65 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 ---
 
-### IDEA-011 · **Shopping list**
+### IDEA-013 · **Post-cook adjust and undo deduction**
 
 | Status | Date | Components |
 | --- | --- | --- |
-| `open` | 2026-05-24 | backend, frontend |
+| `open` | 2026-05-26 | backend, frontend |
 
-**Summary:** V1.1 implemented 2026-05-24 — awaiting human acceptance (BUILD-SHP-*).
+**Summary:** After accepting a recipe, let users undo or correct quantities deducted from inventory.
 
-**Decision:** `promoted`  
+**Decision:** `none`  
+**Promotion target:** —
+
+---
+
+### IDEA-014 · **Inventory search and filter**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-26 | frontend |
+
+**Summary:** Search inventory by name and filter by expiring-soon as lists grow.
+
+**Decision:** `none`  
+**Promotion target:** —
+
+---
+
+### IDEA-015 · **Household shared inventory and shopping list**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-26 | backend, frontend |
+
+**Summary:** Light multi-user sharing so partners see the same stock and shopping list.
+
+**Decision:** `none`  
+**Promotion target:** —
+
+---
+
+### IDEA-016 · **Partial ingredient deduction on cook**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-26 | backend, frontend |
+
+**Summary:** When accepting a recipe, deduct less than the full listed amount per ingredient line.
+
+**Decision:** `none`  
+**Promotion target:** —
+
+---
+
+### IDEA-017 · **Discovery browse beyond inventory**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-26 | backend, frontend |
+
+**Summary:** Browse and filter recipes beyond strict in-stock match (remainder of archived IDEA-002).
+
+**Decision:** `none`  
 **Promotion target:** —

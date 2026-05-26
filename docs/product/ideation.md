@@ -2,239 +2,215 @@
 
 Exploratory ideas **not** committed on the [roadmap](roadmap.md). Workflow: [../ideation/README.md](../ideation/README.md).
 
-Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](../../.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml).
+| Register | Path |
+|----------|------|
+| Active (open ideas) | [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](../../.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml) |
+| Archive (promoted / parked) | [`.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml`](../../.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml) |
 
-**Status:** `open` → discuss → `promoted` (enters design/roadmap) | `parked` | `dropped`
+**Status:** `open` → discuss → `promoted` | `parked` | `dropped` → move to **archive** YAML.
 
----
+References in **Depends on** may be `IDEA-*`, `FEAT-*`, or `CAP-*`. See [Dependencies and sequencing](#dependencies-and-sequencing).
 
-## Index
-
-| ID | Title | Theme | Status |
-|----|-------|-------|--------|
-| IDEA-001 | Serving size selector | Recipes & UX | open |
-| IDEA-002 | Cuisine preferences & discovery mode | Recipes & UX | promoted (profile slice) |
-| IDEA-003 | Dietary restrictions & allergy filtering | Profile | promoted |
-| IDEA-004 | Cooking skill level & kitchen equipment | Profile | promoted |
-| IDEA-012 | Prioritize consumption / use-first items | Profile & inventory | promoted |
-| IDEA-005 | Store recommendations (distance, price) | Commerce | open |
-| IDEA-006 | Expiry proximity warnings | Inventory | open |
-| IDEA-007 | Charity / food-bank persona | Personas | open |
-| IDEA-008 | Receipt photo → inventory list | Smart input | open |
-| IDEA-009 | PWA install + offline shell | Platform | open |
-| IDEA-010 | Firebase-first stack (alternative) | Architecture | parked |
-| IDEA-011 | Shopping list | Inventory & UX | implemented (awaiting acceptance) |
+**Sync 2026-05-26:** Promoted ideas (002–004, 011–012) archived; discovery remainder is **IDEA-017**.
 
 ---
 
-## Recipes & UX
+## Dependencies and sequencing
+
+Ideation items are not all independent. Some only make sense after core loop, auth, or another idea ships.
+
+### Layers (what must exist first)
+
+```mermaid
+flowchart TB
+  subgraph delivered["Delivered / accepted"]
+    CORE["CAP-V1-CORE"]
+    AUTH["FEAT-AUTH-002 API"]
+    SHOP["CAP-V1-SHOP / IDEA-011 archived"]
+  end
+
+  subgraph design["Design / build queue"]
+    PRF["FEAT-PRF-001"]
+    CAT["FEAT-CAT-001"]
+    V2M["FEAT-REC-002 mockup"]
+    V2P["FEAT-REC-002 production"]
+    AUTHUI["Auth UI"]
+  end
+
+  subgraph ideation_open["Open ideation"]
+    I017["IDEA-017 discovery"]
+    I006["IDEA-006 expiry alerts"]
+    I014["IDEA-014 search"]
+    I009["IDEA-009 PWA"]
+    I001["IDEA-001 serving context"]
+    I013["IDEA-013 undo"]
+    I016["IDEA-016 partial deduct"]
+    I008["IDEA-008 receipt"]
+    I005["IDEA-005 stores"]
+    I015["IDEA-015 household"]
+    I007["IDEA-007 charity"]
+  end
+
+  CORE --> PRF
+  CORE --> CAT
+  CORE --> V2M
+  CORE --> I006
+  CORE --> I014
+  CORE --> I001
+  CORE --> I013
+  CORE --> I016
+  SHOP --> I005
+  V2M --> V2P
+  V2P --> I008
+  AUTH --> AUTHUI
+  AUTHUI --> I015
+  PRF --> I017
+  I015 --> I007
+  I013 -.-> I016
+```
+
+### Per-idea prerequisites (active backlog)
+
+| ID | Depends on | Notes |
+|----|------------|--------|
+| IDEA-001 | `CAP-V1-CORE`, `FEAT-REC-001` | **Partial:** per-recipe servings stepper exists |
+| IDEA-005 | `IDEA-011` (archived), `CAP-V1-CORE` | Shopping list shipped |
+| IDEA-006 | `CAP-V1-CORE` | **Partial:** expiring-soon styling + tab hint only |
+| IDEA-007 | `IDEA-015` | Charity/org — after household |
+| IDEA-008 | `CAP-V1-CORE`; prod: `FEAT-REC-002` | Receipt vision |
+| IDEA-009 | `CAP-V1-CORE` | Manifest / service worker |
+| IDEA-013 | `FEAT-SES-001` | Post-cook undo |
+| IDEA-014 | `CAP-V1-CORE` | Client-side search/filter |
+| IDEA-015 | `FEAT-AUTH-002`, auth UI | API done; UI not wired |
+| IDEA-016 | `FEAT-SES-001`, `FEAT-REC-001` | Partial deduct at accept |
+| IDEA-017 | `CAP-V1-CORE`, `FEAT-PRF-001` | Discovery browse (ex-IDEA-002) |
+
+**Delivered outside active ideation:** V1 core, security, auth API, shopping (`FEAT-SHP-001`), fridge mockup (`FEAT-REC-002` Phase A) — see [roadmap](roadmap.md) and `.awp-workspace/2-build/WORK_QUEUE.yaml`.
+
+---
+
+## Active index (open)
+
+| ID | Title | Theme | Impl. | Depends on |
+|----|-------|-------|-------|------------|
+| IDEA-001 | Serving size selector | Recipes & UX | partial | CAP-V1-CORE |
+| IDEA-005 | Store recommendations | Commerce | — | IDEA-011, CAP-V1-CORE |
+| IDEA-006 | Expiry proximity warnings | Inventory | partial | CAP-V1-CORE |
+| IDEA-007 | Charity / food-bank persona | Personas | — | IDEA-015 |
+| IDEA-008 | Receipt photo → inventory | Smart input | — | CAP-V1-CORE; FEAT-REC-002 prod |
+| IDEA-009 | PWA install + offline shell | Platform | — | CAP-V1-CORE |
+| IDEA-013 | Post-cook adjust / undo deduct | Recipes & trust | — | FEAT-SES-001 |
+| IDEA-014 | Inventory search and filter | Inventory & UX | — | CAP-V1-CORE |
+| IDEA-015 | Household shared lists | Personas | — | FEAT-AUTH-002, auth UI |
+| IDEA-016 | Partial deduction on cook | Recipes & UX | — | FEAT-SES-001 |
+| IDEA-017 | Discovery browse beyond inventory | Recipes & UX | — | CAP-V1-CORE, FEAT-PRF-001 |
+
+**Impl.:** `partial` = some behavior shipped; ideation scope not complete. `—` = not built.
+
+---
+
+## Archived index (promoted / parked)
+
+Full entries: [archive IDEATION_BACKLOG.md](../../.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.md).
+
+| ID | Title | Status | Promotion / notes |
+|----|-------|--------|-------------------|
+| IDEA-002 | Cuisine preferences & discovery | promoted | Cuisine → `FEAT-PRF-001`; discovery → **IDEA-017** |
+| IDEA-003 | Dietary restrictions & allergies | promoted | `FEAT-PRF-001` (design only) |
+| IDEA-004 | Skill level & equipment | promoted | `FEAT-PRF-001` (design only) |
+| IDEA-011 | Shopping list | promoted | **Shipped** `FEAT-SHP-001`; BUILD-SHP-004 polish queued |
+| IDEA-012 | Use-first / prioritize expiring | promoted | `FEAT-PRF-001` (design only) |
+| IDEA-010 | Firebase-first stack | parked | Not committed stack |
+
+---
+
+## Open ideas (detail)
 
 ### IDEA-001: Serving size selector
 
-**Status:** open  
-**Summary:** Let users choose how many people they are cooking for and scale ingredient amounts on recipes accordingly.
+**Status:** open · **Implementation:** partial (per-recipe servings stepper in V1)
 
-**Discussion**
-
-- Overlaps partially with V1 recipe display — clarify minimum V1 behavior vs this enhancement.
-- Affects `RecipeSession` serving multiplier in the domain model.
-
-**Outcome:** —
+Extend to remembered/default “cooking for N people” across sessions. Affects `RecipeSession` serving multiplier.
 
 ---
 
-### IDEA-002: Cuisine preferences & discovery mode
+### IDEA-005: Store recommendations (distance, price)
 
-**Status:** promoted (partial — 2026-05-26)  
-**Summary:** Filter and browse recipes by cuisine type; optional “discovery” browsing beyond strict inventory match.
+**Status:** open
 
-**Discussion**
-
-- **Cuisine preferences** (soft ranking) → [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md).
-- **Full discovery mode** (browse beyond inventory) remains ideation — not in FEAT-PRF-001.
-
-**Outcome:** Cuisine prefs in `CAP-V1-PROFILE`; discovery browse still open.
-
----
-
-## Profile & personalization
-
-### IDEA-003: Dietary restrictions & allergy filtering
-
-**Status:** promoted (2026-05-26)  
-**Summary:** Vegan, gluten-free, allergies, etc. filter all recipe suggestions globally.
-
-**Discussion**
-
-- Spec: [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md); capability `CAP-V1-PROFILE`.
-
-**Outcome:** Design draft; build not admitted.
-
----
-
-### IDEA-004: Cooking skill level & kitchen equipment
-
-**Status:** promoted (2026-05-26)  
-**Summary:** Match recipes to beginner/intermediate/advanced skill and available equipment (oven, air fryer, …).
-
-**Discussion**
-
-- Bundled with IDEA-003 in [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md).
-
-**Outcome:** Design draft; build not admitted.
-
----
-
-## Profile & inventory (use-up)
-
-### IDEA-012: Prioritize consumption / use-first items
-
-**Status:** promoted (2026-05-26)  
-**Summary:** Let users mark items to use soon (star / “use first”) and optionally tune global “prioritize expiring” ranking — beyond automatic expiry-based scoring.
-
-**Discussion**
-
-- Distinct from IDEA-006 (notifications): this is **ranking and row affordance**, not alerts.
-- Per-item `useFirstPriority` on `InventoryItem`; profile toggle for expiring-soon score term.
-
-**Outcome:** [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md).
-
----
-
-## Inventory & UX
-
-### IDEA-011: Shopping list
-
-**Status:** implemented (awaiting human acceptance — 2026-05-24)  
-**Summary:** **In Stock** \| **Shopping List** tabs; add what you have vs what you will buy; **move to stock** after purchase; recipe **pager** below the lists.
-
-**Discussion**
-
-- Supports use case #1 ([use-cases.md](use-cases.md) — at the market).
-- Shipped per [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md); includes shopping photo preview mockup and icon-based move/cart controls.
-
-**Outcome:** Promoted to V1.1 (`CAP-V1-SHOP`); acceptance gate pending on BUILD-SHP-001/002/003.
+Suggest where to buy missing ingredients. Needs external data + privacy spike.
 
 ---
 
 ### IDEA-006: Expiry proximity warnings
 
-**Status:** open  
-**Summary:** Notify users when items are close to expiry so they can use them before waste.
+**Status:** open · **Implementation:** partial (3-day row highlight + “N expiring soon” on In Stock tab)
 
-**Discussion**
-
-- Could be a small V1 add-on or post-V1; not listed on committed roadmap yet.
-
-**Outcome:** —
+Add proactive warnings (banner, push). Push benefits from IDEA-009. Distinct from archived IDEA-012 (ranking → `FEAT-PRF-001`).
 
 ---
-
-## Personas
 
 ### IDEA-007: Charity / food-bank persona
 
-**Status:** open  
-**Summary:** Extend the product narrative and future flows for donation kitchens, food banks, and shared fridges — tracking perishables for beneficiaries, not only household users.
+**Status:** open · **Depends on:** IDEA-015
 
-**Discussion**
-
-- Motivates the problem space in [project-brief.md](project-brief.md); no charity-specific features on V1/V2 roadmap.
-- Promotion would need multi-user/org model, permissions, and compliance review.
-
-**Outcome:** —
+Org-scale shared inventory; not MVP. See [project-brief.md](project-brief.md).
 
 ---
-
-## Smart input
 
 ### IDEA-008: Receipt photo → inventory list
 
-**Status:** open  
-**Summary:** Photograph a grocery receipt; vision/OCR returns item names, quantities, optional images, and suggested expiration dates for user review before adding to inventory.
+**Status:** open
 
-**Discussion**
-
-- Related domain shapes: `ReceiptScan`, `DetectedLineItem` in [domain-model.md](domain-model.md).
-- Distinct from V2 fridge photo (FEAT-REC-002); may share vision infrastructure if both ship.
-
-**Outcome:** —
+Review-before-save flow; may share `FEAT-REC-002` vision infrastructure (OQ-005/006).
 
 ---
-
-## Platform
 
 ### IDEA-009: PWA install + offline shell
 
-**Status:** open  
-**Summary:** Web app manifest, service worker, and offline-friendly shell so users can install on home screen and tolerate brief connectivity loss for read-only inventory.
+**Status:** open
 
-**Discussion**
-
-- Aligns with mobile-first delivery in project brief; depends on frontend slice existing.
-- Scope offline data carefully (stale inventory vs recipes).
-
-**Outcome:** —
+Manifest, service worker, optional read-only offline inventory.
 
 ---
 
-### IDEA-010: Firebase-first stack (alternative)
+### IDEA-013: Post-cook adjust and undo deduction
 
-**Status:** parked  
-**Summary:** Alternate “build fast” stack from early product exploration: **React Native + Expo** (or web) on the client, **Firebase Auth + Firestore + Storage + Cloud Functions** on the backend, **Spoonacular/Edamam** for recipes, **OpenAI/Gemini Vision** for V2 fridge photos. **Not** the committed stack — see [ADR-20260523-01](../design/decisions/ADR-20260523-01-delivery-model-pwa-web.md) (mobile-first **web** + ASP.NET Core API).
+**Status:** open · **Depends on:** `FEAT-SES-001` (shipped)
 
-**Reference layers (parked)**
-
-| Layer | Alternate | Why it was attractive |
-|-------|-----------|------------------------|
-| Mobile | React Native + Expo + TypeScript | Fast iOS/Android, strong camera story |
-| Backend | Firebase Auth, Firestore, Storage, Cloud Functions | MVP speed, less server ops |
-| Recipes | Spoonacular or Edamam | Ingredient ontology, diets, nutrition |
-| V2 vision | OpenAI Vision or Gemini Vision | Messy fridge photos vs label-only OCR |
-| Helper OCR | Google Cloud Vision | Labels/OCR only — not primary intelligence |
-
-**Reference V1 flow**
-
-1. User adds ingredients manually → Firestore inventory  
-2. Cloud Function calls recipe API → rank by match + expiry  
-3. “Use recipe” subtracts ingredients  
-
-**Reference V2 flow**
-
-1. Photo → Firebase Storage → Cloud Function → vision model → candidate items  
-2. User confirms (confidence per line) → inventory update → better suggestions  
-
-**Reference Firestore shape (conceptual — maps to [domain-model.md](domain-model.md))**
-
-- `users` — profile, dietary prefs, allergies  
-- `inventoryItems` — quantity, unit, expiry, `source: manual | photo`, optional `confidenceScore`  
-- `recipesSaved` — title, ingredients, missing/used, image, provider id  
-- `fridgePhotos` — image URL, status, `detectedItems`  
-
-Committed persistence is **EF Core + SQLite** on the API; entity names differ but the **domain concepts** align.
-
-**Discussion**
-
-- Committed stack: ASP.NET Core + EF Core + SQLite + React (PWA-capable web). See [architecture overview](../architecture/overview.md).
-- Biggest product risk called out in exploration: **users maintaining inventory** — V1 must make manual input very fast; V2 reduces friction with photo assist + confirmation.
-- Revisit only if team explicitly reopens hosting/BaaS trade-offs.
-
-**Outcome:** Parked — documented only; no ADR promotion. Register: `.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml`.
+Undo or edit `RecipeSession` deductions. Alternative to IDEA-016.
 
 ---
 
-## Commerce & external
+### IDEA-014: Inventory search and filter
 
-### IDEA-005: Store recommendations (distance, price)
+**Status:** open
 
-**Status:** open  
-**Summary:** Suggest where to buy missing ingredients using distance and price comparison.
+Name search + expiring-soon filter on client; no backend required for V1 slice.
 
-**Discussion**
+---
 
-- External integrations, privacy, and data sourcing need a spike before promotion.
+### IDEA-015: Household shared inventory and shopping list
 
-**Outcome:** —
+**Status:** open · **Depends on:** `FEAT-AUTH-002` + auth UI
+
+Partners share one inventory/shopping list. API auth exists; login screen not in `App` flow yet.
+
+---
+
+### IDEA-016: Partial ingredient deduction on cook
+
+**Status:** open
+
+Per-line deduct less than recipe amount (OQ-042). Pair with or before IDEA-013.
+
+---
+
+### IDEA-017: Discovery browse beyond inventory
+
+**Status:** open · **Split from archived IDEA-002 (2026-05-26)**
+
+Browse recipes not strictly limited to current stock. Recommend `FEAT-PRF-001` for filter metadata first.
 
 ---
 
@@ -246,3 +222,4 @@ When moving an idea to **promoted**:
 2. Add user stories to [user-stories.md](user-stories.md) under the right phase
 3. Create `docs/design/features/FEAT-*.md` and register rows (see `.cursor/snippets/awp-admit-task.md`)
 4. Move YAML entry to `.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml` with `decision: promoted`
+5. Remove from active `IDEATION_BACKLOG.yaml` and update this file

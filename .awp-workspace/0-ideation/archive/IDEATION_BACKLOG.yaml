@@ -18,3 +18,76 @@ ideas:
       decision: parked
       reason: "Committed stack stays ASP.NET; capture alternative for future reconsideration."
       promotion_target: ""
+
+  - id: IDEA-002
+    title: "Cuisine preferences and discovery mode"
+    status: promoted
+    date: "2026-05-23"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Filter recipes by cuisine; optional discovery beyond inventory match."
+    discussion: |
+      - Cuisine prefs → FEAT-PRF-001 / CAP-V1-PROFILE (2026-05-26)
+      - Discovery browse remainder → active IDEA-017 (sync 2026-05-26)
+    outcome:
+      decision: promoted
+      reason: "Cuisine slice in CAP-V1-PROFILE; discovery split to IDEA-017"
+      promotion_target: CAP-V1-PROFILE
+
+  - id: IDEA-003
+    title: "Dietary restrictions and allergy filtering"
+    status: promoted
+    date: "2026-05-23"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Global filters for vegan, gluten-free, allergies, etc. on recipe suggestions."
+    discussion: |
+      - Spec: docs/design/features/FEAT-PRF-001-user-profile-and-settings.md
+    outcome:
+      decision: promoted
+      reason: "Design draft 2026-05-26; archived at sync 2026-05-26"
+      promotion_target: CAP-V1-PROFILE
+
+  - id: IDEA-004
+    title: "Cooking skill level and kitchen equipment"
+    status: promoted
+    date: "2026-05-23"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Match recipes to skill level and available equipment."
+    discussion: |
+      - Bundled in FEAT-PRF-001 with IDEA-003
+    outcome:
+      decision: promoted
+      reason: "Design draft 2026-05-26; archived at sync 2026-05-26"
+      promotion_target: CAP-V1-PROFILE
+
+  - id: IDEA-011
+    title: "Shopping list"
+    status: promoted
+    date: "2026-05-24"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "In Stock | Shopping List tabs, move-to-stock, recipe pager, cart actions."
+    discussion: |
+      - implementation_status: shipped — FEAT-SHP-001; BUILD-SHP-001–003 awaiting_human_review
+      - BUILD-SHP-004 (shell polish) still on active WORK_QUEUE
+      - Spec: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
+    outcome:
+      decision: promoted
+      reason: "CAP-V1-SHOP; archived at sync 2026-05-26"
+      promotion_target: CAP-V1-SHOP
+
+  - id: IDEA-012
+    title: "Prioritize consumption and use-first items"
+    status: promoted
+    date: "2026-05-26"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Per-item use-first and profile toggle for expiring-soon recipe ranking."
+    discussion: |
+      - FEAT-PRF-001; not yet implemented
+    outcome:
+      decision: promoted
+      reason: "Design draft 2026-05-26; archived at sync 2026-05-26"
+      promotion_target: CAP-V1-PROFILE

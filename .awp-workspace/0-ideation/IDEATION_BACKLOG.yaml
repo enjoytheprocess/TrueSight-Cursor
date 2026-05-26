@@ -4,6 +4,7 @@
 #
 # status (active file): open
 # status (done file):   promoted | parked | dropped
+# depends_on: optional list of IDEA-* | FEAT-* | CAP-* ids (documented in docs/product/ideation.md)
 
 schema_version: 1
 
@@ -12,76 +13,27 @@ ideas:
     title: "Serving size selector"
     status: open
     date: "2026-05-23"
-    components: [backend]
-    summary: "Let users choose how many people they are cooking for and scale recipe ingredient amounts."
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE, FEAT-REC-001]
+    summary: "Default or remembered serving context across recipes (beyond per-card stepper)."
     discussion: |
+      - implementation_status: partial — RecipeCard servings stepper + recipeScaling (V1)
       - See docs/product/ideation.md#idea-001-serving-size-selector
     outcome:
       decision: none
       reason: ""
       promotion_target: ""
 
-  - id: IDEA-002
-    title: "Cuisine preferences and discovery mode"
-    status: open
-    date: "2026-05-23"
-    components: [backend, frontend]
-    summary: "Filter and browse recipes by cuisine; optional discovery beyond strict inventory match."
-    discussion: |
-      - Cuisine prefs promoted to FEAT-PRF-001 (2026-05-26); discovery browse still open
-      - See docs/product/ideation.md#idea-002-cuisine-preferences--discovery-mode
-    outcome:
-      decision: promoted
-      reason: "Cuisine preferences in CAP-V1-PROFILE; full discovery mode not scoped"
-      promotion_target: CAP-V1-PROFILE
-
-  - id: IDEA-003
-    title: "Dietary restrictions and allergy filtering"
-    status: open
-    date: "2026-05-23"
-    components: [backend, frontend]
-    summary: "Global filters for vegan, gluten-free, allergies, etc. on recipe suggestions."
-    discussion: |
-      - Spec: docs/design/features/FEAT-PRF-001-user-profile-and-settings.md
-    outcome:
-      decision: promoted
-      reason: "Design draft 2026-05-26"
-      promotion_target: CAP-V1-PROFILE
-
-  - id: IDEA-004
-    title: "Cooking skill level and kitchen equipment"
-    status: open
-    date: "2026-05-23"
-    components: [backend, frontend]
-    summary: "Match recipes to skill level and available equipment."
-    discussion: |
-      - Bundled in FEAT-PRF-001 with IDEA-003
-    outcome:
-      decision: promoted
-      reason: "Design draft 2026-05-26"
-      promotion_target: CAP-V1-PROFILE
-
-  - id: IDEA-012
-    title: "Prioritize consumption and use-first items"
-    status: open
-    date: "2026-05-26"
-    components: [backend, frontend]
-    summary: "Per-item use-first and profile toggle for expiring-soon recipe ranking."
-    discussion: |
-      - See docs/product/ideation.md#idea-012-prioritize-consumption--use-first-items
-    outcome:
-      decision: promoted
-      reason: "Design draft 2026-05-26"
-      promotion_target: CAP-V1-PROFILE
-
   - id: IDEA-005
     title: "Store recommendations (distance, price)"
     status: open
     date: "2026-05-23"
     components: [backend]
+    depends_on: [CAP-V1-CORE, IDEA-011]
     summary: "Suggest stores to buy missing ingredients with distance and price comparison."
     discussion: |
-      - Requires external data and privacy review before promotion
+      - Requires shopping list + missing-ingredient flow from recipe pager
+      - External data and privacy review before promotion
     outcome:
       decision: none
       reason: ""
@@ -91,10 +43,13 @@ ideas:
     title: "Expiry proximity warnings"
     status: open
     date: "2026-05-23"
-    components: [backend]
-    summary: "Notify users when inventory items are close to expiry."
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Proactive expiry warnings (banner, notification) beyond list styling."
     discussion: |
-      - Could be a small V1 add-on or post-V1
+      - implementation_status: partial — isExpiringSoon row styling + tab hint count (OQ-040)
+      - Push variant benefits from IDEA-009
+      - Distinct from IDEA-012 (alerts vs ranking; IDEA-012 archived → FEAT-PRF-001)
     outcome:
       decision: none
       reason: ""
@@ -105,6 +60,7 @@ ideas:
     status: open
     date: "2026-05-23"
     components: [backend]
+    depends_on: [IDEA-015]
     summary: "Persona for donation kitchens and shared-fridge inventory tracking (not MVP scope)."
     discussion: |
       - See docs/product/ideation.md#idea-007-charity--food-bank-persona
@@ -117,9 +73,11 @@ ideas:
     title: "Receipt photo to inventory list"
     status: open
     date: "2026-05-23"
-    components: [backend]
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE, FEAT-REC-002]
     summary: "OCR or vision on receipt photos to suggest inventory line items before user confirms."
     discussion: |
+      - Mockup can ship before production vision; production shares FEAT-REC-002 (OQ-005/006)
       - See docs/product/ideation.md#idea-008-receipt-photo--inventory-list
     outcome:
       decision: none
@@ -130,7 +88,8 @@ ideas:
     title: "PWA install and offline shell"
     status: open
     date: "2026-05-23"
-    components: [backend]
+    components: [frontend]
+    depends_on: [CAP-V1-CORE]
     summary: "Web app manifest, service worker, and limited offline UX for installation and resilience."
     discussion: |
       - See docs/product/ideation.md#idea-009-pwa-install--offline-shell
@@ -139,17 +98,74 @@ ideas:
       reason: ""
       promotion_target: ""
 
-  - id: IDEA-011
-    title: "Shopping list"
+  - id: IDEA-013
+    title: "Post-cook adjust and undo deduction"
     status: open
-    date: "2026-05-24"
+    date: "2026-05-26"
     components: [backend, frontend]
-    summary: "V1.1 implemented 2026-05-24 — awaiting human acceptance (BUILD-SHP-*)."
+    depends_on: [FEAT-SES-001]
+    summary: "After accepting a recipe, let users undo or correct quantities deducted from inventory."
     discussion: |
-      - See docs/product/ideation.md#idea-011-shopping-list
-      - Spec: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
-      - CAP-V1-SHOP active; BUILD-SHP-001/002/003 awaiting_human_review
+      - See docs/product/ideation.md#idea-013-post-cook-adjust-and-undo-deduction
     outcome:
-      decision: promoted
-      reason: "Shipped in v2.1-mockup branch; sync 2026-05-24"
-      promotion_target: CAP-V1-SHOP
+      decision: none
+      reason: ""
+      promotion_target: ""
+
+  - id: IDEA-014
+    title: "Inventory search and filter"
+    status: open
+    date: "2026-05-26"
+    components: [frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Search inventory by name and filter by expiring-soon as lists grow."
+    discussion: |
+      - See docs/product/ideation.md#idea-014-inventory-search-and-filter
+    outcome:
+      decision: none
+      reason: ""
+      promotion_target: ""
+
+  - id: IDEA-015
+    title: "Household shared inventory and shopping list"
+    status: open
+    date: "2026-05-26"
+    components: [backend, frontend]
+    depends_on: [FEAT-AUTH-002]
+    summary: "Light multi-user sharing so partners see the same stock and shopping list."
+    discussion: |
+      - FEAT-AUTH-002 API done; blocked on frontend sign-in/sign-up (auth UI)
+      - See docs/product/ideation.md#idea-015-household-shared-inventory-and-shopping-list
+    outcome:
+      decision: none
+      reason: ""
+      promotion_target: ""
+
+  - id: IDEA-016
+    title: "Partial ingredient deduction on cook"
+    status: open
+    date: "2026-05-26"
+    components: [backend, frontend]
+    depends_on: [FEAT-SES-001, FEAT-REC-001]
+    summary: "When accepting a recipe, deduct less than the full listed amount per ingredient line."
+    discussion: |
+      - See docs/product/ideation.md#idea-016-partial-ingredient-deduction-on-cook
+    outcome:
+      decision: none
+      reason: ""
+      promotion_target: ""
+
+  - id: IDEA-017
+    title: "Discovery browse beyond inventory"
+    status: open
+    date: "2026-05-26"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE, FEAT-PRF-001]
+    summary: "Browse and filter recipes beyond strict in-stock match (remainder of archived IDEA-002)."
+    discussion: |
+      - Split from IDEA-002 at sync 2026-05-26; cuisine prefs promoted to FEAT-PRF-001
+      - See docs/product/ideation.md#idea-017-discovery-browse-beyond-inventory
+    outcome:
+      decision: none
+      reason: ""
+      promotion_target: ""

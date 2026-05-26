@@ -38,7 +38,7 @@ features:
     design_state: spec_review
     owner: unassigned
     last_updated: "2026-05-26"
-    linked_idea: IDEA-003
+    linked_idea: "IDEA-002,003,004,012 (archived → FEAT-PRF-001)"
     linked_tasks: []
     primary_design_link: docs/design/features/FEAT-PRF-001-user-profile-and-settings.md
     decision_links: []
@@ -52,7 +52,7 @@ features:
     design_state: ready
     owner: unassigned
     last_updated: "2026-05-26"
-    linked_idea: IDEA-011
+    linked_idea: "IDEA-011 (archived → CAP-V1-SHOP)"
     linked_tasks:
       - BUILD-SHP-001
       - BUILD-SHP-002

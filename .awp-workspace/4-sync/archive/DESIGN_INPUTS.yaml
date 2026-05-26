@@ -233,3 +233,33 @@ items:
     resolution_note: >
       Documented in FEAT-AUTH-002 and BUILD-AUTH-002 notes. Intentional UX choice;
       not a security bypass in Production.
+
+  - id: DI-017
+    type: deviation
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SHP-001
+    source_ref: human-design-2026-05-26
+    priority: P4
+    summary: "Tablet/desktop two-column shell for both tabs"
+    detail: >
+      User preferred the two-column layout from Screenshot_2026-05-24_at_8.35.45_AM.png
+      (list left, recipe pager right). Apply to Shopping List as well as In Stock.
+    promoted_at: "2026-05-26"
+    addressed_at: "2026-05-26"
+    resolution_note: "FEAT-SHP-001 § Responsive shell + OQ-057; BUILD-SHP-004."
+
+  - id: DI-018
+    type: gap
+    status: addressed
+    resolution_type: incorporated
+    feature_id: FEAT-SHP-001
+    source_ref: human-design-2026-05-26
+    priority: P4
+    summary: "Stay on Shopping List after move-to-inventory confirm"
+    detail: >
+      Current UI switches to In Stock after confirming a purchase move. Active tab must
+      remain Shopping List; refresh data only.
+    promoted_at: "2026-05-26"
+    addressed_at: "2026-05-26"
+    resolution_note: "FEAT-SHP-001 § Shopping List + OQ-057; BUILD-SHP-004."

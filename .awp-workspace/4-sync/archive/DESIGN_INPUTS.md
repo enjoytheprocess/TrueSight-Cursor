@@ -219,3 +219,29 @@
 
 > Documented in FEAT-AUTH-002 and BUILD-AUTH-002 notes. Intentional UX choice; not a security bypass in Production.
 
+
+---
+
+### DI-017 · `deviation`
+
+| Feature | Source Input | Cycle Opened | Cycle Closed | Resolution |
+| --- | --- | --- | --- | --- |
+| FEAT-SHP-001 |  |  |  | `incorporated` |
+
+**Summary:** Tablet/desktop two-column shell for both tabs  
+**Pointer:** —
+
+> FEAT-SHP-001 § Responsive shell + OQ-057; BUILD-SHP-004.
+
+---
+
+### DI-018 · `gap`
+
+| Feature | Source Input | Cycle Opened | Cycle Closed | Resolution |
+| --- | --- | --- | --- | --- |
+| FEAT-SHP-001 |  |  |  | `incorporated` |
+
+**Summary:** Stay on Shopping List after move-to-inventory confirm  
+**Pointer:** —
+
+> FEAT-SHP-001 § Shopping List + OQ-057; BUILD-SHP-004.

@@ -44,7 +44,7 @@ Not build-admitted; on roadmap as design-only until promoted.
 
 ## Ideation (not committed)
 
-Tracked in [ideation.md](ideation.md) (IDEA-001 … IDEA-010). Examples:
+Tracked in [ideation.md](ideation.md) (active IDEA-001, 005–009, 013–017; archived 002–004, 011–012). Examples:
 
 - As a food-bank volunteer, I can track shared fridge inventory for beneficiaries *(IDEA-007)*
 - As a user, I receive a warning when items are close to expiry *(IDEA-006)*

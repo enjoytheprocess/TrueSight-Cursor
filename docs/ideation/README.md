@@ -21,9 +21,10 @@ Skip ideation when the feature is already clear enough to go straight to [design
 ## Workflow
 
 1. Capture the idea in `ideation.md` (new IDEA-xxx section) and `IDEATION_BACKLOG.yaml`.
-2. Discuss; append notes under **Discussion** in `ideation.md` and the YAML `discussion` field.
-3. Decide: `promoted` | `parked` | `dropped`.
-4. On **promoted**: update [roadmap](../product/roadmap.md), `.awp-workspace/1-design/ROADMAP.yaml`, `DESIGN_STATES.yaml`, and create a feature spec under [../design/features/](../design/features/).
+2. Set `depends_on` (IDEA-*, FEAT-*, or CAP-* ids). See [Dependencies and sequencing](../product/ideation.md#dependencies-and-sequencing) in `ideation.md`.
+3. Discuss; append notes under **Discussion** in `ideation.md` and the YAML `discussion` field.
+4. Decide: `promoted` | `parked` | `dropped`.
+5. On **promoted**: update [roadmap](../product/roadmap.md), `.awp-workspace/1-design/ROADMAP.yaml`, `DESIGN_STATES.yaml`, and create a feature spec under [../design/features/](../design/features/).
 
 ## Templates
 

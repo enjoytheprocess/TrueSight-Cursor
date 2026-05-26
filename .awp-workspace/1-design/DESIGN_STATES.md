@@ -43,7 +43,7 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 | --- | --- | --- |
 | `spec_review` | unassigned | 2026-05-26 |
 
-**Linked idea:** IDEA-003 · **Tasks:**   
+**Linked idea:** IDEA-002,003,004,012 (archived → FEAT-PRF-001) · **Tasks:**   
 **Spec:** `docs/design/features/FEAT-PRF-001-user-profile-and-settings.md`  
 **Decisions:**   
 **Blocking questions:** OQ-058–062 open; AC unchecked — not build-admitted
@@ -59,7 +59,7 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 | --- | --- | --- |
 | `ready` | unassigned | 2026-05-26 |
 
-**Linked idea:** IDEA-011 · **Tasks:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003, BUILD-SHP-004  
+**Linked idea:** IDEA-011 (archived → CAP-V1-SHOP) · **Tasks:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003, BUILD-SHP-004  
 **Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
 **Decisions:**   
 **Blocking questions:** none
