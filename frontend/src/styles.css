@@ -75,10 +75,22 @@ h1 {
 }
 
 .main-column {
-  max-width: 720px;
+  max-width: 1180px;
   margin: 0 auto;
   display: grid;
   gap: 14px;
+}
+
+.shell-workspace {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.35fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.shell-workspace .recipe-pager-panel {
+  position: sticky;
+  top: 20px;
 }
 
 .site-footer {
@@ -658,6 +670,18 @@ h1 {
   .app-shell {
     padding: 14px;
     padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .main-column {
+    max-width: 720px;
+  }
+
+  .shell-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .shell-workspace .recipe-pager-panel {
+    position: static;
   }
 
   .topbar {

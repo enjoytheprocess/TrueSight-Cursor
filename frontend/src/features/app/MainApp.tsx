@@ -85,7 +85,6 @@ export function MainApp() {
       setMovingItemId(null);
       setMoveExpiryDate('');
       await invalidateMain();
-      setTab('inStock');
     },
   });
 
@@ -216,6 +215,7 @@ export function MainApp() {
           </button>
         </div>
 
+        <div className="shell-workspace">
         <section className="panel inventory-panel">
           {tab === 'inStock' ? (
             <>
@@ -425,6 +425,7 @@ export function MainApp() {
             </>
           )}
         </section>
+        </div>
 
         <footer className="site-footer">
           <a className="site-footer-link" href="/about.html">

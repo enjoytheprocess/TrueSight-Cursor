@@ -188,8 +188,8 @@ Dependencies: BUILD-SHP-002/003/004 depend on BUILD-SHP-001; BUILD-SHP-001 depen
 - [x] V1 summary stat strip removed from main shell.
 - [x] Mobile layout remains usable (single column).
 - [x] Shopping photo preview mockup (sample packaging image, stub scan, save to shopping list).
-- [ ] **Tablet/desktop:** two-column layout (tab list left, recipe pager right) for **both** In Stock and Shopping List (BUILD-SHP-004).
-- [ ] **Shopping List:** confirming **move to stock** keeps the active tab on Shopping List (no auto-switch to In Stock) (BUILD-SHP-004).
+- [x] **Tablet/desktop:** two-column layout (tab list left, recipe pager right) for **both** In Stock and Shopping List (BUILD-SHP-004).
+- [x] **Shopping List:** confirming **move to stock** keeps the active tab on Shopping List (no auto-switch to In Stock) (BUILD-SHP-004).
 
 ## Open questions (resolved at design)
 

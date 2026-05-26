@@ -227,4 +227,60 @@ describe('App', () => {
     expect(screen.getByRole('button', { name: 'Cook and deduct' })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Add all missing ingredients to shopping list' })).toHaveTextContent('ALL');
   });
+
+  it('keeps the shopping list tab active after confirming move to in stock', async () => {
+    const user = userEvent.setup();
+    const listItem: ShoppingListItem = {
+      id: 'shop-1',
+      name: 'Spinach',
+      quantity: 2,
+      unit: 'count',
+      sourceRecipeId: null,
+      createdAt: '2026-05-26T00:00:00Z',
+    };
+
+    getMock.mockImplementation(async (path: string) => {
+      if (path === '/api/inventory') {
+        return inventory;
+      }
+      if (path === '/api/shopping-list') {
+        return [listItem];
+      }
+      if (path === '/api/recipes/suggestions') {
+        return suggestions;
+      }
+      throw new Error(`Unexpected GET ${path}`);
+    });
+
+    postMock.mockResolvedValueOnce({
+      id: 'item-2',
+      name: 'Spinach',
+      quantity: 2,
+      unit: 'count',
+      expiryDate: null,
+      addedAt: '2026-05-26T00:00:00Z',
+      updatedAt: '2026-05-26T00:00:00Z',
+    });
+
+    renderApp();
+    await screen.findByRole('heading', { name: 'Eggs' });
+
+    await user.click(screen.getByRole('tab', { name: 'Shopping List' }));
+    expect(await screen.findByText('1 to buy')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Move Spinach to in stock' }));
+    await user.click(screen.getByRole('button', { name: 'Confirm move Spinach to in stock' }));
+
+    await waitFor(() => {
+      expect(postMock).toHaveBeenCalledWith('/api/shopping-list/shop-1/move-to-inventory', { expiryDate: null });
+    });
+
+    expect(screen.getByRole('tab', { name: 'Shopping List' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByText('Shopping List that stock your fridge up')).toBeInTheDocument();
+  });
+
+  it('uses a two-column shell workspace on wide viewports', () => {
+    renderApp();
+    expect(document.querySelector('.shell-workspace')).toBeInTheDocument();
+  });
 });
