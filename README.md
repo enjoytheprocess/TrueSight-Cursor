@@ -1,147 +1,121 @@
-# TrueSight
+# TrueSight (FridgeWise)
 
-Full-stack application (ASP.NET Core backend, React frontend). See [`cursor.md`](cursor.md) for stack overview.
+**Waste-first kitchen companion:** know what you have, get recipes ranked toward what expires soon, and keep inventory honest after you cook.
 
-## The Problem
+Built for the **Cursor Calgary hackathon** (submitted as **FridgeChef** by TrueSight Labs) — prompt: *build something that solves a real pain point in your personal life.* Mobile-first responsive web app (ASP.NET Core API + React SPA).
 
-It starts with something small and daily: you get home after a long day, open the fridge, stare at it for two minutes, and still end up ordering takeout — not because the fridge is empty, but because your brain is. You have eggs, half a pepper, some leftover rice, and things you bought with good intentions three days ago. But turning that into an actual meal, right now, when you're tired? That's where the idea dies.
+> **Previous README:** the hackathon-era narrative version is preserved in [`README.hackathon-backup.md`](README.hackathon-backup.md).
 
-Then Thursday comes. You open the fridge again and find that pepper has turned. The rice is gone. The eggs made it — barely. You throw things away, feel quietly guilty about it, and do the whole thing again next week.
+## Why we built this
 
-Wasted food is one of those things that bothers you every single time and yet keeps happening — not because you don't care, but because there was never a system to stop it. Globally, roughly a third of all food produced never gets eaten. Most of it starts exactly like this: in someone's fridge, with the best of intentions.
+It starts with something small and daily: you get home after a long day, open the fridge, stare at it for two minutes, and still order takeout — not because the fridge is empty, but because your brain is empty. You have eggs, half a pepper, leftover rice, and things you bought with good intentions three days ago. Turning that into a meal *right now*, when you're tired, is where the idea dies.
 
-## The Mission
+A few days later, the pepper has turned. You throw things away, feel quietly guilty, and repeat the cycle next week. The food was already paid for and already in your kitchen; it just never became dinner. That pattern — **forgetting what you have, running out of energy to decide, and losing perishables anyway** — is the pain we kept living with.
 
-Food should not be thrown away. Not when people are hungry. Not when the ingredients were already paid for, already brought home, already full of potential. FridgeChef exists to close that gap — between what sits in your fridge and what ends up on your table or in someone else's hands.
+One of us also spent time around nonprofits and food banks, where people sometimes receive ingredients they do not know how to cook. That widened our lens: the problem is not only “empty fridge,” it is **not knowing how to turn what is already there into a meal you will actually make** — at home, when you are tired, before it spoils.
 
-## The Solution
+**TrueSight is our answer to that personal loop:** remember what is in stock, surface recipes you can cook *now*, nudge you toward what expires soon, and update inventory when you commit to cooking — so the app stays honest and the waste cycle has a chance to break.
 
-FridgeChef is a smart kitchen companion that transforms your existing inventory into meal possibilities. Log what you have — or simply photograph your fridge — and instantly receive personalized recipe suggestions tailored to your family's dietary needs, cuisine preferences, and cooking ability. A family that always cooks the same five dishes can suddenly discover they already have everything needed for a Mediterranean spread or a Japanese stir-fry — they just never knew it.
+## What makes this different
 
-But FridgeChef goes further than recipes. When ingredients are approaching their expiry and won't make it into a meal in time, the app doesn't just flag them — it acts. It connects you with local food banks, automates the donation request, and turns what would have been a guilty trip to the bin into a contribution to someone who needs it. No food gets thrown. It either feeds your family or feeds someone else's.
+Most “what can I cook?” apps stop at suggestions. TrueSight closes the loop:
 
-## Origin Story
+| Idea | What we did |
+|------|-------------|
+| **Honest inventory** | Accepting a recipe **deducts** ingredients server-side so the list reflects what you actually used. |
+| **Use it before it spoils** | Suggestions are **ranked** with a transparent score that boosts recipes using items expiring within 3 days — not a black-box recommender. |
+| **Cook with eyes open** | Each recipe card shows **required vs in-stock** per ingredient, servings scaling, and a **Cook and deduct** gate when stock is insufficient. |
+| **Store ↔ fridge** | **In Stock** and **Shopping List** tabs; move items to stock, add missing ingredients from recipes to the cart. |
 
-The idea for FridgeChef came from one founder's experience working with nonprofits, where food bank users sometimes received unfamiliar ingredients and were unsure how to cook with them. It showed us that the challenge is not always having food available — it is knowing how to turn that food into a meal.
+This is **perishable-aware decision support**, not another recipe search engine.
 
-## Libraries and tools
+## What is built (in this repo)
 
-### Application stack
+| Capability | Status | Where to look |
+|------------|--------|----------------|
+| Demo entry (`Enter Demo`) | Shipped | [`frontend/src/features/auth/DemoLoginScreen.tsx`](frontend/src/features/auth/DemoLoginScreen.tsx) |
+| Manual inventory (CRUD, expiry, merge) | Shipped | [`docs/design/features/FEAT-INV-001-manual-inventory.md`](docs/design/features/FEAT-INV-001-manual-inventory.md) |
+| Recipe suggestions + ranking | Shipped | [`backend/TrueSight.Api/Features/Recipes/ListRecipeSuggestions/Handler.cs`](backend/TrueSight.Api/Features/Recipes/ListRecipeSuggestions/Handler.cs) — score: `(owned×12) − (missing×18) + (expiringSoon×8) − min(minutes,60)/10` |
+| Cook and deduct | Shipped | [`docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md`](docs/design/features/FEAT-SES-001-recipe-acceptance-deduction.md) |
+| Shopping list + main shell | Shipped | [`docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`](docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) |
+| Fridge photo → review → save | **UI mockup** (stub scan) | [`docs/design/features/FEAT-REC-002-fridge-photo-recognition.md`](docs/design/features/FEAT-REC-002-fridge-photo-recognition.md) |
+| Profile (diet, use-first, cuisines) | **Design only** | [`docs/design/features/FEAT-PRF-001-user-profile-and-settings.md`](docs/design/features/FEAT-PRF-001-user-profile-and-settings.md) |
+| Food bank / donation flows | **Ideation only** | [`docs/product/ideation.md`](docs/product/ideation.md) (IDEA-007) |
+
+Full committed roadmap: [`docs/product/roadmap.md`](docs/product/roadmap.md). Product brief: [`docs/product/project-brief.md`](docs/product/project-brief.md).
+
+## Try it locally
+
+Requires **.NET 9 SDK** and **Node.js 20+**.
+
+```bash
+make setup-dotnet      # first time if `dotnet` is not found
+make frontend-install  # once per machine
+make backend-run       # http://localhost:5158
+make frontend-run      # http://localhost:5173 (separate terminal)
+```
+
+1. Open http://localhost:5173 → **Enter Demo**.
+2. Add inventory with **expiry dates** (try one item expiring in 1–2 days).
+3. Open **Recipes** — order should favor dishes using soon-to-expire stock.
+4. **Cook and deduct** on a recipe with sufficient stock — confirm quantities drop in **In Stock**.
+
+Windows: see [Platform notes](#platform-notes) and [`backend/README.md`](backend/README.md).
+
+## Vision (not all in this submission)
+
+Charity and food-bank-specific flows ([IDEA-007](docs/product/ideation.md)) are part of our long-term motivation, not the hackathon build. What we shipped targets the **household** loop above first.
+
+| Direction | Notes |
+|-----------|--------|
+| **V2** | Real fridge photo → vision service → user confirms → inventory ([FEAT-REC-002](docs/design/features/FEAT-REC-002-fridge-photo-recognition.md)). |
+| **V1.2** | Diet, allergens, cuisine, skill, equipment, per-item **use first** ([FEAT-PRF-001](docs/design/features/FEAT-PRF-001-user-profile-and-settings.md)). |
+| **Ideation** | Expiry alerts, receipt scan, households, store hints — [`docs/product/ideation.md`](docs/product/ideation.md). |
+
+## Stack
 
 | Layer | Libraries / runtime |
 |-------|---------------------|
-| **Backend** | ASP.NET Core 9, Entity Framework Core (SQLite), MediatR, FluentValidation, ASP.NET Core Identity |
+| **Backend** | ASP.NET Core 9, EF Core (SQLite), MediatR, FluentValidation, ASP.NET Core Identity |
 | **Backend tests** | xUnit, `Microsoft.AspNetCore.Mvc.Testing` |
-| **Frontend** | React 18, TypeScript, Vite, React Router, TanStack Query, Lucide React |
-| **Frontend tests** | Vitest, Testing Library (React, Jest DOM, user-event), jsdom |
-| **Database** | SQLite (file `truesight.db` in development) |
+| **Frontend** | React 18, TypeScript, Vite, React Router, TanStack Query |
+| **Frontend tests** | Vitest, Testing Library |
+| **CI** | GitHub Actions — [`.github/workflows/ci.yml`](.github/workflows/ci.yml) |
 
-### Development and automation
+Architecture: vertical slices + CQRS on the backend; mobile-first SPA (PWA-capable). Details: [`docs/architecture/overview.md`](docs/architecture/overview.md), [`backend/README.md`](backend/README.md), [`frontend/README.md`](frontend/README.md).
 
-| Tool | Role |
-|------|------|
-| [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) | Build and run the API (`global.json` pins SDK 9.0.100+) |
-| [Node.js](https://nodejs.org/) 20+ | Frontend install, dev server, build, and tests |
-| [Make](https://www.gnu.org/software/make/) | Root and AWP targets (`backend-*`, `frontend-*`, `awp-*`) |
-| [yq](https://github.com/mikefarah/yq) v4 | Render and validate AWP register YAML |
-| [Graphviz](https://graphviz.org/) (`dot`) | Optional AWP diagram render (`make awp-render` / `make diagram` in `.awp-workspace/`) |
-| [Git](https://git-scm.com/) | Version control; optional pre-commit hook via `make awp-install-hooks` |
-| [PowerShell](https://learn.microsoft.com/powershell/) | Windows helper scripts under `scripts/` |
-| [GitHub Actions](https://github.com/features/actions) | CI: `dotnet` build/test, `npm ci` / build / test, vulnerability and audit checks (`.github/workflows/ci.yml`) |
-| [Cursor](https://cursor.com/) | IDE; phase rules and hooks under `.cursor/` |
+## Documentation
 
-Architecture notes: vertical slice + CQRS on the backend; mobile-first React SPA (PWA-capable). Details in [`backend/README.md`](backend/README.md) and [`frontend/README.md`](frontend/README.md).
-
-## AI workspace (AWP)
-
-**Design documentation** lives in [`docs/`](docs/) (`@docs/` in Cursor). **AWP registers** (queue, readiness, traceability) live in [`.awp-workspace/`](.awp-workspace/). Code: [`backend/`](backend/) and [`frontend/`](frontend/).
-
-### AWP Build template (source)
-
-Planning workflow is adapted from **[AWP Build](https://gitlab.com/agent-workspace-protocols/workspace-build)** (Agent Workspace Protocols on GitLab):
-
-| | |
-|---|---|
-| **Original template** | [gitlab.com/agent-workspace-protocols/workspace-build](https://gitlab.com/agent-workspace-protocols/workspace-build) |
-| **Template package name** | `workspace-template` (see [`.awp-workspace/template-release.yaml`](.awp-workspace/template-release.yaml)) |
-| **Adopted release** | `2026.05.22` |
-| **Installed in this repo** | [`.awp-workspace/`](.awp-workspace/) (direct-use, monorepo layout) |
-
-Related upstream templates (`workspace-deployment`, `workspace-sustain`) live in the same GitLab group; only **Build** is vendored here as `.awp-workspace/`. Sideload and upgrade flow: [`.awp-workspace/docs/guides/template-sideloading.md`](.awp-workspace/docs/guides/template-sideloading.md).
-
-**Linux / WSL / macOS:**
-
-```bash
-make awp-render
-make awp-docs-check
-make awp-install-hooks
-make awp-install-tools   # yq + graphviz (once)
-```
-
-**Windows (PowerShell):**
-
-```powershell
-# One-time: install yq (required for register render/checks)
-pwsh scripts/install-tools.ps1
-
-# After editing .yaml under .awp-workspace/
-make awp-render            # needs make (winget install GnuWin32.Make) or use WSL
-make awp-docs-check
-
-# Git pre-commit hook
-pwsh scripts/install-hooks.ps1
-```
-
-For the full AWP workflow on Windows, **WSL2 is the smoothest path** — all `make` targets work as documented. Native Windows works well for app development; register automation needs `make`, `bash` (Git for Windows), and `yq`.
-
-Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`docs/README.md`](docs/README.md), [`.awp-workspace/AGENTS.md`](.awp-workspace/AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md).
-
-**Cursor:** [`.cursor/rules/awp.mdc`](.cursor/rules/awp.mdc), phase rules (`awp-design`, `awp-build`, `awp-verify`), [hooks](.cursor/hooks.json).
-
-## Running the app
-
-Requires **.NET 9 SDK** and **Node.js** (for the frontend).
-
-### Linux / WSL / macOS
-
-```bash
-make setup-dotnet      # first time if `dotnet` is not found (installs to ~/.dotnet)
-make frontend-install  # once per machine (or after package.json changes)
-make backend-run       # API at http://localhost:5158
-make frontend-run      # web UI at http://localhost:5173 (separate terminal)
-```
-
-### Windows (PowerShell)
-
-```powershell
-pwsh scripts/setup-dotnet.ps1    # checks SDK; links to installer if missing
-pwsh scripts/backend-stop.ps1    # free port 5158 if a previous run is still up
-dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http
-```
-
-In another terminal:
-
-```powershell
-pwsh scripts/frontend-stop.ps1   # free port 5173 if needed
-cd frontend; npm install; npm run dev
-```
-
-Or use `make backend-run`, `make frontend-run`, and `make frontend-stop` if you have `make` (WSL or [GnuWin32 Make](https://gnuwin32.sourceforge.net/packages/make.htm)).
-
-Web UI: http://localhost:5173 (proxies `/api` to the backend at http://localhost:5158).
+| Path | Purpose |
+|------|---------|
+| [`docs/product/`](docs/product/) | Brief, roadmap, use cases, user stories |
+| [`docs/design/features/`](docs/design/features/) | Feature specs (source of truth for behavior) |
+| [`docs/design/decisions/`](docs/design/decisions/) | ADRs |
+| [`cursor.md`](cursor.md) | Stack overview for Cursor |
 
 ## Platform notes
 
 | Task | Linux / WSL | Native Windows |
 |------|-------------|----------------|
-| Run API | `make backend-run` | `dotnet run …` |
+| Run API | `make backend-run` | `dotnet run --project backend/TrueSight.Api/TrueSight.Api.csproj --launch-profile http` |
 | Run frontend | `make frontend-run` | `cd frontend && npm run dev` |
 | Stop API on port 5158 | `make backend-stop` | `pwsh scripts/backend-stop.ps1` |
 | Stop frontend on port 5173 | `make frontend-stop` | `pwsh scripts/frontend-stop.ps1` |
 | Install frontend deps | `make frontend-install` | `cd frontend && npm install` |
 | Build frontend | `make frontend-build` | `cd frontend && npm run build` |
-| Install .NET SDK | `make setup-dotnet` | [Official installer](https://dotnet.microsoft.com/download/dotnet/9.0) or `winget install Microsoft.DotNet.SDK.9` |
-| AWP register render/check | `make awp-render`, `make awp-docs-check` | WSL recommended; or `make` + `pwsh scripts/install-tools.ps1` |
-| Git pre-commit hook | `make awp-install-hooks` | `pwsh scripts/install-hooks.ps1` |
 
-See [`backend/README.md`](backend/README.md) for API details and verification commands.
+Web UI proxies `/api` to the backend. API health: `curl -s http://localhost:5158/api/health`.
+
+## For contributors
+
+**Design docs:** [`docs/`](docs/) · **AWP registers:** [`.awp-workspace/`](.awp-workspace/) (YAML queue/readiness; `make awp-render` after edits).
+
+Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md). Planning workflow adapted from [AWP Build](https://gitlab.com/agent-workspace-protocols/workspace-build) — see [`.awp-workspace/template-release.yaml`](.awp-workspace/template-release.yaml).
+
+```bash
+make awp-render
+make awp-docs-check
+make awp-install-hooks   # optional pre-commit
+```
+
+**Cursor:** [`.cursor/rules/`](.cursor/rules/), [`.cursor/hooks.json`](.cursor/hooks.json).
