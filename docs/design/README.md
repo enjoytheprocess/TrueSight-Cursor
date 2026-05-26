@@ -6,6 +6,7 @@ Design intent, maturity tracking, and delivery sequencing. **Durable prose** liv
 
 | Document | Path |
 |----------|------|
+| **Design priority queue** | [design-priority-queue.md](design-priority-queue.md) — promoted ideas, P1–P4 |
 | Project brief | [../product/project-brief.md](../product/project-brief.md) |
 | Feature specs | [features/](features/) |
 | UI principles | [ui-principles.md](ui-principles.md) |

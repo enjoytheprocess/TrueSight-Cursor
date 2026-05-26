@@ -63,3 +63,58 @@ features:
     title: "User profile and settings"
     components: [backend, frontend]
     created_on: "2026-05-26"
+
+  - id: FEAT-INV-002
+    title: "Expiry proximity warnings"
+    components: [backend, frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-INV-003
+    title: "Inventory search and filter"
+    components: [frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-REC-003
+    title: "Default serving context"
+    components: [backend, frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-REC-004
+    title: "Discovery browse beyond inventory"
+    components: [backend, frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-REC-005
+    title: "Receipt photo to inventory"
+    components: [backend, frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-SES-002
+    title: "Recipe session undo"
+    components: [backend, frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-SES-003
+    title: "Partial ingredient deduction"
+    components: [backend, frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-PLT-001
+    title: "PWA install and offline shell"
+    components: [frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-SHP-002
+    title: "Store recommendations"
+    components: [backend, frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-HH-001
+    title: "Household shared inventory"
+    components: [backend, frontend]
+    created_on: "2026-05-26"
+
+  - id: FEAT-ORG-001
+    title: "Charity / food-bank persona"
+    components: [backend]
+    created_on: "2026-05-26"

@@ -142,4 +142,158 @@
 **Code links:** backend/TrueSight.Api/Features/Auth, backend/TrueSight.Api/Infrastructure/ClaimsCurrentUser.cs, backend/TrueSight.Api/Infrastructure/Data/ApplicationUser.cs, frontend/src/api/auth.ts, frontend/src/api/client.ts, frontend/src/features/auth/DemoLoginScreen.tsx  
 **Test links:** backend/TrueSight.Api.Tests/AuthEndpointsTests.cs, backend/TrueSight.Api.Tests/ProductionSecurityTests.cs
 
-> Sync 2026-05-24 — cookie auth; TMP-001 closed; DI-016 no App cold-start gate.
+> API shipped; design_priority P2 auth UI slice queued — sign-in/sign-up not in App flow.
+
+---
+
+### FEAT-INV-002
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-INV-002-expiry-proximity-warnings.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P1 — partial styling only (IDEA-006)
+
+---
+
+### FEAT-INV-003
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-INV-003-inventory-search-filter.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P1
+
+---
+
+### FEAT-REC-003
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-REC-003-default-serving-context.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** frontend/src/features/recipes/RecipeCard.tsx, frontend/src/features/recipes/recipeScaling.ts  
+**Test links:** frontend/src/features/recipes/recipeScaling.test.ts
+
+> design_priority P1 — per-card stepper partial
+
+---
+
+### FEAT-SES-002
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-SES-002-recipe-session-undo.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P2
+
+---
+
+### FEAT-SES-003
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-SES-003-partial-deduction.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P3
+
+---
+
+### FEAT-PLT-001
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-PLT-001-pwa-offline-shell.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P2
+
+---
+
+### FEAT-REC-004
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-REC-004-discovery-browse.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P3 — after FEAT-PRF-001
+
+---
+
+### FEAT-REC-005
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-REC-005-receipt-photo-inventory.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P3 — after REC-002 production
+
+---
+
+### FEAT-SHP-002
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-SHP-002-store-recommendations.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P4
+
+---
+
+### FEAT-HH-001
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-HH-001-household-sharing.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P4
+
+---
+
+### FEAT-ORG-001
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-ORG-001-charity-food-bank-persona.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** —  
+**Test links:** —
+
+> design_priority P4 — persona/design

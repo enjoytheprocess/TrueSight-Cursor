@@ -13,6 +13,8 @@ References in **Depends on** may be `IDEA-*`, `FEAT-*`, or `CAP-*`. See [Depende
 
 **Sync 2026-05-26:** Promoted ideas (002–004, 011–012) archived; discovery remainder is **IDEA-017**.
 
+**Sync 2026-05-26 (design intake):** All former **open** ideas (001, 005–009, 013–017) promoted to design with draft specs and priorities. **Active ideation backlog is empty.** Canonical sort order: **[design-priority-queue.md](../design/design-priority-queue.md)**.
+
 ---
 
 ## Dependencies and sequencing
@@ -91,21 +93,29 @@ flowchart TB
 
 ## Active index (open)
 
-| ID | Title | Theme | Impl. | Depends on |
-|----|-------|-------|-------|------------|
-| IDEA-001 | Serving size selector | Recipes & UX | partial | CAP-V1-CORE |
-| IDEA-005 | Store recommendations | Commerce | — | IDEA-011, CAP-V1-CORE |
-| IDEA-006 | Expiry proximity warnings | Inventory | partial | CAP-V1-CORE |
-| IDEA-007 | Charity / food-bank persona | Personas | — | IDEA-015 |
-| IDEA-008 | Receipt photo → inventory | Smart input | — | CAP-V1-CORE; FEAT-REC-002 prod |
-| IDEA-009 | PWA install + offline shell | Platform | — | CAP-V1-CORE |
-| IDEA-013 | Post-cook adjust / undo deduct | Recipes & trust | — | FEAT-SES-001 |
-| IDEA-014 | Inventory search and filter | Inventory & UX | — | CAP-V1-CORE |
-| IDEA-015 | Household shared lists | Personas | — | FEAT-AUTH-002, auth UI |
-| IDEA-016 | Partial deduction on cook | Recipes & UX | — | FEAT-SES-001 |
-| IDEA-017 | Discovery browse beyond inventory | Recipes & UX | — | CAP-V1-CORE, FEAT-PRF-001 |
+*None — all ideas promoted to design. See [design priority queue](../design/design-priority-queue.md).*
 
-**Impl.:** `partial` = some behavior shipped; ideation scope not complete. `—` = not built.
+## Design queue (by priority)
+
+| P | Feature | Was | Capability |
+|---|---------|-----|------------|
+| **P1** | [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md) | IDEA-002/003/004/012 | CAP-V1-PROFILE |
+| **P1** | [FEAT-INV-003](../design/features/FEAT-INV-003-inventory-search-filter.md) | IDEA-014 | CAP-V1-POLISH |
+| **P1** | [FEAT-INV-002](../design/features/FEAT-INV-002-expiry-proximity-warnings.md) | IDEA-006 | CAP-V1-POLISH |
+| **P1** | [FEAT-REC-003](../design/features/FEAT-REC-003-default-serving-context.md) | IDEA-001 | CAP-V1-POLISH |
+| **P2** | [FEAT-SES-002](../design/features/FEAT-SES-002-recipe-session-undo.md) | IDEA-013 | CAP-V1-TRUST |
+| **P2** | [FEAT-PLT-001](../design/features/FEAT-PLT-001-pwa-offline-shell.md) | IDEA-009 | CAP-V1-PLATFORM |
+| **P2** | [FEAT-REC-002](../design/features/FEAT-REC-002-fridge-photo-recognition.md) (prod) | — | CAP-V2-VISION |
+| **P2** | [FEAT-AUTH-002](../design/features/FEAT-AUTH-002-real-authentication.md) (UI) | — | CAP-V1-IDENTITY |
+| **P3** | [FEAT-SES-003](../design/features/FEAT-SES-003-partial-deduction.md) | IDEA-016 | CAP-V1-TRUST |
+| **P3** | [FEAT-REC-004](../design/features/FEAT-REC-004-discovery-browse.md) | IDEA-017 | CAP-V1-DISCOVERY |
+| **P3** | [FEAT-REC-005](../design/features/FEAT-REC-005-receipt-photo-inventory.md) | IDEA-008 | CAP-V2-INPUT |
+| **P3** | [FEAT-CAT-001](../design/features/FEAT-CAT-001-ingredient-catalog.md) | — | CAP-V1-EXT |
+| **P4** | [FEAT-HH-001](../design/features/FEAT-HH-001-household-sharing.md) | IDEA-015 | CAP-V1-HOUSEHOLD |
+| **P4** | [FEAT-SHP-002](../design/features/FEAT-SHP-002-store-recommendations.md) | IDEA-005 | CAP-V1-COMMERCE |
+| **P4** | [FEAT-ORG-001](../design/features/FEAT-ORG-001-charity-food-bank-persona.md) | IDEA-007 | CAP-V2-ORG |
+
+Full table: [design-priority-queue.md](../design/design-priority-queue.md).
 
 ---
 

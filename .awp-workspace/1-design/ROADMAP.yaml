@@ -46,4 +46,87 @@ capabilities:
     depends_on: CAP-V1-CORE
     status: planned
     owner: unassigned
-    notes: "Design 2026-05-26 — spec FEAT-PRF-001 draft; OQ-058–062; not build-admitted."
+    notes: "Design P1 — spec FEAT-PRF-001 spec_review; OQ-058–062; not build-admitted."
+
+  - id: CAP-V1-POLISH
+    target_window: TBD
+    objective: "V1.3 — quick UX: expiry banner, inventory search/filter, default servings"
+    feature_ids:
+      - FEAT-INV-002
+      - FEAT-INV-003
+      - FEAT-REC-003
+    depends_on: CAP-V1-CORE
+    status: planned
+    owner: unassigned
+    notes: "Design P1 — promoted IDEA-001,006,014 2026-05-26; see docs/design/design-priority-queue.md"
+
+  - id: CAP-V1-TRUST
+    target_window: TBD
+    objective: "V1.4 — cook session trust: undo deduct, optional partial deduct"
+    feature_ids:
+      - FEAT-SES-002
+      - FEAT-SES-003
+    depends_on: CAP-V1-CORE
+    status: planned
+    owner: unassigned
+    notes: "Design P2/P3 — promoted IDEA-013,016; ship SES-002 before SES-003"
+
+  - id: CAP-V1-PLATFORM
+    target_window: TBD
+    objective: "V1.5 — PWA install, offline inventory shell"
+    feature_ids:
+      - FEAT-PLT-001
+    depends_on: CAP-V1-CORE
+    status: planned
+    owner: unassigned
+    notes: "Design P2 — promoted IDEA-009"
+
+  - id: CAP-V1-DISCOVERY
+    target_window: TBD
+    objective: "V1.6 — browse recipes beyond strict in-stock match"
+    feature_ids:
+      - FEAT-REC-004
+    depends_on: CAP-V1-PROFILE
+    status: planned
+    owner: unassigned
+    notes: "Design P3 — promoted IDEA-017; after FEAT-PRF-001"
+
+  - id: CAP-V2-INPUT
+    target_window: TBD
+    objective: "V2 input — receipt photo → review → inventory"
+    feature_ids:
+      - FEAT-REC-005
+    depends_on: CAP-V2-VISION
+    status: planned
+    owner: unassigned
+    notes: "Design P3 — promoted IDEA-008; after REC-002 production vision"
+
+  - id: CAP-V1-HOUSEHOLD
+    target_window: TBD
+    objective: "V1.x — shared household inventory and shopping list"
+    feature_ids:
+      - FEAT-HH-001
+    depends_on: CAP-V1-CORE
+    status: planned
+    owner: unassigned
+    notes: "Design P4 — promoted IDEA-015; blocked on auth UI (FEAT-AUTH-002)"
+
+  - id: CAP-V1-COMMERCE
+    target_window: TBD
+    objective: "V1.x — store recommendations for missing ingredients"
+    feature_ids:
+      - FEAT-SHP-002
+    depends_on: CAP-V1-SHOP
+    status: planned
+    owner: unassigned
+    notes: "Design P4 — promoted IDEA-005; provider spike required"
+
+  - id: CAP-V2-ORG
+    target_window: TBD
+    objective: "V2+ persona — charity / food-bank design (implementation TBD)"
+    feature_ids:
+      - FEAT-ORG-001
+    depends_on: CAP-V1-HOUSEHOLD
+    status: planned
+    owner: unassigned
+    notes: "Design P4 — promoted IDEA-007; persona/design only"

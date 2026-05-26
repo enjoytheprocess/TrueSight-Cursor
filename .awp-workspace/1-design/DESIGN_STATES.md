@@ -48,8 +48,173 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 **Decisions:**   
 **Blocking questions:** OQ-058–062 open; AC unchecked — not build-admitted
 
-> Design 2026-05-26 — promotes IDEA-002 (cuisine prefs only), IDEA-003, IDEA-004, IDEA-012. CAP-V1-PROFILE planned on roadmap. Depends on CAP-V1-CORE; AUTH-002 recommended for production.
+> design_priority P1 — highest design queue rank. CAP-V1-PROFILE. AUTH-002 recommended for production.
 
+
+---
+
+### FEAT-INV-002 · **Expiry proximity warnings**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_draft` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-006 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-INV-002-expiry-proximity-warnings.md`  
+**Decisions:**   
+**Blocking questions:** none
+
+> design_priority P1 — CAP-V1-POLISH
+
+---
+
+### FEAT-INV-003 · **Inventory search and filter**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_draft` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-014 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-INV-003-inventory-search-filter.md`  
+**Decisions:**   
+**Blocking questions:** none
+
+> design_priority P1 — CAP-V1-POLISH
+
+---
+
+### FEAT-REC-003 · **Default serving context**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_draft` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-001 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-REC-003-default-serving-context.md`  
+**Decisions:**   
+**Blocking questions:** Storage: localStorage demo vs UserProfile when PRF-001 ships
+
+> design_priority P1 — partial V1 stepper shipped
+
+---
+
+### FEAT-SES-002 · **Recipe session undo**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_draft` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-013 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-SES-002-recipe-session-undo.md`  
+**Decisions:**   
+**Blocking questions:** Reversal model: snapshot vs audit lines
+
+> design_priority P2 — CAP-V1-TRUST
+
+---
+
+### FEAT-PLT-001 · **PWA install and offline shell**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_draft` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-009 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-PLT-001-pwa-offline-shell.md`  
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md  
+**Blocking questions:** none
+
+> design_priority P2 — CAP-V1-PLATFORM
+
+---
+
+### FEAT-SES-003 · **Partial ingredient deduction**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_draft` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-016 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-SES-003-partial-deduction.md`  
+**Decisions:**   
+**Blocking questions:** OQ-042 — after SES-002 undo semantics
+
+> design_priority P3 — CAP-V1-TRUST
+
+---
+
+### FEAT-REC-004 · **Discovery browse beyond inventory**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_draft` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-017 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-REC-004-discovery-browse.md`  
+**Decisions:**   
+**Blocking questions:** Depends FEAT-PRF-001 filter metadata
+
+> design_priority P3 — CAP-V1-DISCOVERY
+
+---
+
+### FEAT-REC-005 · **Receipt photo to inventory**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_draft` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-008 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-REC-005-receipt-photo-inventory.md`  
+**Decisions:** docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md  
+**Blocking questions:** FEAT-REC-002 production vision (OQ-005/006)
+
+> design_priority P3 — CAP-V2-INPUT
+
+---
+
+### FEAT-HH-001 · **Household shared inventory**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `concept` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-015 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-HH-001-household-sharing.md`  
+**Decisions:**   
+**Blocking questions:** Auth UI not wired; household invite model TBD
+
+> design_priority P4 — CAP-V1-HOUSEHOLD
+
+---
+
+### FEAT-SHP-002 · **Store recommendations**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `concept` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-005 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-SHP-002-store-recommendations.md`  
+**Decisions:**   
+**Blocking questions:** External provider + privacy spike
+
+> design_priority P4 — CAP-V1-COMMERCE
+
+---
+
+### FEAT-ORG-001 · **Charity / food-bank persona**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `concept` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-007 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-ORG-001-charity-food-bank-persona.md`  
+**Decisions:**   
+**Blocking questions:** Build vs persona-only decision
+
+> design_priority P4 — CAP-V2-ORG; not consumer MVP
 
 ---
 

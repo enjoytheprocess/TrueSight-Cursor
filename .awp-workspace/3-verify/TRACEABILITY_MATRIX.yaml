@@ -185,4 +185,117 @@ features:
     test_links:
       - backend/TrueSight.Api.Tests/AuthEndpointsTests.cs
       - backend/TrueSight.Api.Tests/ProductionSecurityTests.cs
-    notes: "Sync 2026-05-24 — cookie auth; TMP-001 closed; DI-016 no App cold-start gate."
+    notes: "API shipped; design_priority P2 auth UI slice queued — sign-in/sign-up not in App flow."
+
+  - id: FEAT-INV-002
+    spec_link: docs/design/features/FEAT-INV-002-expiry-proximity-warnings.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P1 — partial styling only (IDEA-006)"
+
+  - id: FEAT-INV-003
+    spec_link: docs/design/features/FEAT-INV-003-inventory-search-filter.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P1"
+
+  - id: FEAT-REC-003
+    spec_link: docs/design/features/FEAT-REC-003-default-serving-context.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links:
+      - frontend/src/features/recipes/RecipeCard.tsx
+      - frontend/src/features/recipes/recipeScaling.ts
+    test_links:
+      - frontend/src/features/recipes/recipeScaling.test.ts
+    notes: "design_priority P1 — per-card stepper partial"
+
+  - id: FEAT-SES-002
+    spec_link: docs/design/features/FEAT-SES-002-recipe-session-undo.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P2"
+
+  - id: FEAT-SES-003
+    spec_link: docs/design/features/FEAT-SES-003-partial-deduction.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P3"
+
+  - id: FEAT-PLT-001
+    spec_link: docs/design/features/FEAT-PLT-001-pwa-offline-shell.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P2"
+
+  - id: FEAT-REC-004
+    spec_link: docs/design/features/FEAT-REC-004-discovery-browse.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P3 — after FEAT-PRF-001"
+
+  - id: FEAT-REC-005
+    spec_link: docs/design/features/FEAT-REC-005-receipt-photo-inventory.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P3 — after REC-002 production"
+
+  - id: FEAT-SHP-002
+    spec_link: docs/design/features/FEAT-SHP-002-store-recommendations.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P4"
+
+  - id: FEAT-HH-001
+    spec_link: docs/design/features/FEAT-HH-001-household-sharing.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P4"
+
+  - id: FEAT-ORG-001
+    spec_link: docs/design/features/FEAT-ORG-001-charity-food-bank-persona.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links: []
+    test_links: []
+    notes: "design_priority P4 — persona/design"

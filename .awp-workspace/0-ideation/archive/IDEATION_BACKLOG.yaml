@@ -91,3 +91,157 @@ ideas:
       decision: promoted
       reason: "Design draft 2026-05-26; archived at sync 2026-05-26"
       promotion_target: CAP-V1-PROFILE
+
+  - id: IDEA-001
+    title: "Serving size selector"
+    status: promoted
+    date: "2026-05-23"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE, FEAT-REC-001]
+    summary: "Default or remembered serving context across recipes (beyond per-card stepper)."
+    discussion: |
+      - design_priority: P1 — FEAT-REC-003 spec_draft
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26; see docs/design/design-priority-queue.md"
+      promotion_target: CAP-V1-POLISH
+
+  - id: IDEA-005
+    title: "Store recommendations (distance, price)"
+    status: promoted
+    date: "2026-05-23"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-SHOP]
+    summary: "Suggest stores to buy missing ingredients with distance and price comparison."
+    discussion: |
+      - design_priority: P4 — FEAT-SHP-002 concept
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V1-COMMERCE
+
+  - id: IDEA-006
+    title: "Expiry proximity warnings"
+    status: promoted
+    date: "2026-05-23"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Proactive expiry warnings (banner, notification) beyond list styling."
+    discussion: |
+      - design_priority: P1 — FEAT-INV-002 spec_draft
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V1-POLISH
+
+  - id: IDEA-007
+    title: "Charity / food-bank persona"
+    status: promoted
+    date: "2026-05-23"
+    components: [backend]
+    depends_on: [FEAT-HH-001]
+    summary: "Persona for donation kitchens and shared-fridge inventory tracking (not MVP scope)."
+    discussion: |
+      - design_priority: P4 — FEAT-ORG-001 concept
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26 (persona/design only)"
+      promotion_target: CAP-V2-ORG
+
+  - id: IDEA-008
+    title: "Receipt photo to inventory list"
+    status: promoted
+    date: "2026-05-23"
+    components: [backend, frontend]
+    depends_on: [FEAT-REC-002]
+    summary: "OCR or vision on receipt photos to suggest inventory line items before user confirms."
+    discussion: |
+      - design_priority: P3 — FEAT-REC-005 spec_draft
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V2-INPUT
+
+  - id: IDEA-009
+    title: "PWA install and offline shell"
+    status: promoted
+    date: "2026-05-23"
+    components: [frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Web app manifest, service worker, and limited offline UX for installation and resilience."
+    discussion: |
+      - design_priority: P2 — FEAT-PLT-001 spec_draft
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V1-PLATFORM
+
+  - id: IDEA-013
+    title: "Post-cook adjust and undo deduction"
+    status: promoted
+    date: "2026-05-26"
+    components: [backend, frontend]
+    depends_on: [FEAT-SES-001]
+    summary: "After accepting a recipe, let users undo or correct quantities deducted from inventory."
+    discussion: |
+      - design_priority: P2 — FEAT-SES-002 spec_draft
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V1-TRUST
+
+  - id: IDEA-014
+    title: "Inventory search and filter"
+    status: promoted
+    date: "2026-05-26"
+    components: [frontend]
+    depends_on: [CAP-V1-CORE]
+    summary: "Search inventory by name and filter by expiring-soon as lists grow."
+    discussion: |
+      - design_priority: P1 — FEAT-INV-003 spec_draft
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V1-POLISH
+
+  - id: IDEA-015
+    title: "Household shared inventory and shopping list"
+    status: promoted
+    date: "2026-05-26"
+    components: [backend, frontend]
+    depends_on: [FEAT-AUTH-002]
+    summary: "Light multi-user sharing so partners see the same stock and shopping list."
+    discussion: |
+      - design_priority: P4 — FEAT-HH-001 concept
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V1-HOUSEHOLD
+
+  - id: IDEA-016
+    title: "Partial ingredient deduction on cook"
+    status: promoted
+    date: "2026-05-26"
+    components: [backend, frontend]
+    depends_on: [FEAT-SES-001, FEAT-REC-001]
+    summary: "When accepting a recipe, deduct less than the full listed amount per ingredient line."
+    discussion: |
+      - design_priority: P3 — FEAT-SES-003 spec_draft
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V1-TRUST
+
+  - id: IDEA-017
+    title: "Discovery browse beyond inventory"
+    status: promoted
+    date: "2026-05-26"
+    components: [backend, frontend]
+    depends_on: [CAP-V1-CORE, FEAT-PRF-001]
+    summary: "Browse and filter recipes beyond strict in-stock match (remainder of archived IDEA-002)."
+    discussion: |
+      - design_priority: P3 — FEAT-REC-004 spec_draft
+    outcome:
+      decision: promoted
+      reason: "Promoted to design 2026-05-26"
+      promotion_target: CAP-V1-DISCOVERY

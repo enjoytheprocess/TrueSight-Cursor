@@ -38,8 +38,45 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 
 **Sequencing:** After V1.1 shopping acceptance; profile persistence pairs with real auth ([FEAT-AUTH-002](../design/features/FEAT-AUTH-002-real-authentication.md)) for production; demo may use `X-TrueSight-User` first.
 
+## Phase 1.3 — Polish (V1.3) — **design only**
+
+| # | Capability | Design priority | Features |
+|---|------------|-----------------|----------|
+| 7 | Quick UX (`CAP-V1-POLISH`) | P1 | Expiry banner [FEAT-INV-002](../design/features/FEAT-INV-002-expiry-proximity-warnings.md), search/filter [FEAT-INV-003](../design/features/FEAT-INV-003-inventory-search-filter.md), default servings [FEAT-REC-003](../design/features/FEAT-REC-003-default-serving-context.md) |
+
+## Phase 1.4 — Trust (V1.4) — **design only**
+
+| # | Capability | Design priority | Features |
+|---|------------|-----------------|----------|
+| 8 | Cook trust (`CAP-V1-TRUST`) | P2–P3 | Undo [FEAT-SES-002](../design/features/FEAT-SES-002-recipe-session-undo.md), partial deduct [FEAT-SES-003](../design/features/FEAT-SES-003-partial-deduction.md) |
+
+## Phase 1.5 — Platform (V1.5) — **design only**
+
+| # | Capability | Design priority | Features |
+|---|------------|-----------------|----------|
+| 9 | PWA (`CAP-V1-PLATFORM`) | P2 | [FEAT-PLT-001](../design/features/FEAT-PLT-001-pwa-offline-shell.md) |
+
+## Phase 1.6 — Discovery (V1.6) — **design only**
+
+| # | Capability | Design priority | Features |
+|---|------------|-----------------|----------|
+| 10 | Browse beyond stock (`CAP-V1-DISCOVERY`) | P3 | [FEAT-REC-004](../design/features/FEAT-REC-004-discovery-browse.md) — after profile |
+
+## Later design (P3–P4)
+
+| Capability | Notes |
+|------------|--------|
+| `CAP-V2-INPUT` | Receipt photo [FEAT-REC-005](../design/features/FEAT-REC-005-receipt-photo-inventory.md) after fridge vision production |
+| `CAP-V1-HOUSEHOLD` | [FEAT-HH-001](../design/features/FEAT-HH-001-household-sharing.md) — needs auth UI |
+| `CAP-V1-COMMERCE` | [FEAT-SHP-002](../design/features/FEAT-SHP-002-store-recommendations.md) |
+| `CAP-V2-ORG` | [FEAT-ORG-001](../design/features/FEAT-ORG-001-charity-food-bank-persona.md) — persona/design |
+
+**Sort order:** [design-priority-queue.md](../design/design-priority-queue.md) · AWP: `.awp-workspace/1-design/ROADMAP.yaml`
+
 ## Parked / lower priority
+
+- [IDEA-010](ideation.md) — Firebase-first stack (parked)
 
 ## Not on this roadmap
 
-Wishlist and “nice to have” items are **ideation** — see [ideation.md](ideation.md). Promote to this roadmap only after an explicit decision (update AWP `ROADMAP.yaml` and registers).
+Ideation backlog is empty (all promoted 2026-05-26). New ideas start in `.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml` before promotion.
