@@ -75,6 +75,20 @@
 
 ---
 
+### FEAT-PRF-001
+
+| Spec | Last Synced | Drift Status | Owner |
+| --- | --- | --- | --- |
+| docs/design/features/FEAT-PRF-001-user-profile-and-settings.md | 2026-05-26 | `review_needed` | unassigned |
+
+**Task IDs:** —  
+**Code links:** docs/design/features/FEAT-PRF-001-user-profile-and-settings.md, docs/product/domain-model.md  
+**Test links:** —
+
+> Design 2026-05-26 — no build tasks; OQ-058–062 open.
+
+---
+
 ### FEAT-CAT-001
 
 | Spec | Last Synced | Drift Status | Owner |
@@ -93,13 +107,14 @@
 
 | Spec | Last Synced | Drift Status | Owner |
 | --- | --- | --- | --- |
-| docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md | 2026-05-24 | `aligned` | unassigned |
+| docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md | 2026-05-26 | `review_needed` | unassigned |
 
-**Task IDs:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003  
+**Task IDs:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003, BUILD-SHP-004  
 **Code links:** backend/TrueSight.Api/Features/ShoppingList, backend/TrueSight.Api/Infrastructure/Data/TrueSightDbInitializer.cs, frontend/src/features/app/MainApp.tsx, frontend/src/features/shopping-list, frontend/src/features/shopping-photo, frontend/src/features/recipes/RecipePager.tsx, frontend/src/features/recipes/RecipeCard.tsx, frontend/public/mockups/shopping-preset.png  
 **Test links:** backend/TrueSight.Api.Tests/ShoppingListEndpointsTests.cs, backend/TrueSight.Api.Tests/TrueSightDbInitializerTests.cs, frontend/src/App.test.tsx, frontend/src/features/recipes/RecipePager.test.tsx
 
-> Sync 2026-05-24 — spec aligned (DI-012–DI-016); shopping photo mockup documented as preview extension.
+> Design 2026-05-26 — drift: single-column shell + auto tab switch on move (MainApp.tsx) vs spec OQ-057 / BUILD-SHP-004. DI-017/DI-018 incorporated in FEAT-SHP-001.
+
 
 ---
 

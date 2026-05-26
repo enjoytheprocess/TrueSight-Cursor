@@ -47,6 +47,16 @@ Close a row here when you decide — then update [project-brief.md](project-brie
 | ID | Question | Options / notes | Blocks | Status |
 |----|----------|-----------------|--------|--------|
 
+### Profile (V1.2 — FEAT-PRF-001)
+
+| ID | Question | Options / notes | Blocks | Status |
+|----|----------|-----------------|--------|--------|
+| OQ-058 | **Diet/allergen rule source** | Provider tags only vs server rules table for Static provider | `FEAT-PRF-001` | open |
+| OQ-059 | **Cuisine / skill / equipment** | Hard filter vs score boost only | `FEAT-PRF-001` | open |
+| OQ-060 | **`prioritizeExpiringItems` off** | Zero ranking term only vs also hide 3-day row highlight | `FEAT-PRF-001` | open |
+| OQ-061 | **First GET `/api/profile`** | 404 vs auto-create empty profile | `FEAT-PRF-001` | open |
+| OQ-062 | **Sort order with profile filters** | Keep missing↑ score↓ minutes↑ vs other | `FEAT-PRF-001` | open |
+
 ---
 
 ## V1 feature design (from specs — not stack)
@@ -110,6 +120,7 @@ These are **decided in docs**; do not re-litigate here unless changing an ADR.
 | OQ-054 | Inventory add uses **typeahead/AJAX search** against catalog as user types; pick existing entry (FK) or submit a new name (creates catalog row per OQ-053) | [FEAT-CAT-001](../design/features/FEAT-CAT-001-ingredient-catalog.md) | 2026-05-24 |
 | OQ-055 | **No catalog delete/retire in V1** — append-only; admin/merge tooling deferred | [FEAT-CAT-001](../design/features/FEAT-CAT-001-ingredient-catalog.md) | 2026-05-24 |
 | OQ-056 | **Optional expiry on Move to In Stock** — inline date when user initiates move; null if skipped | [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) | 2026-05-24 |
+| OQ-057 | **Responsive main shell** — ≤840px stacked; >840px two columns (tab list \| recipe pager) for both tabs; **stay on Shopping List** after move-to-inventory confirm | [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) | 2026-05-26 |
 | OQ-007 | **xUnit** + `WebApplicationFactory` + in-memory SQLite — light V1 stack; document in `backend/README`; note room to improve (file DB, NUnit, coverage gates) later | `TrueSight.Api.Tests/`, [backend/README.md](../../backend/README.md) | 2026-05-24 |
 | OQ-052 | **Light V1 verify:** `make backend-build` + `dotnet test backend/MyApp.sln` + `make frontend-build` | [backend/README.md](../../backend/README.md), [backend/AGENTS.md](../../backend/AGENTS.md) | 2026-05-24 |
 | OQ-012 | **Tailwind CSS** for V1 styling (migrate from plain `styles.css`) | `frontend/` | 2026-05-24 |

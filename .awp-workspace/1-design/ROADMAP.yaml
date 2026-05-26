@@ -37,3 +37,13 @@ capabilities:
     status: active
     owner: unassigned
     notes: "Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred."
+
+  - id: CAP-V1-PROFILE
+    target_window: TBD
+    objective: "V1.2 — user settings, diet/allergies, use-first, recipe filter/rank integration"
+    feature_ids:
+      - FEAT-PRF-001
+    depends_on: CAP-V1-CORE
+    status: planned
+    owner: unassigned
+    notes: "Design 2026-05-26 — spec FEAT-PRF-001 draft; OQ-058–062; not build-admitted."

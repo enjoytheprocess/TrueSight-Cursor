@@ -24,11 +24,11 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 | Status | Date | Components |
 | --- | --- | --- |
-| `open` | 2026-05-23 | backend |
+| `open` | 2026-05-23 | backend, frontend |
 
 **Summary:** Filter and browse recipes by cuisine; optional discovery beyond strict inventory match.
 
-**Decision:** `none`  
+**Decision:** `promoted`  
 **Promotion target:** —
 
 ---
@@ -37,11 +37,11 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 | Status | Date | Components |
 | --- | --- | --- |
-| `open` | 2026-05-23 | backend |
+| `open` | 2026-05-23 | backend, frontend |
 
 **Summary:** Global filters for vegan, gluten-free, allergies, etc. on recipe suggestions.
 
-**Decision:** `none`  
+**Decision:** `promoted`  
 **Promotion target:** —
 
 ---
@@ -50,11 +50,24 @@ _Open ideas. Move promoted, parked, or dropped entries to `archive/IDEATION_BACK
 
 | Status | Date | Components |
 | --- | --- | --- |
-| `open` | 2026-05-23 | backend |
+| `open` | 2026-05-23 | backend, frontend |
 
 **Summary:** Match recipes to skill level and available equipment.
 
-**Decision:** `none`  
+**Decision:** `promoted`  
+**Promotion target:** —
+
+---
+
+### IDEA-012 · **Prioritize consumption and use-first items**
+
+| Status | Date | Components |
+| --- | --- | --- |
+| `open` | 2026-05-26 | backend, frontend |
+
+**Summary:** Per-item use-first and profile toggle for expiring-soon recipe ranking.
+
+**Decision:** `promoted`  
 **Promotion target:** —
 
 ---

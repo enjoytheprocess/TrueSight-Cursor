@@ -24,7 +24,7 @@ As a user, I want to see recipes I can make with what I have now, **including ho
 
 ### Out of scope
 
-- Cuisine discovery mode, dietary filters, serving-size scaling UX ([IDEA-001](../../product/ideation.md#idea-001-serving-size-selector), [IDEA-002](../../product/ideation.md#idea-002-cuisine-preferences--discovery-mode), [IDEA-003](../../product/ideation.md#idea-003-dietary-restrictions--allergy-filtering)) — unless explicitly promoted later.
+- Cuisine discovery mode, serving-size scaling UX ([IDEA-001](../../product/ideation.md#idea-001-serving-size-selector), [IDEA-002](../../product/ideation.md#idea-002-cuisine-preferences--discovery-mode) discovery browse) — dietary/profile filters promoted to [FEAT-PRF-001](FEAT-PRF-001-user-profile-and-settings.md) (design draft; not built).
 - Deducting inventory (see `FEAT-SES-001`).
 - Persisting recipes locally (optional cache — separate task if needed).
 - **Deferred (not V1):** unit conversion (e.g. recipe `50 g` cheese vs inventory `1 wheel`); partial recipe adherence (“user didn’t follow the recipe”); see [Deferred concerns](#deferred-concerns).
@@ -86,7 +86,9 @@ Rank suggestions with a transparent heuristic so “use it before it spoils” w
 | More ingredients already owned | Higher |
 | Fewer missing ingredients | Higher |
 | Uses items expiring soonest | Higher |
-| Matches diet/allergy preferences | Higher *(when profile ships — until then, ignore or provider-only filters)* |
+| Matches diet/allergy preferences | Higher *(when [FEAT-PRF-001](FEAT-PRF-001-user-profile-and-settings.md) ships — until then, ignore)* |
+| Uses **use first** inventory rows (`useFirstPriority=high`) | Higher *(FEAT-PRF-001 — proposed +10 per matched high-priority line)* |
+| Matches cuisine / skill / equipment (soft boost) | Higher *(FEAT-PRF-001 — OQ-059)* |
 | Shorter cooking time | Higher |
 
 **Example:** Stock: chicken (expires tomorrow), spinach (2 days), eggs, cheese → prefer chicken–spinach dishes over recipes that ignore soon-to-expire items.

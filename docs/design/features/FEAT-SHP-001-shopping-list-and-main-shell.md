@@ -1,6 +1,6 @@
 # FEAT-SHP-001: Shopping list and main shell navigation
 
-**Status:** implemented (awaiting human acceptance)  
+**Status:** design revision (2026-05-26) — core shipped; **BUILD-SHP-004** for responsive layout + shopping-tab persistence  
 **Priority:** P4 (V1.1)  
 **Module:** Inventory | Recipes | Shell  
 **Related AWP feature_id:** `FEAT-SHP-001`  
@@ -29,8 +29,9 @@ Replace the crowded V1 two-column dashboard with a **two-tab main shell** (**In 
 | Area | Decision |
 |------|----------|
 | **Tabs** | **In Stock** \| **Shopping List** — bottom tab bar (mobile); segmented control or top tabs (desktop) |
-| **Layout** | Single column: tabs → add form → item list → recipe pager. **No** side-by-side inventory/recipe panels |
-| **Header** | Compact; **TRUESIGHT V2.1** eyebrow; **tab-specific headline** (inventory vs shopping tagline); full-width item-count bar (`N in stock` / `N to buy`) |
+| **Layout (mobile)** | Single column: tabs → add form → item list → recipe pager (stacked) |
+| **Layout (tablet/desktop)** | **Two columns** (see [Responsive shell](#responsive-shell-tablet--desktop)): active tab panel (add form + list) **left**, recipe pager **right**. Same grid for **In Stock** and **Shopping List**. Reference: `Screenshot_2026-05-24_at_8.35.45_AM.png` (place under `docs/design/mockups/` when checked in) |
+| **Header** | Compact; **TRUESIGHT V2.1** eyebrow; **tab-specific headline** (inventory vs shopping tagline); full-width item-count bar (`N in stock` / `N to buy`); **Settings** (gear) affordance reserved for [FEAT-PRF-001](FEAT-PRF-001-user-profile-and-settings.md) *(may be inert until profile ships)* |
 | **Summary strip** | **Remove** the V1 three-stat row (Expiring / Suggestions / Cooked). Optional: expiring-soon count in In Stock tab heading only |
 
 Default tab on open: **In Stock**.
@@ -47,6 +48,7 @@ Default tab on open: **In Stock**.
 - **Add:** optional **camera preview** beside **Add** (bundled product-packaging sample image, stub detections, demo labeling) → `POST /api/shopping-list` on save — same review pattern as [FEAT-REC-002](FEAT-REC-002-fridge-photo-recognition.md) mockup; asset `/mockups/shopping-preset.png`.
 - **List:** name, quantity, unit; primary action **move to stock** (green **left-arrow** icon; **check** to confirm).
 - **Move to In Stock (OQ-056):** merges quantity into inventory (same normalized name + unit rules as inventory create); removes the shopping row. Optional **expiry date** on the row at move time — inline date field revealed when the user taps the move icon; may leave blank (null expiry).
+- **After move confirm (OQ-057):** user **stays on the Shopping List tab** — do not switch to In Stock. Supports checking off many purchases in one trip; inventory and recipe queries refresh in place.
 - **Delete:** trash icon beside the move control (8px gap).
 - **Recipe → list:** green **cart** icons per short line; **ALL** control in Amount in stock column header adds all missing lines.
 
@@ -89,6 +91,17 @@ Default tab on open: **In Stock**.
 - Zero recipes: empty pager with “Add ingredients to unlock recipe suggestions.”
 - Single recipe: hide prev/next or disable both; still show `1 / 1`.
 
+### Responsive shell (tablet + desktop)
+
+Per **OQ-057** — reuse the existing app breakpoint (`max-width: 840px` = mobile stack):
+
+| Viewport | Shell |
+|----------|--------|
+| **≤ 840px** | Single column: header → tabs → tab panel (add + list) → recipe pager → footer |
+| **> 840px** | Wider shell (max ~1180px): header and tabs full width; below tabs, **two columns** — **left:** active tab’s add form + item list; **right:** recipe pager (sticky top aligned with list column when practical) |
+
+Applies identically when **In Stock** or **Shopping List** is selected. Recipe pager is never a third tab; it shares the row with whichever tab is active.
+
 ## API / contracts
 
 | Method | Path | Notes |
@@ -126,19 +139,31 @@ Migration: yes — `ShoppingListItems` table. Existing SQLite files are patched 
 
 ## UI layout
 
+**Mobile (≤ 840px)** — stacked:
+
 ```text
 ┌─────────────────────────────────────┐
-│  TrueSight              [n items]     │
+│  TRUESIGHT V2.1 + tab headline        │
+│  [ n in stock | n to buy ]            │
+│  [ In Stock  |  Shopping List ]       │
 ├─────────────────────────────────────┤
-│  [ In Stock  |  Shopping List ]     │
+│  Add item form (tab-specific)         │
+│  Item list (tab-specific actions)     │
 ├─────────────────────────────────────┤
-│  Add item form (tab-specific)       │
-├─────────────────────────────────────┤
-│  Item list (tab-specific actions)   │
-├─────────────────────────────────────┤
-│  Suggested recipe                   │
-│  ◀   Recipe card (2 of 5)        ▶  │
+│  Suggested recipe  ◀  card  ▶         │
 └─────────────────────────────────────┘
+```
+
+**Tablet / desktop (> 840px)** — two columns under tabs:
+
+```text
+┌──────────────────────────────────────────────────────────┐
+│  TRUESIGHT V2.1 + tab headline    [ n in stock | buy ]   │
+│  [ In Stock  |  Shopping List ]                          │
+├────────────────────────────┬─────────────────────────────┤
+│  Add form + item list      │  Suggested recipe           │
+│  (active tab)              │  ◀   Recipe card        ▶   │
+└────────────────────────────┴─────────────────────────────┘
 ```
 
 ## Suggested build split
@@ -148,8 +173,9 @@ Migration: yes — `ShoppingListItems` table. Existing SQLite files are patched 
 | BUILD-SHP-001 | backend | Entity, migration, shopping-list CRUD, move-to-inventory |
 | BUILD-SHP-002 | frontend | Tab shell, lists, pager, wire to API |
 | BUILD-SHP-003 | frontend | Recipe → add to list actions |
+| BUILD-SHP-004 | frontend | Responsive two-column shell (both tabs); stay on Shopping List after move confirm |
 
-Dependencies: BUILD-SHP-002/003 depend on BUILD-SHP-001; BUILD-SHP-001 depends on BUILD-INV-001 (done).
+Dependencies: BUILD-SHP-002/003/004 depend on BUILD-SHP-001; BUILD-SHP-001 depends on BUILD-INV-001 (done). BUILD-SHP-004 depends on BUILD-SHP-002 (shell exists).
 
 ## Acceptance criteria
 
@@ -160,14 +186,17 @@ Dependencies: BUILD-SHP-002/003 depend on BUILD-SHP-001; BUILD-SHP-001 depends o
 - [x] Recipe pager shows one suggestion at a time with working prev/next (header arrows + swipe).
 - [x] Short/missing recipe lines can be added to the shopping list (gap qty, merge on list).
 - [x] V1 summary stat strip removed from main shell.
-- [x] Mobile and desktop layouts remain usable.
+- [x] Mobile layout remains usable (single column).
 - [x] Shopping photo preview mockup (sample packaging image, stub scan, save to shopping list).
+- [ ] **Tablet/desktop:** two-column layout (tab list left, recipe pager right) for **both** In Stock and Shopping List (BUILD-SHP-004).
+- [ ] **Shopping List:** confirming **move to stock** keeps the active tab on Shopping List (no auto-switch to In Stock) (BUILD-SHP-004).
 
 ## Open questions (resolved at design)
 
 | ID | Question | Decision |
 |----|----------|----------|
 | OQ-056 | Expiry when moving to In Stock? | Optional inline date on the row when user initiates move; null if skipped |
+| OQ-057 | Responsive breakpoint and post-move tab? | **841px+** two-column shell (list \| pager) for both tabs; **≤840px** stack. After move-to-inventory confirm, **remain on Shopping List** |
 
 ## Traceability (AWP)
 

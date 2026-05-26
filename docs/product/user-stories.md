@@ -33,6 +33,15 @@ Stories tied to the [committed roadmap](roadmap.md). Exploratory stories live un
 - As a user, I can photograph my fridge and have ingredients detected automatically
 - As a user, I can review, edit, or discard detected items before they are saved to my inventory
 
+## V1.2 profile (design — [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md))
+
+Not build-admitted; on roadmap as design-only until promoted.
+
+- As a user, I open **Settings** from the main header to manage diet, allergies, cuisines, skill, equipment, and use-up preferences
+- As a user, I set **dietary restrictions and allergens** so unsafe recipes never appear in suggestions
+- As a user, I mark **In Stock** items as **use first** so recipes using them rank higher
+- As a user, I can turn off automatic **prioritize expiring** ranking while keeping expiry highlights on inventory rows
+
 ## Ideation (not committed)
 
 Tracked in [ideation.md](ideation.md) (IDEA-001 … IDEA-010). Examples:

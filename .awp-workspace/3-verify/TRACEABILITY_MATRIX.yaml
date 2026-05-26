@@ -89,6 +89,18 @@ features:
       - frontend/src/App.test.tsx
     notes: "Sync 2026-05-24 — BUILD-AUTH-001 done; spec aligned (DI-011)."
 
+  - id: FEAT-PRF-001
+    spec_link: docs/design/features/FEAT-PRF-001-user-profile-and-settings.md
+    last_synced: "2026-05-26"
+    drift_status: review_needed
+    owner: unassigned
+    task_ids: []
+    code_links:
+      - docs/design/features/FEAT-PRF-001-user-profile-and-settings.md
+      - docs/product/domain-model.md
+    test_links: []
+    notes: "Design 2026-05-26 — no build tasks; OQ-058–062 open."
+
   - id: FEAT-CAT-001
     spec_link: docs/design/features/FEAT-CAT-001-ingredient-catalog.md
     last_synced: "2026-05-24"
@@ -103,13 +115,14 @@ features:
 
   - id: FEAT-SHP-001
     spec_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
-    last_synced: "2026-05-24"
-    drift_status: aligned
+    last_synced: "2026-05-26"
+    drift_status: review_needed
     owner: unassigned
     task_ids:
       - BUILD-SHP-001
       - BUILD-SHP-002
       - BUILD-SHP-003
+      - BUILD-SHP-004
     code_links:
       - backend/TrueSight.Api/Features/ShoppingList
       - backend/TrueSight.Api/Infrastructure/Data/TrueSightDbInitializer.cs
@@ -124,7 +137,9 @@ features:
       - backend/TrueSight.Api.Tests/TrueSightDbInitializerTests.cs
       - frontend/src/App.test.tsx
       - frontend/src/features/recipes/RecipePager.test.tsx
-    notes: "Sync 2026-05-24 — spec aligned (DI-012–DI-016); shopping photo mockup documented as preview extension."
+    notes: >
+      Design 2026-05-26 — drift: single-column shell + auto tab switch on move (MainApp.tsx)
+      vs spec OQ-057 / BUILD-SHP-004. DI-017/DI-018 incorporated in FEAT-SHP-001.
 
   - id: FEAT-SEC-001
     spec_link: docs/design/features/FEAT-SEC-001-production-security-baseline.md

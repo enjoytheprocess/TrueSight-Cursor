@@ -13,9 +13,10 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 | ID | Title | Theme | Status |
 |----|-------|-------|--------|
 | IDEA-001 | Serving size selector | Recipes & UX | open |
-| IDEA-002 | Cuisine preferences & discovery mode | Recipes & UX | open |
-| IDEA-003 | Dietary restrictions & allergy filtering | Profile | open |
-| IDEA-004 | Cooking skill level & kitchen equipment | Profile | open |
+| IDEA-002 | Cuisine preferences & discovery mode | Recipes & UX | promoted (profile slice) |
+| IDEA-003 | Dietary restrictions & allergy filtering | Profile | promoted |
+| IDEA-004 | Cooking skill level & kitchen equipment | Profile | promoted |
+| IDEA-012 | Prioritize consumption / use-first items | Profile & inventory | promoted |
 | IDEA-005 | Store recommendations (distance, price) | Commerce | open |
 | IDEA-006 | Expiry proximity warnings | Inventory | open |
 | IDEA-007 | Charity / food-bank persona | Personas | open |
@@ -44,14 +45,15 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 
 ### IDEA-002: Cuisine preferences & discovery mode
 
-**Status:** open  
+**Status:** promoted (partial — 2026-05-26)  
 **Summary:** Filter and browse recipes by cuisine type; optional “discovery” browsing beyond strict inventory match.
 
 **Discussion**
 
-- V1 may ship a minimal filter; full discovery mode stays ideation until scoped.
+- **Cuisine preferences** (soft ranking) → [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md).
+- **Full discovery mode** (browse beyond inventory) remains ideation — not in FEAT-PRF-001.
 
-**Outcome:** —
+**Outcome:** Cuisine prefs in `CAP-V1-PROFILE`; discovery browse still open.
 
 ---
 
@@ -59,27 +61,43 @@ Register (canonical YAML): [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](.
 
 ### IDEA-003: Dietary restrictions & allergy filtering
 
-**Status:** open  
+**Status:** promoted (2026-05-26)  
 **Summary:** Vegan, gluten-free, allergies, etc. filter all recipe suggestions globally.
 
 **Discussion**
 
-- `UserProfile` exists in the domain model; not in V1 roadmap — promote when profile slice is scheduled.
+- Spec: [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md); capability `CAP-V1-PROFILE`.
 
-**Outcome:** —
+**Outcome:** Design draft; build not admitted.
 
 ---
 
 ### IDEA-004: Cooking skill level & kitchen equipment
 
-**Status:** open  
+**Status:** promoted (2026-05-26)  
 **Summary:** Match recipes to beginner/intermediate/advanced skill and available equipment (oven, air fryer, …).
 
 **Discussion**
 
-- Pairs with IDEA-003 as a “profile” epic if promoted together.
+- Bundled with IDEA-003 in [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md).
 
-**Outcome:** —
+**Outcome:** Design draft; build not admitted.
+
+---
+
+## Profile & inventory (use-up)
+
+### IDEA-012: Prioritize consumption / use-first items
+
+**Status:** promoted (2026-05-26)  
+**Summary:** Let users mark items to use soon (star / “use first”) and optionally tune global “prioritize expiring” ranking — beyond automatic expiry-based scoring.
+
+**Discussion**
+
+- Distinct from IDEA-006 (notifications): this is **ranking and row affordance**, not alerts.
+- Per-item `useFirstPriority` on `InventoryItem`; profile toggle for expiring-soon score term.
+
+**Outcome:** [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md).
 
 ---
 

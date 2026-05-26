@@ -67,6 +67,27 @@ tasks:
     notes: >
       Shopping photo mockup is a V1.1 preview extension (parallel to FEAT-REC-002 mockup pattern).
 
+  - id: BUILD-SHP-004
+    feature_id: FEAT-SHP-001
+    title: "Responsive two-column shell and shopping-tab persistence"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    irg:
+      S: 2
+      A: 2
+      I: 2
+      R: 2
+      V: 1
+    blocking_unknowns: none
+    readiness: ready_for_build
+    advisor_track: none
+    advisor_status: not_required
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    notes: >
+      Design revision 2026-05-26 (OQ-057). Depends on BUILD-SHP-002 accepted or done for shell baseline.
+
   - id: BUILD-REC-002-MOCKUP
     feature_id: FEAT-REC-002
     title: "Implement fridge photo UI mockup (demo scan)"

@@ -40,3 +40,15 @@ _Active capabilities. Move completed/parked capabilities to `archive/ROADMAP.yam
 **Feature IDs:** FEAT-REC-002
 
 > Phase A UI mockup BUILD-REC-002-MOCKUP admitted; production vision OQ-005/006 deferred.
+
+---
+
+### CAP-V1-PROFILE · **V1.2 — user settings, diet/allergies, use-first, recipe filter/rank integration**
+
+| Target Window | Status | Owner | Depends On |
+| --- | --- | --- | --- |
+| TBD | `planned` | unassigned | CAP-V1-CORE |
+
+**Feature IDs:** FEAT-PRF-001
+
+> Design 2026-05-26 — spec FEAT-PRF-001 draft; OQ-058–062; not build-admitted.

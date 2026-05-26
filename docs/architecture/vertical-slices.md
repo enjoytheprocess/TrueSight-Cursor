@@ -16,7 +16,7 @@ How the TrueSight API is organized for **feature-local changes** without cross-f
 | **Recipes** | V1 | `FEAT-REC-001` | Suggestions from stock via `RecipeProvider` adapter; ranking (see feature spec) |
 | **Sessions** | V1 | `FEAT-SES-001` | `RecipeSession` — accept recipe → deduct inventory |
 | **Recognition** | V2 | `FEAT-REC-002` | Fridge photo upload, vision adapter, confirm → inventory |
-| **Profile** | Ideation | — | Dietary prefs, cuisine, skill, equipment (`IDEA-003`, `IDEA-004`) |
+| **Profile** | V1.2 (design) | `FEAT-PRF-001` | Settings UI, `UserProfile`, inventory use-first, recipe filter/rank (`IDEA-002`–`004`, `IDEA-012`) |
 
 **Build order:** Inventory → Recipes → Sessions → Recognition (Profile when promoted).
 

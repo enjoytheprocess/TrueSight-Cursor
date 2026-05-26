@@ -37,15 +37,32 @@ _Active design triage. Move complete features to `archive/DESIGN_STATES.yaml` du
 
 ---
 
+### FEAT-PRF-001 · **User profile and settings**
+
+| Design State | Owner | Last Updated |
+| --- | --- | --- |
+| `spec_review` | unassigned | 2026-05-26 |
+
+**Linked idea:** IDEA-003 · **Tasks:**   
+**Spec:** `docs/design/features/FEAT-PRF-001-user-profile-and-settings.md`  
+**Decisions:**   
+**Blocking questions:** OQ-058–062 open; AC unchecked — not build-admitted
+
+> Design 2026-05-26 — promotes IDEA-002 (cuisine prefs only), IDEA-003, IDEA-004, IDEA-012. CAP-V1-PROFILE planned on roadmap. Depends on CAP-V1-CORE; AUTH-002 recommended for production.
+
+
+---
+
 ### FEAT-SHP-001 · **Shopping list and main shell navigation**
 
 | Design State | Owner | Last Updated |
 | --- | --- | --- |
-| `ready` | unassigned | 2026-05-24 |
+| `ready` | unassigned | 2026-05-26 |
 
-**Linked idea:** IDEA-011 · **Tasks:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003  
+**Linked idea:** IDEA-011 · **Tasks:** BUILD-SHP-001, BUILD-SHP-002, BUILD-SHP-003, BUILD-SHP-004  
 **Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
 **Decisions:**   
 **Blocking questions:** none
 
-> Sync 2026-05-24 — implementation shipped; BUILD-SHP-* awaiting human review.
+> Design revision 2026-05-26 (DI-017, DI-018): two-column shell >840px for both tabs; stay on Shopping List after move confirm. BUILD-SHP-001–003 awaiting acceptance; BUILD-SHP-004 admitted for frontend follow-on.
+

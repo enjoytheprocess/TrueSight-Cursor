@@ -33,17 +33,35 @@ features:
     blocking_questions: "spec AC checkboxes unchecked — P3 post-V1"
     notes: "OQ-053–055 closed; V1 core synced — next extension slice."
 
+  - feature_id: FEAT-PRF-001
+    title: "User profile and settings"
+    design_state: spec_review
+    owner: unassigned
+    last_updated: "2026-05-26"
+    linked_idea: IDEA-003
+    linked_tasks: []
+    primary_design_link: docs/design/features/FEAT-PRF-001-user-profile-and-settings.md
+    decision_links: []
+    blocking_questions: "OQ-058–062 open; AC unchecked — not build-admitted"
+    notes: >
+      Design 2026-05-26 — promotes IDEA-002 (cuisine prefs only), IDEA-003, IDEA-004, IDEA-012.
+      CAP-V1-PROFILE planned on roadmap. Depends on CAP-V1-CORE; AUTH-002 recommended for production.
+
   - feature_id: FEAT-SHP-001
     title: "Shopping list and main shell navigation"
     design_state: ready
     owner: unassigned
-    last_updated: "2026-05-24"
+    last_updated: "2026-05-26"
     linked_idea: IDEA-011
     linked_tasks:
       - BUILD-SHP-001
       - BUILD-SHP-002
       - BUILD-SHP-003
+      - BUILD-SHP-004
     primary_design_link: docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md
     decision_links: []
     blocking_questions: none
-    notes: "Sync 2026-05-24 — implementation shipped; BUILD-SHP-* awaiting human review."
+    notes: >
+      Design revision 2026-05-26 (DI-017, DI-018): two-column shell >840px for both tabs;
+      stay on Shopping List after move confirm. BUILD-SHP-001–003 awaiting acceptance;
+      BUILD-SHP-004 admitted for frontend follow-on.

@@ -30,6 +30,14 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 |---|------------|--------|
 | 4 | Shopping list + tab shell (`CAP-V1-SHOP`) | In Stock \| Shopping List tabs, recipe pager, move-to-stock, recipe → cart, shopping photo preview mockup — [FEAT-SHP-001](../design/features/FEAT-SHP-001-shopping-list-and-main-shell.md) |
 
+## Phase 1.2 — Profile & settings (V1.2) — **design only (2026-05-26)**
+
+| # | Capability | Notes |
+|---|------------|--------|
+| 6 | User profile & settings (`CAP-V1-PROFILE`) | Diet/allergies, cuisine/skill/equipment, prioritize expiring toggle, per-item **use first** — [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md). **Not build-admitted.** Promoted from IDEA-002/003/004/012. |
+
+**Sequencing:** After V1.1 shopping acceptance; profile persistence pairs with real auth ([FEAT-AUTH-002](../design/features/FEAT-AUTH-002-real-authentication.md)) for production; demo may use `X-TrueSight-User` first.
+
 ## Parked / lower priority
 
 ## Not on this roadmap

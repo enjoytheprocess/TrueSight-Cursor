@@ -13,3 +13,4 @@
 | FEAT-SHP-001 | Shopping list and main shell navigation | backend, frontend | 2026-05-24 |
 | FEAT-SEC-001 | Production security baseline | backend, frontend | 2026-05-24 |
 | FEAT-AUTH-002 | Real authentication | backend, frontend | 2026-05-24 |
+| FEAT-PRF-001 | User profile and settings | backend, frontend | 2026-05-26 |

@@ -85,6 +85,29 @@ tasks:
     validation: "npm run test; manual: cart icons, ALL add-missing, shopping photo preview flow"
     notes: "Shipped 2026-05-24 — /mockups/shopping-preset.png stub scan → POST /api/shopping-list."
 
+  - id: BUILD-SHP-004
+    feature_id: FEAT-SHP-001
+    title: "Responsive two-column shell and shopping-tab persistence"
+    component: frontend
+    spec_link: "docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md"
+    advisor_status: not_required
+    advisor_track: none
+    quality_requirements: []
+    decision_links:
+      - docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+    priority: P4
+    phase: build
+    capability: CAP-V1-SHOP
+    target_window: TBD
+    mode: sequential
+    lock_id: none
+    owner: unassigned
+    status: todo
+    build_dependencies: BUILD-SHP-002
+    design_dependencies: none
+    validation: "npm run build && npm run test; manual: >840px two-column on both tabs; move confirm stays on Shopping List"
+    notes: "Design 2026-05-26 — DI-017/DI-018, OQ-057. Remove setTab('inStock') on move success."
+
   - id: BUILD-REC-002-MOCKUP
     feature_id: FEAT-REC-002
     title: "Implement fridge photo UI mockup (demo scan)"

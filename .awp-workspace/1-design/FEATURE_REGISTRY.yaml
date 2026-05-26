@@ -58,3 +58,8 @@ features:
     title: "Real authentication"
     components: [backend, frontend]
     created_on: "2026-05-24"
+
+  - id: FEAT-PRF-001
+    title: "User profile and settings"
+    components: [backend, frontend]
+    created_on: "2026-05-26"

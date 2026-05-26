@@ -25,40 +25,54 @@ ideas:
     title: "Cuisine preferences and discovery mode"
     status: open
     date: "2026-05-23"
-    components: [backend]
+    components: [backend, frontend]
     summary: "Filter and browse recipes by cuisine; optional discovery beyond strict inventory match."
     discussion: |
+      - Cuisine prefs promoted to FEAT-PRF-001 (2026-05-26); discovery browse still open
       - See docs/product/ideation.md#idea-002-cuisine-preferences--discovery-mode
     outcome:
-      decision: none
-      reason: ""
-      promotion_target: ""
+      decision: promoted
+      reason: "Cuisine preferences in CAP-V1-PROFILE; full discovery mode not scoped"
+      promotion_target: CAP-V1-PROFILE
 
   - id: IDEA-003
     title: "Dietary restrictions and allergy filtering"
     status: open
     date: "2026-05-23"
-    components: [backend]
+    components: [backend, frontend]
     summary: "Global filters for vegan, gluten-free, allergies, etc. on recipe suggestions."
     discussion: |
-      - UserProfile in domain model; not on V1 roadmap
+      - Spec: docs/design/features/FEAT-PRF-001-user-profile-and-settings.md
     outcome:
-      decision: none
-      reason: ""
-      promotion_target: ""
+      decision: promoted
+      reason: "Design draft 2026-05-26"
+      promotion_target: CAP-V1-PROFILE
 
   - id: IDEA-004
     title: "Cooking skill level and kitchen equipment"
     status: open
     date: "2026-05-23"
-    components: [backend]
+    components: [backend, frontend]
     summary: "Match recipes to skill level and available equipment."
     discussion: |
-      - Often promoted together with IDEA-003 as a profile epic
+      - Bundled in FEAT-PRF-001 with IDEA-003
     outcome:
-      decision: none
-      reason: ""
-      promotion_target: ""
+      decision: promoted
+      reason: "Design draft 2026-05-26"
+      promotion_target: CAP-V1-PROFILE
+
+  - id: IDEA-012
+    title: "Prioritize consumption and use-first items"
+    status: open
+    date: "2026-05-26"
+    components: [backend, frontend]
+    summary: "Per-item use-first and profile toggle for expiring-soon recipe ranking."
+    discussion: |
+      - See docs/product/ideation.md#idea-012-prioritize-consumption--use-first-items
+    outcome:
+      decision: promoted
+      reason: "Design draft 2026-05-26"
+      promotion_target: CAP-V1-PROFILE
 
   - id: IDEA-005
     title: "Store recommendations (distance, price)"

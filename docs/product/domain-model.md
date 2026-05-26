@@ -9,6 +9,7 @@ V1 entities are required for Phase 1 build. Shapes marked **planned (V2+)** or *
 A user's instance of an ingredient in their fridge.
 
 - `name`, `normalizedName` (server-derived), quantity, unit, expiry date, date added
+- `useFirstPriority` (`normal` | `high`, default `normal`) — **FEAT-PRF-001**, not in V1 schema yet
 - **V1 (TMP-002):** inline free-text names only — no `IngredientCatalog` foreign key
 - **Delete:** hard delete of the user's `InventoryItem` row (`DELETE` → 204). Removing an item does **not** delete or mutate catalog reference data. This semantics is stable when `IngredientCatalog` ships later — only the optional FK/link on create/update changes, not delete behavior.
 
@@ -59,14 +60,19 @@ When implemented ([FEAT-CAT-001](../design/features/FEAT-CAT-001-ingredient-cata
 
 Junction between Recipe and IngredientCatalog (quantity, unit, optional flag). Applies when catalog ships.
 
-### UserProfile
+### UserProfile (V1.2 — [FEAT-PRF-001](../design/features/FEAT-PRF-001-user-profile-and-settings.md))
 
-- dietary restrictions
-- cuisine preferences
-- cooking ability (beginner / intermediate / advanced)
-- available kitchen equipment
+One row per authenticated user id (`X-TrueSight-User` in demo; real subject when AUTH-002 ships).
 
-**Status:** Ideation-dependent — promote from [ideation](ideation.md) IDEA-003 / IDEA-004 before any V1 build depends on profile filtering.
+- `dietaryTags[]`, `allergens[]`, optional `customAvoid`
+- `cuisinePreferences[]`, `skillLevel` (beginner | intermediate | advanced), `equipment[]`
+- `prioritizeExpiringItems` (bool, default true) — when false, recipe ranking ignores the expiring-soon score term
+
+**Status:** Design draft — not in V1/V1.1 schema until BUILD-PRF-* admitted.
+
+### InventoryItem extension (V1.2 — FEAT-PRF-001)
+
+- `useFirstPriority`: `normal` | `high` — user marks items to consume soon; boosts recipes that use those lines (independent of expiry date)
 
 ### DetectedItem (V2 fridge recognition)
 

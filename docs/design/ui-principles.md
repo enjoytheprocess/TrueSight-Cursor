@@ -14,11 +14,14 @@ Per [FEAT-SHP-001](features/FEAT-SHP-001-shopping-list-and-main-shell.md):
 | Area | Pattern |
 |------|---------|
 | **Tabs** | **In Stock** \| **Shopping List** |
-| **Layout** | Single column: add form → item list → recipe **pager** (not a side-by-side grid) |
+| **Layout (mobile)** | Single column: add form → item list → recipe **pager** |
+| **Layout (tablet/desktop)** | Two columns under tabs: active tab list **left**, recipe **pager** **right** (both In Stock and Shopping List) — [OQ-057](../product/open-questions.md) |
+| **Shopping move confirm** | Stay on **Shopping List** tab after move-to-stock confirm (do not auto-switch to In Stock) |
 | **In Stock** | Add includes expiry; rows have **Delete** |
 | **Shopping List** | Add without expiry; optional **camera preview** beside Add (sample product image); rows have green **← move** + **check** confirm (+ optional expiry at move) and **delete** icon |
 | **Recipe → list** | Green **cart** icon per short line; **ALL** + cart in Amount in stock header |
 | **Recipes** | One card at a time; previous/next and position indicator |
+| **Settings** | Gear (or avatar) in header → full-screen/sheet preferences — [FEAT-PRF-001](features/FEAT-PRF-001-user-profile-and-settings.md); **not** a third tab |
 
 Do not add a third tab or third panel for recipes.
 
@@ -31,6 +34,7 @@ Each inventory row or card should surface, at a glance:
 | **Image** | Clean product/ingredient imagery where available (catalog or user photo); consistent aspect ratio; placeholder when missing |
 | **Quantity** | Numeric amount + unit (e.g. `2 cups`, `500 g`) |
 | **Expiry** | Expiry date prominent; visual emphasis when within **3 days** of expiry ([OQ-040](../product/open-questions.md), [IDEA-006](../product/ideation.md#idea-006-expiry-proximity-warnings)) |
+| **Use first** | Optional star or accent when `useFirstPriority=high` ([FEAT-PRF-001](features/FEAT-PRF-001-user-profile-and-settings.md)) |
 
 Avoid clutter: name, quantity, and expiry are primary; secondary metadata collapsed or on detail view.
 

@@ -70,6 +70,27 @@ _Active tasks. Move completed tasks (WORK_QUEUE status: done) to `archive/TASK_R
 
 ---
 
+### BUILD-SHP-004 · **Responsive two-column shell and shopping-tab persistence**
+
+| Feature | Component | Readiness | Advisor Track | Advisor Status |
+| --- | --- | --- | --- | --- |
+| FEAT-SHP-001 | frontend | `ready_for_build` | none | not_required |
+
+| S | A | I | R | V |
+| --- | --- | --- | --- | --- |
+| 2 | 2 | 2 | 2 | 1 |
+
+**Blocking unknowns:** none
+
+**Spec:** `docs/design/features/FEAT-SHP-001-shopping-list-and-main-shell.md`  
+**QRs:**   
+**Decisions:** docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md
+
+> Design revision 2026-05-26 (OQ-057). Depends on BUILD-SHP-002 accepted or done for shell baseline.
+
+
+---
+
 ### BUILD-REC-002-MOCKUP · **Implement fridge photo UI mockup (demo scan)**
 
 | Feature | Component | Readiness | Advisor Track | Advisor Status |
