@@ -13,6 +13,6 @@
 | [Vertical slices](../architecture/vertical-slices.md) | API slice map and conventions |
 | [UI principles](../design/ui-principles.md) | Inventory/recipe presentation (images, expiry, macros) |
 
-**AWP ideation register (canonical state):** [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](../.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml) — keep in sync when ideas change status.
+**AWP ideation register (canonical state):** [`.awp-workspace/workspace-build/0-ideation/IDEATION_BACKLOG.yaml`](../.awp-workspace/workspace-build/0-ideation/IDEATION_BACKLOG.yaml) — keep in sync when ideas change status.
 
 **Stage guides:** [ideation](../ideation/README.md) · [design](../design/README.md)

@@ -159,8 +159,8 @@ features:
       - backend/TrueSight.Api/appsettings.Production.json
       - backend/TrueSight.Api/Infrastructure/Security
       - backend/TrueSight.Api/Infrastructure/ClaimsCurrentUser.cs
-      - .awp-workspace/1-design/QUALITY_REQUIREMENTS.yaml
-      - .awp-workspace/3-verify/SECURITY_REVIEWS.md
+      - .awp-workspace/workspace-build/1-design/QUALITY_REQUIREMENTS.yaml
+      - .awp-workspace/workspace-build/3-verify/SECURITY_REVIEWS.md
     test_links:
       - backend/TrueSight.Api.Tests/ProductionSecurityTests.cs
       - backend/TrueSight.Api.Tests/ApiMutationRateLimitingTests.cs

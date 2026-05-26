@@ -1,6 +1,6 @@
 # Architecture decision records (ADRs)
 
-Durable decisions live here — not under `.awp-workspace/1-design/decisions/`.
+Durable decisions live here — not under `.awp-workspace/workspace-build/1-design/decisions/`.
 
 Start from [../../templates/ADR_TEMPLATE.md](../../templates/ADR_TEMPLATE.md).
 

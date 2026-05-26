@@ -1,6 +1,6 @@
 # Stage 1 — Design
 
-Design intent, maturity tracking, and delivery sequencing. **Durable prose** lives under `docs/`; **register state** lives in [`.awp-workspace/1-design/`](../../.awp-workspace/1-design/).
+Design intent, maturity tracking, and delivery sequencing. **Durable prose** lives under `docs/`; **register state** lives in [`.awp-workspace/workspace-build/1-design/`](../../.awp-workspace/workspace-build/1-design/).
 
 ## Core documents (docs/)
 
@@ -29,14 +29,14 @@ Generated `.md` table views: run `make awp-render` from repo root.
 ## Optional
 
 - `QUALITY_REQUIREMENTS.yaml` — cross-cutting NFRs when enabled
-- Specialist reviews: [SECURITY_REVIEWS.md](../../.awp-workspace/3-verify/SECURITY_REVIEWS.md), [API_CONTRACT_REVIEWS.md](../../.awp-workspace/3-verify/API_CONTRACT_REVIEWS.md) — see [advisor-policy.md](advisor-policy.md)
+- Specialist reviews: [SECURITY_REVIEWS.md](../../.awp-workspace/workspace-build/3-verify/SECURITY_REVIEWS.md), [API_CONTRACT_REVIEWS.md](../../.awp-workspace/workspace-build/3-verify/API_CONTRACT_REVIEWS.md) — see [advisor-policy.md](advisor-policy.md)
 
 ## Workflow
 
-1. Address open items in `.awp-workspace/4-sync/DESIGN_INPUTS.yaml`.
+1. Address open items in `.awp-workspace/workspace-build/4-sync/DESIGN_INPUTS.yaml`.
 2. Update specs in `docs/design/features/` and product docs as needed.
 3. Add or update rows in `FEATURE_REGISTRY`, `DESIGN_STATES`, `TASK_READINESS`, `ROADMAP`.
-4. Admit build tasks only when readiness gates pass (see `.awp-workspace/docs/optional/consistency-gates.md`).
+4. Admit build tasks only when readiness gates pass (see `.awp-workspace/workspace-build/docs/optional/consistency-gates.md`).
 
 ## ADRs
 

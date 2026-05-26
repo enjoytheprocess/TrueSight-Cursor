@@ -7,7 +7,7 @@ alwaysApply: true
 
 Canonical product docs: **`docs/product/`** (`@docs/product/roadmap.md`, `domain-model.md`, `user-stories.md`, `project-brief.md`).
 
-When roadmap or scope changes, update `docs/product/` first, then `.awp-workspace/1-design/ROADMAP.yaml` and related registers.
+When roadmap or scope changes, update `docs/product/` first, then `.awp-workspace/workspace-build/1-design/ROADMAP.yaml` and related registers.
 
 ## Problem
 

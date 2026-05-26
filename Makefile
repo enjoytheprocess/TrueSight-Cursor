@@ -1,5 +1,5 @@
-# AWP (AI Workspace Protocol) — planning workspace lives in .awp-workspace/
-AWP_DIR := .awp-workspace
+# AWP (AI Workspace Protocol) — planning workspace lives in .awp-workspace/workspace-build/
+AWP_DIR := .awp-workspace/workspace-build
 
 .PHONY: awp-init awp-render awp-docs-check awp-workflow-status awp-install-tools awp-install-hooks
 .PHONY: setup-dotnet backend-build backend-run backend-stop backend-test

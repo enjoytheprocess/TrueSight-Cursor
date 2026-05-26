@@ -48,7 +48,7 @@ The idea for FridgeChef came from one founder's experience working with nonprofi
 | [Node.js](https://nodejs.org/) 20+ | Frontend install, dev server, build, and tests |
 | [Make](https://www.gnu.org/software/make/) | Root and AWP targets (`backend-*`, `frontend-*`, `awp-*`) |
 | [yq](https://github.com/mikefarah/yq) v4 | Render and validate AWP register YAML |
-| [Graphviz](https://graphviz.org/) (`dot`) | Optional AWP diagram render (`make awp-render` / `make diagram` in `.awp-workspace/`) |
+| [Graphviz](https://graphviz.org/) (`dot`) | Optional AWP diagram render (`make awp-render` / `make diagram` in `.awp-workspace/workspace-build/`) |
 | [Git](https://git-scm.com/) | Version control; optional pre-commit hook via `make awp-install-hooks` |
 | [PowerShell](https://learn.microsoft.com/powershell/) | Windows helper scripts under `scripts/` |
 | [GitHub Actions](https://github.com/features/actions) | CI: `dotnet` build/test, `npm ci` / build / test, vulnerability and audit checks (`.github/workflows/ci.yml`) |
@@ -58,7 +58,7 @@ Architecture notes: vertical slice + CQRS on the backend; mobile-first React SPA
 
 ## AI workspace (AWP)
 
-**Design documentation** lives in [`docs/`](docs/) (`@docs/` in Cursor). **AWP registers** (queue, readiness, traceability) live in [`.awp-workspace/`](.awp-workspace/). Code: [`backend/`](backend/) and [`frontend/`](frontend/).
+**Design documentation** lives in [`docs/`](docs/) (`@docs/` in Cursor). **AWP registers** (queue, readiness, traceability) live in [`.awp-workspace/workspace-build/`](.awp-workspace/workspace-build/). Code: [`backend/`](backend/) and [`frontend/`](frontend/).
 
 ### AWP Build template (source)
 
@@ -67,11 +67,11 @@ Planning workflow is adapted from **[AWP Build](https://gitlab.com/agent-workspa
 | | |
 |---|---|
 | **Original template** | [gitlab.com/agent-workspace-protocols/workspace-build](https://gitlab.com/agent-workspace-protocols/workspace-build) |
-| **Template package name** | `workspace-template` (see [`.awp-workspace/template-release.yaml`](.awp-workspace/template-release.yaml)) |
+| **Template package name** | `workspace-template` (see [`.awp-workspace/workspace-build/template-release.yaml`](.awp-workspace/workspace-build/template-release.yaml)) |
 | **Adopted release** | `2026.05.22` |
-| **Installed in this repo** | [`.awp-workspace/`](.awp-workspace/) (direct-use, monorepo layout) |
+| **Installed in this repo** | [`.awp-workspace/workspace-build/`](.awp-workspace/workspace-build/) (direct-use, monorepo layout) |
 
-Related upstream templates (`workspace-deployment`, `workspace-sustain`) live in the same GitLab group; only **Build** is vendored here as `.awp-workspace/`. Sideload and upgrade flow: [`.awp-workspace/docs/guides/template-sideloading.md`](.awp-workspace/docs/guides/template-sideloading.md).
+Related upstream templates (`workspace-deployment`, `workspace-sustain`) live in the same GitLab group; only **Build** is vendored here as `.awp-workspace/workspace-build/`. Sideload and upgrade flow: [`.awp-workspace/workspace-build/docs/guides/template-sideloading.md`](.awp-workspace/workspace-build/docs/guides/template-sideloading.md).
 
 **Linux / WSL / macOS:**
 
@@ -88,7 +88,7 @@ make awp-install-tools   # yq + graphviz (once)
 # One-time: install yq (required for register render/checks)
 pwsh scripts/install-tools.ps1
 
-# After editing .yaml under .awp-workspace/
+# After editing .yaml under .awp-workspace/workspace-build/
 make awp-render            # needs make (winget install GnuWin32.Make) or use WSL
 make awp-docs-check
 
@@ -98,7 +98,7 @@ pwsh scripts/install-hooks.ps1
 
 For the full AWP workflow on Windows, **WSL2 is the smoothest path** — all `make` targets work as documented. Native Windows works well for app development; register automation needs `make`, `bash` (Git for Windows), and `yq`.
 
-Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`docs/README.md`](docs/README.md), [`.awp-workspace/AGENTS.md`](.awp-workspace/AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md).
+Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`docs/README.md`](docs/README.md), [`.awp-workspace/workspace-build/AGENTS.md`](.awp-workspace/workspace-build/AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md).
 
 **Cursor:** [`.cursor/rules/awp.mdc`](.cursor/rules/awp.mdc), phase rules (`awp-design`, `awp-build`, `awp-verify`), [hooks](.cursor/hooks.json).
 

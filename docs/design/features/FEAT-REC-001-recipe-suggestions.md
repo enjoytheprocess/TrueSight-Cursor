@@ -176,10 +176,10 @@ Required integration tests:
 
 After approval, add/update rows in:
 
-- `.awp-workspace/1-design/FEATURE_REGISTRY.yaml`
-- `.awp-workspace/1-design/DESIGN_STATES.yaml` — `decision_links`: `docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md`
-- `.awp-workspace/3-verify/TRACEABILITY_MATRIX.yaml`
-- `.awp-workspace/2-build/WORK_QUEUE.yaml`
+- `.awp-workspace/workspace-build/1-design/FEATURE_REGISTRY.yaml`
+- `.awp-workspace/workspace-build/1-design/DESIGN_STATES.yaml` — `decision_links`: `docs/design/decisions/ADR-20260523-02-recipe-provider-adapter.md`
+- `.awp-workspace/workspace-build/3-verify/TRACEABILITY_MATRIX.yaml`
+- `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml`
 
 `spec_link` for build tasks → this file path.
 

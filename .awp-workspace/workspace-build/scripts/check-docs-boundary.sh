@@ -40,7 +40,7 @@ IFS=',' read -r -a extra_allow <<< "$ALLOW_PATHS"
 is_allowed() {
   local path="$1"
 
-  [[ "$path" == .awp-workspace/* ]] && return 0
+  [[ "$path" == .awp-workspace/workspace-build/* ]] && return 0
   [[ "$path" == backend/* ]] && return 0
   [[ "$path" == frontend/* ]] && return 0
   [[ "$path" == docs/* ]] && return 0

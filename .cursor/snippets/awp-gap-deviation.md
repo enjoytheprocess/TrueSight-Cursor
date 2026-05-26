@@ -1,6 +1,6 @@
 # AWP: Log gap or deviation
 
-Add entry to `.awp-workspace/3-verify/GAPS_AND_DEVIATIONS.yaml`:
+Add entry to `.awp-workspace/workspace-build/3-verify/GAPS_AND_DEVIATIONS.yaml`:
 
 ```yaml
   - id: GD-XXX

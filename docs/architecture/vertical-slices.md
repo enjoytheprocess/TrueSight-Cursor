@@ -51,7 +51,7 @@ See [overview.md](overview.md) and ADRs under [`docs/design/decisions/`](../desi
 ## Adding a new slice
 
 1. Add feature spec under `docs/design/features/FEAT-*.md`.
-2. Register in `.awp-workspace/1-design/FEATURE_REGISTRY.yaml`, `DESIGN_STATES.yaml`, `ROADMAP.yaml` if committed.
+2. Register in `.awp-workspace/workspace-build/1-design/FEATURE_REGISTRY.yaml`, `DESIGN_STATES.yaml`, `ROADMAP.yaml` if committed.
 3. Create `Features/{Slice}/` with commands/queries/endpoints only for that capability.
 4. Extend [domain model](../product/domain-model.md) if new persisted entities are required.
 

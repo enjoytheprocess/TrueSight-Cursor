@@ -4,18 +4,18 @@ Runtime instructions for AI agents in the TrueSight monorepo.
 
 ## Cursor
 
-Cursor loads **`.cursor/rules/awp.mdc`** (`alwaysApply: true`) so every agent session is directed to read AWP registers under `.awp-workspace/`. Register YAML edits use **`.cursor/rules/awp-registers.mdc`**.
+Cursor loads **`.cursor/rules/awp.mdc`** (`alwaysApply: true`) so every agent session is directed to read AWP registers under `.awp-workspace/workspace-build/`. Register YAML edits use **`.cursor/rules/awp-registers.mdc`**.
 
 ## Layout
 
 - **Design documentation:** `docs/` — product vision, feature specs, ADRs (`@docs/` in Cursor).
-- **Planning workspace (AWP):** `.awp-workspace/` — execution registers (queue, readiness, traceability). Edit `.yaml`; hooks run `make awp-render`.
+- **Planning workspace (AWP):** `.awp-workspace/workspace-build/` — execution registers (queue, readiness, traceability). Edit `.yaml`; hooks run `make awp-render`.
 - **Backend component:** `backend/` — ASP.NET Core API. Read `backend/AGENTS.md` before code changes.
 - **Cursor:** `.cursor/rules/awp*.mdc`, `.cursor/hooks.json`, snippets under `.cursor/snippets/` (`awp-*`, `git-commit`, `git-pr`).
 
 ## Default read order
 
-1. Active task: `.awp-workspace/2-build/WORK_QUEUE.yaml` (+ `TASK_READINESS.yaml`).
+1. Active task: `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml` (+ `TASK_READINESS.yaml`).
 2. Task `spec_link` under `docs/` (e.g. `docs/product/project-brief.md`, `docs/design/features/`).
 3. `backend/AGENTS.md` when implementing.
 
@@ -30,7 +30,7 @@ make awp-workflow-status
 make awp-install-hooks   # pre-commit: render + docs-check
 ```
 
-Equivalent from `.awp-workspace/`: `make init`, `make render`, `make docs-check`, `make workflow-status`.
+Equivalent from `.awp-workspace/workspace-build/`: `make init`, `make render`, `make docs-check`, `make workflow-status`.
 
 ## Token and model tier
 
@@ -53,7 +53,7 @@ Use the **lowest model tier that fits the task**. Reserve high-reasoning models 
 
 1. **Session start:** active `WORK_QUEUE` row + matching `TASK_READINESS` row + task `spec_link` (+ component `AGENTS.md` when coding).
 2. **@ mentions:** prefer `@docs/design/features/FEAT-….md` and linked ADRs over whole `docs/` trees.
-3. **History:** read `.awp-workspace/**/archive/` only when the task explicitly requires it.
+3. **History:** read `.awp-workspace/workspace-build/**/archive/` only when the task explicitly requires it.
 4. **Exploration:** prefer grep or readonly explore over loading large subtrees into a high-tier chat.
 
 ### AWP phase → tier

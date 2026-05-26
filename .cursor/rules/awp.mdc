@@ -6,13 +6,13 @@ alwaysApply: true
 # AWP + Cursor (router)
 
 - **Design docs (human-accessible):** `docs/` — use `@docs/` in prompts. Specs, ADRs, product vision.
-- **Execution registers:** `.awp-workspace/*.yaml` — queue, readiness, traceability. Edit YAML only; hooks run `make awp-render`.
+- **Execution registers:** `.awp-workspace/workspace-build/*.yaml` — queue, readiness, traceability. Edit YAML only; hooks run `make awp-render`.
 
-Full contract: `.awp-workspace/AGENTS.md`. Phase rules: `awp-design.mdc`, `awp-build.mdc`, `awp-verify.mdc`. Build loop: `docs/design/build-agent-loop.md`. Token/model tier: repo root `AGENTS.md`.
+Full contract: `.awp-workspace/workspace-build/AGENTS.md`. Phase rules: `awp-design.mdc`, `awp-build.mdc`, `awp-verify.mdc`. Build loop: `docs/design/build-agent-loop.md`. Token/model tier: repo root `AGENTS.md`.
 
 ## Session start
 
-1. Read `.awp-workspace/2-build/WORK_QUEUE.yaml` + matching `1-design/TASK_READINESS.yaml`
+1. Read `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml` + matching `1-design/TASK_READINESS.yaml`
 2. Read task `spec_link` under `docs/` (often `docs/product/project-brief.md` or `docs/design/features/`)
 3. For backend code: `backend/AGENTS.md`
 

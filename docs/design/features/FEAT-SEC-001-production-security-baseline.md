@@ -20,7 +20,7 @@ As an operator deploying TrueSight, I want baseline security controls and automa
 
 ### In scope
 
-- Sustained quality requirements (QR-SEC-001–003) in `.awp-workspace/1-design/QUALITY_REQUIREMENTS.yaml`
+- Sustained quality requirements (QR-SEC-001–003) in `.awp-workspace/workspace-build/1-design/QUALITY_REQUIREMENTS.yaml`
 - `.gitignore` coverage for local env files
 - GitHub Actions CI: `dotnet test`, `npm test`, `npm audit`, `dotnet list package --vulnerable`
 - Production-oriented API configuration:
@@ -93,6 +93,6 @@ Development: existing Vite proxy + permissive CORS unchanged.
 
 ## Traceability (AWP)
 
-- `.awp-workspace/1-design/FEATURE_REGISTRY.yaml` — FEAT-SEC-001
-- `.awp-workspace/1-design/ROADMAP.yaml` — CAP-V1-SEC
-- `.awp-workspace/2-build/WORK_QUEUE.yaml` — BUILD-SEC-*
+- `.awp-workspace/workspace-build/1-design/FEATURE_REGISTRY.yaml` — FEAT-SEC-001
+- `.awp-workspace/workspace-build/1-design/ROADMAP.yaml` — CAP-V1-SEC
+- `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml` — BUILD-SEC-*

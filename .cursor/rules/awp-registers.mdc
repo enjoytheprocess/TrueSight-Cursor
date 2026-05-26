@@ -1,17 +1,17 @@
 ---
-description: Editing AWP register YAML under .awp-workspace
+description: Editing AWP register YAML under .awp-workspace templates
 globs: .awp-workspace/**/*.yaml
 alwaysApply: false
 ---
 
 # AWP register edits
 
-- **Canonical source:** `*.yaml` under `.awp-workspace/` — never edit generated `*.md` table views in place.
+- **Canonical source:** `*.yaml` under `.awp-workspace/workspace-build/` — never edit generated `*.md` table views in place.
 - After changing any register YAML, run `make awp-render` from the repo root.
 - Terminal statuses: move rows from active YAML to matching `archive/*.yaml`, then render.
-- Schema and column rules: `.awp-workspace/meta/schemas/register-schema-versions.yaml`
+- Schema and column rules: `.awp-workspace/workspace-build/meta/schemas/register-schema-versions.yaml`
 - Before handoff: `make awp-docs-check`
 
 Design specs live under `docs/` — set `spec_link` and `decision_links` to paths there.
 
-Workflow contract: `.awp-workspace/AGENTS.md`
+Workflow contract: `.awp-workspace/workspace-build/AGENTS.md`

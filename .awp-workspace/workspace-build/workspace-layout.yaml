@@ -1,6 +1,6 @@
 # Monorepo layout: planning registers live here; product code lives at repo root.
 version: 2
-monorepo_root: ..
+monorepo_root: ../..
 primary_component: backend
 components:
   - name: backend
@@ -11,5 +11,5 @@ components:
     path: frontend
     type: web
     verify_command: "npm run build"
-workspace_link_prefix: .awp-workspace
+workspace_link_prefix: .awp-workspace/workspace-build
 design_docs_root: docs

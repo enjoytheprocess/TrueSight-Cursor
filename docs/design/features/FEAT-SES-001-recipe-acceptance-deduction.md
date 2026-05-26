@@ -57,10 +57,10 @@ As a user, when I choose to cook a suggested recipe, I want my inventory updated
 
 After approval, add/update rows in:
 
-- `.awp-workspace/1-design/FEATURE_REGISTRY.yaml`
-- `.awp-workspace/1-design/DESIGN_STATES.yaml`
-- `.awp-workspace/3-verify/TRACEABILITY_MATRIX.yaml`
-- `.awp-workspace/2-build/WORK_QUEUE.yaml`
+- `.awp-workspace/workspace-build/1-design/FEATURE_REGISTRY.yaml`
+- `.awp-workspace/workspace-build/1-design/DESIGN_STATES.yaml`
+- `.awp-workspace/workspace-build/3-verify/TRACEABILITY_MATRIX.yaml`
+- `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml`
 
 `spec_link` for build tasks → this file path.
 
@@ -81,4 +81,4 @@ At build admission (see [advisor-policy.md](../advisor-policy.md)):
 
 **Mitigation:** `ListRecipeSessions` loads the user's sessions from SQLite, then sorts by `AcceptedAt` in memory before mapping the response. Fine for V1 personal session history; revisit if session volume or server-side paging requires a sortable column (e.g. store `AcceptedAtUtcTicks` as `long`).
 
-**AWP record:** `GD-001` in `.awp-workspace/3-verify/archive/GAPS_AND_DEVIATIONS.yaml` (`resolved_in_loop`).
+**AWP record:** `GD-001` in `.awp-workspace/workspace-build/3-verify/archive/GAPS_AND_DEVIATIONS.yaml` (`resolved_in_loop`).

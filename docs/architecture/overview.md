@@ -1,6 +1,6 @@
 # Architecture overview
 
-Human-readable system context for TrueSight (FridgeWise). Execution state remains in [`.awp-workspace/`](../../.awp-workspace/) registers.
+Human-readable system context for TrueSight (FridgeWise). Execution state remains in [`.awp-workspace/workspace-build/`](../../.awp-workspace/workspace-build/) registers.
 
 Related ADRs: [ADR-20260523-01](../design/decisions/ADR-20260523-01-delivery-model-pwa-web.md), [ADR-20260523-02](../design/decisions/ADR-20260523-02-recipe-provider-adapter.md), [ADR-20260523-03](../design/decisions/ADR-20260523-03-v2-vision-boundary.md).
 

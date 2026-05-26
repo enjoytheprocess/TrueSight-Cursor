@@ -13,7 +13,7 @@ Detailed implementation rules are located in `.cursor/rules`.
 ## Documentation & AWP
 
 - **Design docs:** `docs/` — use `@docs/` for product, feature specs, and ADRs.
-- **Registers:** `.awp-workspace/` — queue, readiness, traceability (YAML canonical).
+- **Registers:** `.awp-workspace/workspace-build/` — queue, readiness, traceability (YAML canonical).
 - **Cursor:** `.cursor/rules/awp.mdc` + phase rules; hooks auto-run `make awp-render` after register edits.
 
 ```bash

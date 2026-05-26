@@ -25,7 +25,7 @@ What was chosen and why.
 
 ## AWP follow-up
 
-- `decision_links` in `.awp-workspace/2-build/WORK_QUEUE.yaml` → `docs/design/decisions/ADR-YYYYMMDD-NN-short-title.md`
+- `decision_links` in `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml` → `docs/design/decisions/ADR-YYYYMMDD-NN-short-title.md`
 - Update `DESIGN_STATES`, `TRACEABILITY_MATRIX`, or `ROADMAP` if sequencing or drift expectations change
 
 ## References

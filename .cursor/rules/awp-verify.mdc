@@ -1,6 +1,6 @@
 ---
 description: Verify phase — evidence, feedback, gaps
-globs: .awp-workspace/3-verify/**
+globs: .awp-workspace/workspace-build/3-verify/**
 alwaysApply: false
 ---
 

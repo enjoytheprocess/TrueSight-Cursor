@@ -108,9 +108,9 @@ Web UI proxies `/api` to the backend. API health: `curl -s http://localhost:5158
 
 ## For contributors
 
-**Design docs:** [`docs/`](docs/) · **AWP registers:** [`.awp-workspace/`](.awp-workspace/) (YAML queue/readiness; `make awp-render` after edits).
+**Design docs:** [`docs/`](docs/) · **AWP registers:** [`.awp-workspace/workspace-build/`](.awp-workspace/workspace-build/) (YAML queue/readiness; `make awp-render` after edits).
 
-Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md). Planning workflow adapted from [AWP Build](https://gitlab.com/agent-workspace-protocols/workspace-build) — see [`.awp-workspace/template-release.yaml`](.awp-workspace/template-release.yaml).
+Agent entrypoints: [`AGENTS.md`](AGENTS.md), [`backend/AGENTS.md`](backend/AGENTS.md). Planning workflow adapted from [AWP Build](https://gitlab.com/agent-workspace-protocols/workspace-build) — see [`.awp-workspace/workspace-build/template-release.yaml`](.awp-workspace/workspace-build/template-release.yaml).
 
 ```bash
 make awp-render

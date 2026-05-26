@@ -198,10 +198,10 @@ Suggested expiry values are **pre-filled** date inputs; user may clear or change
 
 After approval, add/update rows in:
 
-- `.awp-workspace/1-design/FEATURE_REGISTRY.yaml`
-- `.awp-workspace/1-design/DESIGN_STATES.yaml` — `decision_links`: `docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md`, `docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md`
-- `.awp-workspace/3-verify/TRACEABILITY_MATRIX.yaml`
-- `.awp-workspace/2-build/WORK_QUEUE.yaml` (when V2 is admitted)
+- `.awp-workspace/workspace-build/1-design/FEATURE_REGISTRY.yaml`
+- `.awp-workspace/workspace-build/1-design/DESIGN_STATES.yaml` — `decision_links`: `docs/design/decisions/ADR-20260523-03-v2-vision-boundary.md`, `docs/design/decisions/ADR-20260523-01-delivery-model-pwa-web.md`
+- `.awp-workspace/workspace-build/3-verify/TRACEABILITY_MATRIX.yaml`
+- `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml` (when V2 is admitted)
 
 `spec_link` for build tasks → this file path.
 

@@ -1,13 +1,13 @@
 # Specialist advisor policy (TrueSight)
 
-AWP **advisor tracks** for this project. Authoritative workflow rules: [`.awp-workspace/docs/optional/specialist-tracks.md`](../../.awp-workspace/docs/optional/specialist-tracks.md).
+AWP **advisor tracks** for this project. Authoritative workflow rules: [`.awp-workspace/workspace-build/docs/optional/specialist-tracks.md`](../../.awp-workspace/workspace-build/docs/optional/specialist-tracks.md).
 
 ## Active tracks
 
 | Track | Status | Review file |
 |-------|--------|-------------|
-| **`security`** | **Active** | [`.awp-workspace/3-verify/SECURITY_REVIEWS.md`](../../.awp-workspace/3-verify/SECURITY_REVIEWS.md) |
-| **`api_contract`** | **Active** | [`.awp-workspace/3-verify/API_CONTRACT_REVIEWS.md`](../../.awp-workspace/3-verify/API_CONTRACT_REVIEWS.md) |
+| **`security`** | **Active** | [`.awp-workspace/workspace-build/3-verify/SECURITY_REVIEWS.md`](../../.awp-workspace/workspace-build/3-verify/SECURITY_REVIEWS.md) |
+| **`api_contract`** | **Active** | [`.awp-workspace/workspace-build/3-verify/API_CONTRACT_REVIEWS.md`](../../.awp-workspace/workspace-build/3-verify/API_CONTRACT_REVIEWS.md) |
 | `experiment` | Not used (hackathon MVP) | — |
 | `incident` | Not used until production | — |
 | `data_migration` | Use when EF schema changes need rollback notes | `DATA_MIGRATION_REVIEWS.md` (create on first migration task) |
@@ -80,7 +80,7 @@ For the mobile-first **web** client + ASP.NET API, each `security` entry should 
 
 ## Human sign-off
 
-Optional. Not required for hackathon unless a mentor must formally approve — see **Human specialist sign-off** in [specialist-tracks.md](../../.awp-workspace/docs/optional/specialist-tracks.md).
+Optional. Not required for hackathon unless a mentor must formally approve — see **Human specialist sign-off** in [specialist-tracks.md](../../.awp-workspace/workspace-build/docs/optional/specialist-tracks.md).
 
 ## Related
 

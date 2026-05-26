@@ -12,7 +12,7 @@ fi
 mapfile -t changed < <(git -C "$ROOT" diff --name-only 2>/dev/null; git -C "$ROOT" diff --name-only --cached 2>/dev/null)
 yaml_changed=0
 for f in "${changed[@]}"; do
-  [[ "$f" =~ ^\.awp-workspace/.*\.yaml$ ]] && yaml_changed=1 && break
+  [[ "$f" =~ ^\.awp-workspace/[^/]+/.*\.yaml$ ]] && yaml_changed=1 && break
 done
 
 if [[ "$yaml_changed" -eq 0 ]]; then

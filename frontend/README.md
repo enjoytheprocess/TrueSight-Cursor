@@ -27,7 +27,7 @@ The main app footer links to `/about.html`. The About page logo and footer link 
 
 ## Identity (V1 interim)
 
-Login is off ([TMP-001](../.awp-workspace/2-build/TEMP_MEASURES.yaml)). The client generates a UUID on first visit, stores it in `localStorage` under `truesight-user-id`, and sends it on every request as `X-TrueSight-User`. See [ADR-20260524-01](../docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md).
+Login is off ([TMP-001](../.awp-workspace/workspace-build/2-build/TEMP_MEASURES.yaml)). The client generates a UUID on first visit, stores it in `localStorage` under `truesight-user-id`, and sends it on every request as `X-TrueSight-User`. See [ADR-20260524-01](../docs/design/decisions/ADR-20260524-01-v1-interim-identity-header.md).
 
 ## Setup
 

@@ -146,8 +146,8 @@ Set these when deploying the API outside local Development. Full behavior is imp
 - Design docs index: docs/README.md
 - Project brief: docs/product/project-brief.md
 - Product roadmap: docs/product/roadmap.md
-- AWP roadmap: .awp-workspace/1-design/ROADMAP.md
-- Work queue: .awp-workspace/2-build/WORK_QUEUE.md
+- AWP roadmap: .awp-workspace/workspace-build/1-design/ROADMAP.md
+- Work queue: .awp-workspace/workspace-build/2-build/WORK_QUEUE.md
 - Design docs:
   - docs/design/features/FEAT-INV-001-manual-inventory.md
   - docs/design/features/FEAT-REC-001-recipe-suggestions.md

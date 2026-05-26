@@ -14,9 +14,9 @@ fi
 
 make awp-render
 
-if ! git diff --quiet -- .awp-workspace/; then
+if ! git diff --quiet -- .awp-workspace/workspace-build/; then
   echo "pre-commit: generated .awp-workspace views are out of date." >&2
-  echo "  Run: make awp-render && git add .awp-workspace/" >&2
+  echo "  Run: make awp-render && git add .awp-workspace/workspace-build/" >&2
   exit 1
 fi
 

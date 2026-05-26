@@ -4,8 +4,8 @@ Exploratory ideas **not** committed on the [roadmap](roadmap.md). Workflow: [../
 
 | Register | Path |
 |----------|------|
-| Active (open ideas) | [`.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml`](../../.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml) |
-| Archive (promoted / parked) | [`.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml`](../../.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml) |
+| Active (open ideas) | [`.awp-workspace/workspace-build/0-ideation/IDEATION_BACKLOG.yaml`](../../.awp-workspace/workspace-build/0-ideation/IDEATION_BACKLOG.yaml) |
+| Archive (promoted / parked) | [`.awp-workspace/workspace-build/0-ideation/archive/IDEATION_BACKLOG.yaml`](../../.awp-workspace/workspace-build/0-ideation/archive/IDEATION_BACKLOG.yaml) |
 
 **Status:** `open` → discuss → `promoted` | `parked` | `dropped` → move to **archive** YAML.
 
@@ -87,7 +87,7 @@ flowchart TB
 | IDEA-016 | `FEAT-SES-001`, `FEAT-REC-001` | Partial deduct at accept |
 | IDEA-017 | `CAP-V1-CORE`, `FEAT-PRF-001` | Discovery browse (ex-IDEA-002) |
 
-**Delivered outside active ideation:** V1 core, security, auth API, shopping (`FEAT-SHP-001`), fridge mockup (`FEAT-REC-002` Phase A) — see [roadmap](roadmap.md) and `.awp-workspace/2-build/WORK_QUEUE.yaml`.
+**Delivered outside active ideation:** V1 core, security, auth API, shopping (`FEAT-SHP-001`), fridge mockup (`FEAT-REC-002` Phase A) — see [roadmap](roadmap.md) and `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml`.
 
 ---
 
@@ -121,7 +121,7 @@ Full table: [design-priority-queue.md](../design/design-priority-queue.md).
 
 ## Archived index (promoted / parked)
 
-Full entries: [archive IDEATION_BACKLOG.md](../../.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.md).
+Full entries: [archive IDEATION_BACKLOG.md](../../.awp-workspace/workspace-build/0-ideation/archive/IDEATION_BACKLOG.md).
 
 | ID | Title | Status | Promotion / notes |
 |----|-------|--------|-------------------|
@@ -228,8 +228,8 @@ Browse recipes not strictly limited to current stock. Recommend `FEAT-PRF-001` f
 
 When moving an idea to **promoted**:
 
-1. Add capability or feature to [roadmap.md](roadmap.md) and `.awp-workspace/1-design/ROADMAP.yaml`
+1. Add capability or feature to [roadmap.md](roadmap.md) and `.awp-workspace/workspace-build/1-design/ROADMAP.yaml`
 2. Add user stories to [user-stories.md](user-stories.md) under the right phase
 3. Create `docs/design/features/FEAT-*.md` and register rows (see `.cursor/snippets/awp-admit-task.md`)
-4. Move YAML entry to `.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml` with `decision: promoted`
+4. Move YAML entry to `.awp-workspace/workspace-build/0-ideation/archive/IDEATION_BACKLOG.yaml` with `decision: promoted`
 5. Remove from active `IDEATION_BACKLOG.yaml` and update this file

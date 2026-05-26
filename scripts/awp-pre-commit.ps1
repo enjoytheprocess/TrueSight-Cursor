@@ -9,12 +9,12 @@ function Invoke-AwpPreCommitWithMake {
     make awp-render
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-    git diff --quiet -- .awp-workspace/
+    git diff --quiet -- .awp-workspace/workspace-build/
     if ($LASTEXITCODE -ne 0) {
         Write-Error @"
 pre-commit: generated .awp-workspace views are out of date.
   Run: make awp-render
-  Then: git add .awp-workspace/
+  Then: git add .awp-workspace/workspace-build/
 "@
         exit 1
     }

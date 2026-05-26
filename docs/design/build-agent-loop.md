@@ -2,7 +2,7 @@
 
 How AI agents should run the **Build** phase when multiple tasks are admitted in `2-build/WORK_QUEUE.yaml`.
 
-Authoritative workflow rules also live in [`.awp-workspace/docs/core/workflow-reference.md`](../../.awp-workspace/docs/core/workflow-reference.md) § Build rules.
+Authoritative workflow rules also live in [`.awp-workspace/workspace-build/docs/core/workflow-reference.md`](../../.awp-workspace/workspace-build/docs/core/workflow-reference.md) § Build rules.
 
 ## Principles
 
@@ -114,5 +114,5 @@ Specs:
 
 ## Related
 
-- [acceptance-gate.md](../../.awp-workspace/3-verify/acceptance-gate.md) — human step before `accepted`
+- [acceptance-gate.md](../../.awp-workspace/workspace-build/3-verify/acceptance-gate.md) — human step before `accepted`
 - [open-questions.md](../product/open-questions.md) — deferred items (OQ-038, etc.) do not block unless listed in `blocking_unknowns`

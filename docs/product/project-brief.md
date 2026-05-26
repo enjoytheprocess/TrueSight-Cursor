@@ -1,6 +1,6 @@
 # Project brief
 
-Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives in [`.awp-workspace/`](../../.awp-workspace/) registers — not in this file.
+Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives in [`.awp-workspace/workspace-build/`](../../.awp-workspace/workspace-build/) registers — not in this file.
 
 ## Name
 
@@ -103,17 +103,17 @@ Durable project context for TrueSight (FridgeWise). **Task-by-task state** lives
 
 | Register | Path |
 |----------|------|
-| Ideation | `.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml` |
-| Design states | `.awp-workspace/1-design/DESIGN_STATES.yaml` |
-| Roadmap | `.awp-workspace/1-design/ROADMAP.yaml` |
-| Task readiness | `.awp-workspace/1-design/TASK_READINESS.yaml` |
-| Work queue | `.awp-workspace/2-build/WORK_QUEUE.yaml` |
-| Traceability | `.awp-workspace/3-verify/TRACEABILITY_MATRIX.yaml` |
+| Ideation | `.awp-workspace/workspace-build/0-ideation/IDEATION_BACKLOG.yaml` |
+| Design states | `.awp-workspace/workspace-build/1-design/DESIGN_STATES.yaml` |
+| Roadmap | `.awp-workspace/workspace-build/1-design/ROADMAP.yaml` |
+| Task readiness | `.awp-workspace/workspace-build/1-design/TASK_READINESS.yaml` |
+| Work queue | `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml` |
+| Traceability | `.awp-workspace/workspace-build/3-verify/TRACEABILITY_MATRIX.yaml` |
 
 ## Operating baseline
 
 - Current phase: design
-- Primary milestone(s): [roadmap.md](roadmap.md) and `.awp-workspace/1-design/ROADMAP.yaml`
+- Primary milestone(s): [roadmap.md](roadmap.md) and `.awp-workspace/workspace-build/1-design/ROADMAP.yaml`
 - Active components: backend
 - Human acceptance required before `accepted` / `done` on tasks.
 

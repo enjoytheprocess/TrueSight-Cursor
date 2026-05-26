@@ -1,4 +1,4 @@
 # Reduce @codebase noise
-.awp-workspace/docs/i18n/
-.awp-workspace/examples/
-.awp-workspace/upgrade-notes.md
+.awp-workspace/workspace-build/docs/i18n/
+.awp-workspace/workspace-build/examples/
+.awp-workspace/workspace-build/upgrade-notes.md

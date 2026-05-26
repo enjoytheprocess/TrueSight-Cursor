@@ -6,7 +6,7 @@
 
 ## Summary
 
-Add a **login screen** as a temporary V1 UX measure ([TMP-001](../../.awp-workspace/2-build/TEMP_MEASURES.yaml)). The screen shows a conventional sign-in layout with all real auth controls **disabled**. A prominent **Enter Demo** action above the form lets users enter the app as the shared demo user (`demo-user`) without sign-up or credentials. Real authentication remains out of scope until TMP-001 is removed.
+Add a **login screen** as a temporary V1 UX measure ([TMP-001](../../.awp-workspace/workspace-build/2-build/TEMP_MEASURES.yaml)). The screen shows a conventional sign-in layout with all real auth controls **disabled**. A prominent **Enter Demo** action above the form lets users enter the app as the shared demo user (`demo-user`) without sign-up or credentials. Real authentication remains out of scope until TMP-001 is removed.
 
 ## User story
 
@@ -88,13 +88,13 @@ No new API surface. Client continues to send `X-TrueSight-User` per [ADR-2026052
 
 ## Traceability (AWP)
 
-- Temporary measure: **TMP-001** (`.awp-workspace/2-build/TEMP_MEASURES.yaml`)
+- Temporary measure: **TMP-001** (`.awp-workspace/workspace-build/2-build/TEMP_MEASURES.yaml`)
 - Build task: **BUILD-AUTH-001** (design phase — not yet admitted to build)
 - Decision: [ADR-20260524-01](../decisions/ADR-20260524-01-v1-interim-identity-header.md)
 
 After design approval, update:
 
-- `.awp-workspace/1-design/FEATURE_REGISTRY.yaml`
-- `.awp-workspace/1-design/DESIGN_STATES.yaml`
-- `.awp-workspace/3-verify/TRACEABILITY_MATRIX.yaml`
-- `.awp-workspace/2-build/WORK_QUEUE.yaml`
+- `.awp-workspace/workspace-build/1-design/FEATURE_REGISTRY.yaml`
+- `.awp-workspace/workspace-build/1-design/DESIGN_STATES.yaml`
+- `.awp-workspace/workspace-build/3-verify/TRACEABILITY_MATRIX.yaml`
+- `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml`

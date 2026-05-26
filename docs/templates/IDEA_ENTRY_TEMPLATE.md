@@ -18,4 +18,4 @@ One paragraph describing the idea and the problem it addresses.
 **Reason:** —  
 **Promotion target:** — (feature ID or design area once promoted)
 
-Also add a matching entry to `.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml` and a row in `docs/product/ideation.md`.
+Also add a matching entry to `.awp-workspace/workspace-build/0-ideation/IDEATION_BACKLOG.yaml` and a row in `docs/product/ideation.md`.

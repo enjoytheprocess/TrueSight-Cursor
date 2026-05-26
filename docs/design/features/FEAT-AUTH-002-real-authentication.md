@@ -6,7 +6,7 @@
 
 ## Summary
 
-Replace interim header identity ([TMP-001](../../../.awp-workspace/2-build/TEMP_MEASURES.yaml), [ADR-20260524-01](../decisions/ADR-20260524-01-v1-interim-identity-header.md)) with real sign-up and sign-in. Closes the largest production security gap (audit SEC-01, SEC-04).
+Replace interim header identity ([TMP-001](../../../.awp-workspace/workspace-build/2-build/TEMP_MEASURES.yaml), [ADR-20260524-01](../decisions/ADR-20260524-01-v1-interim-identity-header.md)) with real sign-up and sign-in. Closes the largest production security gap (audit SEC-01, SEC-04).
 
 ## User story
 

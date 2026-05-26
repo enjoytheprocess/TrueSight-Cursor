@@ -32,9 +32,9 @@
 
 ## Registers
 
-- Features: `.awp-workspace/1-design/FEATURE_REGISTRY.yaml`
-- Design maturity: `.awp-workspace/1-design/DESIGN_STATES.yaml`
-- Roadmap capabilities: `.awp-workspace/1-design/ROADMAP.yaml`
-- Ideation archive: `.awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml`
+- Features: `.awp-workspace/workspace-build/1-design/FEATURE_REGISTRY.yaml`
+- Design maturity: `.awp-workspace/workspace-build/1-design/DESIGN_STATES.yaml`
+- Roadmap capabilities: `.awp-workspace/workspace-build/1-design/ROADMAP.yaml`
+- Ideation archive: `.awp-workspace/workspace-build/0-ideation/archive/IDEATION_BACKLOG.yaml`
 
 **Promoted:** 2026-05-26 — all former open `IDEA-*` rows moved to design; see [ideation.md](../product/ideation.md).

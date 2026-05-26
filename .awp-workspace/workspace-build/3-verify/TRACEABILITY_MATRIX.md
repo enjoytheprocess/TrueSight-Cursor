@@ -125,7 +125,7 @@
 | docs/design/features/FEAT-SEC-001-production-security-baseline.md | 2026-05-24 | `aligned` | unassigned |
 
 **Task IDs:** BUILD-SEC-001, BUILD-SEC-002, BUILD-SEC-003, BUILD-SEC-004  
-**Code links:** .gitignore, .github/workflows/ci.yml, backend/TrueSight.Api/Program.cs, backend/TrueSight.Api/appsettings.json, backend/TrueSight.Api/appsettings.Production.json, backend/TrueSight.Api/Infrastructure/Security, backend/TrueSight.Api/Infrastructure/ClaimsCurrentUser.cs, .awp-workspace/1-design/QUALITY_REQUIREMENTS.yaml, .awp-workspace/3-verify/SECURITY_REVIEWS.md  
+**Code links:** .gitignore, .github/workflows/ci.yml, backend/TrueSight.Api/Program.cs, backend/TrueSight.Api/appsettings.json, backend/TrueSight.Api/appsettings.Production.json, backend/TrueSight.Api/Infrastructure/Security, backend/TrueSight.Api/Infrastructure/ClaimsCurrentUser.cs, .awp-workspace/workspace-build/1-design/QUALITY_REQUIREMENTS.yaml, .awp-workspace/workspace-build/3-verify/SECURITY_REVIEWS.md  
 **Test links:** backend/TrueSight.Api.Tests/ProductionSecurityTests.cs, backend/TrueSight.Api.Tests/ApiMutationRateLimitingTests.cs, backend/TrueSight.Api.Tests/AuthEndpointsTests.cs, backend/TrueSight.Api.Tests
 
 > Sync 2026-05-24 — CAP-V1-SEC delivered (SEC-001–004, AUTH-002).

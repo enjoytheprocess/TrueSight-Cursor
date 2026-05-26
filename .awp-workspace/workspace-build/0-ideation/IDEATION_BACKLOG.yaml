@@ -10,4 +10,4 @@ schema_version: 1
 
 ideas: []
 # Sync 2026-05-26 — all open ideas promoted to design; see docs/design/design-priority-queue.md
-# and .awp-workspace/0-ideation/archive/IDEATION_BACKLOG.yaml
+# and .awp-workspace/workspace-build/0-ideation/archive/IDEATION_BACKLOG.yaml

@@ -1,6 +1,6 @@
 ---
 description: Design phase — docs/ specs and AWP design registers
-globs: docs/**,.awp-workspace/1-design/**,.awp-workspace/4-sync/**,.awp-workspace/0-ideation/**
+globs: docs/**,.awp-workspace/workspace-build/1-design/**,.awp-workspace/workspace-build/4-sync/**,.awp-workspace/workspace-build/0-ideation/**
 alwaysApply: false
 ---
 
@@ -8,7 +8,7 @@ alwaysApply: false
 
 **Authoritative design prose:** `docs/` (`@docs/product/`, `@docs/design/features/`, `@docs/design/decisions/`).
 
-**Execution state:** `.awp-workspace/1-design/`, `4-sync/DESIGN_INPUTS.yaml`.
+**Execution state:** `.awp-workspace/workspace-build/1-design/`, `4-sync/DESIGN_INPUTS.yaml`.
 
 ## Read order
 
@@ -20,5 +20,5 @@ alwaysApply: false
 ## Rules
 
 - New features: create spec in `docs/design/features/` from `docs/templates/FEATURE_SPEC_TEMPLATE.md`, then add register rows.
-- ADRs go in `docs/design/decisions/`; link via `decision_links` (not `.awp-workspace/1-design/decisions/`).
-- Do not admit to build until IRG/readiness gates pass (`.awp-workspace/docs/optional/consistency-gates.md`).
+- ADRs go in `docs/design/decisions/`; link via `decision_links` (not `.awp-workspace/workspace-build/1-design/decisions/`).
+- Do not admit to build until IRG/readiness gates pass (`.awp-workspace/workspace-build/docs/optional/consistency-gates.md`).

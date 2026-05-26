@@ -76,7 +76,7 @@ Default tab on open: **In Stock**.
 
 ### Shopping list persistence
 
-- Per-user list; same identity as inventory ([TMP-001](../../../.awp-workspace/2-build/TEMP_MEASURES.yaml)).
+- Per-user list; same identity as inventory ([TMP-001](../../../.awp-workspace/workspace-build/2-build/TEMP_MEASURES.yaml)).
 - **Merge on create:** same normalized name + unit → add quantity to existing shopping row.
 
 ### Move to In Stock (server)

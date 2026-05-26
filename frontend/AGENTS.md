@@ -10,7 +10,7 @@ Instructions for AI agents working in the frontend component.
 ## Required context before changes
 
 1. Read `frontend/README.md`.
-2. Follow `.cursor/rules/awp.mdc` — active task in `.awp-workspace/2-build/WORK_QUEUE.yaml`.
+2. Follow `.cursor/rules/awp.mdc` — active task in `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml`.
 3. Read task `spec_link` under `docs/design/features/` when implementing a feature.
 4. Read `.cursor/rules/frontend.mdc` for stack and folder conventions.
 

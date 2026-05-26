@@ -13,7 +13,7 @@
 
 ## Decision
 
-1. **Login/sign-up:** **Off** for V1 core loop. Tracked as temporary measure **TMP-001** in `.awp-workspace/2-build/TEMP_MEASURES.yaml`.
+1. **Login/sign-up:** **Off** for V1 core loop. Tracked as temporary measure **TMP-001** in `.awp-workspace/workspace-build/2-build/TEMP_MEASURES.yaml`.
 2. **Interim identity:** `X-TrueSight-User` request header (non-empty string, max 120 chars). Client should generate/store a stable id (e.g. UUID in `localStorage`) and send it on every API call.
 3. **Server default:** Missing/blank header → `"demo-user"` for local convenience only; production clients must send an explicit user id.
 4. **Isolation:** All inventory and session data filtered by `UserId`; cross-user access by id returns 404.
@@ -41,4 +41,4 @@
 
 - [Project brief — Scope](../../product/project-brief.md)
 - `backend/TrueSight.Api/Infrastructure/HeaderCurrentUser.cs`
-- `.awp-workspace/2-build/TEMP_MEASURES.yaml` — TMP-001
+- `.awp-workspace/workspace-build/2-build/TEMP_MEASURES.yaml` — TMP-001

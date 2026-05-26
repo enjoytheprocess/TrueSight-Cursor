@@ -8,8 +8,8 @@ Instructions for AI agents working in this component repository.
 
 ## Required context before changes
 1. Read component `README.md`.
-2. Follow Cursor rule `.cursor/rules/awp.mdc` — read linked `.awp-workspace/` registers for the active task.
-3. Confirm active task in `.awp-workspace/2-build/WORK_QUEUE.yaml` and matching `1-design/TASK_READINESS.yaml`.
+2. Follow Cursor rule `.cursor/rules/awp.mdc` — read linked `.awp-workspace/workspace-build/` registers for the active task.
+3. Confirm active task in `.awp-workspace/workspace-build/2-build/WORK_QUEUE.yaml` and matching `1-design/TASK_READINESS.yaml`.
 4. Confirm capability/target window and lock expectations for the task.
 
 ## Execution rules

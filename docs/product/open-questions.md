@@ -7,7 +7,7 @@ Track **unresolved product and technical decisions** before they become ADRs, ro
 | Register | What it holds |
 |----------|----------------|
 | [ideation.md](ideation.md) | **Future features** (serving size, receipt scan, store recs…) — promote to roadmap when committed |
-| [DESIGN_INPUTS.yaml](../../.awp-workspace/4-sync/DESIGN_INPUTS.yaml) | Gaps/deviations **from Verify/Sync**, not brainstorming |
+| [DESIGN_INPUTS.yaml](../../.awp-workspace/workspace-build/4-sync/DESIGN_INPUTS.yaml) | Gaps/deviations **from Verify/Sync**, not brainstorming |
 | `TASK_READINESS` `blocking_unknowns` | Per-task gate — only what blocks **that** build task |
 
 Close a row here when you decide — then update [project-brief.md](project-brief.md), an ADR, or the relevant `FEAT-*.md` spec.
@@ -131,6 +131,6 @@ These are **decided in docs**; do not re-litigate here unless changing an ADR.
 | OQ-020 | **Vite dev proxy only for V1 demo** — `/api` → `:5158`; prod CORS/env deferred | `frontend/vite.config.ts` | 2026-05-24 |
 | OQ-021 | **Hand-written DTOs** for V1 demo — OpenAPI/codegen deferred post-demo | `frontend/src/features/*/types.ts` | 2026-05-24 |
 | OQ-003 | **Local only** for demo — `dotnet run` + SQLite on dev machine; cloud deploy deferred | `backend/README.md` | 2026-05-24 |
-| OQ-050 | **Keep `target_window: TBD`** for CAP-V1-CORE and CAP-V2-VISION — revisit after demo | `.awp-workspace/1-design/ROADMAP.yaml` | 2026-05-24 |
+| OQ-050 | **Keep `target_window: TBD`** for CAP-V1-CORE and CAP-V2-VISION — revisit after demo | `.awp-workspace/workspace-build/1-design/ROADMAP.yaml` | 2026-05-24 |
 | OQ-004 | **Stay on SQLite** for MVP and first production scale — no PostgreSQL/SQL Server migration until usage or hosting forces it | [project-brief](project-brief.md), [architecture overview](../architecture/overview.md), `backend/README.md` | 2026-05-24 |
 | OQ-040 | **“Expiring soon” threshold = 3 days** before expiry for inventory highlight | [ui-principles](../design/ui-principles.md), [IDEA-006](ideation.md#idea-006-expiry-proximity-warnings) | 2026-05-24 |

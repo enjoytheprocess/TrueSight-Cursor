@@ -1,26 +1,25 @@
-# TrueSight
+# AWP workspace (multi-template)
 
-Workspace initialized in direct-use mode.
+Planning templates vendored under this directory. Product code and human design docs stay at the repo root (`docs/`, `backend/`, `frontend/`).
 
-- Repo mode: `single-component`
-- Primary component: `backend`
+| Path | Template | Role |
+|------|----------|------|
+| [`workspace-build/`](workspace-build/) | [AWP Build](https://gitlab.com/agent-workspace-protocols/workspace-build) | Active registers, workflow docs, `make` targets for TrueSight |
 
-## Human quick path
-- Read `docs/core/workflow-summary.md`.
-- Use `1-design/PROJECT_BRIEF.md`, `2-build/WORK_QUEUE.md`, and `3-verify/TRACEABILITY_MATRIX.md` as the live workflow state.
-- Use the component docs under `components/` for component-specific setup and behavior.
+## Commands
 
-## Mode notes
-- Tag tasks with concrete component names.
-- Keep traceability links repo-relative.
-- Reserve shared edits for cross-cutting docs, contracts, and coordination files.
-- Use `docs/guides/repo-modes.md` only if the repo topology changes.
-- Use `docs/core/operations.md` for command details.
+From the repo root (preferred):
 
-## Setup
-- `make install-tools` — one-time install of `yq` (required by `make docs-check` and `make render`)
+```bash
+make awp-render
+make awp-docs-check
+make awp-workflow-status
+```
 
-## Common commands
-- `make docs-check`
-- `make init-smoke`
-- `make install-hooks` (optional — installs a pre-commit hook that runs `make docs-check`)
+Equivalent from the active template directory:
+
+```bash
+make -C .awp-workspace/workspace-build render
+```
+
+Agent contract: [`workspace-build/AGENTS.md`](workspace-build/AGENTS.md).

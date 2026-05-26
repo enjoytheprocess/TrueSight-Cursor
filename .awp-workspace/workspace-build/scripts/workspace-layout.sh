@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
-# Monorepo layout for TrueSight: AWP registers in .awp-workspace/; components at repo root.
+# Monorepo layout for TrueSight: AWP registers in .awp-workspace/workspace-build/; components at repo root.
 # Source from other scripts after SCRIPT_DIR is set.
 
 _layout_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$(cd "$_layout_dir/.." && pwd)"
-MONOREPO_ROOT="$(cd "$WORKSPACE_ROOT/.." && pwd)"
-
 _layout_file="$WORKSPACE_ROOT/workspace-layout.yaml"
+_monorepo_rel=".."
 if [[ -f "$_layout_file" ]] && command -v yq &>/dev/null; then
-  WORKSPACE_LINK_PREFIX="${WORKSPACE_LINK_PREFIX:-$(yq -r '.workspace_link_prefix // ".awp-workspace"' "$_layout_file")}"
+  _monorepo_rel="$(yq -r '.monorepo_root // ".."' "$_layout_file")"
+fi
+MONOREPO_ROOT="$(cd "$WORKSPACE_ROOT/$_monorepo_rel" && pwd)"
+
+if [[ -f "$_layout_file" ]] && command -v yq &>/dev/null; then
+  WORKSPACE_LINK_PREFIX="${WORKSPACE_LINK_PREFIX:-$(yq -r '.workspace_link_prefix // ".awp-workspace/workspace-build"' "$_layout_file")}"
   DESIGN_DOCS_ROOT="${DESIGN_DOCS_ROOT:-$(yq -r '.design_docs_root // "docs"' "$_layout_file")}"
 
   if yq -e '.components | length > 0' "$_layout_file" >/dev/null 2>&1; then
@@ -25,7 +29,7 @@ if [[ -f "$_layout_file" ]] && command -v yq &>/dev/null; then
 else
   COMPONENT_NAME="${COMPONENT_NAME:-backend}"
   COMPONENT_REL="${COMPONENT_REL:-backend}"
-  WORKSPACE_LINK_PREFIX="${WORKSPACE_LINK_PREFIX:-.awp-workspace}"
+  WORKSPACE_LINK_PREFIX="${WORKSPACE_LINK_PREFIX:-.awp-workspace/workspace-build}"
   DESIGN_DOCS_ROOT="${DESIGN_DOCS_ROOT:-docs}"
 fi
 

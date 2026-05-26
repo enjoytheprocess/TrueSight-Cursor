@@ -1,7 +1,7 @@
 # Project Brief
 
 Use for durable project context. Save as `docs/product/project-brief.md`.
-Keep task-by-task state in `.awp-workspace/` registers only.
+Keep task-by-task state in `.awp-workspace/workspace-build/` registers only.
 
 ## Name
 - Project name:
@@ -30,7 +30,7 @@ Keep task-by-task state in `.awp-workspace/` registers only.
 
 ## Operating baseline
 - Current phase:
-- Primary milestone(s): see `docs/product/roadmap.md` and `.awp-workspace/1-design/ROADMAP.yaml`
+- Primary milestone(s): see `docs/product/roadmap.md` and `.awp-workspace/workspace-build/1-design/ROADMAP.yaml`
 - Active components:
 - Primary owners or decision-makers:
 
@@ -42,7 +42,7 @@ Keep task-by-task state in `.awp-workspace/` registers only.
 ## Documentation map
 - Product: `docs/product/`
 - Design: `docs/design/`
-- Registers: `.awp-workspace/`
+- Registers: `.awp-workspace/workspace-build/`
 
 ## Notes
 - Links to supporting specs, contracts, or ADRs under `docs/design/`

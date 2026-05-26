@@ -1,6 +1,6 @@
 # Product roadmap (committed)
 
-Phases the team has committed to deliver. Exploratory ideas live in [ideation.md](ideation.md) and [`.awp-workspace/0-ideation/`](../.awp-workspace/0-ideation/).
+Phases the team has committed to deliver. Exploratory ideas live in [ideation.md](ideation.md) and [`.awp-workspace/workspace-build/0-ideation/`](../.awp-workspace/workspace-build/0-ideation/).
 
 ## Phase 1 — Core (V1) — **delivered 2026-05-24**
 
@@ -71,7 +71,7 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 | `CAP-V1-COMMERCE` | [FEAT-SHP-002](../design/features/FEAT-SHP-002-store-recommendations.md) |
 | `CAP-V2-ORG` | [FEAT-ORG-001](../design/features/FEAT-ORG-001-charity-food-bank-persona.md) — persona/design |
 
-**Sort order:** [design-priority-queue.md](../design/design-priority-queue.md) · AWP: `.awp-workspace/1-design/ROADMAP.yaml`
+**Sort order:** [design-priority-queue.md](../design/design-priority-queue.md) · AWP: `.awp-workspace/workspace-build/1-design/ROADMAP.yaml`
 
 ## Parked / lower priority
 
@@ -79,4 +79,4 @@ Phases the team has committed to deliver. Exploratory ideas live in [ideation.md
 
 ## Not on this roadmap
 
-Ideation backlog is empty (all promoted 2026-05-26). New ideas start in `.awp-workspace/0-ideation/IDEATION_BACKLOG.yaml` before promotion.
+Ideation backlog is empty (all promoted 2026-05-26). New ideas start in `.awp-workspace/workspace-build/0-ideation/IDEATION_BACKLOG.yaml` before promotion.
